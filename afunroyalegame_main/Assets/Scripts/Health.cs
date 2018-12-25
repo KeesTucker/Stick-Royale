@@ -5,13 +5,19 @@ public class Health : NetworkBehaviour {
 
     [SyncVar]
     public float health = 200;
+
+    [SyncVar]
+    public bool localComplete = false;
+
     GameObject[] RotHolders;
-	
-	// Update is called once per frame
-	void Update () {
+
+    public GameObject Ghost;
+    public GameObject currentSpawn;
+
+    // Update is called once per frame
+    void Update () {
         if (health <= 0 && isLocalPlayer)
         {
-            CmdDestroyOnServer(gameObject);
             Destroy(GameObject.Find("Local"));
 
             RotHolders = GameObject.FindGameObjectsWithTag("RagAng");
@@ -22,9 +28,19 @@ public class Health : NetworkBehaviour {
                     CmdDestroyOnServer(RotHolder);
                 }
             }
-            //spawn ghost here
+            CmdLocalComplete();
         }
-	}
+        if (isServer && health <= 0 && localComplete)
+        {
+            CmdSpawn();
+        }
+    }
+
+    [Command]
+    public void CmdLocalComplete()
+    {
+        localComplete = true;
+    }
 
     [Command]
     public void CmdUpdateHealth(float damage)
@@ -36,5 +52,32 @@ public class Health : NetworkBehaviour {
     public void CmdDestroyOnServer(GameObject gameObject)
     {
         Destroy(gameObject);
+    }
+
+    [Command]
+    void CmdSpawn()
+    {
+        currentSpawn = Instantiate(Ghost, transform.position, Quaternion.identity);
+        currentSpawn.GetComponent<GhostMovement>().parent = gameObject;
+        NetworkServer.Spawn(currentSpawn);
+    }
+
+    [Command]
+    public void CmdAssignAuthority(NetworkIdentity identity)
+    {
+        NetworkConnection currentOwner = identity.clientAuthorityOwner;
+        if (currentOwner == connectionToClient)
+        {
+            return;
+        }
+        else
+        {
+            if (currentOwner != null)
+            {
+                identity.RemoveClientAuthority(currentOwner);
+            }
+            identity.AssignClientAuthority(connectionToClient);
+        }
+        CmdDestroyOnServer(gameObject);
     }
 }
