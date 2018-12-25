@@ -42,3 +42,4 @@ MonoBehaviour:
   mag: 0
   currentBullets: 5
   ItemColliderPos: {x: 0, y: 0, z: 0}
+  damage: 21

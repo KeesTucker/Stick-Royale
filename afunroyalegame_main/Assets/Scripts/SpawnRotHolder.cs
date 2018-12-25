@@ -6,7 +6,7 @@ using Mirror;
 public class SpawnRotHolder : NetworkBehaviour {
     [SerializeField]
     GameObject RotHolder;
-    GameObject currentSpawn;
+    public GameObject currentSpawn;
 
     public static uint parentID;
     // Use this for initialization

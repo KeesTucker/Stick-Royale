@@ -5,14 +5,22 @@ public class Health : NetworkBehaviour {
 
     [SyncVar]
     public float health = 200;
+    GameObject[] RotHolders;
 	
 	// Update is called once per frame
 	void Update () {
-        if (health <= 0)
+        if (health <= 0 && isLocalPlayer)
         {
-            for (int i = 0; i < transform.childCount; i++)
+            CmdDestroyOnServer(gameObject);
+            Destroy(GameObject.Find("Local"));
+
+            RotHolders = GameObject.FindGameObjectsWithTag("RagAng");
+            foreach(GameObject RotHolder in RotHolders)
             {
-                Destroy(transform.GetChild(i).gameObject);
+                if (RotHolder.GetComponent<SyncRotation>().parent == gameObject)
+                {
+                    CmdDestroyOnServer(RotHolder);
+                }
             }
             //spawn ghost here
         }
@@ -22,5 +30,11 @@ public class Health : NetworkBehaviour {
     public void CmdUpdateHealth(float damage)
     {
         health -= damage;
+    }
+
+    [Command]
+    public void CmdDestroyOnServer(GameObject gameObject)
+    {
+        Destroy(gameObject);
     }
 }

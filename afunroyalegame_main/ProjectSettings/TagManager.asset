@@ -14,6 +14,7 @@ TagManager:
   - TreeTrunk
   - Arms
   - GrappleArms
+  - RagAng
   layers:
   - Default
   - TransparentFX
