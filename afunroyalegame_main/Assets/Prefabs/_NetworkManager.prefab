@@ -95,6 +95,7 @@ MonoBehaviour:
   m_SpawnPrefabs:
   - {fileID: 1092259395216774, guid: 56199573e45c14e4b9551e0caeb99d27, type: 2}
   - {fileID: 1757743736535976, guid: a2ab57fb811728d4b8e6d0fd2cc945ba, type: 2}
+  - {fileID: 1881230412041522, guid: eddec3f38fcb0644da1b4a8e5d33588a, type: 2}
   m_MaxConnections: 20
   m_UseWebSockets: 0
   isNetworkActive: 0
