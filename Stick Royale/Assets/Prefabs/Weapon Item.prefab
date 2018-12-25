@@ -1,0 +1,173 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1757743736535976}
+  m_IsPrefabAsset: 1
+--- !u!1 &1757743736535976
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4247233804610280}
+  - component: {fileID: 54944288256134990}
+  - component: {fileID: 114246710594483516}
+  - component: {fileID: 114322209198698278}
+  - component: {fileID: 114677809329220096}
+  - component: {fileID: 114152776749390038}
+  - component: {fileID: 135696111160776352}
+  m_Layer: 11
+  m_Name: Weapon Item
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4247233804610280
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1757743736535976}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &54944288256134990
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1757743736535976}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 8
+  m_CollisionDetection: 0
+--- !u!114 &114152776749390038
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1757743736535976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1510866737, guid: 1f82cede440b8483ba106133169d4112, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 3
+  m_SendInterval: 0.071428575
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
+--- !u!114 &114246710594483516
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1757743736535976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81e7a02f8e48ef24c98d1c7269a6a7af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PickupDistance: 15
+  RealDistance: 0
+  Weapon: {fileID: 4247233804610280}
+  WeaponObject: {fileID: 0}
+  WeaponHand: {fileID: 0}
+  RealWeapon: {fileID: 0}
+  Player: {fileID: 0}
+  bulletPositioner: {fileID: 0}
+  Weapon0: {fileID: 0}
+  Weapon1: {fileID: 0}
+  inventoryCount: 0
+  deactivated: 0
+  listSizeGrabber: 0
+  WeaponIndex: 99
+  NumberOfWeapons: 5
+  individualCount: 0
+  min: 0
+  shoot: {fileID: 0}
+  aimShoot: {fileID: 0}
+  refrenceKeeper: {fileID: 0}
+  serverRefrenceKeeper: {fileID: 0}
+  spawnWeapons: {fileID: 0}
+  localiseTransform: {fileID: 0}
+  switchWeapon: {fileID: 0}
+  updateUI: {fileID: 0}
+  currentItem: {fileID: 0}
+  Pistol: {fileID: 11400000, guid: c9dd77c6c5c99d244809caed329f5a3a, type: 2}
+  TacticalSMG: {fileID: 11400000, guid: 8c097c5ecde3dab4cad5ce3ee70607ba, type: 2}
+  BoltActionSniper: {fileID: 0}
+  SemiAutoSniper: {fileID: 0}
+  HuntingRifle: {fileID: 0}
+  Items: {fileID: 0}
+  switchSpawned: 0
+  switchedWeapon: {fileID: 0}
+  done: 0
+  colliders: []
+  renderers: []
+  WeaponMat: {fileID: 2100000, guid: cfb258c728c27da4cb21a83213ab8aec, type: 2}
+  mouseFollow: {fileID: 0}
+  direction: 0
+--- !u!114 &114322209198698278
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1757743736535976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb48c8dd80b40645942a87601f0908b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullets: 0
+--- !u!114 &114677809329220096
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1757743736535976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 860895539, guid: 1f82cede440b8483ba106133169d4112, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId: 0
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
+  m_AssetId: a2ab57fb811728d4b8e6d0fd2cc945ba
+--- !u!135 &135696111160776352
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1757743736535976}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5
+  m_Center: {x: 0, y: 0, z: 0}

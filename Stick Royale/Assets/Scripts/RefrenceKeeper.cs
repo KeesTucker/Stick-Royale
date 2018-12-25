@@ -1,0 +1,72 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class RefrenceKeeper : MonoBehaviour {
+
+    public GameObject WeaponHand;
+
+    public List<GameObject> WeaponRefrences = new List<GameObject>();
+
+    public List<float> itemDistanceRefrences = new List<float>();
+
+    public List<Item> weaponInventory = new List<Item>();
+
+    public List<Item> itemInventory = new List<Item>();
+
+    public int itemCount;
+
+    public int inventoryCount;
+
+    public int activeSlot = 0;
+
+    public UpdateUI updateUI;
+
+    public SwitchWeapon switchWeapon;
+
+    IEnumerator Start()
+    {
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        updateUI.HighlightSlot(activeSlot);
+        switchWeapon = GameObject.Find("Weapon").GetComponent<SwitchWeapon>();
+    }
+
+    void Update()
+    {
+        if (weaponInventory.Count > 0)
+        { //If these buttons are smashed multiple guns can be spawned, implement a check to see if child count is greater than three and delete anything higher than that.
+            if (Input.GetKeyDown("1"))
+            {
+                activeSlot = 0;
+                activeSlot = Mathf.Clamp(activeSlot, 0, weaponInventory.Count - 1);
+                updateUI.HighlightSlot(activeSlot);
+                switchWeapon.Switch(weaponInventory[activeSlot].id);
+            }
+            if (Input.GetKeyDown("2"))
+            {
+                activeSlot = 1;
+                activeSlot = Mathf.Clamp(activeSlot, 0, weaponInventory.Count - 1);
+                updateUI.HighlightSlot(activeSlot);
+                switchWeapon.Switch(weaponInventory[activeSlot].id);
+            }
+            if (Input.GetKeyDown("3"))
+            {
+                activeSlot = 2;
+                activeSlot = Mathf.Clamp(activeSlot, 0, weaponInventory.Count - 1);
+                updateUI.HighlightSlot(activeSlot);
+                switchWeapon.Switch(weaponInventory[activeSlot].id);
+            }
+            if (Input.GetKeyDown("4"))
+            {
+                activeSlot = 3;
+                activeSlot = Mathf.Clamp(activeSlot, 0, weaponInventory.Count - 1);
+                updateUI.HighlightSlot(activeSlot);
+                switchWeapon.Switch(weaponInventory[activeSlot].id);
+            }
+        }
+    }
+}
+
