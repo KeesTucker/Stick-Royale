@@ -15,7 +15,8 @@ public class GhostMovement : NetworkBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        if (isLocalPlayer)
+        Debug.Log(hasAuthority);
+        if (hasAuthority)
         {
             if (MouseFollower.transform.position.x > transform.position.x)
             {
