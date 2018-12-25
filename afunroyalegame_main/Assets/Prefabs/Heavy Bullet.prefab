@@ -216,6 +216,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c50d7c6fe1d05d241819027e3b2b74a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
+  onServer: 0
+  parent: 0
+  localRelay: {fileID: 0}
 --- !u!114 &114411486185741648
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -240,6 +240,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
+  onServer: 0
+  parent: 0
+  localRelay: {fileID: 0}
 --- !u!135 &135622169608258002
 SphereCollider:
   m_ObjectHideFlags: 1
