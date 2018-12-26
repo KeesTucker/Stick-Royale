@@ -19,7 +19,7 @@ public class Health : NetworkBehaviour {
         if (health <= 0 && isLocalPlayer)
         {
             Destroy(GameObject.Find("Local"));
-
+            Destroy(GameObject.Find("Items"));
             RotHolders = GameObject.FindGameObjectsWithTag("RagAng");
             foreach(GameObject RotHolder in RotHolders)
             {

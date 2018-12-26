@@ -37,13 +37,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4213066976993996}
-  - component: {fileID: 212277285863362614}
   - component: {fileID: 96610068644661006}
   - component: {fileID: 114856915583492782}
   - component: {fileID: 114580392924836686}
   - component: {fileID: 54007819399371708}
   - component: {fileID: 114475978900242824}
   - component: {fileID: 114556806702699286}
+  - component: {fileID: 212501777908849366}
   m_Layer: 18
   m_Name: Ghost
   m_TagString: Untagged
@@ -59,7 +59,7 @@ Transform:
   m_GameObject: {fileID: 1881230412041522}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.333333, y: 0.33333, z: 0.33333}
   m_Children:
   - {fileID: 4947300174939494}
   m_Father: {fileID: 0}
@@ -156,7 +156,7 @@ TrailRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: db062795b4ef3e34e9010487f13ed575, type: 2}
+  - {fileID: 2100000, guid: 775bf0b5ec9d40b45a5d03b7779442d8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -176,10 +176,10 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.5
+  m_Time: 0.3
   m_Parameters:
     serializedVersion: 2
-    widthMultiplier: 9
+    widthMultiplier: 3
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -360,7 +360,7 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
---- !u!212 &212277285863362614
+--- !u!212 &212501777908849366
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -375,7 +375,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: db062795b4ef3e34e9010487f13ed575, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
