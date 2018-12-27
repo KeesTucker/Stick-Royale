@@ -51,6 +51,8 @@ public class PlayerMovement : MonoBehaviour
 
     Shoot shoot;
 
+    public float maxSpeed = 45;
+
     public bool fire;
 
     bool keysTouched;
@@ -141,11 +143,11 @@ public class PlayerMovement : MonoBehaviour
             keysTouched = true;
         }
 
-        if (aDepressed && Ragdoll.velocity.x < -45)
+        if (aDepressed && Ragdoll.velocity.x < -maxSpeed)
         {
             body.AddForce(walkForce * Time.deltaTime * 2f, 0, 0);
         }
-        if (dDepressed && Ragdoll.velocity.x > 45)
+        if (dDepressed && Ragdoll.velocity.x > maxSpeed)
         {
             body.AddForce(-walkForce * Time.deltaTime * 2f, 0, 0);
         }

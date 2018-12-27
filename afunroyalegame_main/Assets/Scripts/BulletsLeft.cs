@@ -1,8 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using Mirror;
 
-public class BulletsLeft : MonoBehaviour {
+public class BulletsLeft : NetworkBehaviour {
 
+    [SyncVar]
     public int bullets = 0;
 }

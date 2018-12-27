@@ -13,6 +13,7 @@ public class DestroyGun : NetworkBehaviour {
     [Command]
     public void CmdDestroyGun(GameObject gun, int id)
     {
+        gun.GetComponent<Pickup>().deactivated = true;
         Debug.Log("destroy");
         RpcDestroyGun(gun, id);
         refrenceKeeper.itemDistanceRefrences[id - 1] = 20;
@@ -22,8 +23,9 @@ public class DestroyGun : NetworkBehaviour {
     [ClientRpc]
     void RpcDestroyGun(GameObject gun, int id)
     {
+        gun.GetComponent<Pickup>().deactivated = true;
+        GameObject.Find("Local").GetComponent<RefrenceKeeper>().itemDistanceRefrences[id - 1] = 20;
         Debug.Log("destroy");
-        refrenceKeeper.itemDistanceRefrences[id - 1] = 20;
         Destroy(gun);
     }
 }
