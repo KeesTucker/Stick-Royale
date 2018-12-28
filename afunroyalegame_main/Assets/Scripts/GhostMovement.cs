@@ -25,11 +25,11 @@ public class GhostMovement : NetworkBehaviour {
         rb = gameObject.GetComponent<Rigidbody>();
         parent.GetComponent<Health>().CmdAssignAuthority(GetComponent<NetworkIdentity>());
     }
-	
+
 	// Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("space") && hasAuthority && shots >= 0)
+        if (Input.GetKeyDown("space") && hasAuthority && shots > 0 && shootable)
         {
             CmdSetSpace(true);
             shots--;
@@ -37,17 +37,22 @@ public class GhostMovement : NetworkBehaviour {
         if (spaceDepressed && spaceDepressedLocal)
         {
             spaceDepressedLocal = false;
+            shootable = false;
             GameObject projInst = Instantiate(proj, transform.position, Quaternion.identity);
-            projInst.GetComponent<AbilityAffector>().abilityIndex = abilityIndex;
-            projInst.GetComponent<AbilityAffector>().onServer = hasAuthority; //none of this crap works and ienumerators arnt called for some reasons
-            DelayFalse();
+            for (int i = 0; i < projInst.transform.childCount; i++)
+            {
+                projInst.transform.GetChild(i).gameObject.GetComponent<AbilityAffector>().abilityIndex = abilityIndex;
+                projInst.transform.GetChild(i).gameObject.GetComponent<AbilityAffector>().onServer = hasAuthority;
+            }
+            projInst.transform.parent = transform;
+            StartCoroutine("DelayFalse");
         }
     }
 
     IEnumerator DelayFalse()
     {
-
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2f);
+        shootable = true;
         CmdSetSpace(false);
     }
 

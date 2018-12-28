@@ -9,6 +9,7 @@ public class AbilityAffector : MonoBehaviour {
     public Rigidbody rb;
     public bool onServer;
     public GameObject localRelay;
+    public bool collided;
 
     IEnumerator Start()
     {
@@ -22,7 +23,14 @@ public class AbilityAffector : MonoBehaviour {
             localRelay = GameObject.Find("Local/Physics Animator");
         }
         yield return new WaitForSeconds(2f);
-        Destroy(gameObject);
+        if (collided)
+        {
+            Destroy(gameObject.GetComponent<SpriteRenderer>());
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     IEnumerator OnCollisionEnter(Collision collisionInfo)
@@ -33,8 +41,9 @@ public class AbilityAffector : MonoBehaviour {
             {
                 if (abilityIndex == 0)
                 {
-                    localRelay.GetComponent<PlayerMovement>().maxSpeed = 20;
+                    localRelay.GetComponent<PlayerMovement>().maxSpeed = 10;
                     onServer = true;
+                    collided = true;
                     yield return new WaitForSeconds(5f);
                     localRelay.GetComponent<PlayerMovement>().maxSpeed = 45;
                     Destroy(gameObject);

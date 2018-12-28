@@ -256,6 +256,11 @@ MonoBehaviour:
   proj: {fileID: 1220034679409126, guid: e99c999dfda594747983945865a038cc, type: 2}
   parent: {fileID: 0}
   force: 200
+  shots: 3
+  abilityIndex: 0
+  spaceDepressed: 0
+  spaceDepressedLocal: 1
+  shootable: 1
 --- !u!114 &114556806702699286
 MonoBehaviour:
   m_ObjectHideFlags: 1
