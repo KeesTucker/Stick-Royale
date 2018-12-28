@@ -536,6 +536,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   onServer: 0
   localRelay: {fileID: 0}
+  collided: 0
 --- !u!114 &114427743452830922
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -563,6 +564,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   onServer: 0
   localRelay: {fileID: 0}
+  collided: 0
 --- !u!114 &114590784306439360
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -579,6 +581,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   onServer: 0
   localRelay: {fileID: 0}
+  collided: 0
 --- !u!114 &114593107092342378
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -595,6 +598,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   onServer: 0
   localRelay: {fileID: 0}
+  collided: 0
 --- !u!114 &114650733119272058
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -611,6 +615,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   onServer: 0
   localRelay: {fileID: 0}
+  collided: 0
 --- !u!114 &114776201092317024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -627,6 +632,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   onServer: 0
   localRelay: {fileID: 0}
+  collided: 0
 --- !u!114 &114782853325224880
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -643,6 +649,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   onServer: 0
   localRelay: {fileID: 0}
+  collided: 0
 --- !u!114 &114937117111104124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -659,6 +666,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   onServer: 0
   localRelay: {fileID: 0}
+  collided: 0
 --- !u!212 &212393474112457140
 SpriteRenderer:
   m_ObjectHideFlags: 1

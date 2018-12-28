@@ -43,8 +43,9 @@ public class AbilityAffector : MonoBehaviour {
                 {
                     localRelay.GetComponent<PlayerMovement>().maxSpeed = 10;
                     onServer = true;
+                    transform.parent = transform.parent.parent;
                     collided = true;
-                    yield return new WaitForSeconds(5f);
+                    yield return new WaitForSeconds(10f);
                     localRelay.GetComponent<PlayerMovement>().maxSpeed = 45;
                     Destroy(gameObject);
                 }
