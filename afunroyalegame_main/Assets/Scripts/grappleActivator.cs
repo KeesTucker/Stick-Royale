@@ -22,6 +22,7 @@ public class grappleActivator : MonoBehaviour
     public Quaternion rotationTarg;
     public Renderer rend;
     public bool onLocal;
+    public bool attractable = true;
     AimShoot aimShoot;
     public SyncMoveState syncMoveState;
     void Start()
@@ -40,18 +41,27 @@ public class grappleActivator : MonoBehaviour
     {
         //if (collsionInfo.collider.gameObject.layer != 15/* && backTime == false*/)
         //{
-            grapple.layer = 14;
-            hitTarg = collsionInfo.gameObject;
-            hitCoords = transform.position - collsionInfo.gameObject.transform.position;
-            rb.isKinematic = true;
-            Collided = true;
-            if (onLocal)
-            {
-                GameObject.Find("Local/Ragdoll").GetComponent<groundForce>().grappled = true;
-            }
-            transform.position = hitTarg.transform.position + hitCoords;
-            transform.parent = hitTarg.transform;
-            transform.localScale = new Vector3(transform.localScale.x / hitTarg.transform.lossyScale.x, transform.localScale.y / hitTarg.transform.lossyScale.y, transform.localScale.z / hitTarg.transform.lossyScale.z);
+        if (collsionInfo.gameObject.tag == "NoGrapple")
+        {
+            backTime = true;
+            return;
+        }
+        else if (collsionInfo.gameObject.tag == "NoAttract")
+        {
+            attractable = false;
+        }
+        grapple.layer = 14;
+        hitTarg = collsionInfo.gameObject;
+        hitCoords = transform.position - collsionInfo.gameObject.transform.position;
+        rb.isKinematic = true;
+        Collided = true;
+        if (onLocal)
+        {
+            GameObject.Find("Local/Ragdoll").GetComponent<groundForce>().grappled = true;
+        }
+        transform.position = hitTarg.transform.position + hitCoords;
+        transform.parent = hitTarg.transform;
+        transform.localScale = new Vector3(transform.localScale.x / hitTarg.transform.lossyScale.x, transform.localScale.y / hitTarg.transform.lossyScale.y, transform.localScale.z / hitTarg.transform.lossyScale.z);
         //}
     }
 
@@ -91,7 +101,7 @@ public class grappleActivator : MonoBehaviour
                     handSingle.GetComponent<Rigidbody>().AddForce(direction * 30000 * Time.deltaTime);
                 }
                 
-                if (hitTarg.GetComponent<Rigidbody>() != null)
+                if (hitTarg.GetComponent<Rigidbody>() != null && attractable)
                 {
                     hitTarg.GetComponent<Rigidbody>().AddForce(directionTarg * 30000 * Time.deltaTime);
                 }

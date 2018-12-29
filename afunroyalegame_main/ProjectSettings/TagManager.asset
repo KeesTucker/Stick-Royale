@@ -15,6 +15,8 @@ TagManager:
   - Arms
   - GrappleArms
   - RagAng
+  - NoGrapple
+  - NoAttract
   layers:
   - Default
   - TransparentFX

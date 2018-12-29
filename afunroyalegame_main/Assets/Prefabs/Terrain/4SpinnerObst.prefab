@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4650939270734452}
   - component: {fileID: 212475048229822204}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Plank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4857523828219620}
   - component: {fileID: 212929456825987146}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Plank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4883837761485980}
   - component: {fileID: 212683466583122530}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Stone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4455605961533258}
   - component: {fileID: 212396628817317556}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Centre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 65268953466255772}
   - component: {fileID: 65889977877337826}
   - component: {fileID: 135238168126665474}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Spinner (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4764387329745184}
   - component: {fileID: 212628668032333966}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Plank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4537905046314690}
   - component: {fileID: 212668952855890114}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Plank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4480928918021630}
   - component: {fileID: 212470730267341560}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Plank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4339975103998878}
   - component: {fileID: 212555362772026514}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Centre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,7 +168,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4603690157720994}
   - component: {fileID: 212525303814152094}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Stone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4223361396689862}
   - component: {fileID: 212700859231555390}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Plank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4068333407863370}
   - component: {fileID: 212126348738064076}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Stone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,7 +216,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4969479946097912}
   - component: {fileID: 212373967999852196}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Plank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -232,7 +232,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4890525471359184}
   - component: {fileID: 212091922838637870}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Centre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 65229885940280892}
   - component: {fileID: 65072102794118082}
   - component: {fileID: 135597025420002992}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Spinner (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 65038896862426980}
   - component: {fileID: 65696004579062076}
   - component: {fileID: 135011398073561638}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Spinner (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -287,7 +287,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4718096974721750}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: 4SpinnerObst
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -303,7 +303,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4813871173075882}
   - component: {fileID: 212082899587945318}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Plank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -319,7 +319,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4556032817723048}
   - component: {fileID: 212504127937732714}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Stone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -339,7 +339,7 @@ GameObject:
   - component: {fileID: 65081684072291904}
   - component: {fileID: 65788276091419344}
   - component: {fileID: 135612848589642562}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Spinner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -355,7 +355,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4879696180887916}
   - component: {fileID: 212154771786359302}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Centre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
