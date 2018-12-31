@@ -19,6 +19,7 @@ public class Pickup : NetworkBehaviour {
 
     public int inventoryCount;
 
+    [SyncVar]
     public bool deactivated = false; //A bool which determines if this object has been picked up
 
     public int listSizeGrabber; //The index of the closest Weapon
@@ -181,6 +182,7 @@ public class Pickup : NetworkBehaviour {
                     }
                     else
                     {
+                        int id = refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].id;
                         inventoryCount = 3;
                         /*switchedWeapon = Instantiate(gameObject, Player.position, Player.rotation);
                         switchedWeapon.GetComponent<Pickup>().WeaponIndex = refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].id;
@@ -205,7 +207,7 @@ public class Pickup : NetworkBehaviour {
                         refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot] = spawnWeapons.Weapons[WeaponIndex].WeaponItem;
                         updateUI.UpdateSlotsUI();
                         updateUI.HighlightSlotOnPickup(refrenceKeeper.activeSlot);
-                        GameObject.Find("LocalRelay").GetComponent<SpawnItem>().CmdSpawnDropped(gameObject, Player.position, refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].id, direction, gameObject.GetComponent<BulletsLeft>().bullets);
+                        GameObject.Find("LocalRelay").GetComponent<SpawnItem>().CmdSpawnDropped(gameObject, Player.position, id, direction, gameObject.GetComponent<BulletsLeft>().bullets);
                     }
 
                     aimShoot.scale = spawnWeapons.Weapons[WeaponIndex].WeaponItem.scale;

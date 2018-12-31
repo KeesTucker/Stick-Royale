@@ -1787,7 +1787,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.3999644, g: 0.5525988, b: 0.7924528, a: 0}
+  m_BackGroundColor: {r: 0.627451, g: 0.75686276, b: 0.8039216, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -3438,6 +3438,7 @@ MonoBehaviour:
   walkForce: 4000
   jumpForce: 80000
   grappleSince: 0
+  maxSpeed: 45
   fire: 0
   state: 0
   syncMoveState: {fileID: 0}

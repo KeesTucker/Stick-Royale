@@ -58,7 +58,7 @@ public class SpawnWeapons : NetworkBehaviour {
                 WeaponItem.GetComponent<BulletsLeft>().bullets = Weapons[WeaponIndex].WeaponItem.magazineSize;
                 WeaponItem.GetComponent<SphereCollider>().center = Weapons[WeaponIndex].WeaponItem.ItemColliderPos;
                 WeaponItem.GetComponent<SphereCollider>().radius = 3f;
-                NetworkServer.Spawn(WeaponItem);
+                /*NetworkServer.Spawn(WeaponItem);
                 WeaponModel = Instantiate(
                     Weapons[WeaponIndex].WeaponItem.itemModel,
                     WeaponItem.transform.position,
@@ -73,7 +73,7 @@ public class SpawnWeapons : NetworkBehaviour {
                 /*foreach (MeshCollider collider in colliders)
                 {
                     collider.convex = true;
-                }*/
+                }
                 renderers = WeaponModel.transform.GetComponentsInChildren<Renderer>();
                 foreach (Renderer renderer in renderers)
                 {
@@ -81,7 +81,7 @@ public class SpawnWeapons : NetworkBehaviour {
                 }
                 WeaponModel.transform.localPosition = Weapons[WeaponIndex].WeaponItem.spawnPosition;
                 WeaponModel.transform.localEulerAngles = Weapons[WeaponIndex].WeaponItem.spawnRotation;
-                WeaponModel.transform.localScale = Weapons[WeaponIndex].WeaponItem.spawnScale;
+                WeaponModel.transform.localScale = Weapons[WeaponIndex].WeaponItem.spawnScale;*/
                 NetworkServer.Spawn(WeaponItem);
             }
         }
