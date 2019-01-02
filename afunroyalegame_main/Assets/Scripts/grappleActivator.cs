@@ -60,8 +60,6 @@ public class grappleActivator : MonoBehaviour
             GameObject.Find("Local/Ragdoll").GetComponent<groundForce>().grappled = true;
         }
         transform.position = hitTarg.transform.position + hitCoords;
-        transform.parent = hitTarg.transform;
-        transform.localScale = new Vector3(transform.localScale.x / hitTarg.transform.lossyScale.x, transform.localScale.y / hitTarg.transform.lossyScale.y, transform.localScale.z / hitTarg.transform.lossyScale.z);
         //}
     }
 

@@ -156,10 +156,14 @@ public class Pickup : NetworkBehaviour {
                     RealDistance = Vector3.Distance(Weapon.position, Player.position); //Get distance between player and this 
                 }
                 refrenceKeeper.itemDistanceRefrences[individualCount - 1] = RealDistance; //Update the public list of item distances
+                if (RealDistance == 0)
+                {
+                    RealDistance = 20;
+                }
                 min = RealDistance;
                 for (int i = 0; i < refrenceKeeper.itemDistanceRefrences.Count; i++)
                 {
-                    if (refrenceKeeper.itemDistanceRefrences[i] < min)
+                    if (refrenceKeeper.itemDistanceRefrences[i] < min && refrenceKeeper.itemDistanceRefrences[i] != 0)
                     {
                         min = refrenceKeeper.itemDistanceRefrences[i];
                     }
