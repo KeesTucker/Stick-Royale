@@ -25,6 +25,7 @@ public class grappleActivator : MonoBehaviour
     public bool attractable = true;
     AimShoot aimShoot;
     public SyncMoveState syncMoveState;
+    public Material invisible;
     void Start()
     {
         GameObject[] playerParts_ = GameObject.FindGameObjectsWithTag("Floppy");
@@ -60,6 +61,8 @@ public class grappleActivator : MonoBehaviour
             GameObject.Find("Local/Ragdoll").GetComponent<groundForce>().grappled = true;
         }
         transform.position = hitTarg.transform.position + hitCoords;
+        transform.parent = hitTarg.transform;
+        rend.material = invisible;
         //}
     }
 

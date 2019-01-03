@@ -14,6 +14,9 @@ public class FollowGrapple : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-        transform.position = parent.transform.position;
+        else
+        {
+            transform.position = parent.transform.position;
+        }
 	}
 }

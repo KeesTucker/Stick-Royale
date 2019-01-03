@@ -17,6 +17,7 @@ TagManager:
   - RagAng
   - NoGrapple
   - NoAttract
+  - Kill
   layers:
   - Default
   - TransparentFX

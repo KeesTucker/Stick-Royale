@@ -51,6 +51,8 @@ public class PlayerMovement : MonoBehaviour
 
     Shoot shoot;
 
+    public bool hasJetPack = false;
+
     public float maxSpeed = 45;
 
     public bool fire;
@@ -277,7 +279,7 @@ public class PlayerMovement : MonoBehaviour
                 
             }
         }
-        else if (spaceJetDepressed && boostable && spaceDepressed)
+        else if (spaceJetDepressed && boostable && spaceDepressed && hasJetPack)
         {
             jetpack.AddForce(jetpack.transform.up * jumpForce * Time.deltaTime * 0.3f);
             jetTimer();

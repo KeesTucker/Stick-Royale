@@ -26,6 +26,8 @@ GameObject:
   - component: {fileID: 114828773351420440}
   - component: {fileID: 114945630329976308}
   - component: {fileID: 114670519868802392}
+  - component: {fileID: 33467632919080928}
+  - component: {fileID: 23685724333337660}
   m_Layer: 13
   m_Name: Grapple
   m_TagString: Untagged
@@ -46,6 +48,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &23685724333337660
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1454285558614156}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 2100000, guid: 26eb5274f225b5c47ab60e091478f416, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &33467632919080928
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1454285558614156}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!54 &54563330130802680
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -115,10 +159,11 @@ MonoBehaviour:
   handSingle: {fileID: 0}
   directionTarg: {x: 0, y: 0, z: 0}
   rotationTarg: {x: 0, y: 0, z: 0, w: 0}
-  rend: {fileID: 0}
+  rend: {fileID: 23685724333337660}
   onLocal: 1
   attractable: 1
   syncMoveState: {fileID: 0}
+  invisible: {fileID: 2100000, guid: 20175f56df2cfbb4f87cc87a4f50b660, type: 2}
 --- !u!114 &114945630329976308
 MonoBehaviour:
   m_ObjectHideFlags: 1

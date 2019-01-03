@@ -956,7 +956,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1304179803160044}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 5
   m_Drag: 0.5
   m_AngularDrag: 0.2
   m_UseGravity: 1
@@ -1251,8 +1251,8 @@ HingeJoint:
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
+  m_MassScale: 0.00001
+  m_ConnectedMassScale: 0.00001
 --- !u!59 &59119817091721136
 HingeJoint:
   m_ObjectHideFlags: 1
@@ -1285,8 +1285,8 @@ HingeJoint:
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
+  m_MassScale: 0.00001
+  m_ConnectedMassScale: 0.00001
 --- !u!59 &59261754469848900
 HingeJoint:
   m_ObjectHideFlags: 1
@@ -1319,8 +1319,8 @@ HingeJoint:
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
+  m_MassScale: 0.00001
+  m_ConnectedMassScale: 0.00001
 --- !u!59 &59273870771982330
 HingeJoint:
   m_ObjectHideFlags: 1
@@ -1353,8 +1353,8 @@ HingeJoint:
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
+  m_MassScale: 0.00001
+  m_ConnectedMassScale: 0.00001
 --- !u!59 &59439531738207420
 HingeJoint:
   m_ObjectHideFlags: 1
@@ -1387,8 +1387,8 @@ HingeJoint:
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
+  m_MassScale: 0.00001
+  m_ConnectedMassScale: 0.00001
 --- !u!59 &59456901160099876
 HingeJoint:
   m_ObjectHideFlags: 1
@@ -1421,8 +1421,8 @@ HingeJoint:
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
+  m_MassScale: 0.00001
+  m_ConnectedMassScale: 0.00001
 --- !u!59 &59472355881390338
 HingeJoint:
   m_ObjectHideFlags: 1
@@ -1455,8 +1455,8 @@ HingeJoint:
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
+  m_MassScale: 0.00001
+  m_ConnectedMassScale: 0.00001
 --- !u!59 &59482876454639446
 HingeJoint:
   m_ObjectHideFlags: 1
@@ -1489,8 +1489,8 @@ HingeJoint:
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
+  m_MassScale: 0.00001
+  m_ConnectedMassScale: 0.00001
 --- !u!59 &59488702329853224
 HingeJoint:
   m_ObjectHideFlags: 1
@@ -1523,8 +1523,8 @@ HingeJoint:
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
+  m_MassScale: 0.00001
+  m_ConnectedMassScale: 0.00001
 --- !u!59 &59494185949495938
 HingeJoint:
   m_ObjectHideFlags: 1
@@ -1557,8 +1557,8 @@ HingeJoint:
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
+  m_MassScale: 0.00001
+  m_ConnectedMassScale: 0.00001
 --- !u!59 &59515952905949310
 HingeJoint:
   m_ObjectHideFlags: 1
@@ -1591,8 +1591,8 @@ HingeJoint:
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
+  m_MassScale: 0.00001
+  m_ConnectedMassScale: 0.00001
 --- !u!59 &59550579137056722
 HingeJoint:
   m_ObjectHideFlags: 1
@@ -1625,8 +1625,8 @@ HingeJoint:
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
+  m_MassScale: 0.00001
+  m_ConnectedMassScale: 0.00001
 --- !u!59 &59597607882788808
 HingeJoint:
   m_ObjectHideFlags: 1
@@ -1659,8 +1659,8 @@ HingeJoint:
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
+  m_MassScale: 0.00001
+  m_ConnectedMassScale: 0.00001
 --- !u!59 &59631193416716208
 HingeJoint:
   m_ObjectHideFlags: 1
@@ -1693,8 +1693,8 @@ HingeJoint:
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
+  m_MassScale: 0.00001
+  m_ConnectedMassScale: 0.00001
 --- !u!59 &59703989090070938
 HingeJoint:
   m_ObjectHideFlags: 1
@@ -1727,8 +1727,8 @@ HingeJoint:
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
+  m_MassScale: 0.00001
+  m_ConnectedMassScale: 0.00001
 --- !u!59 &59725158793133468
 HingeJoint:
   m_ObjectHideFlags: 1
@@ -1761,8 +1761,8 @@ HingeJoint:
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
+  m_MassScale: 0.00001
+  m_ConnectedMassScale: 0.00001
 --- !u!59 &59755319286576354
 HingeJoint:
   m_ObjectHideFlags: 1
@@ -1795,8 +1795,8 @@ HingeJoint:
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
+  m_MassScale: 0.00001
+  m_ConnectedMassScale: 0.00001
 --- !u!59 &59773123619460734
 HingeJoint:
   m_ObjectHideFlags: 1
@@ -1829,8 +1829,8 @@ HingeJoint:
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
+  m_MassScale: 0.00001
+  m_ConnectedMassScale: 0.00001
 --- !u!59 &59776306967028452
 HingeJoint:
   m_ObjectHideFlags: 1
@@ -1863,8 +1863,8 @@ HingeJoint:
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
+  m_MassScale: 0.00001
+  m_ConnectedMassScale: 0.00001
 --- !u!59 &59819977600843594
 HingeJoint:
   m_ObjectHideFlags: 1
@@ -1897,8 +1897,8 @@ HingeJoint:
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
+  m_MassScale: 0.00001
+  m_ConnectedMassScale: 0.00001
 --- !u!59 &59955715253323228
 HingeJoint:
   m_ObjectHideFlags: 1
@@ -1931,8 +1931,8 @@ HingeJoint:
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
+  m_MassScale: 0.00001
+  m_ConnectedMassScale: 0.00001
 --- !u!59 &59983385217908292
 HingeJoint:
   m_ObjectHideFlags: 1
@@ -1965,8 +1965,8 @@ HingeJoint:
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
+  m_MassScale: 0.00001
+  m_ConnectedMassScale: 0.00001
 --- !u!75 &75065308821802034
 ConstantForce:
   m_ObjectHideFlags: 1
@@ -2085,7 +2085,7 @@ ConstantForce:
   m_GameObject: {fileID: 1304179803160044}
   m_Enabled: 1
   m_Force: {x: 0, y: 0, z: 0}
-  m_RelativeForce: {x: 50, y: -30, z: 0}
+  m_RelativeForce: {x: 150, y: 0, z: 0}
   m_Torque: {x: 0, y: 0, z: 0}
   m_RelativeTorque: {x: 0, y: 0, z: 0}
 --- !u!75 &75767988096131206
