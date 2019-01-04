@@ -108,18 +108,11 @@ public class Shoot : MonoBehaviour {
     {
         // Bit shift the index of the layer (8) to get a bit mask
         int layerMask = 1 << 12;
-
-        // This would cast rays only against colliders in layer 8.
-        // But instead we want to collide against everything except layer 8. The ~ operator does this, it inverts a bitmask.
-        layerMask = ~layerMask;
         // Does the ray intersect any objects excluding the player layer
-        if (Physics.Raycast(ragdoll.transform.position, Vector3.down, out hit, 65f, layerMask)) //Makes sure chainlinks dont get destroyed if standing above them
+        if (Physics.Raycast(ragdoll.transform.position, Vector3.down, out hit, 65, layerMask)) //Makes sure chainlinks dont get destroyed if standing above them
         {
-            Debug.DrawRay(ragdoll.transform.position, Vector3.down, Color.yellow);
-            Debug.Log(hit.collider.gameObject.tag);
             if (hit.collider.gameObject.tag == "NoAttract")
             {
-                Debug.Log("misslinkstrue");
                 missLinks = true;
             }
             else
@@ -277,7 +270,6 @@ public class Shoot : MonoBehaviour {
                     bulletPrefab,
                     bulletPosition.position,
                     bulletPosition.rotation);
-            Debug.Log("wtftftft");
             startAngle = transform.right;
             foreach (GameObject playerPart in iDKeeper.body)
             {

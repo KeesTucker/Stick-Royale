@@ -8,7 +8,10 @@ public class MissLinks : MonoBehaviour {
     {
         for (int i = 0; i < links.Length; i++)
         {
-            Physics.IgnoreCollision(links[i].GetComponent<Collider>(), GetComponent<Collider>());
+            if (links[i])
+            {
+                Physics.IgnoreCollision(links[i].GetComponent<Collider>(), GetComponent<Collider>());
+            }
         }
     }
 }
