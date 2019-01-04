@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class DamageDealer : MonoBehaviour {
 
     public float damage;
     public bool onServer = false;
     public bool parent = false;
+    private GameObject destroyThis;
     public GameObject localRelay;
 
     void Start()
@@ -14,6 +17,11 @@ public class DamageDealer : MonoBehaviour {
 
     void OnCollisionEnter(Collision collisionInfo)
     {
+        if (collisionInfo.gameObject.tag == "Breakable")
+        {
+            destroyThis = collisionInfo.gameObject;
+            StartCoroutine("Destroyer");
+        }
         if (onServer)
         {
             if (collisionInfo.gameObject.layer == 15)
@@ -44,5 +52,11 @@ public class DamageDealer : MonoBehaviour {
                 }
             }
         }
+    }
+
+    IEnumerator Destroyer()
+    {
+        yield return new WaitForSeconds(0.1f);
+        Destroy(destroyThis);
     }
 }

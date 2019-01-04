@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 96441938790293470}
   - component: {fileID: 114466347495601300}
   - component: {fileID: 114463498747838846}
+  - component: {fileID: 114962320846261280}
   m_Layer: 9
   m_Name: Slugs
   m_TagString: Untagged
@@ -243,6 +244,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IDPlayer: 0
+--- !u!114 &114962320846261280
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1332045582774856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78af27a5f49af9f40a5312e12a3e01ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135942143848919156
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -75,7 +75,13 @@ public class Shoot : MonoBehaviour {
 
     int multiplier;
 
+    public RaycastHit hit;
+
     Vector3 targetReload;
+
+    public GameObject ragdoll;
+
+    public bool missLinks;
 
     IEnumerator Start()
     {
@@ -100,6 +106,31 @@ public class Shoot : MonoBehaviour {
 
     void FixedUpdate()
     {
+        // Bit shift the index of the layer (8) to get a bit mask
+        int layerMask = 1 << 12;
+
+        // This would cast rays only against colliders in layer 8.
+        // But instead we want to collide against everything except layer 8. The ~ operator does this, it inverts a bitmask.
+        layerMask = ~layerMask;
+        // Does the ray intersect any objects excluding the player layer
+        if (Physics.Raycast(ragdoll.transform.position, Vector3.down, out hit, 65f, layerMask)) //Makes sure chainlinks dont get destroyed if standing above them
+        {
+            Debug.DrawRay(ragdoll.transform.position, Vector3.down, Color.yellow);
+            Debug.Log(hit.collider.gameObject.tag);
+            if (hit.collider.gameObject.tag == "NoAttract")
+            {
+                Debug.Log("misslinkstrue");
+                missLinks = true;
+            }
+            else
+            {
+                missLinks = false;
+            }
+        }
+        else
+        {
+            missLinks = false;
+        }
         if (Input.GetKeyDown("r") && refrenceKeeper.inventoryCount > 0 && magSize > 1 && !reloading)
         {
             reloading = true;
@@ -256,7 +287,10 @@ public class Shoot : MonoBehaviour {
             {
                 bullet.GetComponent<Rigidbody>().AddForce(new Vector3(startAngle.x + (Random.Range(-bloom, bloom) / 360), startAngle.y + Random.Range(-bloom, bloom), startAngle.z) * (impact / 3) * Time.deltaTime * 100);
             }
-
+            if (missLinks)
+            {
+                bullet.GetComponent<MissLinks>().Miss(hit.collider.gameObject.GetComponent<BulletAvoidPlat>().chainLinks);
+            }
             bullet.GetComponent<DamageDealer>().damage = refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].damage;
             bullet.GetComponent<DamageDealer>().onServer = localRelay.GetComponent<SyncWeapon>().isServer;
             Destroy(bullet, 5.0f);

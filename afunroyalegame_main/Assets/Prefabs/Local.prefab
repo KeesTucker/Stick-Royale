@@ -3255,6 +3255,7 @@ MonoBehaviour:
   hasMag: 0
   localRelay: {fileID: 0}
   localWeaponSync: {fileID: 0}
+  ragdoll: {fileID: 1745214977442556}
 --- !u!114 &114132637669123774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3438,6 +3439,7 @@ MonoBehaviour:
   walkForce: 4000
   jumpForce: 80000
   grappleSince: 0
+  hasJetPack: 0
   maxSpeed: 45
   fire: 0
   state: 0

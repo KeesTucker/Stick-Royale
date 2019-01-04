@@ -18,6 +18,8 @@ TagManager:
   - NoGrapple
   - NoAttract
   - Kill
+  - Breakable
+  - Platform
   layers:
   - Default
   - TransparentFX
@@ -39,7 +41,7 @@ TagManager:
   - Shells
   - Ghost
   - GhostProj
-  - 
+  - GunCollide
   - 
   - 
   - 
