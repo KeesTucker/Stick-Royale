@@ -222,6 +222,7 @@ GameObject:
   - component: {fileID: 59538143928403932}
   - component: {fileID: 59404478398912318}
   - component: {fileID: 114438726738680712}
+  - component: {fileID: 114969572483184544}
   m_Layer: 12
   m_Name: Platform
   m_TagString: NoAttract
@@ -4944,6 +4945,18 @@ MonoBehaviour:
   - {fileID: 1919645038965318}
   - {fileID: 1230143054705220}
   - {fileID: 1770903093779428}
+--- !u!114 &114969572483184544
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1203778447012944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 979825c4fdbcd444c85b8bbec5b110b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kill: 1
 --- !u!135 &135005801435986114
 SphereCollider:
   m_ObjectHideFlags: 1
