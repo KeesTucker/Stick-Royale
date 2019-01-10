@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212478633906030512}
   - component: {fileID: 65225709526548546}
   - component: {fileID: 95918714315587810}
+  - component: {fileID: 114512066671436016}
   m_Layer: 12
   m_Name: MovingBlock
   m_TagString: Untagged
@@ -144,6 +145,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114512066671436016
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1193542487049960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 075687b72a0747e46af52c63660c60a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: 0
 --- !u!212 &212451927828957436
 SpriteRenderer:
   m_ObjectHideFlags: 1
