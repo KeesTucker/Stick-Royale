@@ -745,7 +745,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f7cda25ac13d234591042684b9b4bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 30
+  damage: 100
   localRelay: {fileID: 0}
   damagable: 1
 --- !u!114 &114044518697900706
@@ -829,7 +829,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f7cda25ac13d234591042684b9b4bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 30
+  damage: 100
   localRelay: {fileID: 0}
   damagable: 1
 --- !u!114 &114129378853640552
@@ -871,7 +871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f7cda25ac13d234591042684b9b4bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 30
+  damage: 100
   localRelay: {fileID: 0}
   damagable: 1
 --- !u!114 &114238073066145726
@@ -885,7 +885,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f7cda25ac13d234591042684b9b4bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 30
+  damage: 100
   localRelay: {fileID: 0}
   damagable: 1
 --- !u!114 &114306358767500490
@@ -927,7 +927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f7cda25ac13d234591042684b9b4bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 30
+  damage: 100
   localRelay: {fileID: 0}
   damagable: 1
 --- !u!114 &114339497022632928
@@ -969,7 +969,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f7cda25ac13d234591042684b9b4bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 30
+  damage: 100
   localRelay: {fileID: 0}
   damagable: 1
 --- !u!114 &114497820548718836
@@ -997,7 +997,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f7cda25ac13d234591042684b9b4bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 30
+  damage: 100
   localRelay: {fileID: 0}
   damagable: 1
 --- !u!114 &114512858146668422
@@ -1025,7 +1025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f7cda25ac13d234591042684b9b4bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 30
+  damage: 100
   localRelay: {fileID: 0}
   damagable: 1
 --- !u!114 &114601135883809798
