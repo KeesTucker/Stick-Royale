@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4227952325243322}
   - component: {fileID: 212776171893969932}
-  - component: {fileID: 135190876407096170}
   - component: {fileID: 54453419792963304}
+  - component: {fileID: 135067874321711042}
   m_Layer: 12
   m_Name: Stone
   m_TagString: NoGrapple
@@ -971,11 +971,11 @@ HingeJoint:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1262913914706248}
-  m_ConnectedBody: {fileID: 54088215693288980}
+  m_ConnectedBody: {fileID: 54453419792963304}
   m_Anchor: {x: 0, y: 3.49, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.04639435, y: 0.019737244, z: 0.1}
+  m_ConnectedAnchor: {x: 0.023197174, y: 0.009868622, z: 0}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -1934,7 +1934,7 @@ ConstantForce:
   m_RelativeForce: {x: 0, y: 0, z: 0}
   m_Torque: {x: 0, y: 0, z: 0}
   m_RelativeTorque: {x: 0, y: 0, z: 0}
---- !u!135 &135190876407096170
+--- !u!135 &135067874321711042
 SphereCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
