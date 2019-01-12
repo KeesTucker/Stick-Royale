@@ -121,6 +121,7 @@ GameObject:
   - component: {fileID: 4923599582288868}
   - component: {fileID: 212519871900949998}
   - component: {fileID: 54748562008569858}
+  - component: {fileID: 114300149149503554}
   m_Layer: 12
   m_Name: Centre
   m_TagString: Untagged
@@ -240,6 +241,7 @@ GameObject:
   - component: {fileID: 212623389138836558}
   - component: {fileID: 135073447121002284}
   - component: {fileID: 54039194892492600}
+  - component: {fileID: 114435175443843280}
   m_Layer: 12
   m_Name: Stone
   m_TagString: NoGrapple
@@ -2320,6 +2322,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5814e4a036b80154e8fdc6d3bb2b35f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114300149149503554
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1232275166245588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5814e4a036b80154e8fdc6d3bb2b35f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114312081148629504
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2348,6 +2361,17 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1854421287264338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5814e4a036b80154e8fdc6d3bb2b35f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114435175443843280
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1508158013435422}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5814e4a036b80154e8fdc6d3bb2b35f2, type: 3}

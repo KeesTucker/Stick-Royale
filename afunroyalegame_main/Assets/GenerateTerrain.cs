@@ -10,11 +10,24 @@ public class GenerateTerrain : NetworkBehaviour {
 
     public GameObject loaderP;
 
+    public UnityEngine.Object[] info;
+
+    [SyncVar]
     public int size;
+
+    public List<BiomeList> Biomes = new List<BiomeList>();
 
     public float currentPosition = 0;
 	// Use this for initialization
 	void Start () {
+        info = Resources.LoadAll("Biomes", typeof(Biome));
+        foreach (UnityEngine.Object fileInfo in info)
+        {
+            Biome biome = (Biome)fileInfo;
+            Biomes.Add(new BiomeList { BiomeItem = biome, BiomeIndex = biome.BiomeIndex });
+        }
+        Biomes.Sort();
+        
         if (isServer)
         {
             RandomizeArray(chunks);

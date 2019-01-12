@@ -9,11 +9,12 @@ public class ChunkLoad : NetworkBehaviour {
     public Transform local;
     public float distance;
     public bool last = true;
-
+    public bool lastX = true;
     public int cullD = 500;
+    public int cullF = 10000;
     //Renderer r;
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         transform.parent = GameObject.Find("Terrain").transform;
         local = GameObject.FindGameObjectsWithTag("Ragdoll")[0].transform;
         //r = GetComponent<Renderer>();
@@ -27,40 +28,55 @@ public class ChunkLoad : NetworkBehaviour {
             local = GameObject.FindGameObjectsWithTag("Ragdoll")[0].transform;
         }
         distance = Mathf.Abs(centre - local.position.x);
-        if (distance > cullD && last)
+        if (distance > cullF && lastX/* && !isServer*/)
         {
-            foreach (Transform child in transform.GetChild(0).GetComponentsInChildren<Transform>())
+            transform.GetChild(0).gameObject.SetActive(false);
+            lastX = false;
+        }
+        else
+        {
+            if (distance < cullF && !lastX)
             {
-                if (!child.gameObject.name.Contains("Chunk"))
+                transform.GetChild(0).gameObject.SetActive(true);
+                lastX = true;
+            }
+            if (distance > cullD && last)
+            {
+                foreach (Transform child in transform.GetChild(0).GetComponentsInChildren<Transform>())
+                {
+                    if (!child.gameObject.name.Contains("Chunk"))
+                    {
+                        if (child.gameObject.GetComponent<SpriteRenderer>())
+                        {
+                            child.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                        }
+                        if (child.gameObject.GetComponent<Movable>())
+                        {
+                            child.gameObject.SetActive(true);
+                        }
+                        else
+                        {
+                            child.gameObject.SetActive(false);
+                        }
+                    }
+                }
+
+
+                last = false;
+            }
+            else if (distance < cullD && !last)
+            {
+                foreach (Transform child in transform.GetComponentsInChildren<Transform>(true))
                 {
                     if (child.gameObject.GetComponent<SpriteRenderer>())
                     {
-                        child.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                        child.gameObject.GetComponent<SpriteRenderer>().enabled = true;
                     }
-                    if (true)//child.gameObject.GetComponent<Movable>() || !isServer)
-                    {
-                        child.gameObject.SetActive(false);
-                    }
-                    /*
-                    else if (isServer && !child.gameObject.GetComponent<Collider>())
-                    {
-                        child.gameObject.SetActive(false);
-                    }*/
+                    child.gameObject.SetActive(true);
                 }
+                last = true;
+                transform.GetChild(0).gameObject.GetComponent<BiomeHolder>().GetBiome();
             }
-            last = false;
         }
-        else if (distance < cullD && !last)
-        {
-            foreach (Transform child in transform.GetComponentsInChildren<Transform>())
-            {
-                if (child.gameObject.GetComponent<SpriteRenderer>())
-                {
-                    child.gameObject.GetComponent<SpriteRenderer>().enabled = true;
-                }
-                child.gameObject.SetActive(true);
-            }
-            last = true;
-        }
-	}
+    }
 }

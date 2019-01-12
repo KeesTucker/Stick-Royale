@@ -71,4 +71,6 @@ MonoBehaviour:
   local: {fileID: 0}
   distance: 0
   last: 1
+  lastX: 1
   cullD: 500
+  cullF: 2500
