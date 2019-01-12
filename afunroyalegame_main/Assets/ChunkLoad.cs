@@ -37,14 +37,15 @@ public class ChunkLoad : NetworkBehaviour {
                     {
                         child.gameObject.GetComponent<SpriteRenderer>().enabled = false;
                     }
-                    if (child.gameObject.GetComponent<Movable>() || !isServer)
+                    if (true)//child.gameObject.GetComponent<Movable>() || !isServer)
                     {
                         child.gameObject.SetActive(false);
                     }
+                    /*
                     else if (isServer && !child.gameObject.GetComponent<Collider>())
                     {
                         child.gameObject.SetActive(false);
-                    }
+                    }*/
                 }
             }
             last = false;
