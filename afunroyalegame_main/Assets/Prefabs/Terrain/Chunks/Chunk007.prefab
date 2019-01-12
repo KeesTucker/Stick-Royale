@@ -1582,9 +1582,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4065978078502956}
   - component: {fileID: 114169149517155130}
+  - component: {fileID: 114128932689506844}
+  - component: {fileID: 114422932293098846}
   m_Layer: 12
   m_Name: Chunk007
-  m_TagString: Untagged
+  m_TagString: Chunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14541,6 +14543,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kill: 1
+--- !u!114 &114128932689506844
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1359638998847528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 860895539, guid: 1f82cede440b8483ba106133169d4112, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId: 0
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
+  m_AssetId: 41a35f542f0f4634c8dcc0e367695a94
 --- !u!114 &114169149517155130
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14794,6 +14811,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kill: 1
+--- !u!114 &114422932293098846
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1359638998847528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61c059b2de6e8e248b5d4d35f005e83d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loaderP: {fileID: 1640340324769478, guid: 626f44b844a4e3f45916835f91ab3c21, type: 2}
 --- !u!114 &114443181275788550
 MonoBehaviour:
   m_ObjectHideFlags: 1

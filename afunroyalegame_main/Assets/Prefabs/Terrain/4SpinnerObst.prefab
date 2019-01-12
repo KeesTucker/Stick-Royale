@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 65268953466255772}
   - component: {fileID: 65889977877337826}
   - component: {fileID: 135238168126665474}
+  - component: {fileID: 114320245900822898}
   m_Layer: 12
   m_Name: Spinner (2)
   m_TagString: Untagged
@@ -252,6 +253,7 @@ GameObject:
   - component: {fileID: 65229885940280892}
   - component: {fileID: 65072102794118082}
   - component: {fileID: 135597025420002992}
+  - component: {fileID: 114799846671442766}
   m_Layer: 12
   m_Name: Spinner (1)
   m_TagString: Untagged
@@ -272,6 +274,7 @@ GameObject:
   - component: {fileID: 65038896862426980}
   - component: {fileID: 65696004579062076}
   - component: {fileID: 135011398073561638}
+  - component: {fileID: 114749495517617690}
   m_Layer: 12
   m_Name: Spinner (3)
   m_TagString: Untagged
@@ -339,6 +342,7 @@ GameObject:
   - component: {fileID: 65081684072291904}
   - component: {fileID: 65788276091419344}
   - component: {fileID: 135612848589642562}
+  - component: {fileID: 114432369177442816}
   m_Layer: 12
   m_Name: Spinner
   m_TagString: Untagged
@@ -839,6 +843,28 @@ MonoBehaviour:
   amount: 500000
   rb: {fileID: 0}
   targetSpeed: 1
+--- !u!114 &114320245900822898
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1206682382118452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5814e4a036b80154e8fdc6d3bb2b35f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114432369177442816
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1963019133668184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5814e4a036b80154e8fdc6d3bb2b35f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114622595439988086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -853,6 +879,28 @@ MonoBehaviour:
   amount: 500000
   rb: {fileID: 0}
   targetSpeed: 1
+--- !u!114 &114749495517617690
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1711627136393006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5814e4a036b80154e8fdc6d3bb2b35f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114799846671442766
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1512813686026312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5814e4a036b80154e8fdc6d3bb2b35f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114927714822405416
 MonoBehaviour:
   m_ObjectHideFlags: 1

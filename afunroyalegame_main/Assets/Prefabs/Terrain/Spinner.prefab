@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4601720880347748}
   - component: {fileID: 212030060512021930}
+  - component: {fileID: 114838943595728446}
   m_Layer: 12
   m_Name: Plank
   m_TagString: Untagged
@@ -56,6 +57,7 @@ GameObject:
   - component: {fileID: 65022270325640946}
   - component: {fileID: 65728680422914870}
   - component: {fileID: 135119206022262974}
+  - component: {fileID: 114314713510215888}
   m_Layer: 12
   m_Name: Spinner
   m_TagString: Untagged
@@ -88,6 +90,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4628991001626112}
   - component: {fileID: 212456276318468568}
+  - component: {fileID: 114444907610227484}
   m_Layer: 12
   m_Name: Plank
   m_TagString: Untagged
@@ -203,6 +206,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.54, y: 71.83, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114314713510215888
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1477164112781412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5814e4a036b80154e8fdc6d3bb2b35f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114444907610227484
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1852342586260436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5814e4a036b80154e8fdc6d3bb2b35f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114766333512704458
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -217,6 +242,17 @@ MonoBehaviour:
   amount: 500000
   rb: {fileID: 0}
   targetSpeed: 1
+--- !u!114 &114838943595728446
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1034494783243990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5814e4a036b80154e8fdc6d3bb2b35f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135119206022262974
 SphereCollider:
   m_ObjectHideFlags: 1

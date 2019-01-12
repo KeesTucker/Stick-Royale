@@ -2574,9 +2574,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4646717225505368}
   - component: {fileID: 114296567303210384}
+  - component: {fileID: 114080538126557488}
+  - component: {fileID: 114072330059517176}
   m_Layer: 12
   m_Name: Chunk001
-  m_TagString: Untagged
+  m_TagString: Chunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8475,6 +8477,33 @@ MonoBehaviour:
   damage: 30
   localRelay: {fileID: 0}
   damagable: 1
+--- !u!114 &114072330059517176
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1590726341359862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61c059b2de6e8e248b5d4d35f005e83d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loaderP: {fileID: 1640340324769478, guid: 626f44b844a4e3f45916835f91ab3c21, type: 2}
+--- !u!114 &114080538126557488
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1590726341359862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 860895539, guid: 1f82cede440b8483ba106133169d4112, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId: 0
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
+  m_AssetId: 914437929a59dd5438aef5716235bcd2
 --- !u!114 &114092034140939280
 MonoBehaviour:
   m_ObjectHideFlags: 1

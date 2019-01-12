@@ -664,9 +664,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4392853864763532}
   - component: {fileID: 114814272303909932}
+  - component: {fileID: 114679568683911358}
+  - component: {fileID: 114994746586999678}
   m_Layer: 12
   m_Name: Chunk011
-  m_TagString: Untagged
+  m_TagString: Chunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3437,6 +3439,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18146fca2b658a146817833707b9a82b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114679568683911358
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1436320841457560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 860895539, guid: 1f82cede440b8483ba106133169d4112, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId: 0
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
+  m_AssetId: f47856676e09ce6489b33b0c139415fd
 --- !u!114 &114681374152763288
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3494,6 +3511,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83b397283a7371347b363be735f7f9a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114994746586999678
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1436320841457560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61c059b2de6e8e248b5d4d35f005e83d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loaderP: {fileID: 1640340324769478, guid: 626f44b844a4e3f45916835f91ab3c21, type: 2}
 --- !u!135 &135659063593901934
 SphereCollider:
   m_ObjectHideFlags: 1

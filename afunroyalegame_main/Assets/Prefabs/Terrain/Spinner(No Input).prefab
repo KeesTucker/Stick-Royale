@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 212076024006824044}
   - component: {fileID: 65880467256159376}
   - component: {fileID: 54364520446138710}
+  - component: {fileID: 114327154417161668}
   m_Layer: 12
   m_Name: Plank
   m_TagString: Untagged
@@ -56,6 +57,7 @@ GameObject:
   - component: {fileID: 212855779061008060}
   - component: {fileID: 65884285697035400}
   - component: {fileID: 54935958626444024}
+  - component: {fileID: 114501705861669816}
   m_Layer: 12
   m_Name: Plank
   m_TagString: Untagged
@@ -139,6 +141,7 @@ GameObject:
   - component: {fileID: 4794411446447404}
   - component: {fileID: 114284556612132712}
   - component: {fileID: 54900214584195926}
+  - component: {fileID: 114814060647410894}
   m_Layer: 12
   m_Name: Spinner(No Input)
   m_TagString: Untagged
@@ -401,6 +404,39 @@ MonoBehaviour:
   amount: 200
   rb: {fileID: 0}
   targetSpeed: 1
+--- !u!114 &114327154417161668
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1281643281687806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5814e4a036b80154e8fdc6d3bb2b35f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114501705861669816
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1350778879749666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5814e4a036b80154e8fdc6d3bb2b35f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114814060647410894
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1663625187902356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5814e4a036b80154e8fdc6d3bb2b35f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135541354482400068
 SphereCollider:
   m_ObjectHideFlags: 1

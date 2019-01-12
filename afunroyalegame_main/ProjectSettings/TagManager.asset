@@ -20,6 +20,8 @@ TagManager:
   - Kill
   - Breakable
   - Platform
+  - Ragdoll
+  - Chunk
   layers:
   - Default
   - TransparentFX

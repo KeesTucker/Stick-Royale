@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 54845530843298166}
   - component: {fileID: 65093828690665614}
   - component: {fileID: 135483416138236388}
+  - component: {fileID: 114517343436637466}
   m_Layer: 12
   m_Name: SpinnerPlank
   m_TagString: Untagged
@@ -55,6 +56,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4124119024617230}
   - component: {fileID: 212949710595135042}
+  - component: {fileID: 114736958241425916}
   m_Layer: 12
   m_Name: Plank
   m_TagString: Untagged
@@ -160,6 +162,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 71.83, y: 4.54, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114517343436637466
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1310840570214084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5814e4a036b80154e8fdc6d3bb2b35f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114736958241425916
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1609465173198982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5814e4a036b80154e8fdc6d3bb2b35f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114881501540616456
 MonoBehaviour:
   m_ObjectHideFlags: 1
