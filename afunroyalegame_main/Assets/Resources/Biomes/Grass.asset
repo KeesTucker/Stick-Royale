@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ba68a1467c598948b5158b68cd2fe08, type: 3}
+  m_Name: Grass
+  m_EditorClassIdentifier: 
+  name: Grass
+  BiomeIndex: 0
+  grassColor: {r: 0.14115341, g: 0.49056602, b: 0.19781263, a: 1}
+  baseColor: {r: 0.8392157, g: 0.55915076, b: 0.34509805, a: 1}
+  trunkColor: {r: 0.38679248, g: 0.16458005, b: 0.009122463, a: 1}
+  rockColor: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 1}

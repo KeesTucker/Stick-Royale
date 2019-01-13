@@ -1006,7 +1006,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e16a8bf4532823d47ab2addfded48edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chunks: []
+  chunks:
+  - {fileID: 1812291429154494, guid: 3e3d265b7e73163438623709c2ebd8c1, type: 2}
+  - {fileID: 1407491056654792, guid: e4c2002b21ec093498a5d52cc8c3b6f8, type: 2}
+  - {fileID: 1812291429154494, guid: 3e3d265b7e73163438623709c2ebd8c1, type: 2}
   loaderP: {fileID: 1640340324769478, guid: 626f44b844a4e3f45916835f91ab3c21, type: 2}
   info: []
   size: 100
@@ -1333,7 +1336,7 @@ Prefab:
     - target: {fileID: 114870445807541200, guid: b1f695b770db60742bc94d14a542410e,
         type: 2}
       propertyPath: m_SpawnPrefabs.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4160757301118708, guid: b1f695b770db60742bc94d14a542410e, type: 2}
       propertyPath: m_LocalPosition.x
@@ -1371,12 +1374,14 @@ Prefab:
         type: 2}
       propertyPath: m_SpawnPrefabs.Array.data[4]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1407491056654792, guid: e4c2002b21ec093498a5d52cc8c3b6f8,
+        type: 2}
     - target: {fileID: 114870445807541200, guid: b1f695b770db60742bc94d14a542410e,
         type: 2}
       propertyPath: m_SpawnPrefabs.Array.data[3]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1812291429154494, guid: 3e3d265b7e73163438623709c2ebd8c1,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1f695b770db60742bc94d14a542410e, type: 2}
   m_IsPrefabAsset: 0
