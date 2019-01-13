@@ -9,11 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ba68a1467c598948b5158b68cd2fe08, type: 3}
-  m_Name: Grass
+  m_Name: Hell
   m_EditorClassIdentifier: 
-  name: Grass
-  BiomeIndex: 0
-  grassColor: {r: 0.361183, g: 0.49019608, b: 0.14117649, a: 1}
-  baseColor: {r: 0.764151, g: 0.47047916, b: 0.018022425, a: 1}
-  trunkColor: {r: 0.38679248, g: 0.16458005, b: 0.009122463, a: 1}
-  rockColor: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 1}
+  name: Hell
+  BiomeIndex: 3
+  grassColor: {r: 0.4433962, g: 0.13176396, b: 0.13176396, a: 1}
+  baseColor: {r: 0.20754719, g: 0, b: 0, a: 1}
+  trunkColor: {r: 0.103773594, g: 0.019662034, b: 0, a: 1}
+  rockColor: {r: 0.735849, g: 0.067430556, b: 0, a: 1}

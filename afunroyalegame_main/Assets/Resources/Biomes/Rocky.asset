@@ -9,11 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ba68a1467c598948b5158b68cd2fe08, type: 3}
-  m_Name: Grass
+  m_Name: Rocky
   m_EditorClassIdentifier: 
-  name: Grass
-  BiomeIndex: 0
-  grassColor: {r: 0.361183, g: 0.49019608, b: 0.14117649, a: 1}
-  baseColor: {r: 0.764151, g: 0.47047916, b: 0.018022425, a: 1}
-  trunkColor: {r: 0.38679248, g: 0.16458005, b: 0.009122463, a: 1}
-  rockColor: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 1}
+  name: Rocky
+  BiomeIndex: 2
+  grassColor: {r: 0.17501779, g: 0.5377358, b: 0.3174645, a: 1}
+  baseColor: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 1}
+  trunkColor: {r: 0.4528302, g: 0.2790695, b: 0.16447133, a: 1}
+  rockColor: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}
