@@ -3282,6 +3282,7 @@ MonoBehaviour:
   componentsToEnable: []
   m_NewColor: {r: 0, g: 0, b: 0, a: 0}
   jetOn: 0
+  dropped: 0
   charCam: {fileID: 0}
 --- !u!114 &114476242829859530
 MonoBehaviour:

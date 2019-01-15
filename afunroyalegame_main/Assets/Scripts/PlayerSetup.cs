@@ -20,6 +20,8 @@ public class PlayerSetup : NetworkBehaviour {
     [SyncVar]
     public bool jetOn;
 
+    [SyncVar]
+    public bool dropped = false;
 
     [SerializeField]
     Camera charCam;

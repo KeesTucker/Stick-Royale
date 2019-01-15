@@ -83,6 +83,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   biome: {fileID: 0}
   type: 3
+  subtype: 6
 --- !u!212 &212782925582385100
 SpriteRenderer:
   m_ObjectHideFlags: 1

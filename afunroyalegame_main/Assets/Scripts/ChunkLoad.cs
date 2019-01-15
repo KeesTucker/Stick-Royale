@@ -28,7 +28,7 @@ public class ChunkLoad : NetworkBehaviour {
             local = GameObject.FindGameObjectsWithTag("Ragdoll")[0].transform;
         }
         distance = Mathf.Abs(centre - local.position.x);
-        if (distance > cullF && lastX/* && !isServer*/)
+        if (distance > cullF && lastX/* && !isServer*/) //Need to make it only do this once all players have joined
         {
             transform.GetChild(0).gameObject.SetActive(false);
             lastX = false;

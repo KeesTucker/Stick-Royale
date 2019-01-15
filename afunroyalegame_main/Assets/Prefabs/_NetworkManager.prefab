@@ -98,6 +98,7 @@ MonoBehaviour:
   - {fileID: 1881230412041522, guid: eddec3f38fcb0644da1b4a8e5d33588a, type: 2}
   - {fileID: 1812291429154494, guid: 3e3d265b7e73163438623709c2ebd8c1, type: 2}
   - {fileID: 1407491056654792, guid: e4c2002b21ec093498a5d52cc8c3b6f8, type: 2}
+  - {fileID: 1306167415771256, guid: 7b5ad942401a7214e8dbe67f3e97bac7, type: 2}
   m_MaxConnections: 20
   m_UseWebSockets: 0
   isNetworkActive: 0

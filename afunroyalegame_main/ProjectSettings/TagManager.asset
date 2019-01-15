@@ -22,6 +22,8 @@ TagManager:
   - Platform
   - Ragdoll
   - Chunk
+  - SeedFall
+  - Relay
   layers:
   - Default
   - TransparentFX
@@ -44,9 +46,9 @@ TagManager:
   - Ghost
   - GhostProj
   - GunCollide
-  - 
-  - 
-  - 
+  - PlayerNew
+  - Seed
+  - Rocket
   - 
   - 
   - 

@@ -8,6 +8,9 @@ public class GenerateTerrain : NetworkBehaviour {
 
     public GameObject[] chunks;
 
+    [SerializeField]
+    public Biome[] BiomesCompare;
+
     public GameObject loaderP;
 
     public UnityEngine.Object[] info;
@@ -18,6 +21,9 @@ public class GenerateTerrain : NetworkBehaviour {
     public List<BiomeList> Biomes = new List<BiomeList>();
 
     public float currentPosition = 0;
+
+    [SyncVar]
+    public float startPos;
 	// Use this for initialization
 	void Start () {
         info = Resources.LoadAll("Biomes", typeof(Biome));
@@ -27,7 +33,12 @@ public class GenerateTerrain : NetworkBehaviour {
             Biomes.Add(new BiomeList { BiomeItem = biome, BiomeIndex = biome.BiomeIndex });
         }
         Biomes.Sort();
-        
+        foreach (BiomeList biome in Biomes)
+        {
+            BiomesCompare[biome.BiomeIndex] = biome.BiomeItem;
+        }
+
+
         if (isServer)
         {
             RandomizeArray(chunks);
@@ -57,7 +68,7 @@ public class GenerateTerrain : NetworkBehaviour {
             {
                 currentPosition -= chunks[i].GetComponent<ChunkData>().width;
             }
-
+            startPos = currentPosition;
             currentPosition = currentPosition / 2;
 
             for (int i = 0; i < chunks.Length; i++)
@@ -67,6 +78,7 @@ public class GenerateTerrain : NetworkBehaviour {
                 NetworkServer.Spawn(chunk);
             }
         }
+        
 	}
 
     public void RandomizeArray(GameObject[] arr)

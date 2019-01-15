@@ -6,6 +6,8 @@ public class ColorTerrain : MonoBehaviour {
 
     public Biome biome;
     public int type;
+    public int subtype;
+    public GameObject tree;
 
     public void color()
     {
@@ -26,9 +28,14 @@ public class ColorTerrain : MonoBehaviour {
         else if (type == 1)
         {
             transform.GetChild(0).GetComponent<SpriteRenderer>().color = biome.grassColor;
+            transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = biome.detail[subtype];
         }
         else if (type == 2)
         {
+            Destroy(tree);
+            GameObject treeN = Instantiate(biome.trees[subtype], new Vector3(0, 0, 0), Quaternion.identity);
+            treeN.transform.parent = transform;
+            treeN.transform.position = transform.position;
             foreach (SpriteRenderer spriteRenderer in transform.GetComponentsInChildren<SpriteRenderer>())
             {
                 if (spriteRenderer.transform.parent.gameObject.tag == "TreeTop")
@@ -44,6 +51,7 @@ public class ColorTerrain : MonoBehaviour {
         if (type == 3)
         {
             transform.GetChild(0).GetComponent<SpriteRenderer>().color = biome.rockColor;
+            transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = biome.detail[subtype];
         }
     }
 }

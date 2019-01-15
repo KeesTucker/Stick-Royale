@@ -14,7 +14,7 @@ public class BiomeFinder : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (transform.childCount == generateTerrain.size && run)
+        if ((transform.childCount == generateTerrain.size || transform.childCount == 12) && run)
         {
             float width = generateTerrain.size / generateTerrain.Biomes.Count;
             if (width < 1)
@@ -27,7 +27,11 @@ public class BiomeFinder : MonoBehaviour {
 
             for (int i = 0; i < transform.childCount; i++)
             {
-                transform.GetChild(i).GetChild(0).GetComponent<BiomeHolder>().biomeIndex = (int)(biomeCount / width);
+                if (transform.GetChild(i).GetChild(0).GetComponent<BiomeHolder>().isServer)
+                {
+                    transform.GetChild(i).GetChild(0).GetComponent<BiomeHolder>().biomeIndex = (int)(biomeCount / width);
+                }
+                
                 transform.GetChild(i).GetChild(0).GetComponent<BiomeHolder>().GetBiome();
                 biomeCount++;
             }

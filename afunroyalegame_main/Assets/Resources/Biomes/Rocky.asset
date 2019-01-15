@@ -17,3 +17,16 @@ MonoBehaviour:
   baseColor: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 1}
   trunkColor: {r: 0.4528302, g: 0.2790695, b: 0.16447133, a: 1}
   rockColor: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}
+  detail:
+  - {fileID: 21300000, guid: ba8ee81814ea6f54bb2a748080d50176, type: 3}
+  - {fileID: 21300000, guid: 1b90c3ceaa189f546b58d9e6ba57c4a4, type: 3}
+  - {fileID: 21300000, guid: e7dbcfa4d21d5884ea08325360e0d339, type: 3}
+  - {fileID: 21300000, guid: 2255674039d0e1d42a6522611795c190, type: 3}
+  - {fileID: 21300000, guid: ee56e09c9f843ec468e97cb0490870fe, type: 3}
+  - {fileID: 21300000, guid: 3db927bed75beda42a9beb47199c783d, type: 3}
+  - {fileID: 21300000, guid: b3ca062423a06a447a85d2bdd324b0cf, type: 3}
+  trees:
+  - {fileID: 1468083478262214, guid: c929aeead6d61694fa02f518e5f9c377, type: 2}
+  - {fileID: 1714272895281524, guid: a69fe92941f39534dbaa7ec98a9952cd, type: 2}
+  - {fileID: 1978548022305478, guid: 703cc1476d73f0b4790ee54227710254, type: 2}
+  - {fileID: 1073679979209604, guid: 6a752f9ad44860c43b70200288c9979f, type: 2}

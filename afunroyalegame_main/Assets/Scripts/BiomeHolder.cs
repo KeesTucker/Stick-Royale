@@ -4,7 +4,8 @@ using UnityEngine;
 using Mirror;
 
 public class BiomeHolder : NetworkBehaviour {
-
+    
+    [SyncVar]
     public int biomeIndex;
 
     public Biome biome;
@@ -12,6 +13,7 @@ public class BiomeHolder : NetworkBehaviour {
     public void GetBiome()
     {
         biome = GameObject.Find("Terrain").GetComponent<GenerateTerrain>().Biomes[biomeIndex].BiomeItem;
+
         ColorTerrain[] colorTerrains = transform.GetComponentsInChildren<ColorTerrain>();
         foreach (ColorTerrain ct in colorTerrains)
         {
