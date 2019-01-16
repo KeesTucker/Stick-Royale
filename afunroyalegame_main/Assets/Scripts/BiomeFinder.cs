@@ -5,16 +5,18 @@ using UnityEngine;
 public class BiomeFinder : MonoBehaviour {
 
     GenerateTerrain generateTerrain;
-    bool run = true;
+    bool run = false;
 
 	// Use this for initialization
-	void Start () {
+	IEnumerator Start () {
         generateTerrain = GetComponent<GenerateTerrain>();
+        yield return new WaitForSeconds(0.3f);
+        run = true;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if ((transform.childCount == generateTerrain.size || transform.childCount == 12) && run)
+        if (run)
         {
             float width = generateTerrain.size / generateTerrain.Biomes.Count;
             if (width < 1)

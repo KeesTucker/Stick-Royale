@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class grappleActivator : MonoBehaviour
 {
-
     public Rigidbody rb;
     public GameObject grapple;
     public GameObject hand;

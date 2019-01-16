@@ -29,6 +29,7 @@ public class SpawnRocket : NetworkBehaviour {
         GameObject.Find("Local/Main Camera").GetComponent<Camera>().orthographicSize = 100;
         rocketGO = Instantiate(rocket, transform.position, transform.rotation); //Spawn Rocket
         rocketGO.transform.GetChild(1).gameObject.SetActive(false);
+        StartCoroutine("timerToKill");
         ragdollColliders = GetComponentsInChildren<Collider>();
         ragdollSpriteRenderers = GetComponentsInChildren<SpriteRenderer>();
         foreach (Collider col in ragdollColliders)
@@ -72,7 +73,7 @@ public class SpawnRocket : NetworkBehaviour {
     IEnumerator timerToKill()
     {
         yield return new WaitForSeconds(timeDeath);
-        StartCoroutine("destroy");
+        spaceDepressed = true;
     }
 
     IEnumerator destroy()

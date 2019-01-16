@@ -587,34 +587,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 11
       objectReference: {fileID: 0}
-    - target: {fileID: 20874766056310042, guid: 812f975c841a79e419313225ce4bd02e,
-        type: 2}
-      propertyPath: m_BackGroundColor.r
-      value: 0.16037738
-      objectReference: {fileID: 0}
-    - target: {fileID: 20874766056310042, guid: 812f975c841a79e419313225ce4bd02e,
-        type: 2}
-      propertyPath: m_BackGroundColor.g
-      value: 0.16037738
-      objectReference: {fileID: 0}
-    - target: {fileID: 20874766056310042, guid: 812f975c841a79e419313225ce4bd02e,
-        type: 2}
-      propertyPath: m_BackGroundColor.b
-      value: 0.16037738
-      objectReference: {fileID: 0}
-    - target: {fileID: 4321553853651266, guid: 812f975c841a79e419313225ce4bd02e, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114634449504246808, guid: 812f975c841a79e419313225ce4bd02e,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4321553853651266, guid: 812f975c841a79e419313225ce4bd02e, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0.1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 812f975c841a79e419313225ce4bd02e, type: 2}
   m_IsPrefabAsset: 0

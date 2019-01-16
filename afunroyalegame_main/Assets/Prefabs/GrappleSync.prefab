@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114737929430790602}
   - component: {fileID: 114460922482929736}
   - component: {fileID: 114967724455373808}
+  - component: {fileID: 114930995678887574}
   m_Layer: 13
   m_Name: GrappleSync
   m_TagString: Untagged
@@ -132,6 +133,9 @@ MonoBehaviour:
   rotationTarg: {x: 0, y: 0, z: 0, w: 0}
   rend: {fileID: 23597617794558838}
   onLocal: 0
+  attractable: 1
+  syncMoveState: {fileID: 0}
+  invisible: {fileID: 2100000, guid: 20175f56df2cfbb4f87cc87a4f50b660, type: 2}
 --- !u!114 &114737929430790602
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -146,6 +150,20 @@ MonoBehaviour:
   LHT: {fileID: 0}
   lineRenderer: {fileID: 120525739558217836}
   onLocal: 0
+  color: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &114930995678887574
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1226296219879732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83d59e0d38f20de4cbde54c0dc170624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grappleGraphic: {fileID: 1434812493890406, guid: d4d047dd9206ed04db567ad80a200604,
+    type: 2}
 --- !u!114 &114967724455373808
 MonoBehaviour:
   m_ObjectHideFlags: 1

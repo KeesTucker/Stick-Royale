@@ -189,7 +189,9 @@ MonoBehaviour:
   velocityCreate: {fileID: 1588890789028424, guid: a2c88911d09e1d2488cfb243ec36934b,
     type: 2}
   velocity: {fileID: 0}
+  rb: {fileID: 0}
   force: 600
+  velvec: {x: 0, y: 0, z: 0}
 --- !u!198 &198876471872234492
 ParticleSystem:
   m_ObjectHideFlags: 1
