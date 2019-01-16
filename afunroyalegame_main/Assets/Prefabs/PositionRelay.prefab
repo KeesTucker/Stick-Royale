@@ -199,6 +199,7 @@ GameObject:
   - component: {fileID: 114666669188994938}
   - component: {fileID: 114292155740499440}
   - component: {fileID: 114087335410585590}
+  - component: {fileID: 114479047519176720}
   m_Layer: 0
   m_Name: PositionRelay
   m_TagString: Untagged
@@ -887,6 +888,7 @@ GameObject:
   - component: {fileID: 114139373926931832}
   - component: {fileID: 114861630336589714}
   - component: {fileID: 114953699244768032}
+  - component: {fileID: 114228385303499998}
   m_Layer: 15
   m_Name: RagdollPlaceholder
   m_TagString: Untagged
@@ -3117,6 +3119,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RotHolder: {fileID: 1092259395216774, guid: 56199573e45c14e4b9551e0caeb99d27, type: 2}
   currentSpawn: {fileID: 0}
+--- !u!114 &114228385303499998
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1892301739654698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b069e3cbbc61cdd4ba19cc1a363a8098, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rocket: {fileID: 1385310991447234, guid: 58ca380a059de8344a07c59802de6b1e, type: 2}
+  rocketGO: {fileID: 0}
+  spaceDepressed: 0
+  ragdollColliders: []
+  ragdollSpriteRenderers: []
+  particle: {fileID: 0}
 --- !u!114 &114243566197918940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3298,6 +3317,23 @@ MonoBehaviour:
   hj: {fileID: 59445563770426602}
   target: {fileID: 4140083221300410}
   invert: 0
+--- !u!114 &114479047519176720
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1231125277596932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b069e3cbbc61cdd4ba19cc1a363a8098, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rocket: {fileID: 1385310991447234, guid: 58ca380a059de8344a07c59802de6b1e, type: 2}
+  rocketGO: {fileID: 0}
+  spaceDepressed: 0
+  ragdollColliders: []
+  ragdollSpriteRenderers: []
+  particle: {fileID: 0}
 --- !u!114 &114550062898524304
 MonoBehaviour:
   m_ObjectHideFlags: 1

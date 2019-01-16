@@ -19,6 +19,12 @@ public class SpawnRocket : NetworkBehaviour {
 
     public ParticleSystem.EmissionModule emission;
 
+    public float timeDeath = 20f;
+
+    public GameObject localRelay;
+
+    public bool done = false;
+
 	IEnumerator Start () {
         GameObject.Find("Local/Main Camera").GetComponent<Camera>().orthographicSize = 100;
         rocketGO = Instantiate(rocket, transform.position, transform.rotation); //Spawn Rocket
@@ -35,14 +41,15 @@ public class SpawnRocket : NetworkBehaviour {
         }
         yield return new WaitForSeconds(0.2f);
         rocketGO.GetComponent<SpriteRenderer>().color = transform.parent.gameObject.GetComponent<ColourSetter>().m_NewColor;
+        localRelay = GameObject.Find("LocalRelay");
     }
 	
 	void Update () {
         if (Input.GetKey("space"))
         {
-            spaceDepressed = true;
+            DepressSpace();
         }
-        if (spaceDepressed)
+        if (spaceDepressed && !done)
         {
             foreach (Collider col in ragdollColliders)
             {
@@ -58,8 +65,15 @@ public class SpawnRocket : NetworkBehaviour {
             rocketGO.GetComponent<Rigidbody>().isKinematic = false;
             rocketGO.GetComponent<Collider>().enabled = false;
             StartCoroutine("destroy");
+            done = true;
         }
 	}
+
+    IEnumerator timerToKill()
+    {
+        yield return new WaitForSeconds(timeDeath);
+        StartCoroutine("destroy");
+    }
 
     IEnumerator destroy()
     {
@@ -72,5 +86,12 @@ public class SpawnRocket : NetworkBehaviour {
         }
         yield return new WaitForSeconds(0.3f);
         Destroy(rocketGO);
+    }
+
+    public void DepressSpace()
+    {
+        spaceDepressed = true;
+        localRelay.GetComponent<SpawnRocketClient>().spaceDepressed = true;
+        localRelay.GetComponent<SpawnRocketClient>().CmdDepressSpace();
     }
 }

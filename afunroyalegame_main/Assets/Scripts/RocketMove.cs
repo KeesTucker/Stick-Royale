@@ -24,7 +24,7 @@ public class RocketMove : MonoBehaviour {
 	
 	void OnCollisionEnter()
     {
-        ragdoll.GetComponent<SpawnRocket>().spaceDepressed = true;
+        ragdoll.GetComponent<SpawnRocket>().DepressSpace();
     }
 
     void FixedUpdate()

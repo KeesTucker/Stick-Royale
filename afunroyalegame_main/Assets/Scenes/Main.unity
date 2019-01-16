@@ -561,7 +561,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4884546496540274, guid: 812f975c841a79e419313225ce4bd02e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 132
+      value: 76
       objectReference: {fileID: 0}
     - target: {fileID: 4884546496540274, guid: 812f975c841a79e419313225ce4bd02e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1314,7 +1314,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4434795145851904, guid: 6472f22c900e74148bc69de6981b515b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 132
+      value: 76
       objectReference: {fileID: 0}
     - target: {fileID: 4434795145851904, guid: 6472f22c900e74148bc69de6981b515b, type: 2}
       propertyPath: m_LocalPosition.z
@@ -4184,7 +4184,7 @@ Prefab:
     - target: {fileID: 114870445807541200, guid: b1f695b770db60742bc94d14a542410e,
         type: 2}
       propertyPath: m_SpawnPrefabs.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4160757301118708, guid: b1f695b770db60742bc94d14a542410e, type: 2}
       propertyPath: m_LocalPosition.x
@@ -4222,7 +4222,8 @@ Prefab:
         type: 2}
       propertyPath: m_SpawnPrefabs.Array.data[5]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1045416359019858, guid: b720225826e090d47916701d30cdd414,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1f695b770db60742bc94d14a542410e, type: 2}
   m_IsPrefabAsset: 0
