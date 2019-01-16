@@ -592,7 +592,113 @@ Prefab:
       propertyPath: m_Force.y
       value: -6.66666
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 59225793236894896, guid: 812f975c841a79e419313225ce4bd02e,
+        type: 2}
+      propertyPath: m_Spring.spring
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 59243508950955080, guid: 812f975c841a79e419313225ce4bd02e,
+        type: 2}
+      propertyPath: m_Spring.spring
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 59442705059148104, guid: 812f975c841a79e419313225ce4bd02e,
+        type: 2}
+      propertyPath: m_Spring.spring
+      value: 175
+      objectReference: {fileID: 0}
+    - target: {fileID: 59360541225098788, guid: 812f975c841a79e419313225ce4bd02e,
+        type: 2}
+      propertyPath: m_Spring.spring
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 59359223116031956, guid: 812f975c841a79e419313225ce4bd02e,
+        type: 2}
+      propertyPath: m_Spring.spring
+      value: 175
+      objectReference: {fileID: 0}
+    - target: {fileID: 59567291929132282, guid: 812f975c841a79e419313225ce4bd02e,
+        type: 2}
+      propertyPath: m_Spring.spring
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 59612471615500274, guid: 812f975c841a79e419313225ce4bd02e,
+        type: 2}
+      propertyPath: m_Spring.spring
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 59330472026999744, guid: 812f975c841a79e419313225ce4bd02e,
+        type: 2}
+      propertyPath: m_Spring.spring
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 59636968523560726, guid: 812f975c841a79e419313225ce4bd02e,
+        type: 2}
+      propertyPath: m_Spring.spring
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 59640191886985124, guid: 812f975c841a79e419313225ce4bd02e,
+        type: 2}
+      propertyPath: m_Spring.spring
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 54742157805898606, guid: 812f975c841a79e419313225ce4bd02e,
+        type: 2}
+      propertyPath: m_Mass
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 54316914666496368, guid: 812f975c841a79e419313225ce4bd02e,
+        type: 2}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 54411129339189608, guid: 812f975c841a79e419313225ce4bd02e,
+        type: 2}
+      propertyPath: m_Mass
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 54310243483568592, guid: 812f975c841a79e419313225ce4bd02e,
+        type: 2}
+      propertyPath: m_Mass
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 54669086064772594, guid: 812f975c841a79e419313225ce4bd02e,
+        type: 2}
+      propertyPath: m_Mass
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 54965385020290744, guid: 812f975c841a79e419313225ce4bd02e,
+        type: 2}
+      propertyPath: m_Mass
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 54019162434117758, guid: 812f975c841a79e419313225ce4bd02e,
+        type: 2}
+      propertyPath: m_Mass
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 54136374571242850, guid: 812f975c841a79e419313225ce4bd02e,
+        type: 2}
+      propertyPath: m_Mass
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 54111483645611692, guid: 812f975c841a79e419313225ce4bd02e,
+        type: 2}
+      propertyPath: m_Mass
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 54254889994038346, guid: 812f975c841a79e419313225ce4bd02e,
+        type: 2}
+      propertyPath: m_Mass
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 54354173453122438, guid: 812f975c841a79e419313225ce4bd02e,
+        type: 2}
+      propertyPath: m_Mass
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 75924833089838826, guid: 812f975c841a79e419313225ce4bd02e, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 812f975c841a79e419313225ce4bd02e, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &206649495
