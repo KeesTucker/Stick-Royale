@@ -97,7 +97,7 @@ public class groundForce : MonoBehaviour {
 
         if (Physics.Raycast(body.transform.position, Vector3.down, out hitC, Mathf.Infinity, layerMask))
         {
-            if (hitC.distance < 10 && !grappled)
+            if (hitC.distance < 1 && !grappled)
             {
                 touchingGround = true;
                 touchingObject = true;
@@ -111,16 +111,16 @@ public class groundForce : MonoBehaviour {
                     }
                     counter = counter + 2.0f;
                 }
-                body.AddForce(0, 2 * -appliedForce * Time.deltaTime, 0);
-                head.AddForce(0, 2 * appliedForce * Time.deltaTime, 0);
+                body.AddForce(0, 2f * -appliedForce * Time.deltaTime, 0);
+                head.AddForce(0, 2f * appliedForce * Time.deltaTime, 0);
 
-                if (hitC.distance > 5.5)
+                if (hitC.distance > 0.55)
                 {
-                    body.GetComponent<Rigidbody>().AddForce(Vector3.down * Time.deltaTime * 5000);
+                    body.GetComponent<Rigidbody>().AddForce(Vector3.down * Time.deltaTime * 500);
                 }
                 else
                 {
-                    head.GetComponent<Rigidbody>().AddForce(Vector3.up * Time.deltaTime * 10000);
+                    head.GetComponent<Rigidbody>().AddForce(Vector3.up * Time.deltaTime * 1000);
                 }
             }
             else

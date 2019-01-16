@@ -11,6 +11,6 @@ public class PositionFollow : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate()
     {
-        rb.AddForce(new Vector3(Mathf.Clamp(transform.position.x - player.position.x, -5, 5) * 1, Mathf.Clamp(transform.position.y - player.position.y, -5, 5) * 1, 0));
+        rb.AddForce(new Vector3(Mathf.Clamp(transform.position.x - player.position.x, -5, 5) * 0.1f, Mathf.Clamp(transform.position.y - player.position.y, -5, 5) * 0.1f, 0));
     }
 }

@@ -27,7 +27,7 @@ public class renderGrapple : MonoBehaviour {
         
         lineRenderer.SetPosition(1, transform.position);
         lineRenderer.SetPosition(0, LHT.GetComponent<Transform>().position);
-        lineRenderer.startWidth = 0.4f;
-        lineRenderer.endWidth = 0.4f;
+        lineRenderer.startWidth = 0.04f;
+        lineRenderer.endWidth = 0.04f;
     }
 }

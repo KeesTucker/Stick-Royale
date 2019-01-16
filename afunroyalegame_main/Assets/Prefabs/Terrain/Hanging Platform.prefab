@@ -1348,7 +1348,7 @@ Transform:
   m_GameObject: {fileID: 1823070966254786}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children:
   - {fileID: 4956063420229902}
   - {fileID: 4115429700997624}
@@ -5073,6 +5073,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   biome: {fileID: 0}
   type: 0
+  subtype: 0
+  tree: {fileID: 0}
 --- !u!114 &114328774227938798
 MonoBehaviour:
   m_ObjectHideFlags: 1

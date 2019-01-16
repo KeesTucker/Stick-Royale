@@ -139,7 +139,7 @@ public class Shoot : MonoBehaviour {
                 StartCoroutine("ChangeReload");
             }
             targetReload = new Vector3(transform.position.x - 3f * multiplier, bulletPosition.position.y - 0.3f + reloadRandomiser, transform.position.z);
-            LeftHand.GetComponent<Rigidbody>().AddForce(new Vector3(Mathf.Clamp(targetReload.x - LeftHand.transform.position.x, -1, 1), Mathf.Clamp(targetReload.y - LeftHand.transform.position.y, -1, 1), 0) * Time.deltaTime * 5000);
+            LeftHand.GetComponent<Rigidbody>().AddForce(new Vector3(Mathf.Clamp(targetReload.x - LeftHand.transform.position.x, -1, 1), Mathf.Clamp(targetReload.y - LeftHand.transform.position.y, -1, 1), 0) * Time.deltaTime * 500);
         }
         if (Input.GetMouseButtonDown(0))
         {
@@ -227,7 +227,7 @@ public class Shoot : MonoBehaviour {
 
                     for (int i = 0; i < 10; i++)
                     {
-                        magrb.AddForce(-transform.up * aimShoot.multiplier * 1000 * Time.deltaTime);
+                        magrb.AddForce(-transform.up * aimShoot.multiplier * 100 * Time.deltaTime);
                     }
 
                     magazine.transform.localScale = refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].spawnScale;
@@ -277,7 +277,7 @@ public class Shoot : MonoBehaviour {
             }
             for (int i = 0; i < 20; i++)
             {
-                bullet.GetComponent<Rigidbody>().AddForce(new Vector3(startAngle.x + (Random.Range(-bloom, bloom) / 360), startAngle.y + Random.Range(-bloom, bloom), startAngle.z) * (impact / 3) * Time.deltaTime * 100);
+                bullet.GetComponent<Rigidbody>().AddForce(new Vector3(startAngle.x + (Random.Range(-bloom, bloom) / 360), startAngle.y + Random.Range(-bloom, bloom), startAngle.z) * (impact / 3) * Time.deltaTime * 10);
             }
             if (missLinks)
             {
@@ -293,9 +293,9 @@ public class Shoot : MonoBehaviour {
                 transform.rotation);
         for (int i = 0; i < 10; i++)
         {
-            shell.GetComponent<Rigidbody>().AddForce(transform.up * Random.Range(0.3f, 1.2f) * aimShoot.multiplier * 3000 * Time.deltaTime);
-            shell.GetComponent<Rigidbody>().AddForce(transform.right * Random.Range(0.3f, 1.2f) * -1 * aimShoot.multiplier * 8000 * Time.deltaTime);
-            shell.GetComponent<Rigidbody>().AddForce(transform.right * Random.Range(0.3f, 1.2f) * 1 * aimShoot.multiplier * 8000 * Time.deltaTime);
+            shell.GetComponent<Rigidbody>().AddForce(transform.up * Random.Range(0.3f, 1.2f) * aimShoot.multiplier * 300 * Time.deltaTime);
+            shell.GetComponent<Rigidbody>().AddForce(transform.right * Random.Range(0.3f, 1.2f) * -1 * aimShoot.multiplier * 800 * Time.deltaTime);
+            shell.GetComponent<Rigidbody>().AddForce(transform.right * Random.Range(0.3f, 1.2f) * 1 * aimShoot.multiplier * 800 * Time.deltaTime);
         }
         if (magSize > 1)
         {
@@ -305,16 +305,16 @@ public class Shoot : MonoBehaviour {
         StartCoroutine("MuzzleOff");
         for (int i = 0; i < 25; i++) // normal values are i < 50 and no * 2 on the end make vairables for these
         {
-            recoilAdder.AddForce(-transform.right * Time.deltaTime * (recoil / 3) * 50 * 2); //add these to the arm, maybe make another child which is connected via a hingejoint;
+            recoilAdder.AddForce(-transform.right * Time.deltaTime * (recoil / 3) * 10); //add these to the arm, maybe make another child which is connected via a hingejoint;
             if (!upsideDown)
             {
                 //recoilAdder.AddForce(transform.up * Time.deltaTime * recoil * 55 * 2);
-                GetComponent<Rigidbody>().AddForceAtPosition(transform.up * Time.deltaTime * (recoil / 3) * 55 * 2f, recoilAdder.transform.position);
+                GetComponent<Rigidbody>().AddForceAtPosition(transform.up * Time.deltaTime * (recoil / 3) * 11f, recoilAdder.transform.position);
             }
             else
             {
                 //recoilAdder.AddForce(transform.up * Time.deltaTime * recoil * -55 * 2);
-                GetComponent<Rigidbody>().AddForceAtPosition(transform.up * Time.deltaTime * (recoil / 3) * -55 * 2f, recoilAdder.transform.position);
+                GetComponent<Rigidbody>().AddForceAtPosition(transform.up * Time.deltaTime * (recoil / 3) * -11f, recoilAdder.transform.position);
             }
         }
 

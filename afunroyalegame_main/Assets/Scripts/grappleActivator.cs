@@ -98,18 +98,18 @@ public class grappleActivator : MonoBehaviour
             {               
                 if (onLocal)
                 {
-                    handSingle.GetComponent<Rigidbody>().AddForce(direction * 30000 * Time.deltaTime/* * Mathf.Pow(Vector3.Distance(handSingle.transform.position, hitTarg.transform.position), 2f)*/);
+                    handSingle.GetComponent<Rigidbody>().AddForce(direction * 3000 * Time.deltaTime/* * Mathf.Pow(Vector3.Distance(handSingle.transform.position, hitTarg.transform.position), 2f)*/);
                 }
                 
                 if (hitTarg.GetComponent<Rigidbody>() != null && attractable)
                 {
-                    hitTarg.GetComponent<Rigidbody>().AddForce(directionTarg * 30000 * Time.deltaTime/* * Mathf.Pow(Vector3.Distance(handSingle.transform.position, hitTarg.transform.position), 2f)*/);
+                    hitTarg.GetComponent<Rigidbody>().AddForce(directionTarg * 3000 * Time.deltaTime/* * Mathf.Pow(Vector3.Distance(handSingle.transform.position, hitTarg.transform.position), 2f)*/);
                 }
             }
         }
         if (backTime)
         {
-            rb.AddForce(-direction * 90000 * Time.deltaTime);
+            rb.AddForce(-direction * 9000 * Time.deltaTime);
             if (Vector3.Distance(handSingle.transform.position, transform.position) < 2)
             {
                 if (onLocal)

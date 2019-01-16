@@ -112,7 +112,7 @@ public class SyncWeapon : NetworkBehaviour {
             }
             for (int i = 0; i < 20; i++)
             {
-                grapple.GetComponent<Rigidbody>().AddForce(startAngle * 600 * Time.deltaTime * 100);
+                grapple.GetComponent<Rigidbody>().AddForce(startAngle * 60 * Time.deltaTime * 100);
             }
         }
     }
@@ -178,7 +178,7 @@ public class SyncWeapon : NetworkBehaviour {
                 }
                 for (int i = 0; i < 20; i++)
                 {
-                    bullet.GetComponent<Rigidbody>().AddForce(new Vector3(startAngle.x + (Random.Range(-bloom, bloom) / 360), startAngle.y + Random.Range(-bloom, bloom), startAngle.z) * (impact / 3) * Time.deltaTime * 100);
+                    bullet.GetComponent<Rigidbody>().AddForce(new Vector3(startAngle.x + (Random.Range(-bloom, bloom) / 360), startAngle.y + Random.Range(-bloom, bloom), startAngle.z) * (impact / 3) * Time.deltaTime * 10);
                 }
 
                 bullet.GetComponent<DamageDealer>().damage = damage;
@@ -191,24 +191,24 @@ public class SyncWeapon : NetworkBehaviour {
                     weapon.transform.rotation);
             for (int i = 0; i < 10; i++)
             {
-                shell.GetComponent<Rigidbody>().AddForce(weapon.transform.up * Random.Range(0.3f, 1.2f) * multiplier * 3000 * Time.deltaTime);
-                shell.GetComponent<Rigidbody>().AddForce(weapon.transform.right * Random.Range(0.3f, 1.2f) * -1 * multiplier * 8000 * Time.deltaTime);
-                shell.GetComponent<Rigidbody>().AddForce(weapon.transform.right * Random.Range(0.3f, 1.2f) * 1 * multiplier * 8000 * Time.deltaTime);
+                shell.GetComponent<Rigidbody>().AddForce(weapon.transform.up * Random.Range(0.3f, 1.2f) * multiplier * 300 * Time.deltaTime);
+                shell.GetComponent<Rigidbody>().AddForce(weapon.transform.right * Random.Range(0.3f, 1.2f) * -1 * multiplier * 800 * Time.deltaTime);
+                shell.GetComponent<Rigidbody>().AddForce(weapon.transform.right * Random.Range(0.3f, 1.2f) * 1 * multiplier * 800 * Time.deltaTime);
             }
             muzzleMaterial.SetFloat("Vector1_B173D9FB", 1f);
             StartCoroutine("MuzzleOff");
             for (int i = 0; i < 25; i++) // normal values are i < 50 and no * 2 on the end make vairables for these
             {
-                recoilAdder.AddForce(-weapon.transform.right * Time.deltaTime * (recoil / 3) * 50 * 2); //add these to the arm, maybe make another child which is connected via a hingejoint;
+                recoilAdder.AddForce(-weapon.transform.right * Time.deltaTime * (recoil / 3) * 10); //add these to the arm, maybe make another child which is connected via a hingejoint;
                 if (multiplier == 1)
                 {
                     //recoilAdder.AddForce(weapon.transform.up * Time.deltaTime * recoil * 55 * 2);
-                    weapon.GetComponent<Rigidbody>().AddForceAtPosition(weapon.transform.up * Time.deltaTime * (recoil / 3) * 55 * 2f, recoilAdder.transform.position);
+                    weapon.GetComponent<Rigidbody>().AddForceAtPosition(weapon.transform.up * Time.deltaTime * (recoil / 3) * 11f, recoilAdder.transform.position);
                 }
                 else
                 {
                     //recoilAdder.AddForce(weapon.transform.up * Time.deltaTime * recoil * -55 * 2);
-                    weapon.GetComponent<Rigidbody>().AddForceAtPosition(weapon.transform.up * Time.deltaTime * (recoil / 3) * -55 * 2f, recoilAdder.transform.position);
+                    weapon.GetComponent<Rigidbody>().AddForceAtPosition(weapon.transform.up * Time.deltaTime * (recoil / 3) * -11f, recoilAdder.transform.position);
                 }
             }
         } 

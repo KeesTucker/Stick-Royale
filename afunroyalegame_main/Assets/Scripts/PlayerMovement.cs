@@ -147,24 +147,24 @@ public class PlayerMovement : MonoBehaviour
 
         if (aDepressed && Ragdoll.velocity.x < -maxSpeed)
         {
-            body.AddForce(walkForce * Time.deltaTime * 2f, 0, 0);
+            body.AddForce(walkForce * Time.deltaTime * 0.2f, 0, 0);
         }
         if (dDepressed && Ragdoll.velocity.x > maxSpeed)
         {
-            body.AddForce(-walkForce * Time.deltaTime * 2f, 0, 0);
+            body.AddForce(-walkForce * Time.deltaTime * 0.2f, 0, 0);
         }
         if (!dDepressed && !aDepressed && !spaceDepressed && groundforce.touchingGround && !grappleSince && !fire)
         {
-            body.AddForce(walkForce * Time.deltaTime * 0.2f * -Ragdoll.velocity.x, 0, 0);
+            body.AddForce(walkForce * Time.deltaTime * 0.02f * -Ragdoll.velocity.x, 0, 0);
         }
 
         if (aDepressed == true && (groundHitL == true || groundHitR == true))
         {
             if (shiftDepressed == true)
             {
-                lFoot.AddForce(-walkForce * Time.deltaTime * 0.85f, walkForce * Time.deltaTime * 0.05f, 0);
-                rFoot.AddForce(-walkForce * Time.deltaTime * 0.85f, walkForce * Time.deltaTime * 0.05f, 0);
-                body.AddForce(-walkForce * Time.deltaTime * 1f, 0, 0);
+                lFoot.AddForce(-walkForce * Time.deltaTime * 0.085f, walkForce * Time.deltaTime * 0.005f, 0);
+                rFoot.AddForce(-walkForce * Time.deltaTime * 0.085f, walkForce * Time.deltaTime * 0.005f, 0);
+                body.AddForce(-walkForce * Time.deltaTime * 0.1f, 0, 0);
                 anim.SetTrigger(walkingL);
                 state = 1;
                 syncMoveState.CmdSetState(state);
@@ -174,9 +174,9 @@ public class PlayerMovement : MonoBehaviour
 
             else
             {
-                lFoot.AddForce(-walkForce * Time.deltaTime * 0.45f, walkForce * Time.deltaTime * 0.05f, 0);
-                rFoot.AddForce(-walkForce * Time.deltaTime * 0.45f, walkForce * Time.deltaTime * 0.05f, 0);
-                body.AddForce(-walkForce * Time.deltaTime * 1f, 0, 0);
+                lFoot.AddForce(-walkForce * Time.deltaTime * 0.045f, walkForce * Time.deltaTime * 0.005f, 0);
+                rFoot.AddForce(-walkForce * Time.deltaTime * 0.045f, walkForce * Time.deltaTime * 0.005f, 0);
+                body.AddForce(-walkForce * Time.deltaTime * 0.1f, 0, 0);
                 anim.SetTrigger(walkingL);
                 state = 1;
                 syncMoveState.CmdSetState(state);
@@ -186,7 +186,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (aDepressed == true)
         {
-            body.AddForce(-walkForce * Time.deltaTime * 1f, 0, 0);
+            body.AddForce(-walkForce * Time.deltaTime * 0.1f, 0, 0);
             anim.SetTrigger(walkingL);
             state = 1;
             syncMoveState.CmdSetState(state);
@@ -197,9 +197,9 @@ public class PlayerMovement : MonoBehaviour
         {
             if (shiftDepressed == true)
             {
-                lFoot.AddForce(walkForce * Time.deltaTime * 0.85f, walkForce * Time.deltaTime * 0.05f, 0);
-                rFoot.AddForce(walkForce * Time.deltaTime * 0.85f, walkForce * Time.deltaTime * 0.05f, 0);
-                body.AddForce(walkForce * Time.deltaTime * 1f, 0, 0);
+                lFoot.AddForce(walkForce * Time.deltaTime * 0.085f, walkForce * Time.deltaTime * 0.005f, 0);
+                rFoot.AddForce(walkForce * Time.deltaTime * 0.085f, walkForce * Time.deltaTime * 0.005f, 0);
+                body.AddForce(walkForce * Time.deltaTime * 0.1f, 0, 0);
                 anim.SetTrigger(walkingR);
                 state = 0;
                 syncMoveState.CmdSetState(state);
@@ -209,9 +209,9 @@ public class PlayerMovement : MonoBehaviour
 
             else
             {
-                lFoot.AddForce(walkForce * Time.deltaTime * 0.45f, walkForce * Time.deltaTime * 0.05f, 0);
-                rFoot.AddForce(walkForce * Time.deltaTime * 0.45f, walkForce * Time.deltaTime * 0.05f, 0);
-                body.AddForce(walkForce * Time.deltaTime * 1f, 0, 0);
+                lFoot.AddForce(walkForce * Time.deltaTime * 0.045f, walkForce * Time.deltaTime * 0.005f, 0);
+                rFoot.AddForce(walkForce * Time.deltaTime * 0.045f, walkForce * Time.deltaTime * 0.005f, 0);
+                body.AddForce(walkForce * Time.deltaTime * 0.1f, 0, 0);
                 anim.SetTrigger(walkingR);
                 state = 0;
                 syncMoveState.CmdSetState(state);
@@ -221,7 +221,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (dDepressed == true)
         {
-            body.AddForce(walkForce * Time.deltaTime * 1f, 0, 0);
+            body.AddForce(walkForce * Time.deltaTime * 0.1f, 0, 0);
             anim.SetTrigger(walkingR);
             state = 0;
             syncMoveState.CmdSetState(state);
@@ -250,10 +250,10 @@ public class PlayerMovement : MonoBehaviour
                 jumpable = false;
                 for (int i = 0; i < 15; i++)
                 {
-                    body.AddForce(0, (jumpForce * 0.5f - (i * 20)) * Time.deltaTime, 0);
+                    body.AddForce(0, (jumpForce * 0.05f - (i * 2)) * Time.deltaTime, 0);
                     
-                    lFoot.AddForce(-lFoot.transform.right * 0.1f * (jumpForce - (i * 20)) * Time.deltaTime);
-                    rFoot.AddForce(rFoot.transform.right * 0.1f * (jumpForce - (i * 20)) * Time.deltaTime);
+                    lFoot.AddForce(-lFoot.transform.right * 0.01f * (jumpForce - (i * 2)) * Time.deltaTime);
+                    rFoot.AddForce(rFoot.transform.right * 0.01f * (jumpForce - (i * 2)) * Time.deltaTime);
 
                     spaceDepressed = false;
                     groundHitL = false;
@@ -264,24 +264,24 @@ public class PlayerMovement : MonoBehaviour
 
             if (sDepressed)
             {
-                body.AddForce(0, -30000 * Time.deltaTime, 0);
+                body.AddForce(0, -3000 * Time.deltaTime, 0);
                 if (getDown < 60)
                 {
-                    lFoot.AddForce(-lFoot.transform.right * 9000 * Time.deltaTime);
-                    rFoot.AddForce(rFoot.transform.right * 9000 * Time.deltaTime);
+                    lFoot.AddForce(-lFoot.transform.right * 900 * Time.deltaTime);
+                    rFoot.AddForce(rFoot.transform.right * 900 * Time.deltaTime);
                     getDown++;
                 }
             }
 
             if ((Physics.Raycast(rLeg.gameObject.transform.position, -Vector3.up, out hit, 5f)) && !spaceDepressed)
             {
-                rLeg.AddForce(0, 3000f * Time.deltaTime, 0);
+                rLeg.AddForce(0, 300f * Time.deltaTime, 0);
                 
             }
         }
         else if (spaceJetDepressed && boostable && spaceDepressed && hasJetPack)
         {
-            jetpack.AddForce(jetpack.transform.up * jumpForce * Time.deltaTime * 0.3f);
+            jetpack.AddForce(jetpack.transform.up * jumpForce * Time.deltaTime * 0.03f);
             jetTimer();
             if (!jetTimed)
             {

@@ -16,7 +16,7 @@ public class AbilityAffector : MonoBehaviour {
         rb = gameObject.GetComponent<Rigidbody>();
         for (int i = 0; i < 200; i++)
         {
-            rb.AddForce(startForce * Time.deltaTime * transform.up);
+            rb.AddForce(startForce / 10 * Time.deltaTime * transform.up);
         }
         if (!onServer)
         {

@@ -45,7 +45,7 @@ public class SpawnWeapons : NetworkBehaviour {
             //Spawn Code Next
             for (int i = 0; i < spawnNumber; i++)
             {
-                WeaponSpawnPoints.Add(new Vector3((i * 20), 0, 0)); //position code is just temporary for debugging
+                WeaponSpawnPoints.Add(new Vector3((i * 2), 0, 0)); //position code is just temporary for debugging
                 WeaponIndex = Random.Range(0, refrenceKeeper.numOfWeapons);
                 GameObject WeaponItem = Instantiate(
                     WeaponItemPrefab,
@@ -53,7 +53,7 @@ public class SpawnWeapons : NetworkBehaviour {
                     transform.rotation);
                 WeaponItem.GetComponent<Pickup>().WeaponIndex = WeaponIndex;
                 WeaponItem.transform.SetParent(ItemsParent);
-                WeaponItem.transform.localScale = new Vector3(1, 1, 1);
+                WeaponItem.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                 WeaponItem.gameObject.layer = 11;
                 WeaponItem.GetComponent<BulletsLeft>().bullets = Weapons[WeaponIndex].WeaponItem.magazineSize;
                 WeaponItem.GetComponent<SphereCollider>().center = Weapons[WeaponIndex].WeaponItem.ItemColliderPos;

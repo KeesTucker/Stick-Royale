@@ -20,20 +20,20 @@ public class FollowRocket : MonoBehaviour {
         {
             if (parent.transform.position.x > transform.position.x)
             {
-                rb.AddForce(new Vector3(force * Time.deltaTime * (parent.transform.position.x - transform.position.x), 0, 0));
+                rb.AddForce(new Vector3(force / 10 * Time.deltaTime * (parent.transform.position.x - transform.position.x), 0, 0));
             }
             else if (parent.transform.position.x < transform.position.x)
             {
-                rb.AddForce(new Vector3(-force * Time.deltaTime * (transform.position.x - parent.transform.position.x), 0, 0));
+                rb.AddForce(new Vector3(-force / 10 * Time.deltaTime * (transform.position.x - parent.transform.position.x), 0, 0));
             }
 
             if (parent.transform.position.y > transform.position.y)
             {
-                rb.AddForce(new Vector3(0, force * Time.deltaTime * (parent.transform.position.y - transform.position.y), 0));
+                rb.AddForce(new Vector3(0, force / 10 * Time.deltaTime * (parent.transform.position.y - transform.position.y), 0));
             }
             else if (parent.transform.position.y < transform.position.y)
             {
-                rb.AddForce(new Vector3(0, -force * Time.deltaTime * (transform.position.y - parent.transform.position.y), 0));
+                rb.AddForce(new Vector3(0, -force / 10 * Time.deltaTime * (transform.position.y - parent.transform.position.y), 0));
             }
         }
     }

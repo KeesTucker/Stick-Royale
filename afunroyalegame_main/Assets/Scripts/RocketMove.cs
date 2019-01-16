@@ -34,20 +34,20 @@ public class RocketMove : MonoBehaviour {
         {
             if (MouseFollower.transform.position.x > transform.position.x)
             {
-                rb.AddForce(new Vector3(force * Time.deltaTime * (MouseFollower.transform.position.x - transform.position.x), 0, 0));
+                rb.AddForce(new Vector3(force / 10 * Time.deltaTime * (MouseFollower.transform.position.x - transform.position.x), 0, 0));
             }
             else if (MouseFollower.transform.position.x < transform.position.x)
             {
-                rb.AddForce(new Vector3(-force * Time.deltaTime * (transform.position.x - MouseFollower.transform.position.x), 0, 0));
+                rb.AddForce(new Vector3(-force / 10 * Time.deltaTime * (transform.position.x - MouseFollower.transform.position.x), 0, 0));
             }
 
             if (MouseFollower.transform.position.y > transform.position.y)
             {
-                rb.AddForce(new Vector3(0, force * Time.deltaTime * (MouseFollower.transform.position.y - transform.position.y), 0));
+                rb.AddForce(new Vector3(0, force / 10 * Time.deltaTime * (MouseFollower.transform.position.y - transform.position.y), 0));
             }
             else if (MouseFollower.transform.position.y < transform.position.y)
             {
-                rb.AddForce(new Vector3(0, -force * Time.deltaTime * (transform.position.y - MouseFollower.transform.position.y), 0));
+                rb.AddForce(new Vector3(0, -force / 10 * Time.deltaTime * (transform.position.y - MouseFollower.transform.position.y), 0));
             }
         }
         mouse = Input.mousePosition; //Mouse position
