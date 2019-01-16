@@ -7,21 +7,33 @@ public class RocketPoint : MonoBehaviour
 
     public Transform ragdoll;
 
-    GameObject MouseFollower;
-    Rigidbody rb;
-    public float force = 600f;
+    public GameObject velocityCreate;
+    public GameObject velocity;
 
+    GameObject MouseFollower;
+    public Rigidbody rb;
+    public float force = 600f;
+    public Vector3 velvec;
     // Use this for initialization
     void Start()
     {
         MouseFollower = GameObject.Find("MouseFollower");
-        rb = gameObject.GetComponent<Rigidbody>();
+        velocity = Instantiate(velocityCreate, transform.position, Quaternion.identity);
+        velocity.GetComponent<FollowRocket>().parent = transform;
+        rb = velocity.GetComponent<Rigidbody>();
     }
 
     void FixedUpdate()
     {
         transform.position = ragdoll.position;
-        Debug.Log(rb.velocity);
-        transform.rotation = Quaternion.LookRotation(rb.velocity); //Rotate
+        if (rb.velocity.y < 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, -1 * Mathf.Atan(rb.velocity.x / rb.velocity.y) * Mathf.Rad2Deg + 180);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(0, 0, -1 * Mathf.Atan(rb.velocity.x / rb.velocity.y) * Mathf.Rad2Deg);
+        }
+        
     }
 }

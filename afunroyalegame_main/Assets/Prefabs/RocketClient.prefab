@@ -186,11 +186,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ragdoll: {fileID: 0}
+  velocityCreate: {fileID: 1588890789028424, guid: a2c88911d09e1d2488cfb243ec36934b,
+    type: 2}
+  velocity: {fileID: 0}
   force: 600
-  mouse: {x: 0, y: 0}
-  screenPoint: {x: 0, y: 0, z: 0}
-  offset: {x: 0, y: 0}
-  angle: 0
 --- !u!198 &198876471872234492
 ParticleSystem:
   m_ObjectHideFlags: 1
