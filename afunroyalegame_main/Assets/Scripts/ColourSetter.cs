@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using Mirror;
 
-public class ColourSetter : NetworkBehaviour
+public class ColourSetter : MonoBehaviour
 {
     public Color m_NewColor;
-    public Material grapple;
+    public Material grappleMat;
     //These are the values that the Color Sliders return
     float m_Red, m_Blue, m_Green;
 

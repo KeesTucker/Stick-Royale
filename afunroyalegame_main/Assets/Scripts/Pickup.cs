@@ -90,7 +90,7 @@ public class Pickup : NetworkBehaviour {
         yield return new WaitForEndOfFrame();
         updateUI = refrenceKeeper.updateUI;
 
-        WeaponHand = refrenceKeeper.WeaponHand;
+        WeaponHand = refrenceKeeper.WeaponParent;
 
         Player = GameObject.Find("Ragdoll").transform;
 

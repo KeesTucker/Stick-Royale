@@ -29,7 +29,7 @@ public class SwitchWeapon : MonoBehaviour {
         yield return new WaitForEndOfFrame();
 
         refrenceKeeper = GameObject.Find("Local").GetComponent<RefrenceKeeper>();
-        WeaponHand = refrenceKeeper.WeaponHand;
+        WeaponHand = refrenceKeeper.WeaponParent;
         yield return new WaitForSeconds(0.3f);
         spawnWeapons = GameObject.Find("Items").GetComponent<SpawnWeapons>();
     }

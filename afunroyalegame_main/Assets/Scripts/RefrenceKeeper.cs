@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RefrenceKeeper : MonoBehaviour {
 
-    public GameObject WeaponHand;
+    public GameObject WeaponParent;
 
     public List<GameObject> WeaponRefrences = new List<GameObject>();
 
@@ -12,7 +12,7 @@ public class RefrenceKeeper : MonoBehaviour {
 
     public List<Item> weaponInventory = new List<Item>();
 
-    public List<Item> itemInventory = new List<Item>();
+    public List<Item> consumableInventory = new List<Item>();
 
     public int itemCount;
 

@@ -24,6 +24,9 @@ TagManager:
   - Chunk
   - SeedFall
   - Relay
+  - GrappleHandAI
+  - PosRelay
+  - WeaponItem
   layers:
   - Default
   - TransparentFX
@@ -49,7 +52,7 @@ TagManager:
   - PlayerNew
   - Seed
   - Rocket
-  - 
+  - AI
   - 
   - 
   - 

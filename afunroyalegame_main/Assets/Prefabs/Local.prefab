@@ -238,7 +238,6 @@ GameObject:
   - component: {fileID: 114753534607499688}
   - component: {fileID: 114525235390454916}
   - component: {fileID: 114007382877821076}
-  - component: {fileID: 114657412391087482}
   m_Layer: 15
   m_Name: ULRA
   m_TagString: Untagged
@@ -471,9 +470,7 @@ GameObject:
   - component: {fileID: 54316914666496368}
   - component: {fileID: 59225793236894896}
   - component: {fileID: 114031483068008836}
-  - component: {fileID: 114514891035512628}
   - component: {fileID: 114673066384335328}
-  - component: {fileID: 114467977843289676}
   m_Layer: 15
   m_Name: Lower Body
   m_TagString: Floppy
@@ -1788,7 +1785,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 0}
+  m_BackGroundColor: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 1}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -3087,11 +3084,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d33ee7588e4e3db42972da22d2fb77a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WeaponHand: {fileID: 1658828344831588}
+  WeaponParent: {fileID: 1658828344831588}
   WeaponRefrences: []
   itemDistanceRefrences: []
   weaponInventory: []
-  itemInventory: []
+  consumableInventory: []
   itemCount: 0
   inventoryCount: 0
   activeSlot: 0
@@ -3556,22 +3553,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IDPlayer: 0
---- !u!114 &114467977843289676
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1492619453886698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d70c61c909747d48a71085344e2b0a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hj: {fileID: 0}
-  tr: {fileID: 0}
-  adder: {x: 0, y: 0, z: 0}
-  z: -3.72529
-  location: {x: 0, y: 0, z: 0}
 --- !u!114 &114476584956862128
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3596,6 +3577,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpNow: 0
   layerMask: 4096
+  playerMovement: {fileID: 114358387001214192}
 --- !u!114 &114500288151280260
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3608,7 +3590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_NewColor: {r: 0, g: 0, b: 0, a: 0}
-  grapple: {fileID: 0}
+  grappleMat: {fileID: 0}
 --- !u!114 &114512801160376078
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3621,17 +3603,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_NewColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!114 &114514891035512628
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1492619453886698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17f3299f99d046d4db8cc26aa031f0d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114525235390454916
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3786,22 +3757,6 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1802159541823710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d70c61c909747d48a71085344e2b0a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hj: {fileID: 0}
-  tr: {fileID: 0}
-  adder: {x: 0, y: 0, z: 0}
-  z: -3.72529
-  location: {x: 0, y: 0, z: 0}
---- !u!114 &114657412391087482
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1291289919310648}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d70c61c909747d48a71085344e2b0a7, type: 3}
@@ -4087,6 +4042,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpNow: 0
   layerMask: 4096
+  playerMovement: {fileID: 114358387001214192}
 --- !u!114 &114878731938598486
 MonoBehaviour:
   m_ObjectHideFlags: 1

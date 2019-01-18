@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 114479047519176720}
   m_Layer: 0
   m_Name: PositionRelay
-  m_TagString: Untagged
+  m_TagString: PosRelay
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3136,6 +3136,7 @@ MonoBehaviour:
   ragdollColliders: []
   ragdollSpriteRenderers: []
   particle: {fileID: 0}
+  exploded: 0
 --- !u!114 &114243566197918940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3334,6 +3335,7 @@ MonoBehaviour:
   ragdollColliders: []
   ragdollSpriteRenderers: []
   particle: {fileID: 0}
+  exploded: 0
 --- !u!114 &114550062898524304
 MonoBehaviour:
   m_ObjectHideFlags: 1
