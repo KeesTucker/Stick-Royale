@@ -23,7 +23,7 @@ public class GrappleActivatorAI : MonoBehaviour {
     public bool onLocal;
     public bool attractable = true;
     public AimShootAI aimShoot;
-    //public SyncMoveState syncMoveState;
+    public SyncMoveStateAI syncMoveState;
     public Material invisible;
     public GameObject parent; //AI that sent it
     void Start()
@@ -73,8 +73,8 @@ public class GrappleActivatorAI : MonoBehaviour {
             {
                 parent.transform.GetChild(0).gameObject.GetComponent<GroundForceAI>().grappled = false;
             }
-            //aimShoot.localWeaponSync.CmdGrappleKill();
-            //syncMoveState.CmdSetArmGrappleState(false);
+            aimShoot.localWeaponSync.CmdGrappleKill();
+            syncMoveState.CmdSetArmGrappleState(false);
             Destroy(grapple);
         }
     }
@@ -117,8 +117,8 @@ public class GrappleActivatorAI : MonoBehaviour {
                     parent.transform.GetChild(0).gameObject.GetComponent<groundForce>().grappled = false;
                 }
 
-                //aimShoot.localWeaponSync.CmdGrappleKill();
-                //syncMoveState.CmdSetArmGrappleState(false);
+                aimShoot.localWeaponSync.CmdGrappleKill();
+                syncMoveState.CmdSetArmGrappleState(false);
                 Destroy(grapple);
             }
         }

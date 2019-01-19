@@ -70,7 +70,7 @@ public class PlayerMovementAI : MonoBehaviour {
 
     public int state;
 
-    //public SyncMoveStateAI syncMoveState;
+    public SyncMoveStateAI syncMoveState;
 
     void Start()
     {
@@ -170,7 +170,7 @@ public class PlayerMovementAI : MonoBehaviour {
                 body.AddForce(-walkForce * Time.deltaTime * 1f, 0, 0);
                 anim.SetTrigger(walkingL);
                 state = 1;
-                //syncMoveState.CmdSetState(state);
+                syncMoveState.CmdSetState(state);
                 anim.ResetTrigger("stand");
                 anim.ResetTrigger("WalkingR");
             }
@@ -182,7 +182,7 @@ public class PlayerMovementAI : MonoBehaviour {
                 body.AddForce(-walkForce * Time.deltaTime * 1f, 0, 0);
                 anim.SetTrigger(walkingL);
                 state = 1;
-                //syncMoveState.CmdSetState(state);
+                syncMoveState.CmdSetState(state);
                 anim.ResetTrigger("stand");
                 anim.ResetTrigger("WalkingR");
             }
@@ -192,7 +192,7 @@ public class PlayerMovementAI : MonoBehaviour {
             body.AddForce(-walkForce * Time.deltaTime * 1f, 0, 0);
             anim.SetTrigger(walkingL);
             state = 1;
-            //syncMoveState.CmdSetState(state);
+            syncMoveState.CmdSetState(state);
             anim.ResetTrigger("stand");
             anim.ResetTrigger("WalkingR");
         }
@@ -205,7 +205,7 @@ public class PlayerMovementAI : MonoBehaviour {
                 body.AddForce(walkForce * Time.deltaTime * 1f, 0, 0);
                 anim.SetTrigger(walkingR);
                 state = 0;
-                //syncMoveState.CmdSetState(state);
+                syncMoveState.CmdSetState(state);
                 anim.ResetTrigger("stand");
                 anim.ResetTrigger("WalkingL");
             }
@@ -217,7 +217,7 @@ public class PlayerMovementAI : MonoBehaviour {
                 body.AddForce(walkForce * Time.deltaTime * 1f, 0, 0);
                 anim.SetTrigger(walkingR);
                 state = 0;
-                //syncMoveState.CmdSetState(state);
+                syncMoveState.CmdSetState(state);
                 anim.ResetTrigger("stand");
                 anim.ResetTrigger("WalkingL");
             }
@@ -227,7 +227,7 @@ public class PlayerMovementAI : MonoBehaviour {
             body.AddForce(walkForce * Time.deltaTime * 1f, 0, 0);
             anim.SetTrigger(walkingR);
             state = 0;
-            //syncMoveState.CmdSetState(state);
+            syncMoveState.CmdSetState(state);
             anim.ResetTrigger("stand");
             anim.ResetTrigger("WalkingL");
         }
@@ -237,7 +237,7 @@ public class PlayerMovementAI : MonoBehaviour {
             anim.ResetTrigger("WalkingL");
             anim.SetTrigger("stand");
             state = 2;
-            //syncMoveState.CmdSetState(state);
+            syncMoveState.CmdSetState(state);
 
         }
 

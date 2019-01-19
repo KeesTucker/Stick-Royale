@@ -19,6 +19,7 @@ public class HealthAI : NetworkBehaviour {
             {
                 HealthUpdate();
             }
+            DestroyPlayer();
             Destroy(gameObject);
         }
 	}
@@ -27,6 +28,12 @@ public class HealthAI : NetworkBehaviour {
     public void HealthUpdate()
     {
         health = 0;
+    }
+
+    [ClientRpc]
+    public void DestroyPlayer()
+    {
+        Destroy(gameObject);
     }
 
     [Command]

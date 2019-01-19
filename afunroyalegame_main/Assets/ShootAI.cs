@@ -66,7 +66,7 @@ public class ShootAI : MonoBehaviour {
 
     public GameObject localRelay;
 
-    //public SyncWeaponAI localWeaponSync;
+    public SyncWeaponAI localWeaponSync;
 
     bool changeHandPos;
 
@@ -84,7 +84,7 @@ public class ShootAI : MonoBehaviour {
 
     public bool r = false; //change for reload on AI
 
-    public bool LClick = false; //change for fire on AI
+    public bool lClick = false; //change for fire on AI
 
     public GameObject[] playerParts;
 
@@ -102,7 +102,7 @@ public class ShootAI : MonoBehaviour {
     public void Setup(GameObject relay)
     {
         localRelay = relay;
-        //localWeaponSync = localRelay.GetComponent<SyncWeaponAI>();
+        localWeaponSync = localRelay.GetComponent<SyncWeaponAI>();
     }
 
     void FixedUpdate()
@@ -142,11 +142,11 @@ public class ShootAI : MonoBehaviour {
             targetReload = new Vector3(transform.position.x - 3f * multiplier, bulletPosition.position.y - 0.3f + reloadRandomiser, transform.position.z);
             LeftHand.GetComponent<Rigidbody>().AddForce(new Vector3(Mathf.Clamp(targetReload.x - LeftHand.transform.position.x, -1, 1), Mathf.Clamp(targetReload.y - LeftHand.transform.position.y, -1, 1), 0) * Time.deltaTime * 5000);
         }
-        if (LClick)
+        if (lClick)
         {
             fireButtonDown = true;
         }
-        if (LClick)
+        if (!lClick)
         {
             fireButtonDown = false;
         }
@@ -214,7 +214,9 @@ public class ShootAI : MonoBehaviour {
             {
                 if (hasMag)
                 {
-                    mag = GameObject.Find(("Weapon/" + transform.GetChild(2).gameObject.name) + "/Magazine");
+                    //Need a new system for 2d
+
+                    /*mag = GameObject.Find(("Weapon/" + transform.GetChild(2).gameObject.name) + "/Magazine");
                     GameObject magazine = Instantiate(
                         mag,
                         mag.transform.position,
@@ -233,14 +235,15 @@ public class ShootAI : MonoBehaviour {
 
                     magazine.transform.localScale = refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].spawnScale;
                     magrb.mass = 0.5f;
-                    StartCoroutine(DestroyMag(magazine));
+                    StartCoroutine(DestroyMag(magazine));*/
+
                     yield return new WaitForSeconds(refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].reloadTime);
                     if (reloading)
                     {
-                        if (mag != null)
+                        /*if (mag != null)
                         {
                             mag.SetActive(true);
-                        }
+                        }*/
                         reloading = false;
 
                         bulletsLeft[refrenceKeeper.activeSlot] = magSize;
@@ -265,7 +268,7 @@ public class ShootAI : MonoBehaviour {
 
     IEnumerator FireBullet()
     {
-        //localWeaponSync.CmdFire(refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].damage);
+        localWeaponSync.CmdFire(refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].damage);
         for (int x = 0; x < Mathf.Clamp(Random.Range(refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].bulletSplit / 2, refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].bulletSplit), 1, 9999); x++)
         {
             GameObject bullet = Instantiate(
@@ -286,7 +289,7 @@ public class ShootAI : MonoBehaviour {
                 bullet.GetComponent<MissLinks>().Miss(hit.collider.gameObject.GetComponent<BulletAvoidPlat>().chainLinks);
             }
             bullet.GetComponent<DamageDealer>().damage = refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].damage;
-            bullet.GetComponent<DamageDealer>().onServer = localRelay.GetComponent<SyncWeapon>().isServer;
+            bullet.GetComponent<DamageDealer>().onServer = true; //Ehh this is shit fix it, when i use this on player have to change it
             Destroy(bullet, 5.0f);
         }
         shell = Instantiate(

@@ -57,9 +57,9 @@ public class AimShootAI : MonoBehaviour {
 
     public GameObject LHTT;
     public GameObject localRelay;
-    //public SyncWeaponAI localWeaponSync;
+    public SyncWeaponAI localWeaponSync;
 
-    //public SyncMoveStateAI syncMoveState;
+    public SyncMoveStateAI syncMoveState;
 
     public GameObject ragdoll;
 
@@ -86,8 +86,9 @@ public class AimShootAI : MonoBehaviour {
 
     public void Setup(GameObject relay)
     {
-        //localRelay = relay;
-        //localWeaponSync = localRelay.GetComponent<SyncWeapon>();
+        localRelay = relay;
+        localWeaponSync = localRelay.GetComponent<SyncWeaponAI>();
+        syncMoveState = localRelay.GetComponent<SyncMoveStateAI>();
     }
 
     void Update()
@@ -118,7 +119,7 @@ public class AimShootAI : MonoBehaviour {
                     hingeSpring.targetPosition = (angleGun - rotationGunManager.transform.rotation.eulerAngles.z + 180f) % 360;
                 }
 
-                //syncMoveState.CmdSetArmState(true);
+                syncMoveState.CmdSetArmState(true);
 
                 hinge.spring = hingeSpring;
                 
@@ -126,7 +127,7 @@ public class AimShootAI : MonoBehaviour {
 
             else
             {
-                //syncMoveState.CmdSetArmState(false);
+                syncMoveState.CmdSetArmState(false);
             }
 
             activeSlot = refrenceKeeper.activeSlot;
@@ -174,8 +175,8 @@ public class AimShootAI : MonoBehaviour {
         {
             rightBeenClicked = false;
             Destroy(grapple, 0.1f);
-            //localWeaponSync.CmdGrappleKill();
-            //syncMoveState.CmdSetArmGrappleState(false);
+            localWeaponSync.CmdGrappleKill();
+            syncMoveState.CmdSetArmGrappleState(false);
             rightClick = false;
             ragdoll.GetComponent<GroundForceAI>().grappled = false;
             fireGrapple = true;
@@ -211,8 +212,8 @@ public class AimShootAI : MonoBehaviour {
     {
         if (fireGrapple)
         {
-            //syncMoveState.CmdSetArmGrappleState(true);
-            //localWeaponSync.CmdGrappleFire(grappleLauncher.transform.right, gameObject.GetComponent<ColouriserAI>().m_NewColor, gameObject);
+            syncMoveState.CmdSetArmGrappleState(true);
+            localWeaponSync.CmdGrappleFire(grappleLauncher.transform.right, gameObject.GetComponent<ColouriserAI>().m_NewColor, gameObject);
             grapple = Instantiate(
                 grapplePrefab,
                 WeaponHand.transform.position,
@@ -222,7 +223,7 @@ public class AimShootAI : MonoBehaviour {
             grapple.GetComponent<GrappleActivatorAI>().parent = transform.parent.gameObject;
             grapple.GetComponent<GrappleActivatorAI>().Setup(gameObject.GetComponent<ColouriserAI>().m_NewColor);
             grapple.GetComponent<renderGrapple>().Setup(gameObject.GetComponent<ColouriserAI>().m_NewColor);
-            //grapple.GetComponent<GrappleActivatorAI>().syncMoveState = syncMoveState;
+            grapple.GetComponent<GrappleActivatorAI>().syncMoveState = syncMoveState;
             startAngle = grappleLauncher.transform.right;
             foreach (Collider collider in colliders)
             {

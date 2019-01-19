@@ -14,7 +14,7 @@ public class SwitchWeaponAI : MonoBehaviour {
     public GameObject muzzleFlash;
     public GameObject localRelay;
 
-    public //SyncWeaponAI localWeaponSync;
+    public SyncWeaponAI localWeaponSync;
 
     // Use this for initialization
     IEnumerator Start()
@@ -26,12 +26,12 @@ public class SwitchWeaponAI : MonoBehaviour {
     public void Setup(GameObject relay)
     {
         localRelay = relay;
-        //localWeaponSync = localRelay.GetComponent<SyncWeaponAI>();
+        localWeaponSync = localRelay.GetComponent<SyncWeaponAI>();
     }
 
     public void Switch(int WeaponIndex)
     {
-        //localWeaponSync.CmdSwitchWeaponIndex(WeaponIndex);
+        localWeaponSync.CmdSwitchWeaponIndex(WeaponIndex);
         if (refrenceKeeper.inventoryCount > 0)
         {
             Destroy(WeaponHand.transform.GetChild(2).gameObject);
