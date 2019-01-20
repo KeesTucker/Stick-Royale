@@ -26,6 +26,12 @@ public class DamageDealer : MonoBehaviour {
         {
             if (collisionInfo.gameObject.layer == 15)
             {
+                if (collisionInfo.gameObject.tag == "PosRelay")
+                {
+                    collisionInfo.gameObject.GetComponent<Health>().CmdUpdateHealth(damage);
+                    onServer = false;
+                    return;
+                }
                 if (collisionInfo.transform.parent.gameObject.name == "Local")
                 {
                     localRelay.GetComponent<Health>().CmdUpdateHealth(damage);

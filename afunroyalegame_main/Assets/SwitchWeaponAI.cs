@@ -31,7 +31,6 @@ public class SwitchWeaponAI : MonoBehaviour {
 
     public void Switch(int WeaponIndex)
     {
-        localWeaponSync.CmdSwitchWeaponIndex(WeaponIndex);
         if (refrenceKeeper.inventoryCount > 0)
         {
             Destroy(WeaponHand.transform.GetChild(2).gameObject);

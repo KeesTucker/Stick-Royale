@@ -44,8 +44,6 @@ public class SyncWeaponAI : NetworkBehaviour
 
     public GameObject grapple;
 
-    RefrenceKeeperAI refrenceKeeper;
-
     public GameObject LHT;
 
     public GameObject HandHeldWeapon;
@@ -64,7 +62,6 @@ public class SyncWeaponAI : NetworkBehaviour
     {
         muzzleMaterial = muzzleFlash.GetComponent<Renderer>().material;
         muzzleMaterial.SetFloat("Vector1_B173D9FB", 0);
-        refrenceKeeper = GetComponent<PlayerSetupAI>().parent.GetComponent<RefrenceKeeperAI>();
         localiseTransform = GameObject.Find("Items").GetComponent<LocaliseTransform>();
         spawnWeapons = GameObject.Find("Items").GetComponent<SpawnWeapons>();
         //AimSync = transform.Find("AimSync").gameObject;
@@ -96,7 +93,7 @@ public class SyncWeaponAI : NetworkBehaviour
     [ClientRpc]
     public void RpcGrappleFire(Vector3 dir, Color m_Color, GameObject parent)
     {
-        if (!isLocalPlayer)
+        if (!hasAuthority)
         {
             grapple = Instantiate(
                 grapplePrefab,
@@ -128,7 +125,7 @@ public class SyncWeaponAI : NetworkBehaviour
     [ClientRpc]
     public void RpcSwitchWeapon(int WI)
     {
-        if (!isLocalPlayer)
+        if (!hasAuthority)
         {
             //Change Weapon
             if (weapon.transform.childCount > 2)
@@ -164,7 +161,7 @@ public class SyncWeaponAI : NetworkBehaviour
     [ClientRpc]
     public void RpcFire(float damage)
     {
-        if (!isLocalPlayer)
+        if (!hasAuthority)
         {
             for (int x = 0; x < Mathf.Clamp(Random.Range(spawnWeapons.Weapons[WeaponIndex].WeaponItem.bulletSplit / 2, spawnWeapons.Weapons[WeaponIndex].WeaponItem.bulletSplit), 1, 9999); x++)
             {
@@ -224,7 +221,7 @@ public class SyncWeaponAI : NetworkBehaviour
 
     void FixedUpdate()
     {
-        if (!isLocalPlayer)
+        if (!hasAuthority)
         {
             angleGun = AngleBetweenPoints(weapon.transform.parent.position, AimSync.transform.position);
             if (weapon.transform.childCount > 2)

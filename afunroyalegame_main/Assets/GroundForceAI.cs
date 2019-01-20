@@ -132,7 +132,7 @@ public class GroundForceAI : MonoBehaviour
 
         if (!touchingGround)
         {
-            syncMoveState.CmdSetState(3);
+            //syncMoveState.CmdSetState(3);
             foreach (GameObject playerPart in playerParts)
             {
                 playerPart.GetComponent<HingeJoint>().useSpring = false;

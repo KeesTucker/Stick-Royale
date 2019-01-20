@@ -3,14 +3,6 @@ using Mirror;
 
 public class DestroyGunAI : NetworkBehaviour
 {
-
-    RefrenceKeeperAI refrenceKeeper;
-
-    void Start()
-    {
-        refrenceKeeper = GetComponent<PlayerSetupAI>().parent.GetComponent<RefrenceKeeperAI>();
-    }
-
     [Command]
     public void CmdDestroyGun(GameObject gun, int id)
     {

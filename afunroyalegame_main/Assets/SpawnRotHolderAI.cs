@@ -11,7 +11,7 @@ public class SpawnRotHolderAI : NetworkBehaviour
 
     public static uint parentID;
     // Use this for initialization
-    void Start()
+    public override void OnStartAuthority()
     {
         if (isServer)
         {
@@ -23,25 +23,18 @@ public class SpawnRotHolderAI : NetworkBehaviour
     void CmdSpawn()
     {
         currentSpawn = Instantiate(RotHolder, new Vector3(0, 0, 0), transform.rotation);
-        currentSpawn.GetComponent<SyncRotation>().parent = gameObject;
-        currentSpawn.GetComponent<ReadRotation>().parent = gameObject;
+        currentSpawn.GetComponent<SyncRotationAI>().parent = gameObject;
+        currentSpawn.GetComponent<ReadRotationAI>().parent = gameObject;
         NetworkServer.Spawn(currentSpawn);
     }
     [Command]
     public void CmdAssignAuthority(NetworkIdentity identity)
     {
         NetworkConnection currentOwner = identity.clientAuthorityOwner;
-        if (currentOwner == connectionToClient)
+        if (currentOwner != null)
         {
-            return;
+            identity.RemoveClientAuthority(currentOwner);
         }
-        else
-        {
-            if (currentOwner != null)
-            {
-                identity.RemoveClientAuthority(currentOwner);
-            }
-            identity.AssignClientAuthority(connectionToClient);
-        }
+        identity.AssignClientAuthority(GameObject.Find("LocalRelay").GetComponent<PlayerSetup>().connectionToClient);
     }
 }

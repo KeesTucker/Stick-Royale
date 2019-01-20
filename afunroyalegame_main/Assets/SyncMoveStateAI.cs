@@ -40,15 +40,12 @@ public class SyncMoveStateAI : NetworkBehaviour
     IEnumerator Start()
     {
         yield return new WaitForSeconds(0.3f);
-        if (isLocalPlayer)
+        if (hasAuthority)
         {
             parent = GetComponent<PlayerSetupAI>().parent;
             playerMovement = parent.transform.Find("Physics AnimatorAI").GetComponent<PlayerMovementAI>();
             groundForce = parent.transform.Find("RagdollAI").GetComponent<GroundForceAI>();
             aimShoot = parent.transform.Find("RagdollAI").GetComponent<AimShootAI>();
-            playerMovement.syncMoveState = this;
-            groundForce.syncMoveState = this;
-            aimShoot.syncMoveState = this;
         }
     }
 
@@ -114,7 +111,7 @@ public class SyncMoveStateAI : NetworkBehaviour
     [ClientRpc]
     public void RpcSetAnimation()
     {
-        if (!isLocalPlayer)
+        if (!hasAuthority)
         {
             if (moveState == 0)
             {

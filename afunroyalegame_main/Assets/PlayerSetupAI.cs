@@ -1,29 +1,12 @@
 ﻿using UnityEngine;
+using System.Collections;
 using Mirror;
 
 public class PlayerSetupAI : NetworkBehaviour
 {
-
-    [SerializeField]
-    Behaviour[] componentsToDisable;
-    [SerializeField]
-    Behaviour[] componentsToEnableOnLocal;
-    [SerializeField]
-    Behaviour[] componentsToDisableOnLocal;
-    [SerializeField]
-    Behaviour[] componentsToEnable;
+    public Collider[] colliders;
 
     Camera sceneCamera;
-
-    [SyncVar]
-    public Color m_NewColor;
-
-    [SyncVar]
-    public bool jetOn;
-
-    [SyncVar]
-    public bool dropped = false;
-
 
     [SyncVar]
     public GameObject parent;
@@ -32,33 +15,28 @@ public class PlayerSetupAI : NetworkBehaviour
 
     void Start()
     {
-        if (!isLocalPlayer)
+        if (parent)
         {
-            for (int i = 0; i < componentsToDisable.Length; i++)
+            
+        }
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            for (int v = 0; v < colliders.Length; v++)
             {
-                componentsToDisable[i].enabled = false;
+                Physics.IgnoreCollision(colliders[i], colliders[v]);
             }
-            for (int i = 0; i < componentsToEnable.Length; i++)
-            {
-                componentsToEnable[i].enabled = true;
-            }
+        }
+    }
+
+    public override void OnStartAuthority()
+    {
+        if (!hasAuthority)
+        {
             ragdollPlaceholder.SetActive(true);
         }
         else
         {
-            for (int i = 0; i < componentsToEnableOnLocal.Length; i++)
-            {
-                componentsToEnableOnLocal[i].enabled = true;
-            }
-            for (int i = 0; i < componentsToDisableOnLocal.Length; i++)
-            {
-                componentsToDisableOnLocal[i].enabled = true;
-            }
             ragdollPlaceholder.gameObject.SetActive(false);
-            m_NewColor = parent.GetComponent<ColourSetter>().m_NewColor;
-            parent.GetComponentInChildren<SwitchWeaponAI>().Setup(gameObject);
-            parent.GetComponentInChildren<ShootAI>().Setup(gameObject);
-            parent.GetComponentInChildren<AimShootAI>().Setup(gameObject);
             /*sceneCamera = Camera.main;
             gameObject.name = "Local";
             if (sceneCamera != null)

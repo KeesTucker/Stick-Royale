@@ -28,7 +28,7 @@ public class GrappleActivatorAI : MonoBehaviour {
     public GameObject parent; //AI that sent it
     void Start()
     {
-        GameObject[] playerParts_ = parent.transform.GetChild(0).gameObject.GetComponent<GroundForceAI>().playerParts;
+        GameObject[] playerParts_ = parent.GetComponent<GroundForceAI>().playerParts;
         StartCoroutine("endTime");
         aimShoot = parent.transform.GetChild(0).gameObject.GetComponent<AimShootAI>();
     }
@@ -57,7 +57,7 @@ public class GrappleActivatorAI : MonoBehaviour {
         Collided = true;
         if (onLocal)
         {
-            parent.transform.GetChild(0).gameObject.GetComponent<GroundForceAI>().grappled = true;
+            parent.GetComponent<GroundForceAI>().grappled = true;
         }
         transform.position = hitTarg.transform.position + hitCoords;
         transform.parent = hitTarg.transform;
@@ -73,8 +73,6 @@ public class GrappleActivatorAI : MonoBehaviour {
             {
                 parent.transform.GetChild(0).gameObject.GetComponent<GroundForceAI>().grappled = false;
             }
-            aimShoot.localWeaponSync.CmdGrappleKill();
-            syncMoveState.CmdSetArmGrappleState(false);
             Destroy(grapple);
         }
     }
@@ -116,9 +114,6 @@ public class GrappleActivatorAI : MonoBehaviour {
                 {
                     parent.transform.GetChild(0).gameObject.GetComponent<groundForce>().grappled = false;
                 }
-
-                aimShoot.localWeaponSync.CmdGrappleKill();
-                syncMoveState.CmdSetArmGrappleState(false);
                 Destroy(grapple);
             }
         }

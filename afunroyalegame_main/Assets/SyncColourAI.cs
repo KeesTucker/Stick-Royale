@@ -11,7 +11,7 @@ public class SyncColourAI : NetworkBehaviour
 
     void Start()
     {
-        if (isLocalPlayer)
+        if (hasAuthority)
         {
             CmdSetColor(GetComponent<PlayerSetupAI>().parent.GetComponent<ColourSetter>().m_NewColor);
         }

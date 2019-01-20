@@ -268,7 +268,6 @@ public class ShootAI : MonoBehaviour {
 
     IEnumerator FireBullet()
     {
-        localWeaponSync.CmdFire(refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].damage);
         for (int x = 0; x < Mathf.Clamp(Random.Range(refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].bulletSplit / 2, refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].bulletSplit), 1, 9999); x++)
         {
             GameObject bullet = Instantiate(
