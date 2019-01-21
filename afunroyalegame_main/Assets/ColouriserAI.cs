@@ -10,17 +10,14 @@ public class ColouriserAI : MonoBehaviour {
 
     public GameObject local;
 
-    IEnumerator Start()
+    public void ColourFind()
     {
-        yield return new WaitForEndOfFrame();
-        yield return new WaitForEndOfFrame();
-        yield return new WaitForEndOfFrame();
-        yield return new WaitForEndOfFrame();
         //Fetch the SpriteRenderer from the GameObject
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
-        m_NewColor = local.GetComponent<ColourSetter>().m_NewColor;
+        m_NewColor = local.GetComponent<ColourSetterAI>().m_NewColor;
 
         //Set the SpriteRenderer to the Color defined by the Sliders
         m_SpriteRenderer.color = m_NewColor;
     }
+
 }

@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class ItemCheck : MonoBehaviour {
+public class ItemCheck : NetworkBehaviour {
 
     public List<GameObject> items = new List<GameObject>();
     public List<float> itemDistanceRefrences = new List<float>();
@@ -41,7 +42,7 @@ public class ItemCheck : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (e)
+        if (e && hasAuthority)
         {
             checkDistances();
             if (minDistance < pickupDistance)
@@ -58,9 +59,11 @@ public class ItemCheck : MonoBehaviour {
 
     public void checkDistances()
     {
-        GameObject[] itemsArray = GameObject.FindGameObjectsWithTag("WeaponItem");
-        //if (itemsArray.Length > items.Count)
-        //{
+        if (hasAuthority)
+        {
+            GameObject[] itemsArray = GameObject.FindGameObjectsWithTag("WeaponItem");
+            //if (itemsArray.Length > items.Count)
+            //{
             items.Clear();
             itemDistanceRefrences.Clear();
             for (int i = 0; i < itemsArray.Length; i++)
@@ -68,16 +71,17 @@ public class ItemCheck : MonoBehaviour {
                 itemDistanceRefrences.Add(20);
                 items.Add(itemsArray[i]);
             }
-        //}
-        minDistance = 100000;
-        for (int i = 0; i < items.Count; i++)
-        {
-            itemDistanceRefrences[i] = Vector3.Distance(items[i].transform.position, ragdoll.position);
-            if (itemDistanceRefrences[i] < minDistance)
+            //}
+            minDistance = 100000;
+            for (int i = 0; i < items.Count; i++)
             {
-                minDistance = itemDistanceRefrences[i];
-                closestItem = items[i];
-                indexMin = i;
+                itemDistanceRefrences[i] = Vector3.Distance(items[i].transform.position, ragdoll.position);
+                if (itemDistanceRefrences[i] < minDistance)
+                {
+                    minDistance = itemDistanceRefrences[i];
+                    closestItem = items[i];
+                    indexMin = i;
+                }
             }
         }
     }
@@ -104,7 +108,7 @@ public class ItemCheck : MonoBehaviour {
         {
             int id = refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].id;
             refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot] = spawnWeapons.Weapons[weaponIndex].WeaponItem;
-            GameObject.Find("LocalRelay").GetComponent<SpawnItem>().CmdSpawnDropped(closestItem, transform.position, id, direction, closestItem.GetComponent<BulletsLeft>().bullets);
+            GameObject.Find("LocalRelay").GetComponent<SpawnItem>().CmdSpawnDropped(closestItem, transform.position, id, direction, closestItem.GetComponent<BulletsLeft>().bullets); //Need to change this mannnn
         }
 
         Destroy(closestItem);
@@ -125,5 +129,68 @@ public class ItemCheck : MonoBehaviour {
         refrenceKeeper.inventoryCount = Mathf.Clamp(refrenceKeeper.inventoryCount, 0, 4);
 
         checkDistances();
+
+        CmdSetWeapon(weaponIndex, closestItem);
+    }
+
+    [Command]
+    public void CmdSetWeapon(int WI, GameObject weapon)
+    {
+        RpcSetWeapon(WI, weapon);
+        if (!hasAuthority)
+        {
+            if (refrenceKeeper.weaponInventory.Count < 4)
+            {
+                refrenceKeeper.weaponInventory.Add(spawnWeapons.Weapons[weaponIndex].WeaponItem);
+                refrenceKeeper.activeSlot = refrenceKeeper.weaponInventory.Count - 1;
+            }
+            else
+            {
+                refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot] = spawnWeapons.Weapons[weaponIndex].WeaponItem;
+            }
+
+            switchWeapon.Switch(WI);
+
+            aimShoot.scale = spawnWeapons.Weapons[weaponIndex].WeaponItem.scale;
+            aimShoot.position = spawnWeapons.Weapons[weaponIndex].WeaponItem.position;
+            aimShoot.positionFlipped = spawnWeapons.Weapons[weaponIndex].WeaponItem.positionFlipped;
+            shoot.fireRate = spawnWeapons.Weapons[weaponIndex].WeaponItem.fireRate;
+            shoot.recoil = spawnWeapons.Weapons[weaponIndex].WeaponItem.recoil;
+            shoot.impact = spawnWeapons.Weapons[weaponIndex].WeaponItem.impact;
+            shoot.bulletsLeft[refrenceKeeper.activeSlot] = weapon.GetComponent<BulletsLeft>().bullets;
+
+            refrenceKeeper.inventoryCount++;
+            refrenceKeeper.inventoryCount = Mathf.Clamp(refrenceKeeper.inventoryCount, 0, 4);
+        }
+    }
+
+    [ClientRpc]
+    public void RpcSetWeapon(int WI, GameObject weapon)
+    {
+        if (!hasAuthority)
+        {
+            if (refrenceKeeper.weaponInventory.Count < 4)
+            {
+                refrenceKeeper.weaponInventory.Add(spawnWeapons.Weapons[weaponIndex].WeaponItem);
+                refrenceKeeper.activeSlot = refrenceKeeper.weaponInventory.Count - 1;
+            }
+            else
+            {
+                refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot] = spawnWeapons.Weapons[weaponIndex].WeaponItem;
+            }
+
+            switchWeapon.Switch(WI);
+
+            aimShoot.scale = spawnWeapons.Weapons[weaponIndex].WeaponItem.scale;
+            aimShoot.position = spawnWeapons.Weapons[weaponIndex].WeaponItem.position;
+            aimShoot.positionFlipped = spawnWeapons.Weapons[weaponIndex].WeaponItem.positionFlipped;
+            shoot.fireRate = spawnWeapons.Weapons[weaponIndex].WeaponItem.fireRate;
+            shoot.recoil = spawnWeapons.Weapons[weaponIndex].WeaponItem.recoil;
+            shoot.impact = spawnWeapons.Weapons[weaponIndex].WeaponItem.impact;
+            shoot.bulletsLeft[refrenceKeeper.activeSlot] = weapon.GetComponent<BulletsLeft>().bullets;
+
+            refrenceKeeper.inventoryCount++;
+            refrenceKeeper.inventoryCount = Mathf.Clamp(refrenceKeeper.inventoryCount, 0, 4);
+        }
     }
 }

@@ -15,7 +15,11 @@ public class AISetup : NetworkBehaviour
     // Use this for initialization
     void Start()
     {
-        parent.GetComponent<PlayerManagement>().CmdAssignAuthority(GetComponent<NetworkIdentity>());
+        if (local)
+        {
+            parent.GetComponent<PlayerManagement>().CmdAssignAuthority(GetComponent<NetworkIdentity>());
+        }
+        
         for (int i = 0; i < colliders.Length; i++)
         {
             for (int v = 0; v < colliders.Length; v++)
