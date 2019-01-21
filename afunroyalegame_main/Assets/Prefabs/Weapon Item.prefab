@@ -20,11 +20,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4247233804610280}
   - component: {fileID: 54944288256134990}
-  - component: {fileID: 114246710594483516}
   - component: {fileID: 114322209198698278}
   - component: {fileID: 114677809329220096}
   - component: {fileID: 114152776749390038}
   - component: {fileID: 135696111160776352}
+  - component: {fileID: 114408882205438266}
   m_Layer: 11
   m_Name: Weapon Item
   m_TagString: WeaponItem
@@ -81,57 +81,6 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
---- !u!114 &114246710594483516
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1757743736535976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81e7a02f8e48ef24c98d1c7269a6a7af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PickupDistance: 15
-  RealDistance: 0
-  Weapon: {fileID: 4247233804610280}
-  WeaponObject: {fileID: 0}
-  WeaponHand: {fileID: 0}
-  RealWeapon: {fileID: 0}
-  Player: {fileID: 0}
-  bulletPositioner: {fileID: 0}
-  Weapon0: {fileID: 0}
-  Weapon1: {fileID: 0}
-  inventoryCount: 0
-  deactivated: 0
-  listSizeGrabber: 0
-  WeaponIndex: 99
-  NumberOfWeapons: 5
-  individualCount: 0
-  min: 0
-  shoot: {fileID: 0}
-  aimShoot: {fileID: 0}
-  refrenceKeeper: {fileID: 0}
-  serverRefrenceKeeper: {fileID: 0}
-  spawnWeapons: {fileID: 0}
-  localiseTransform: {fileID: 0}
-  switchWeapon: {fileID: 0}
-  updateUI: {fileID: 0}
-  currentItem: {fileID: 0}
-  Pistol: {fileID: 11400000, guid: c9dd77c6c5c99d244809caed329f5a3a, type: 2}
-  TacticalSMG: {fileID: 11400000, guid: 8c097c5ecde3dab4cad5ce3ee70607ba, type: 2}
-  BoltActionSniper: {fileID: 0}
-  SemiAutoSniper: {fileID: 0}
-  HuntingRifle: {fileID: 0}
-  Items: {fileID: 0}
-  switchSpawned: 0
-  switchedWeapon: {fileID: 0}
-  done: 0
-  colliders: []
-  renderers: []
-  WeaponMat: {fileID: 2100000, guid: cfb258c728c27da4cb21a83213ab8aec, type: 2}
-  mouseFollow: {fileID: 0}
-  direction: 0
 --- !u!114 &114322209198698278
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -144,6 +93,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullets: 0
+--- !u!114 &114408882205438266
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1757743736535976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59c21f64afce712428a93c0f972a53c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items: {fileID: 0}
+  WeaponModel: {fileID: 0}
+  colliders: []
+  renderers: []
+  WeaponMat: {fileID: 2100000, guid: cfb258c728c27da4cb21a83213ab8aec, type: 2}
+  WeaponIndex: 0
 --- !u!114 &114677809329220096
 MonoBehaviour:
   m_ObjectHideFlags: 1

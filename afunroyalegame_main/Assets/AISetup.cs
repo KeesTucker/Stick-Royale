@@ -31,6 +31,13 @@ public class AISetup : NetworkBehaviour
 
     public override void OnStartAuthority()
     {
-        Debug.Log(hasAuthority);
+        if (hasAuthority)
+        {
+            foreach (ChunkLoad chunk in GameObject.Find("Terrain").GetComponentsInChildren<ChunkLoad>())
+            {
+                chunk.local = transform;
+            }
+            GameObject.Find("Inventory").GetComponent<UpdateUI>().refrenceKeeper = GetComponent<RefrenceKeeperAI>();
+        }
     }
 }

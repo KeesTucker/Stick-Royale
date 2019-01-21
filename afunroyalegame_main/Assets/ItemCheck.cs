@@ -33,9 +33,12 @@ public class ItemCheck : NetworkBehaviour {
 
     public float direction;
 
+    UpdateUI updateUI;
+
     // Use this for initialization
     IEnumerator Start () {
         spawnWeapons = GameObject.Find("Items").GetComponent<SpawnWeapons>();
+        updateUI = GameObject.Find("PlayerUI").GetComponent<UpdateUIRefrence>().updateUI;
         yield return new WaitForSeconds(0.3f);
         checkDistances();
     }
@@ -97,7 +100,7 @@ public class ItemCheck : NetworkBehaviour {
             direction = -6f;
         }
 
-        weaponIndex = closestItem.GetComponent<Pickup>().WeaponIndex;
+        weaponIndex = closestItem.GetComponent<WeaponIndexHolder>().WeaponIndex;
 
         if (refrenceKeeper.weaponInventory.Count < 4)
         {
@@ -108,7 +111,7 @@ public class ItemCheck : NetworkBehaviour {
         {
             int id = refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].id;
             refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot] = spawnWeapons.Weapons[weaponIndex].WeaponItem;
-            GameObject.Find("LocalRelay").GetComponent<SpawnItem>().CmdSpawnDropped(closestItem, transform.position, id, direction, closestItem.GetComponent<BulletsLeft>().bullets); //Need to change this mannnn
+            GetComponent<SpawnItem>().CmdSpawnDropped(closestItem, transform.position, id, direction, closestItem.GetComponent<BulletsLeft>().bullets); //Need to change this mannnn
         }
 
         Destroy(closestItem);
@@ -127,6 +130,9 @@ public class ItemCheck : NetworkBehaviour {
         //Update Stats
         refrenceKeeper.inventoryCount++;
         refrenceKeeper.inventoryCount = Mathf.Clamp(refrenceKeeper.inventoryCount, 0, 4);
+
+        updateUI.UpdateSlotsUI();
+        updateUI.HighlightSlotOnPickup(refrenceKeeper.activeSlot);
 
         checkDistances();
 

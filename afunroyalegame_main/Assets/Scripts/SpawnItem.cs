@@ -24,7 +24,7 @@ public class SpawnItem : NetworkBehaviour {
     public void CmdSpawnDropped(GameObject ItemPrefab, Vector3 position, int id, float direction, int bulletsLeft)
     {
         switchedWeapon = Instantiate(ItemPrefab, position, Quaternion.identity);
-        switchedWeapon.GetComponent<Pickup>().WeaponIndex = id;
+        switchedWeapon.GetComponent<WeaponIndexHolder>().WeaponIndex = id;
         Destroy(switchedWeapon.transform.GetChild(0).gameObject);
         /*GameObject WeaponModel = Instantiate(
             spawnWeapons.Weapons[id].WeaponItem.itemModel,
@@ -39,8 +39,6 @@ public class SpawnItem : NetworkBehaviour {
         //{
         //    WeaponModel.transform.GetChild(z).gameObject.layer = 11;
         //}
-        switchedWeapon.GetComponent<Pickup>().switchSpawned = true;
-        switchedWeapon.GetComponent<Pickup>().deactivated = false;
         switchedWeapon.transform.SetParent(items.transform);
         //localiseTransform.setTransformItem(WeaponModel, id);
         NetworkServer.Spawn(switchedWeapon);

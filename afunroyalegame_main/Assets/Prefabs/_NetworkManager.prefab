@@ -86,7 +86,7 @@ MonoBehaviour:
   m_DontDestroyOnLoad: 1
   m_RunInBackground: 1
   m_ShowDebugMessages: 0
-  m_PlayerPrefab: {fileID: 1231125277596932, guid: dd190aab37e98e94ebe52f15f3c4e489,
+  m_PlayerPrefab: {fileID: 1798705481898108, guid: 9559fef88bd38da419844d62e9fff83d,
     type: 2}
   m_AutoCreatePlayer: 1
   m_PlayerSpawnMethod: 0

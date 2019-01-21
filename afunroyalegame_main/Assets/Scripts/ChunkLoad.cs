@@ -16,66 +16,64 @@ public class ChunkLoad : NetworkBehaviour {
     // Use this for initialization
     void Start () {
         transform.parent = GameObject.Find("Terrain").transform;
-        local = GameObject.FindGameObjectsWithTag("Ragdoll")[0].transform;
         //r = GetComponent<Renderer>();
         centre = transform.GetChild(0).position.x + transform.GetChild(0).gameObject.GetComponent<ChunkData>().width / 2;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if (!local)
+        if (local)
         {
-            local = GameObject.FindGameObjectsWithTag("Ragdoll")[0].transform;
-        }
-        distance = Mathf.Abs(centre - local.position.x);
-        if (distance > cullF && lastX/* && !isServer*/) //Need to make it only do this once all players have joined
-        {
-            transform.GetChild(0).gameObject.SetActive(false);
-            lastX = false;
-        }
-        else
-        {
-            if (distance < cullF && !lastX)
+            distance = Mathf.Abs(centre - local.position.x);
+            if (distance > cullF && lastX/* && !isServer*/) //Need to make it only do this once all players have joined
             {
-                transform.GetChild(0).gameObject.SetActive(true);
-                lastX = true;
+                transform.GetChild(0).gameObject.SetActive(false);
+                lastX = false;
             }
-            if (distance > cullD && last)
+            else
             {
-                foreach (Transform child in transform.GetChild(0).GetComponentsInChildren<Transform>())
+                if (distance < cullF && !lastX)
                 {
-                    if (!child.gameObject.name.Contains("Chunk"))
+                    transform.GetChild(0).gameObject.SetActive(true);
+                    lastX = true;
+                }
+                if (distance > cullD && last)
+                {
+                    foreach (Transform child in transform.GetChild(0).GetComponentsInChildren<Transform>())
+                    {
+                        if (!child.gameObject.name.Contains("Chunk"))
+                        {
+                            if (child.gameObject.GetComponent<SpriteRenderer>())
+                            {
+                                child.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                            }
+                            if (child.gameObject.GetComponent<Movable>())
+                            {
+                                child.gameObject.SetActive(true);
+                            }
+                            else
+                            {
+                                child.gameObject.SetActive(false);
+                            }
+                        }
+                    }
+
+
+                    last = false;
+                }
+                else if (distance < cullD && !last)
+                {
+                    foreach (Transform child in transform.GetComponentsInChildren<Transform>(true))
                     {
                         if (child.gameObject.GetComponent<SpriteRenderer>())
                         {
-                            child.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                            child.gameObject.GetComponent<SpriteRenderer>().enabled = true;
                         }
-                        if (child.gameObject.GetComponent<Movable>())
-                        {
-                            child.gameObject.SetActive(true);
-                        }
-                        else
-                        {
-                            child.gameObject.SetActive(false);
-                        }
+                        child.gameObject.SetActive(true);
                     }
+                    last = true;
+                    transform.GetChild(0).gameObject.GetComponent<BiomeHolder>().GetBiome();
                 }
-
-
-                last = false;
-            }
-            else if (distance < cullD && !last)
-            {
-                foreach (Transform child in transform.GetComponentsInChildren<Transform>(true))
-                {
-                    if (child.gameObject.GetComponent<SpriteRenderer>())
-                    {
-                        child.gameObject.GetComponent<SpriteRenderer>().enabled = true;
-                    }
-                    child.gameObject.SetActive(true);
-                }
-                last = true;
-                transform.GetChild(0).gameObject.GetComponent<BiomeHolder>().GetBiome();
             }
         }
     }

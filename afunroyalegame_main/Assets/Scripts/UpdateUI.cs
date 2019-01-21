@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UpdateUI : MonoBehaviour {
 
-    public RefrenceKeeper refrenceKeeper;
+    public RefrenceKeeperAI refrenceKeeper;
 
     public ServerRefrenceKeeper serverRefrenceKeeper;
 
@@ -19,10 +19,7 @@ public class UpdateUI : MonoBehaviour {
         serverRefrenceKeeper = GameObject.Find("Server Refrences").GetComponent<ServerRefrenceKeeper>();
         inventorySlots = itemsParent.GetComponentsInChildren<SlotUI>();
         yield return new WaitForEndOfFrame();
-        refrenceKeeper = GameObject.Find("Local").GetComponent<RefrenceKeeper>();
-        refrenceKeeper.updateUI = gameObject.GetComponent<UpdateUI>();
         serverRefrenceKeeper.updateUI = gameObject.GetComponent<UpdateUI>();
-        OpenClose();
     }
 
     public void UpdateSlotsUI()

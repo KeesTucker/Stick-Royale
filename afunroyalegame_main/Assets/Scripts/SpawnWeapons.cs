@@ -51,7 +51,7 @@ public class SpawnWeapons : NetworkBehaviour {
                     WeaponItemPrefab,
                     WeaponSpawnPoints[i],
                     transform.rotation);
-                WeaponItem.GetComponent<Pickup>().WeaponIndex = WeaponIndex;
+                WeaponItem.GetComponent<WeaponIndexHolder>().WeaponIndex = WeaponIndex;
                 WeaponItem.transform.SetParent(ItemsParent);
                 WeaponItem.transform.localScale = new Vector3(1, 1, 1);
                 WeaponItem.gameObject.layer = 11;

@@ -5,29 +5,23 @@ using Mirror;
 
 public class PlayerManagement : NetworkBehaviour {
 
-    public GameObject playerControlledPlayer;
     public GameObject AIPlayer;
     private GameObject playerSpawned;
 
 	// Use this for initialization
 	void Start () {
-        if (isServer)
+        if (isLocalPlayer)
         {
-            CmdSpawn(transform.position, AIPlayer); //Spawn code here
-        }
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+            playerSpawned = Instantiate(AIPlayer, transform.position, transform.rotation);
+            playerSpawned.GetComponent<AISetup>().parent = gameObject;
+            playerSpawned.GetComponent<AISetup>().local = true;
+            CmdSpawn(); //Spawn code here
+        } 
 	}
 
     [Command]
-    public void CmdSpawn(Vector3 pos, GameObject spawnable)
+    public void CmdSpawn()
     {
-        playerSpawned = Instantiate(spawnable, pos, transform.rotation);
-        playerSpawned.GetComponent<AISetup>().parent = gameObject;
-        playerSpawned.GetComponent<AISetup>().local = true;
         NetworkServer.Spawn(playerSpawned);
     }
 
@@ -39,6 +33,6 @@ public class PlayerManagement : NetworkBehaviour {
         {
             identity.RemoveClientAuthority(currentOwner);
         }
-        identity.AssignClientAuthority(GameObject.Find("LocalRelay").GetComponent<PlayerSetup>().connectionToClient); //Need to make a placeholder player object for this, but do that once everything else is sorted
+        identity.AssignClientAuthority(GameObject.Find("LocalConnection").GetComponent<PlayerConnection>().connectionToClient);
     }
 }

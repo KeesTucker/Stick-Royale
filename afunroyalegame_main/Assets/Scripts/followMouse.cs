@@ -4,11 +4,7 @@ using UnityEngine;
 
 public class followMouse : MonoBehaviour {
     public Camera cam;
-	// Use this for initialization
-	void Start () {
-        cam = Camera.main;
-	}
-	
+
 	// Update is called once per frame
 	void FixedUpdate () {
         if (cam)
