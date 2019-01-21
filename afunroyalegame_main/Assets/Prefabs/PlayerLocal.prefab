@@ -635,6 +635,7 @@ GameObject:
   - component: {fileID: 114959897075054726}
   - component: {fileID: 114347183182424706}
   - component: {fileID: 114576114535093198}
+  - component: {fileID: 114319897853511756}
   m_Layer: 24
   m_Name: PlayerLocal
   m_TagString: PosRelay
@@ -3047,6 +3048,7 @@ MonoBehaviour:
   inventoryCount: 0
   activeSlot: 0
   switchWeapon: {fileID: 114943691905562258}
+  updateUI: {fileID: 0}
   one: 1
   two: 0
   three: 0
@@ -3151,6 +3153,17 @@ MonoBehaviour:
   m_MovementThreshold: 0.001
   m_InterpolateRotation: 0.5
   m_InterpolateMovement: 0.5
+--- !u!114 &114319897853511756
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1617520046985736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f2d6cd5074fc8e4694156c3299956c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114339696921955500
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3412,6 +3425,7 @@ MonoBehaviour:
   switchWeapon: {fileID: 114943691905562258}
   aim: {fileID: 4650092873021232}
   direction: 0
+  destroyGun: {fileID: 114319897853511756}
 --- !u!114 &114558690124470602
 MonoBehaviour:
   m_ObjectHideFlags: 1

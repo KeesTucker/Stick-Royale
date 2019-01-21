@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class RefrenceKeeperAI : MonoBehaviour
+public class RefrenceKeeperAI : NetworkBehaviour
 {
     public GameObject WeaponHand;
 
@@ -31,11 +32,14 @@ public class RefrenceKeeperAI : MonoBehaviour
 
     private bool updated = false;
 
-    void Start()
+    public override void OnStartAuthority()
     {
-        updateUI = GameObject.Find("PlayerUI").GetComponent<UpdateUIRefrence>().updateUI;
-        updateUI.refrenceKeeper = this;
-        updateUI.OpenClose();
+        if (hasAuthority)
+        {
+            updateUI = GameObject.Find("PlayerUI").GetComponent<UpdateUIRefrence>().updateUI;
+            updateUI.refrenceKeeper = this;
+            updateUI.OpenClose();
+        }
     }
 
     void Update()
@@ -52,7 +56,10 @@ public class RefrenceKeeperAI : MonoBehaviour
                 activeSlot = 0;
                 activeSlot = Mathf.Clamp(activeSlot, 0, weaponInventory.Count - 1);
                 switchWeapon.Switch(weaponInventory[activeSlot].id);
-                updateUI.HighlightSlot(activeSlot);
+                if (hasAuthority)
+                {
+                    updateUI.HighlightSlot(activeSlot);
+                }
                 one = false;
             }
             if (two)
@@ -60,7 +67,10 @@ public class RefrenceKeeperAI : MonoBehaviour
                 activeSlot = 1;
                 activeSlot = Mathf.Clamp(activeSlot, 0, weaponInventory.Count - 1);
                 switchWeapon.Switch(weaponInventory[activeSlot].id);
-                updateUI.HighlightSlot(activeSlot);
+                if (hasAuthority)
+                {
+                    updateUI.HighlightSlot(activeSlot);
+                }
                 two = false;
             }
             if (three)
@@ -68,7 +78,10 @@ public class RefrenceKeeperAI : MonoBehaviour
                 activeSlot = 2;
                 activeSlot = Mathf.Clamp(activeSlot, 0, weaponInventory.Count - 1);
                 switchWeapon.Switch(weaponInventory[activeSlot].id);
-                updateUI.HighlightSlot(activeSlot);
+                if (hasAuthority)
+                {
+                    updateUI.HighlightSlot(activeSlot);
+                }
                 three = false;
             }
             if (four)
@@ -76,7 +89,10 @@ public class RefrenceKeeperAI : MonoBehaviour
                 activeSlot = 3;
                 activeSlot = Mathf.Clamp(activeSlot, 0, weaponInventory.Count - 1);
                 switchWeapon.Switch(weaponInventory[activeSlot].id);
-                updateUI.HighlightSlot(activeSlot);
+                if (hasAuthority)
+                {
+                    updateUI.HighlightSlot(activeSlot);
+                }
                 four = false;
             }
         }

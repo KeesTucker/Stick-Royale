@@ -790,6 +790,7 @@ GameObject:
   - component: {fileID: 114232678947070884}
   - component: {fileID: 114682672160903712}
   - component: {fileID: 114587068851632060}
+  - component: {fileID: 114710934122791386}
   m_Layer: 24
   m_Name: Player
   m_TagString: PosRelay
@@ -3086,6 +3087,7 @@ MonoBehaviour:
   switchWeapon: {fileID: 114394376543367992}
   aim: {fileID: 4250060556721086}
   direction: 0
+  destroyGun: {fileID: 114710934122791386}
 --- !u!114 &114232678947070884
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3479,6 +3481,7 @@ MonoBehaviour:
   inventoryCount: 0
   activeSlot: 0
   switchWeapon: {fileID: 114394376543367992}
+  updateUI: {fileID: 0}
   one: 1
   two: 0
   three: 0
@@ -3530,6 +3533,17 @@ MonoBehaviour:
   playerMovement: {fileID: 114130606213031244}
   shoot: {fileID: 114787745658144268}
   refrenceKeeper: {fileID: 114668274629599624}
+--- !u!114 &114710934122791386
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1822163060209856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f2d6cd5074fc8e4694156c3299956c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114732219430228734
 MonoBehaviour:
   m_ObjectHideFlags: 1

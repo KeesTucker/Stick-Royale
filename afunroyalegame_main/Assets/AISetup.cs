@@ -14,12 +14,7 @@ public class AISetup : NetworkBehaviour
 
     // Use this for initialization
     void Start()
-    {
-        if (local)
-        {
-            parent.GetComponent<PlayerManagement>().CmdAssignAuthority(GetComponent<NetworkIdentity>());
-        }
-        
+    {   
         for (int i = 0; i < colliders.Length; i++)
         {
             for (int v = 0; v < colliders.Length; v++)
@@ -33,6 +28,7 @@ public class AISetup : NetworkBehaviour
     {
         if (hasAuthority)
         {
+            local = true;
             foreach (ChunkLoad chunk in GameObject.Find("Terrain").GetComponentsInChildren<ChunkLoad>())
             {
                 chunk.local = transform;

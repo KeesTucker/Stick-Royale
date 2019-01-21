@@ -12,9 +12,6 @@ public class PlayerManagement : NetworkBehaviour {
 	void Start () {
         if (isLocalPlayer)
         {
-            playerSpawned = Instantiate(AIPlayer, transform.position, transform.rotation);
-            playerSpawned.GetComponent<AISetup>().parent = gameObject;
-            playerSpawned.GetComponent<AISetup>().local = true;
             CmdSpawn(); //Spawn code here
         } 
 	}
@@ -22,17 +19,19 @@ public class PlayerManagement : NetworkBehaviour {
     [Command]
     public void CmdSpawn()
     {
-        NetworkServer.Spawn(playerSpawned);
+        playerSpawned = Instantiate(AIPlayer, transform.position, transform.rotation);
+        playerSpawned.GetComponent<AISetup>().parent = gameObject;
+        NetworkServer.SpawnWithClientAuthority(playerSpawned, connectionToClient);
     }
 
     [Command]
     public void CmdAssignAuthority(NetworkIdentity identity)
-    {
+    {    
         NetworkConnection currentOwner = identity.clientAuthorityOwner;
         if (currentOwner != null)
         {
             identity.RemoveClientAuthority(currentOwner);
         }
-        identity.AssignClientAuthority(GameObject.Find("LocalConnection").GetComponent<PlayerConnection>().connectionToClient);
+        //identity.AssignClientAuthority();
     }
 }

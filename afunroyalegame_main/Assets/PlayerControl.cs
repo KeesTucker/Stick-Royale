@@ -33,6 +33,7 @@ public class PlayerControl : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(hasAuthority);
         if (Input.GetKeyDown("e"))
         {
             e = true;

@@ -35,6 +35,8 @@ public class ItemCheck : NetworkBehaviour {
 
     UpdateUI updateUI;
 
+    public DestroyGunAI destroyGun;
+
     // Use this for initialization
     IEnumerator Start () {
         spawnWeapons = GameObject.Find("Items").GetComponent<SpawnWeapons>();
@@ -45,13 +47,14 @@ public class ItemCheck : NetworkBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (e && hasAuthority)
+        if (e)
         {
             checkDistances();
             if (minDistance < pickupDistance)
             {
                 pickupItem();
             }
+            Debug.Log("pickingup");
             e = false;
         }
         if (!closestItem)
@@ -62,29 +65,26 @@ public class ItemCheck : NetworkBehaviour {
 
     public void checkDistances()
     {
-        if (hasAuthority)
+        GameObject[] itemsArray = GameObject.FindGameObjectsWithTag("WeaponItem");
+        //if (itemsArray.Length > items.Count)
+        //{
+        items.Clear();
+        itemDistanceRefrences.Clear();
+        for (int i = 0; i < itemsArray.Length; i++)
         {
-            GameObject[] itemsArray = GameObject.FindGameObjectsWithTag("WeaponItem");
-            //if (itemsArray.Length > items.Count)
-            //{
-            items.Clear();
-            itemDistanceRefrences.Clear();
-            for (int i = 0; i < itemsArray.Length; i++)
+            itemDistanceRefrences.Add(20);
+            items.Add(itemsArray[i]);
+        }
+        //}
+        minDistance = 100000;
+        for (int i = 0; i < items.Count; i++)
+        {
+            itemDistanceRefrences[i] = Vector3.Distance(items[i].transform.position, ragdoll.position);
+            if (itemDistanceRefrences[i] < minDistance)
             {
-                itemDistanceRefrences.Add(20);
-                items.Add(itemsArray[i]);
-            }
-            //}
-            minDistance = 100000;
-            for (int i = 0; i < items.Count; i++)
-            {
-                itemDistanceRefrences[i] = Vector3.Distance(items[i].transform.position, ragdoll.position);
-                if (itemDistanceRefrences[i] < minDistance)
-                {
-                    minDistance = itemDistanceRefrences[i];
-                    closestItem = items[i];
-                    indexMin = i;
-                }
+                minDistance = itemDistanceRefrences[i];
+                closestItem = items[i];
+                indexMin = i;
             }
         }
     }
@@ -114,7 +114,6 @@ public class ItemCheck : NetworkBehaviour {
             GetComponent<SpawnItem>().CmdSpawnDropped(closestItem, transform.position, id, direction, closestItem.GetComponent<BulletsLeft>().bullets); //Need to change this mannnn
         }
 
-        Destroy(closestItem);
         itemDistanceRefrences.RemoveAt(indexMin);
         items.RemoveAt(indexMin);
 
@@ -134,69 +133,21 @@ public class ItemCheck : NetworkBehaviour {
         updateUI.UpdateSlotsUI();
         updateUI.HighlightSlotOnPickup(refrenceKeeper.activeSlot);
 
+        if (!isServer)
+        {
+            Destroy(closestItem);
+        }
+        else
+        {
+            StartCoroutine("DestroySlow");
+        }
+        
         checkDistances();
-
-        CmdSetWeapon(weaponIndex, closestItem);
     }
 
-    [Command]
-    public void CmdSetWeapon(int WI, GameObject weapon)
+    IEnumerator DestroySlow()
     {
-        RpcSetWeapon(WI, weapon);
-        if (!hasAuthority)
-        {
-            if (refrenceKeeper.weaponInventory.Count < 4)
-            {
-                refrenceKeeper.weaponInventory.Add(spawnWeapons.Weapons[weaponIndex].WeaponItem);
-                refrenceKeeper.activeSlot = refrenceKeeper.weaponInventory.Count - 1;
-            }
-            else
-            {
-                refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot] = spawnWeapons.Weapons[weaponIndex].WeaponItem;
-            }
-
-            switchWeapon.Switch(WI);
-
-            aimShoot.scale = spawnWeapons.Weapons[weaponIndex].WeaponItem.scale;
-            aimShoot.position = spawnWeapons.Weapons[weaponIndex].WeaponItem.position;
-            aimShoot.positionFlipped = spawnWeapons.Weapons[weaponIndex].WeaponItem.positionFlipped;
-            shoot.fireRate = spawnWeapons.Weapons[weaponIndex].WeaponItem.fireRate;
-            shoot.recoil = spawnWeapons.Weapons[weaponIndex].WeaponItem.recoil;
-            shoot.impact = spawnWeapons.Weapons[weaponIndex].WeaponItem.impact;
-            shoot.bulletsLeft[refrenceKeeper.activeSlot] = weapon.GetComponent<BulletsLeft>().bullets;
-
-            refrenceKeeper.inventoryCount++;
-            refrenceKeeper.inventoryCount = Mathf.Clamp(refrenceKeeper.inventoryCount, 0, 4);
-        }
-    }
-
-    [ClientRpc]
-    public void RpcSetWeapon(int WI, GameObject weapon)
-    {
-        if (!hasAuthority)
-        {
-            if (refrenceKeeper.weaponInventory.Count < 4)
-            {
-                refrenceKeeper.weaponInventory.Add(spawnWeapons.Weapons[weaponIndex].WeaponItem);
-                refrenceKeeper.activeSlot = refrenceKeeper.weaponInventory.Count - 1;
-            }
-            else
-            {
-                refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot] = spawnWeapons.Weapons[weaponIndex].WeaponItem;
-            }
-
-            switchWeapon.Switch(WI);
-
-            aimShoot.scale = spawnWeapons.Weapons[weaponIndex].WeaponItem.scale;
-            aimShoot.position = spawnWeapons.Weapons[weaponIndex].WeaponItem.position;
-            aimShoot.positionFlipped = spawnWeapons.Weapons[weaponIndex].WeaponItem.positionFlipped;
-            shoot.fireRate = spawnWeapons.Weapons[weaponIndex].WeaponItem.fireRate;
-            shoot.recoil = spawnWeapons.Weapons[weaponIndex].WeaponItem.recoil;
-            shoot.impact = spawnWeapons.Weapons[weaponIndex].WeaponItem.impact;
-            shoot.bulletsLeft[refrenceKeeper.activeSlot] = weapon.GetComponent<BulletsLeft>().bullets;
-
-            refrenceKeeper.inventoryCount++;
-            refrenceKeeper.inventoryCount = Mathf.Clamp(refrenceKeeper.inventoryCount, 0, 4);
-        }
+        yield return new WaitForSeconds(0.3f);
+        Destroy(closestItem);
     }
 }

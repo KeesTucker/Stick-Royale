@@ -14,17 +14,18 @@ public class ColourSetterAI : NetworkBehaviour
 
     void Start()
     {
-        local = GetComponent<AISetup>().local;
-        if (!local)
+        foreach (ColouriserAI cai in GetComponentsInChildren<ColouriserAI>())
         {
-            TriggerChildrenColour();
+            cai.ColourFind();
         }
     }
 
     public override void OnStartAuthority()
     {
-        CmdSetColor();
-        TriggerChildrenColour();
+        if (hasAuthority)
+        {
+            CmdSetColor();
+        }
     }
 
     [Command]
@@ -35,10 +36,19 @@ public class ColourSetterAI : NetworkBehaviour
             Random.Range(0f, 1f),
             Random.Range(0f, 1f)
             );
+
+        foreach (ColouriserAI cai in GetComponentsInChildren<ColouriserAI>())
+        {
+            cai.ColourFind();
+        }
+
+        RpcTriggerChildrenColour(m_NewColor);
     }
 
-    public void TriggerChildrenColour()
+    [ClientRpc]
+    public void RpcTriggerChildrenColour(Color color)
     {
+        m_NewColor = color;
         foreach (ColouriserAI cai in GetComponentsInChildren<ColouriserAI>())
         {
             cai.ColourFind();
