@@ -23,14 +23,17 @@ public class BaseControl : NetworkBehaviour {
     public bool three;
     public bool four;
 
+    public bool spaceDone;
+
     public ItemCheck itemCheck;
     public AimShootAI aimShoot;
     public PlayerMovementAI playerMovement;
     public ShootAI shoot;
     public RefrenceKeeperAI refrenceKeeper;
-	
-	// Update is called once per frame
-	void Update () {
+    public SpawnRocketAI spawnRocket;
+
+    // Update is called once per frame
+    void Update () {
 
         if (hasAuthority)
         {
@@ -57,6 +60,11 @@ public class BaseControl : NetworkBehaviour {
             if (space)
             {
                 space = false;
+                if (!spaceDone)
+                {
+                    CmdSetKey("spaceFirst", true);
+                    spaceDone = true;
+                }
                 CmdSetKey("space", true);
             }
             if (r)
@@ -149,6 +157,10 @@ public class BaseControl : NetworkBehaviour {
         {
             refrenceKeeper.four = state;
         }
+        if (key == "spaceFirst")
+        {
+            spawnRocket.AISpace = state;
+        }
     }
 
     [ClientRpc]
@@ -201,6 +213,10 @@ public class BaseControl : NetworkBehaviour {
         if (key == "four")
         {
             refrenceKeeper.four = state;
+        }
+        if (key == "spaceFirst")
+        {
+            spawnRocket.AISpace = state;
         }
     }
 }

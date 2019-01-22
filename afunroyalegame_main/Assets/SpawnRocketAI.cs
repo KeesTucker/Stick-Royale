@@ -22,16 +22,19 @@ public class SpawnRocketAI : NetworkBehaviour
 
     public float timeDeath = 20f;
 
-    public GameObject localRelay;
-
     public bool done = false;
 
     public bool AISpace = false; //ai turns this on
+
+    public bool camActive;
+
+    public GameObject mainCam;
 
     IEnumerator Start()
     {
         rocketGO = Instantiate(rocket, transform.position, transform.rotation); //Spawn Rocket
         rocketGO.transform.GetChild(1).gameObject.SetActive(false);
+        rocketGO.GetComponent<RocketMove>().ragdoll = transform;
         StartCoroutine("timerToKill");
         ragdollColliders = GetComponentsInChildren<Collider>();
         ragdollSpriteRenderers = GetComponentsInChildren<SpriteRenderer>();
@@ -44,15 +47,20 @@ public class SpawnRocketAI : NetworkBehaviour
             sprite.enabled = false;
         }
         yield return new WaitForSeconds(0.2f);
-        rocketGO.GetComponent<SpriteRenderer>().color = transform.parent.gameObject.GetComponent<ColourSetter>().m_NewColor;
-        //localRelay = ErrorMessage BITCH; //Need to somehow get a refrence to this when i gen the relay
+        if (gameObject.name == "PlayerLocal(Clone)" && hasAuthority)
+        {
+            mainCam = GameObject.Find("Main Camera(Clone)");
+            mainCam.GetComponent<Camera>().orthographicSize = 100;
+            camActive = true;
+        }
+        rocketGO.GetComponent<SpriteRenderer>().color = gameObject.GetComponent<ColourSetterAI>().m_NewColor;
     }
 
     void Update()
     {
         if (AISpace)
         {
-            DepressSpace();
+            spaceDepressed = true;
         }
         if (spaceDepressed && !done)
         {
@@ -67,7 +75,6 @@ public class SpawnRocketAI : NetworkBehaviour
             rocketGO.transform.GetChild(1).gameObject.SetActive(true);
             rocketGO.transform.GetChild(0).gameObject.SetActive(false);
             rocketGO.GetComponent<SpriteRenderer>().enabled = false;
-            rocketGO.GetComponent<Rigidbody>().isKinematic = false;
             rocketGO.GetComponent<Collider>().enabled = false;
             StartCoroutine("destroy");
             done = true;
@@ -82,14 +89,17 @@ public class SpawnRocketAI : NetworkBehaviour
 
     IEnumerator destroy()
     {
+        if (camActive)
+        {
+            float size = 100;
+            for (int i = 0; i < 60; i++)
+            {
+                mainCam.GetComponent<Camera>().orthographicSize = size;
+                size--;
+                yield return new WaitForEndOfFrame();
+            }
+        }
         yield return new WaitForSeconds(0.3f);
         Destroy(rocketGO);
-    }
-
-    public void DepressSpace()
-    {
-        spaceDepressed = true;
-        localRelay.GetComponent<SpawnRocketClient>().spaceDepressed = true;
-        localRelay.GetComponent<SpawnRocketClient>().CmdDepressSpace();
     }
 }

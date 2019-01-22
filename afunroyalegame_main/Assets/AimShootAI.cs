@@ -124,7 +124,6 @@ public class AimShootAI : MonoBehaviour {
 
             if (refrenceKeeper.weaponInventory.Count > 0)
             {
-                Debug.Log("working");
                 if (target.rotation.eulerAngles.z < 360 && target.rotation.eulerAngles.z > 180)
                 {
                     shoot.upsideDown = true;

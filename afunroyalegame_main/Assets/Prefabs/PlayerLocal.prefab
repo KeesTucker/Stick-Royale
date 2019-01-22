@@ -636,6 +636,7 @@ GameObject:
   - component: {fileID: 114347183182424706}
   - component: {fileID: 114576114535093198}
   - component: {fileID: 114319897853511756}
+  - component: {fileID: 114605371200754930}
   m_Layer: 24
   m_Name: PlayerLocal
   m_TagString: PosRelay
@@ -3204,11 +3205,13 @@ MonoBehaviour:
   two: 0
   three: 0
   four: 0
+  spaceDone: 0
   itemCheck: {fileID: 114459296555572284}
   aimShoot: {fileID: 114770895989893686}
   playerMovement: {fileID: 114427151881843098}
   shoot: {fileID: 114435935417007564}
   refrenceKeeper: {fileID: 114169648274511698}
+  spawnRocket: {fileID: 114605371200754930}
 --- !u!114 &114350951668775788
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3505,6 +3508,26 @@ MonoBehaviour:
   jumpNow: 0
   layerMask: 4096
   animator: {fileID: 1450774905983980}
+--- !u!114 &114605371200754930
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1617520046985736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b11648b93e111442ae5cd54c248ac66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rocket: {fileID: 1306167415771256, guid: 7b5ad942401a7214e8dbe67f3e97bac7, type: 2}
+  rocketGO: {fileID: 0}
+  spaceDepressed: 0
+  ragdollColliders: []
+  ragdollSpriteRenderers: []
+  particle: {fileID: 0}
+  timeDeath: 20
+  done: 0
+  AISpace: 0
 --- !u!114 &114619184270750910
 MonoBehaviour:
   m_ObjectHideFlags: 1

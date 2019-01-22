@@ -24,29 +24,26 @@ public class SpawnWeapons : NetworkBehaviour {
 
     public List<Vector3> WeaponSpawnPoints = new List<Vector3>();
     
-    ServerRefrenceKeeper refrenceKeeper;
     // Use this for initialization
 
     public List<WeaponList> Weapons = new List<WeaponList>();
 
     void Start()
     {
-        refrenceKeeper = GameObject.Find("Server Refrences").GetComponent<ServerRefrenceKeeper>();
         info = Resources.LoadAll("Items", typeof(Item));
         foreach (Object fileInfo in info)
         {
             Item item = (Item)fileInfo;
             Weapons.Add(new WeaponList { WeaponItem = item, WeaponIndex = item.id });
         }
-        refrenceKeeper.numOfWeapons = Weapons.Count;
         Weapons.Sort();
         if (isServer)
         {
             //Spawn Code Next
             for (int i = 0; i < spawnNumber; i++)
             {
-                WeaponSpawnPoints.Add(new Vector3((i * 20), 0, 0)); //position code is just temporary for debugging
-                WeaponIndex = Random.Range(0, refrenceKeeper.numOfWeapons);
+                WeaponSpawnPoints.Add(new Vector3((i * 20), 50f, 0)); //position code is just temporary for debugging
+                WeaponIndex = Random.Range(0, Weapons.Count);
                 GameObject WeaponItem = Instantiate(
                     WeaponItemPrefab,
                     WeaponSpawnPoints[i],

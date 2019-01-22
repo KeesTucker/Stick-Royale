@@ -24,16 +24,18 @@ public class PlayerControl : NetworkBehaviour
     public bool three;
     public bool four;
 
+    public bool spaceDone;
+
     public ItemCheck itemCheck;
     public AimShootAI aimShoot;
     public PlayerMovementAI playerMovement;
     public ShootAI shoot;
     public RefrenceKeeperAI refrenceKeeper;
+    public SpawnRocketAI spawnRocket;
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(hasAuthority);
         if (Input.GetKeyDown("e"))
         {
             e = true;
@@ -128,6 +130,11 @@ public class PlayerControl : NetworkBehaviour
             if (space)
             {
                 space = false;
+                if (!spaceDone)
+                {
+                    CmdSetKey("spaceFirst", true);
+                    spaceDone = true;
+                }
                 CmdSetKey("space", true);
             }
             if (r)
@@ -220,6 +227,10 @@ public class PlayerControl : NetworkBehaviour
         {
             refrenceKeeper.four = state;
         }
+        if (key == "spaceFirst")
+        {
+            spawnRocket.AISpace = state;
+        }
     }
 
     [ClientRpc]
@@ -272,6 +283,10 @@ public class PlayerControl : NetworkBehaviour
         if (key == "four")
         {
             refrenceKeeper.four = state;
+        }
+        if (key == "spaceFirst")
+        {
+            spawnRocket.AISpace = state;
         }
     }
 }

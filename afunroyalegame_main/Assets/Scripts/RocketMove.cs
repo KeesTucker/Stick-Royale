@@ -6,54 +6,76 @@ public class RocketMove : MonoBehaviour {
 
     public Transform ragdoll;
 
-    GameObject MouseFollower;
+    Transform MouseFollower;
     Rigidbody rb;
     public float force = 600f;
+    public float rotForce = 10f;
 
     public Vector2 mouse;
     public Vector3 screenPoint;
     public Vector2 offset;
     public float angle;
 
+    public SpawnRocketAI spawnRocket;
+
     // Use this for initialization
-    void Start () {
-        MouseFollower = GameObject.Find("MouseFollower");
+    IEnumerator Start () {
+        yield return new WaitForSeconds(0.2f);
+        MouseFollower = ragdoll.Find("AIAim");
         rb = gameObject.GetComponent<Rigidbody>();
-        ragdoll = GameObject.Find("Local/Ragdoll").transform;
+        spawnRocket = ragdoll.gameObject.GetComponent<SpawnRocketAI>();
     }
 	
 	void OnCollisionEnter()
     {
-        ragdoll.GetComponent<SpawnRocket>().DepressSpace();
+        spawnRocket.spaceDepressed = true;
     }
 
     void FixedUpdate()
     {
-        ragdoll.position = transform.position;
-        if (rb.velocity.magnitude < 120f && !ragdoll.GetComponent<SpawnRocket>().spaceDepressed) //Move toward cursor
+        if (ragdoll && !spawnRocket.spaceDepressed)
         {
-            if (MouseFollower.transform.position.x > transform.position.x)
+            if (ragdoll.GetComponent<SpawnRocketAI>().hasAuthority)
             {
-                rb.AddForce(new Vector3(force * Time.deltaTime * (MouseFollower.transform.position.x - transform.position.x), 0, 0));
+                ragdoll.position = transform.position;
             }
-            else if (MouseFollower.transform.position.x < transform.position.x)
+            else
             {
-                rb.AddForce(new Vector3(-force * Time.deltaTime * (transform.position.x - MouseFollower.transform.position.x), 0, 0));
-            }
-
-            if (MouseFollower.transform.position.y > transform.position.y)
-            {
-                rb.AddForce(new Vector3(0, force * Time.deltaTime * (MouseFollower.transform.position.y - transform.position.y), 0));
-            }
-            else if (MouseFollower.transform.position.y < transform.position.y)
-            {
-                rb.AddForce(new Vector3(0, -force * Time.deltaTime * (transform.position.y - MouseFollower.transform.position.y), 0));
+                transform.position = ragdoll.position;
             }
         }
-        mouse = Input.mousePosition; //Mouse position
-        screenPoint = Camera.main.WorldToScreenPoint(transform.localPosition); 
-        offset = new Vector2(mouse.x - screenPoint.x, mouse.y - screenPoint.y); //Convert to world point
-        angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg + 270f; //Convert to angle
-        transform.rotation = Quaternion.Euler(0, 0, angle); //Rotate
+        
+        if (spawnRocket)
+        {
+            if (rb.velocity.magnitude < 120f && !spawnRocket.spaceDepressed) //Move toward cursor
+            {
+                if (MouseFollower.position.x > transform.position.x)
+                {
+                    rb.AddForce(new Vector3(force * Time.deltaTime * (MouseFollower.position.x - transform.position.x), 0, 0));
+                }
+                else if (MouseFollower.position.x < transform.position.x)
+                {
+                    rb.AddForce(new Vector3(-force * Time.deltaTime * (transform.position.x - MouseFollower.position.x), 0, 0));
+                }
+
+                if (MouseFollower.position.y > transform.position.y)
+                {
+                    rb.AddForce(new Vector3(0, force * Time.deltaTime * (MouseFollower.position.y - transform.position.y), 0));
+                }
+                else if (MouseFollower.position.y < transform.position.y)
+                {
+                    rb.AddForce(new Vector3(0, -force * Time.deltaTime * (transform.position.y - MouseFollower.position.y), 0));
+                }
+            }
+
+            if (rb.velocity.y < 0)
+            {
+                transform.rotation = Quaternion.Euler(0, 0, -1 * Mathf.Atan(rb.velocity.x / rb.velocity.y) * Mathf.Rad2Deg + 180);
+            }
+            else
+            {
+                transform.rotation = Quaternion.Euler(0, 0, -1 * Mathf.Atan(rb.velocity.x / rb.velocity.y) * Mathf.Rad2Deg);
+            }
+        }
     }
 }

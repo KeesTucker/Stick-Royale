@@ -54,7 +54,6 @@ public class ItemCheck : NetworkBehaviour {
             {
                 pickupItem();
             }
-            Debug.Log("pickingup");
             e = false;
         }
         if (!closestItem)
