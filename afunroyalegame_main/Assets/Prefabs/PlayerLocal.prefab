@@ -3177,6 +3177,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  weapon: {fileID: 1198879070589158}
+  weaponItem: {fileID: 1757743736535976, guid: a2ab57fb811728d4b8e6d0fd2cc945ba, type: 2}
+  refrenceKeeper: {fileID: 114169648274511698}
 --- !u!114 &114347183182424706
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3528,6 +3531,8 @@ MonoBehaviour:
   timeDeath: 20
   done: 0
   AISpace: 0
+  camActive: 0
+  mainCam: {fileID: 0}
 --- !u!114 &114619184270750910
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -25,7 +25,6 @@ GameObject:
   - component: {fileID: 54322326179791344}
   - component: {fileID: 114256698956290334}
   - component: {fileID: 96278985972137758}
-  - component: {fileID: 114008803640776754}
   - component: {fileID: 114995896937703114}
   - component: {fileID: 114343215254693540}
   m_Layer: 9
@@ -206,18 +205,6 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
---- !u!114 &114008803640776754
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1299477897655968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2edd48482d8765c489e69a859210fa5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IDPlayer: 0
 --- !u!114 &114256698956290334
 MonoBehaviour:
   m_ObjectHideFlags: 1

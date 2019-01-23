@@ -288,7 +288,7 @@ public class ShootAI : MonoBehaviour {
                 bullet.GetComponent<MissLinks>().Miss(hit.collider.gameObject.GetComponent<BulletAvoidPlat>().chainLinks);
             }
             bullet.GetComponent<DamageDealer>().damage = refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].damage;
-            bullet.GetComponent<DamageDealer>().onServer = true; //Ehh this is shit fix it, when i use this on player have to change it
+            bullet.GetComponent<DamageDealer>().onServer = ragdoll.GetComponent<AISetup>().isServer;
             Destroy(bullet, 5.0f);
         }
         shell = Instantiate(

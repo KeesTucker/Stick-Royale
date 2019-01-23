@@ -110,9 +110,8 @@ public class ItemCheck : NetworkBehaviour {
         {
             int id = refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].id;
             refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot] = spawnWeapons.Weapons[weaponIndex].WeaponItem;
-            GetComponent<SpawnItem>().CmdSpawnDropped(closestItem, transform.position, id, direction, closestItem.GetComponent<BulletsLeft>().bullets); //Need to change this mannnn
+            GetComponent<SpawnItem>().CmdSpawnDropped(closestItem, transform.position, id, direction, refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].currentBullets);
         }
-
         itemDistanceRefrences.RemoveAt(indexMin);
         items.RemoveAt(indexMin);
 
@@ -144,7 +143,7 @@ public class ItemCheck : NetworkBehaviour {
         checkDistances();
     }
 
-    IEnumerator DestroySlow()
+    public IEnumerator DestroySlow()
     {
         yield return new WaitForSeconds(0.3f);
         Destroy(closestItem);

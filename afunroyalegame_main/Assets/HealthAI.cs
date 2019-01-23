@@ -6,37 +6,86 @@ using Mirror;
 public class HealthAI : NetworkBehaviour {
     [SyncVar]
     public float health = 200;
-    // Use this for initialization
-    void Start () {
-		
-	}
+
+    public GameObject weapon;
+
+    public GameObject weaponItem;
+
+    public RefrenceKeeperAI refrenceKeeper;
 	
-	// Update is called once per frame
-	void Update () {
-        if (health <= 0)
+	void Start()
+    {
+        refrenceKeeper = GetComponent<RefrenceKeeperAI>();
+    }
+
+    void Update()
+    {
+        if (health <= 0 && isServer)
         {
-            if (isServer)
-            {
-                HealthUpdate();
-            }
-            DestroyPlayer();
-            Destroy(gameObject);
+            CmdDestroyPlayer();
         }
-	}
+    }
 
-    [ClientRpc]
-    public void HealthUpdate()
+    public void CmdDestroyPlayer()
     {
-        health = 0;
+        RpcDestroyPlayer();
+        GetComponent<GroundForceAI>().grappled = true;
+        if (GetComponent<PlayerControl>())
+        {
+            GetComponent<PlayerControl>().enabled = false;
+        }
+        else if (GetComponent<BaseControl>())
+        {
+            GetComponent<BaseControl>().enabled = false;
+        }
+        for (int i = 0; i < refrenceKeeper.weaponInventory.Count; i++)
+        {
+            int id = refrenceKeeper.weaponInventory[i].id;
+            if (hasAuthority)
+            {
+                GetComponent<SpawnItem>().CmdSpawnDropped(weaponItem, transform.position, id, 0, refrenceKeeper.weaponInventory[i].currentBullets);
+            }
+        }
+        refrenceKeeper.weaponInventory.Clear();
+        refrenceKeeper.itemInventory.Clear();
+        refrenceKeeper.inventoryCount = 0;
+        refrenceKeeper.itemCount = 0;
+        for (int i = 0; i < weapon.transform.childCount; i++)
+        {
+            Destroy(weapon.transform.GetChild(i).gameObject);
+        }
     }
 
     [ClientRpc]
-    public void DestroyPlayer()
+    public void RpcDestroyPlayer()
     {
-        Destroy(gameObject);
+        GetComponent<GroundForceAI>().grappled = true;
+        if (GetComponent<PlayerControl>())
+        {
+            GetComponent<PlayerControl>().enabled = false;
+        }
+        else if (GetComponent<BaseControl>())
+        {
+            GetComponent<BaseControl>().enabled = false;
+        }
+        for (int i = 0; i < refrenceKeeper.weaponInventory.Count; i++)
+        {
+            int id = refrenceKeeper.weaponInventory[i].id;
+            if (hasAuthority)
+            {
+                GetComponent<SpawnItem>().CmdSpawnDropped(weaponItem, transform.position, id, 0, refrenceKeeper.weaponInventory[i].currentBullets);
+            }
+        }
+        refrenceKeeper.weaponInventory.Clear();
+        refrenceKeeper.itemInventory.Clear();
+        refrenceKeeper.inventoryCount = 0;
+        refrenceKeeper.itemCount = 0;
+        for (int i = 0; i < weapon.transform.childCount; i++)
+        {
+            Destroy(weapon.transform.GetChild(i).gameObject);
+        }
     }
 
-    [Command]
     public void CmdUpdateHealth(float damage)
     {
         health -= damage;

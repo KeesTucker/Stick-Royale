@@ -25,7 +25,7 @@ public class SpawnItem : NetworkBehaviour {
     {
         switchedWeapon = Instantiate(ItemPrefab, position, Quaternion.identity);
         switchedWeapon.GetComponent<WeaponIndexHolder>().WeaponIndex = id;
-        Destroy(switchedWeapon.transform.GetChild(0).gameObject);
+        //Destroy(switchedWeapon.transform.GetChild(0).gameObject);
         /*GameObject WeaponModel = Instantiate(
             spawnWeapons.Weapons[id].WeaponItem.itemModel,
             switchedWeapon.transform.position,

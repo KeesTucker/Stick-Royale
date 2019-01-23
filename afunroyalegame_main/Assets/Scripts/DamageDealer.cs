@@ -24,52 +24,7 @@ public class DamageDealer : MonoBehaviour {
         }
         if (onServer)
         {
-            if (collisionInfo.gameObject.layer == 15)
-            {
-                if (collisionInfo.gameObject.tag == "PosRelay")
-                {
-                    collisionInfo.gameObject.GetComponent<Health>().CmdUpdateHealth(damage);
-                    onServer = false;
-                    return;
-                }
-                if (collisionInfo.transform.parent.gameObject.name == "Local")
-                {
-                    localRelay.GetComponent<Health>().CmdUpdateHealth(damage);
-                    onServer = false;
-                    return;
-                }
-                else if (collisionInfo.transform.parent.gameObject.tag == "PosRelay")
-                {
-                    collisionInfo.transform.parent.gameObject.GetComponent<Health>().CmdUpdateHealth(damage);
-                    onServer = false;
-                    return;
-                }
-                else if (collisionInfo.transform.parent.parent.gameObject.name == "Local")
-                {
-                    localRelay.GetComponent<Health>().CmdUpdateHealth(damage);
-                    onServer = false;
-                    return;
-                }
-                else if (collisionInfo.transform.parent.parent.gameObject.tag == "PosRelay")
-                {
-                    collisionInfo.transform.parent.parent.gameObject.GetComponent<Health>().CmdUpdateHealth(damage);
-                    onServer = false;
-                    return;
-                }
-                else if (collisionInfo.transform.parent.parent.parent.gameObject.name == "Local")
-                {
-                    localRelay.GetComponent<Health>().CmdUpdateHealth(damage);
-                    onServer = false;
-                    return;
-                }
-                else if (collisionInfo.transform.parent.parent.parent.gameObject.tag == "PosRelay")
-                {
-                    collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<Health>().CmdUpdateHealth(damage);
-                    onServer = false;
-                    return;
-                }
-            }
-            else if (collisionInfo.gameObject.layer == 24)
+            if (collisionInfo.gameObject.layer == 24)
             {
                 if (collisionInfo.transform.parent.gameObject.tag == "PosRelay")
                 {
