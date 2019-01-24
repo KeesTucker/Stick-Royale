@@ -32,7 +32,7 @@ public class DamageDealer : MonoBehaviour {
     {
         if (weapon)
         {
-            damage = weapon.velocity.magnitude * 0.3f;
+            damage = (int)(weapon.velocity.magnitude * 0.3f);
         }
     }
 

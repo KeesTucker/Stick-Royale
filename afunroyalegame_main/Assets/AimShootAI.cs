@@ -70,6 +70,8 @@ public class AimShootAI : MonoBehaviour {
 
     public Collider[] colliders;
 
+    public HealthAI health;
+
     IEnumerator Start()
     {
         fireGrapple = true;
@@ -122,7 +124,7 @@ public class AimShootAI : MonoBehaviour {
 
             activeSlot = refrenceKeeper.activeSlot;
 
-            if (refrenceKeeper.weaponHeld)
+            if (refrenceKeeper.weaponHeld && health.health > 0)
             {
                 if (target.rotation.eulerAngles.z < 360 && target.rotation.eulerAngles.z > 180)
                 {

@@ -3661,7 +3661,6 @@ MonoBehaviour:
   damage: 30
   onServer: 0
   parent: 0
-  localRelay: {fileID: 0}
   speed: 5
   weapon: {fileID: 0}
   isAWeapon: 0
@@ -3811,7 +3810,6 @@ MonoBehaviour:
   damage: 30
   onServer: 0
   parent: 0
-  localRelay: {fileID: 0}
   speed: 5
   weapon: {fileID: 0}
   isAWeapon: 0
@@ -3987,6 +3985,8 @@ MonoBehaviour:
   three: 0
   four: 0
   i: 0
+  scroll: 0
+  oneDone: 0
   spaceDone: 0
   itemCheck: {fileID: 114459296555572284}
   aimShoot: {fileID: 114770895989893686}
@@ -4247,7 +4247,6 @@ MonoBehaviour:
   damage: 30
   onServer: 0
   parent: 0
-  localRelay: {fileID: 0}
   speed: 5
   weapon: {fileID: 0}
   isAWeapon: 0
@@ -4469,7 +4468,6 @@ MonoBehaviour:
   damage: 30
   onServer: 0
   parent: 0
-  localRelay: {fileID: 0}
   speed: 5
   weapon: {fileID: 0}
   isAWeapon: 0
@@ -4660,6 +4658,7 @@ MonoBehaviour:
   aim: {fileID: 4650092873021232}
   rightBeenClicked: 0
   colliders: []
+  health: {fileID: 114339696921955500}
 --- !u!114 &114790645300688230
 MonoBehaviour:
   m_ObjectHideFlags: 1
