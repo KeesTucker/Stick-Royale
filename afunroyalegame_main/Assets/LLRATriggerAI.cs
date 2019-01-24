@@ -7,7 +7,7 @@ public class LLRATriggerAI : MonoBehaviour {
     public GameObject local;
     void OnCollisionEnter(Collision collsionInfo)
     {
-        if (collsionInfo.collider.gameObject.layer == 12)
+        if (collsionInfo.collider.gameObject.layer == 12 || collsionInfo.collider.gameObject.layer == 11)
         {
             local.GetComponent<GroundForceAI>().hitLLRA = true;
         }
@@ -18,7 +18,7 @@ public class LLRATriggerAI : MonoBehaviour {
     }
     void OnCollisionExit(Collision collsionInfo)
     {
-        if (collsionInfo.collider.gameObject.layer == 12)
+        if (collsionInfo.collider.gameObject.layer == 12 || collsionInfo.collider.gameObject.layer == 11)
         {
             local.GetComponent<GroundForceAI>().hitLLRA = false;
         }

@@ -5,7 +5,6 @@ using Mirror;
 
 public class PlayerControl : NetworkBehaviour
 {
-
     public bool e;
     public bool a;
     public bool aLast;
@@ -23,6 +22,10 @@ public class PlayerControl : NetworkBehaviour
     public bool two;
     public bool three;
     public bool four;
+    public bool i;
+
+    public float scroll = 1;
+    public bool oneDone = false;
 
     public bool spaceDone;
 
@@ -75,19 +78,50 @@ public class PlayerControl : NetworkBehaviour
         if (Input.GetKeyDown("1"))
         {
             one = true;
+            scroll = 1;
         }
         if (Input.GetKeyDown("2"))
         {
             two = true;
+            scroll = 2;
         }
         if (Input.GetKeyDown("3"))
         {
             three = true;
+            scroll = 3;
         }
         if (Input.GetKeyDown("4"))
         {
             four = true;
+            scroll = 4;
         }
+
+        if (Input.mouseScrollDelta.y != 0)
+        {
+            scroll -= Input.mouseScrollDelta.y * 1f;
+            scroll = Mathf.Clamp(scroll, 1, 4);
+            if ((int)scroll == 1 && !oneDone)
+            {
+                one = true;
+                oneDone = true;
+            }
+            if ((int)scroll == 2)
+            {
+                two = true;
+                oneDone = false;
+            }
+            if ((int)scroll == 3)
+            {
+                three = true;
+                oneDone = false;
+            }
+            if ((int)scroll == 4 && !oneDone)
+            {
+                four = true;
+                oneDone = true;
+            }
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             lClick = true;
@@ -104,6 +138,15 @@ public class PlayerControl : NetworkBehaviour
         {
             rClick = false;
         }
+        if (Input.GetKeyDown("i"))
+        {
+            i = true;
+        }
+        if (Input.GetKeyUp("i"))
+        {
+            i = false;
+        }
+
 
         if (hasAuthority)
         {
@@ -171,6 +214,11 @@ public class PlayerControl : NetworkBehaviour
             {
                 four = false;
                 CmdSetKey("four", true);
+            }
+            if (i)
+            {
+                refrenceKeeper.updateUI.OpenClose();
+                i = false;
             }
         }
     }

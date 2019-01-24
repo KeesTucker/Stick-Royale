@@ -6,7 +6,7 @@ public class groundForceTriggerLLLA : MonoBehaviour {
     public bool gound;
     void OnCollisionEnter(Collision collsionInfo)
     {
-        if (collsionInfo.collider.gameObject.layer == 12)
+        if (collsionInfo.collider.gameObject.layer == 12 || collsionInfo.collider.gameObject.layer == 11)
         {
             GameObject.Find("Ragdoll").GetComponent<groundForce>().hitLLLA = true;
         }
@@ -17,7 +17,7 @@ public class groundForceTriggerLLLA : MonoBehaviour {
     }
     void OnCollisionExit(Collision collsionInfo)
     {
-        if (collsionInfo.collider.gameObject.layer == 12)
+        if (collsionInfo.collider.gameObject.layer == 12 || collsionInfo.collider.gameObject.layer == 11)
         {
             GameObject.Find("Ragdoll").GetComponent<groundForce>().hitLLLA = false;
         }

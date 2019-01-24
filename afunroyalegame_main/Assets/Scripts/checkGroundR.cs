@@ -11,7 +11,7 @@ public class checkGroundR : MonoBehaviour {
 
     void OnCollisionEnter(Collision collsionInfo)
     {
-        if (collsionInfo.collider.gameObject.layer == 12)
+        if (collsionInfo.collider.gameObject.layer == 12 || collsionInfo.collider.gameObject.layer == 11)
         {
             playerMovement.groundHitR = true;
         }

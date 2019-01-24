@@ -39,6 +39,8 @@ public class ShootAI : MonoBehaviour {
 
     public Material muzzleMaterial;
 
+    public GroundForceAI groundForce;
+
     public GameObject mag;
 
     public int magSize;
@@ -63,6 +65,8 @@ public class ShootAI : MonoBehaviour {
 
     public bool hasMag;
 
+    public Rigidbody[] LimbEnds;
+    public DamageDealer[] LimbDamagers;
 
     public GameObject localRelay;
 
@@ -88,8 +92,22 @@ public class ShootAI : MonoBehaviour {
 
     public GameObject[] playerParts;
 
+    public int nextFist = 0;
+
+    public Transform aim;
+
+    public float punchForce = 10f;
+
+    public Rigidbody body;
+    public Rigidbody lowerBody;
+
     IEnumerator Start()
     {
+        for (int i = 0; i < LimbEnds.Length; i++)
+        {
+            LimbDamagers[i] = LimbEnds[i].gameObject.GetComponent<DamageDealer>();
+        }
+
         for (int i = 0; i < 4; i++)
         {
             bulletsLeft.Add(0);
@@ -125,7 +143,7 @@ public class ShootAI : MonoBehaviour {
         {
             missLinks = false;
         }
-        if (r && refrenceKeeper.inventoryCount > 0 && magSize > 1 && !reloading)
+        if (r && refrenceKeeper.weaponHeld && magSize > 1 && !reloading)
         {
             reloading = true;
             StartCoroutine("Reload");
@@ -150,7 +168,7 @@ public class ShootAI : MonoBehaviour {
         {
             fireButtonDown = false;
         }
-        if (fireButtonDown == true && loopDown == true && refrenceKeeper.weaponInventory.Count > 0)
+        if (fireButtonDown == true && loopDown == true && refrenceKeeper.weaponHeld)
         {
             if (bulletsLeft[refrenceKeeper.activeSlot] < 1 && !reloading)
             {
@@ -187,6 +205,67 @@ public class ShootAI : MonoBehaviour {
             {
                 loopDown = false;
             }
+        }
+        else if (fireButtonDown == true && loopDown == true && !refrenceKeeper.weaponHeld)
+        {
+            StartCoroutine("Punch");
+        }
+    }
+
+    IEnumerator Punch()
+    {
+        int damager = 0;
+        loopDown = false;
+        if (groundForce.touchingWall || groundForce.touchingObject)
+        {
+            Vector3 dir = new Vector3(transform.position.x - aim.position.x, transform.position.y - aim.position.y, 0) * Random.Range(0.7f, 2.5f);
+            for (int i = 0; i < 10; i++)
+            {
+                LimbEnds[nextFist].AddForce(dir * -punchForce * Time.deltaTime);
+                if (refrenceKeeper.isServer)
+                {
+                    LimbDamagers[nextFist].onServer = true;
+                    damager = nextFist;
+                }
+                lowerBody.AddForce(dir * punchForce * Time.deltaTime);
+            }
+            if (nextFist == 0)
+            {
+                nextFist = 1;
+            }
+            else
+            {
+                nextFist = 0;
+            }
+        }
+        else
+        {
+            Vector3 dir = new Vector3(transform.position.x - aim.position.x, transform.position.y - aim.position.y, 0) * Random.Range(0.7f, 2.5f);
+            for (int i = 0; i < 10; i++)
+            {
+                LimbEnds[nextFist + 2].AddForce(dir * (-punchForce / 2f) * Time.deltaTime);
+                if (refrenceKeeper.isServer)
+                {
+                    LimbDamagers[nextFist + 2].onServer = true;
+                    damager = nextFist + 2;
+                }
+                body.AddForce(dir * (punchForce / 2f) * Time.deltaTime);
+            }
+            if (nextFist == 0)
+            {
+                nextFist = 1;
+            }
+            else
+            {
+                nextFist = 0;
+            }
+        }
+        yield return new WaitForSeconds(0.3f);
+        loopDown = true;
+        yield return new WaitForSeconds(0.15f);
+        if (refrenceKeeper.isServer)
+        {
+            LimbDamagers[damager].onServer = false;
         }
     }
 

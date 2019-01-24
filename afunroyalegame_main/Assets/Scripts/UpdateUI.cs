@@ -6,20 +6,15 @@ public class UpdateUI : MonoBehaviour {
 
     public RefrenceKeeperAI refrenceKeeper;
 
-    public ServerRefrenceKeeper serverRefrenceKeeper;
-
     public Transform itemsParent;
 
     public SlotUI[] inventorySlots;
 
     public GameObject canvas;
 
-    IEnumerator Start()
+    void Start()
     {
-        serverRefrenceKeeper = GameObject.Find("Server Refrences").GetComponent<ServerRefrenceKeeper>();
         inventorySlots = itemsParent.GetComponentsInChildren<SlotUI>();
-        yield return new WaitForEndOfFrame();
-        serverRefrenceKeeper.updateUI = gameObject.GetComponent<UpdateUI>();
     }
 
     public void UpdateSlotsUI()

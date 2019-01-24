@@ -7,7 +7,7 @@ public class ULRATriggerAI : MonoBehaviour {
     public GameObject local;
     void OnCollisionEnter(Collision collsionInfo)
     {
-        if (collsionInfo.collider.gameObject.layer == 12)
+        if (collsionInfo.collider.gameObject.layer == 12 || collsionInfo.collider.gameObject.layer == 11)
         {
             local.GetComponent<GroundForceAI>().hitULRA = true;
         }
@@ -18,7 +18,7 @@ public class ULRATriggerAI : MonoBehaviour {
     }
     void OnCollisionExit(Collision collsionInfo)
     {
-        if (collsionInfo.collider.gameObject.layer == 12)
+        if (collsionInfo.collider.gameObject.layer == 12 || collsionInfo.collider.gameObject.layer == 11)
         {
             local.GetComponent<GroundForceAI>().hitULRA = false;
         }

@@ -11,7 +11,7 @@ public class checkGroundLAI : MonoBehaviour
     public GameObject animator;
     void OnCollisionEnter(Collision collsionInfo)
     {
-        if (collsionInfo.collider.gameObject.layer == 12)
+        if (collsionInfo.collider.gameObject.layer == 12 || collsionInfo.collider.gameObject.layer == 11)
         {
             animator.GetComponent<PlayerMovement>().groundHitL = true;
         }

@@ -93,7 +93,7 @@ public class AimShootAI : MonoBehaviour {
 
         if (refrenceKeeper != null)
         {
-            if (refrenceKeeper.weaponInventory.Count > 0)
+            if (refrenceKeeper.weaponHeld)
             {
                 //this bunch of crap converts the ugly value of the rotation of the gun + the aim rotation to a nice value in between -180 and 180 so it can be applied just basically get modulus and rectifys it, then applies it.
                 if ((angleGun - rotationGunManager.transform.rotation.eulerAngles.z + 180f) % 360 < -180)
@@ -122,7 +122,7 @@ public class AimShootAI : MonoBehaviour {
 
             activeSlot = refrenceKeeper.activeSlot;
 
-            if (refrenceKeeper.weaponInventory.Count > 0)
+            if (refrenceKeeper.weaponHeld)
             {
                 if (target.rotation.eulerAngles.z < 360 && target.rotation.eulerAngles.z > 180)
                 {
@@ -145,7 +145,7 @@ public class AimShootAI : MonoBehaviour {
             }
         }
 
-        if (WeaponHand.transform.childCount > 1)
+        if (refrenceKeeper.weaponHeld)
         {
             RHT.gameObject.GetComponent<HingeJoint>().useSpring = true;
             location.gameObject.GetComponent<HingeJoint>().useSpring = true;

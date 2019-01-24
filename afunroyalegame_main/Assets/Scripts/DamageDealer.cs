@@ -8,14 +8,12 @@ public class DamageDealer : MonoBehaviour {
     public bool onServer = false;
     public bool parent = false;
     private GameObject destroyThis;
-    public GameObject localRelay;
     public float speed = 5f;
     public Rigidbody weapon;
     public bool isAWeapon = false;
 
     IEnumerator Start()
     {
-        localRelay = GameObject.Find("LocalRelay");
         yield return new WaitForSeconds(0.1f);
         if (isAWeapon)
         {
@@ -34,7 +32,6 @@ public class DamageDealer : MonoBehaviour {
     {
         if (weapon)
         {
-            Debug.Log(weapon.velocity.magnitude);
             damage = weapon.velocity.magnitude * 0.3f;
         }
     }

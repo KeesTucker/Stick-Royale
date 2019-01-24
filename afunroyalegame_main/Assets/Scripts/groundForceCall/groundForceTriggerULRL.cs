@@ -5,7 +5,7 @@ using UnityEngine;
 public class groundForceTriggerULRL : MonoBehaviour {
     void OnCollisionEnter(Collision collsionInfo)
     {
-        if (collsionInfo.collider.gameObject.layer == 12)
+        if (collsionInfo.collider.gameObject.layer == 12 || collsionInfo.collider.gameObject.layer == 11)
         {
             GameObject.Find("Ragdoll").GetComponent<groundForce>().hitULRL = true;
         }
@@ -16,7 +16,7 @@ public class groundForceTriggerULRL : MonoBehaviour {
     }
     void OnCollisionExit(Collision collsionInfo)
     {
-        if (collsionInfo.collider.gameObject.layer == 12)
+        if (collsionInfo.collider.gameObject.layer == 12 || collsionInfo.collider.gameObject.layer == 11)
         {
             GameObject.Find("Ragdoll").GetComponent<groundForce>().hitULRL = false;
         }

@@ -30,7 +30,22 @@ public class RefrenceKeeperAI : NetworkBehaviour
     public bool three;
     public bool four;
 
+    public bool weaponHeld;
+
+    public Item fists;
+
     private bool updated = false;
+
+    private bool done = false;
+
+    void Start()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            weaponInventory.Add(fists);
+        }
+        StartCoroutine("Begin");
+    }
 
     public override void OnStartAuthority()
     {
@@ -42,6 +57,12 @@ public class RefrenceKeeperAI : NetworkBehaviour
         }
     }
 
+    IEnumerator Begin()
+    {
+        yield return new WaitForSeconds(0.5f);
+        done = true;
+    }
+
     void Update()
     {
         if (!updated && updateUI)
@@ -49,13 +70,20 @@ public class RefrenceKeeperAI : NetworkBehaviour
             updateUI.HighlightSlot(activeSlot);
             updated = true;
         }
-        if (weaponInventory.Count > 0)
+        if (weaponInventory.Count > 0 && done)
         { //If these buttons are smashed multiple guns can be spawned, implement a check to see if child count is greater than three and delete anything higher than that.
             if (one)
             {
                 activeSlot = 0;
-                activeSlot = Mathf.Clamp(activeSlot, 0, weaponInventory.Count - 1);
-                switchWeapon.Switch(weaponInventory[activeSlot].id);
+                activeSlot = Mathf.Clamp(activeSlot, 0, 4);
+                if (weaponInventory[activeSlot].name != "Fists")
+                {
+                    switchWeapon.Switch(weaponInventory[activeSlot].id);
+                }
+                else
+                {
+                    switchWeapon.Switch(100);
+                }
                 if (hasAuthority)
                 {
                     updateUI.HighlightSlot(activeSlot);
@@ -65,8 +93,15 @@ public class RefrenceKeeperAI : NetworkBehaviour
             if (two)
             {
                 activeSlot = 1;
-                activeSlot = Mathf.Clamp(activeSlot, 0, weaponInventory.Count - 1);
-                switchWeapon.Switch(weaponInventory[activeSlot].id);
+                activeSlot = Mathf.Clamp(activeSlot, 0, 4);
+                if (weaponInventory[activeSlot].name != "Fists")
+                {
+                    switchWeapon.Switch(weaponInventory[activeSlot].id);
+                }
+                else
+                {
+                    switchWeapon.Switch(100);
+                }
                 if (hasAuthority)
                 {
                     updateUI.HighlightSlot(activeSlot);
@@ -76,8 +111,15 @@ public class RefrenceKeeperAI : NetworkBehaviour
             if (three)
             {
                 activeSlot = 2;
-                activeSlot = Mathf.Clamp(activeSlot, 0, weaponInventory.Count - 1);
-                switchWeapon.Switch(weaponInventory[activeSlot].id);
+                activeSlot = Mathf.Clamp(activeSlot, 0, 4);
+                if (weaponInventory[activeSlot].name != "Fists")
+                {
+                    switchWeapon.Switch(weaponInventory[activeSlot].id);
+                }
+                else
+                {
+                    switchWeapon.Switch(100);
+                }
                 if (hasAuthority)
                 {
                     updateUI.HighlightSlot(activeSlot);
@@ -87,13 +129,28 @@ public class RefrenceKeeperAI : NetworkBehaviour
             if (four)
             {
                 activeSlot = 3;
-                activeSlot = Mathf.Clamp(activeSlot, 0, weaponInventory.Count - 1);
-                switchWeapon.Switch(weaponInventory[activeSlot].id);
+                activeSlot = Mathf.Clamp(activeSlot, 0, 4);
+                if (weaponInventory[activeSlot].name != "Fists")
+                {
+                    switchWeapon.Switch(weaponInventory[activeSlot].id);
+                }
+                else
+                {
+                    switchWeapon.Switch(100);
+                }
                 if (hasAuthority)
                 {
                     updateUI.HighlightSlot(activeSlot);
                 }
                 four = false;
+            }
+            if (weaponInventory[activeSlot].name != "Fists")
+            {
+                weaponHeld = true;
+            }
+            else
+            {
+                weaponHeld = false;
             }
         }
     }

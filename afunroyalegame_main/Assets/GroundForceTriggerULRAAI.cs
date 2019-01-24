@@ -7,7 +7,7 @@ public class groundForceTriggerULRAAI : MonoBehaviour
     public GameObject local;
     void OnCollisionEnter(Collision collsionInfo)
     {
-        if (collsionInfo.collider.gameObject.layer == 12)
+        if (collsionInfo.collider.gameObject.layer == 12 || collsionInfo.collider.gameObject.layer == 11)
         {
             local.GetComponent<groundForce>().hitULRA = true;
         }
@@ -18,7 +18,7 @@ public class groundForceTriggerULRAAI : MonoBehaviour
     }
     void OnCollisionExit(Collision collsionInfo)
     {
-        if (collsionInfo.collider.gameObject.layer == 12)
+        if (collsionInfo.collider.gameObject.layer == 12 || collsionInfo.collider.gameObject.layer == 11)
         {
             local.GetComponent<groundForce>().hitULRA = false;
         }

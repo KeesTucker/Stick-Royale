@@ -39,6 +39,8 @@ public class ItemCheck : NetworkBehaviour {
 
     public DestroyGunAI destroyGun;
 
+    public Item fists;
+
     // Use this for initialization
     IEnumerator Start () {
         spawnWeapons = GameObject.Find("Items").GetComponent<SpawnWeapons>();
@@ -55,6 +57,10 @@ public class ItemCheck : NetworkBehaviour {
             if (minDistance < pickupDistance)
             {
                 pickupItem();
+            }
+            else if (refrenceKeeper.inventoryCount > 3)
+            {
+                ThrowItem();
             }
             e = false;
         }
@@ -103,14 +109,17 @@ public class ItemCheck : NetworkBehaviour {
 
         weaponIndex = closestItem.GetComponent<WeaponIndexHolder>().WeaponIndex;
 
-        if (refrenceKeeper.weaponInventory.Count < 4)
+        refrenceKeeper.inventoryCount++;
+        refrenceKeeper.inventoryCount = Mathf.Clamp(refrenceKeeper.inventoryCount, 0, 5);
+
+        if (refrenceKeeper.inventoryCount <= 4)
         {
-            refrenceKeeper.weaponInventory.Add(spawnWeapons.Weapons[weaponIndex].WeaponItem);
-            refrenceKeeper.activeSlot = refrenceKeeper.weaponInventory.Count - 1;
+            refrenceKeeper.activeSlot = refrenceKeeper.inventoryCount - 1;
+            refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot] = spawnWeapons.Weapons[weaponIndex].WeaponItem;
         }
         else
         {
-            if (hasAuthority)
+            if (hasAuthority && refrenceKeeper.weaponHeld)
             {
                 GetComponent<SpawnItem>().CmdSpawnDropped(weaponItem, transform.position, refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].id, direction, refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].currentBullets);
             }
@@ -130,15 +139,13 @@ public class ItemCheck : NetworkBehaviour {
         shoot.impact = spawnWeapons.Weapons[weaponIndex].WeaponItem.impact;
         shoot.bulletsLeft[refrenceKeeper.activeSlot] = closestItem.GetComponent<BulletsLeft>().bullets;
         //Update Stats
-        refrenceKeeper.inventoryCount++;
-        refrenceKeeper.inventoryCount = Mathf.Clamp(refrenceKeeper.inventoryCount, 0, 4);
 
         updateUI.UpdateSlotsUI();
         updateUI.HighlightSlotOnPickup(refrenceKeeper.activeSlot);
 
         //if (!isServer)
         //{
-            Destroy(closestItem);
+        Destroy(closestItem);
         //}
         /*else
         {
@@ -146,6 +153,29 @@ public class ItemCheck : NetworkBehaviour {
         }*/
         
         checkDistances();
+    }
+
+    public void ThrowItem()
+    {
+        if (refrenceKeeper.weaponHeld)
+        {
+            if (aim.transform.position.x > transform.position.x)
+            {
+                direction = 12;
+            }
+            else
+            {
+                direction = -12f;
+            }
+            if (hasAuthority)
+            {
+                GetComponent<SpawnItem>().CmdSpawnDropped(weaponItem, transform.position, refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].id, direction, refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].currentBullets);
+            }
+            refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot] = fists;
+            switchWeapon.Switch(100);
+            updateUI.UpdateSlotsUI();
+            updateUI.HighlightSlotOnPickup(refrenceKeeper.activeSlot);
+        }
     }
 
     public IEnumerator DestroySlow()

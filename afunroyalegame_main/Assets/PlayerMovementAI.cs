@@ -349,7 +349,7 @@ public class PlayerMovementAI : MonoBehaviour {
     }
     IEnumerator wallTimer()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.4f);
         jumpable = true;
     }
 
