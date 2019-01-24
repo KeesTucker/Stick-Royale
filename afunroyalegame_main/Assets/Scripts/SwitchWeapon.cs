@@ -14,8 +14,6 @@ public class SwitchWeapon : MonoBehaviour {
     public GameObject muzzleFlash;
     public GameObject localRelay;
 
-    public SyncWeapon localWeaponSync;
-
 	// Use this for initialization
 	IEnumerator Start () {
         bulletPositioner = GameObject.Find("Bullet Positioner");
@@ -34,20 +32,13 @@ public class SwitchWeapon : MonoBehaviour {
         spawnWeapons = GameObject.Find("Items").GetComponent<SpawnWeapons>();
     }
 
-    public void Setup(GameObject relay)
-    {
-        localRelay = relay;
-        localWeaponSync = localRelay.GetComponent<SyncWeapon>();
-    }
-
     public void Switch(int WeaponIndex)
     {
-        localWeaponSync.CmdSwitchWeaponIndex(WeaponIndex);
         if (refrenceKeeper.inventoryCount > 0)
         {
             Destroy(WeaponHand.transform.GetChild(2).gameObject);
         }
-        if(WeaponHand.transform.childCount < 4)
+        if(WeaponHand.transform.childCount < 3)
         {
             shoot.StopReload();
             GameObject HandHeldWeapon = Instantiate(

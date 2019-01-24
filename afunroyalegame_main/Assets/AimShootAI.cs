@@ -129,7 +129,7 @@ public class AimShootAI : MonoBehaviour {
                     shoot.upsideDown = true;
                     multiplier = -1;
                     switched = refrenceKeeper.weaponInventory[activeSlot].switchOffset;
-                    localiseTransform.setTransformHandheldF(WeaponHand.transform.GetChild(2).gameObject, refrenceKeeper.weaponInventory[activeSlot].id);
+                    localiseTransform.setTransformHandheldF(WeaponHand.transform.GetChild(1).gameObject, refrenceKeeper.weaponInventory[activeSlot].id);
                     bulletPositioner.transform.localPosition = refrenceKeeper.weaponInventory[activeSlot].muzzlePosition;
                 }
                 else
@@ -137,7 +137,7 @@ public class AimShootAI : MonoBehaviour {
                     shoot.upsideDown = false;
                     multiplier = 1;
                     switched = refrenceKeeper.weaponInventory[activeSlot].switchOffset;
-                    localiseTransform.setTransformHandheld(WeaponHand.transform.GetChild(2).gameObject, refrenceKeeper.weaponInventory[activeSlot].id);
+                    localiseTransform.setTransformHandheld(WeaponHand.transform.GetChild(1).gameObject, refrenceKeeper.weaponInventory[activeSlot].id);
                     bulletPositioner.transform.localPosition = refrenceKeeper.weaponInventory[activeSlot].muzzlePosition + refrenceKeeper.weaponInventory[activeSlot].switchOffset;
                 }
                 recoilAdder.transform.position = bulletPositioner.transform.position;
@@ -145,7 +145,7 @@ public class AimShootAI : MonoBehaviour {
             }
         }
 
-        if (WeaponHand.transform.childCount > 2)
+        if (WeaponHand.transform.childCount > 1)
         {
             RHT.gameObject.GetComponent<HingeJoint>().useSpring = true;
             location.gameObject.GetComponent<HingeJoint>().useSpring = true;

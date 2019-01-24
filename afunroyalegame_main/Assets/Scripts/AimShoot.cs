@@ -157,7 +157,7 @@ public class AimShoot : MonoBehaviour {
             }
         }
 
-        if (WeaponHand.transform.childCount > 2)
+        if (WeaponHand.transform.childCount > 1)
         {
             RHT.gameObject.GetComponent<HingeJoint>().useSpring = true;
             location.gameObject.GetComponent<HingeJoint>().useSpring = true;

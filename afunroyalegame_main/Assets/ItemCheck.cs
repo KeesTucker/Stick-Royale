@@ -23,6 +23,8 @@ public class ItemCheck : NetworkBehaviour {
 
     public ShootAI shoot;
 
+    public GameObject weaponItem;
+
     public RefrenceKeeperAI refrenceKeeper;
 
     public SpawnWeapons spawnWeapons;
@@ -92,11 +94,11 @@ public class ItemCheck : NetworkBehaviour {
     {
         if (aim.transform.position.x > transform.position.x)
         {
-            direction = 6f;
+            direction = 12;
         }
         else
         {
-            direction = -6f;
+            direction = -12f;
         }
 
         weaponIndex = closestItem.GetComponent<WeaponIndexHolder>().WeaponIndex;
@@ -108,9 +110,12 @@ public class ItemCheck : NetworkBehaviour {
         }
         else
         {
+            if (hasAuthority)
+            {
+                GetComponent<SpawnItem>().CmdSpawnDropped(weaponItem, transform.position, refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].id, direction, refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].currentBullets);
+            }
             int id = refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].id;
             refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot] = spawnWeapons.Weapons[weaponIndex].WeaponItem;
-            GetComponent<SpawnItem>().CmdSpawnDropped(closestItem, transform.position, id, direction, refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].currentBullets);
         }
         itemDistanceRefrences.RemoveAt(indexMin);
         items.RemoveAt(indexMin);
@@ -131,21 +136,22 @@ public class ItemCheck : NetworkBehaviour {
         updateUI.UpdateSlotsUI();
         updateUI.HighlightSlotOnPickup(refrenceKeeper.activeSlot);
 
-        if (!isServer)
-        {
+        //if (!isServer)
+        //{
             Destroy(closestItem);
-        }
-        else
+        //}
+        /*else
         {
             StartCoroutine("DestroySlow");
-        }
+        }*/
         
         checkDistances();
     }
 
     public IEnumerator DestroySlow()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.1f);
+        closestItem.tag = "Untagged";
         Destroy(closestItem);
     }
 }

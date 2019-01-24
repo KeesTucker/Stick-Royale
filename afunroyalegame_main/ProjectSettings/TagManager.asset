@@ -27,6 +27,8 @@ TagManager:
   - GrappleHandAI
   - PosRelay
   - WeaponItem
+  - Hands
+  - Feet
   layers:
   - Default
   - TransparentFX

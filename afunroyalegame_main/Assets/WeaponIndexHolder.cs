@@ -14,9 +14,22 @@ public class WeaponIndexHolder : NetworkBehaviour {
     [SyncVar]
     public int WeaponIndex;
 
-    void Start()
+    IEnumerator Start()
     {
         items = GameObject.Find("Items").transform;
+        if (items.gameObject.GetComponent<SpawnWeapons>().done)
+        {
+            GetModel();
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.2f);
+            GetModel();
+        }
+    }
+
+    public void GetModel()
+    {
         transform.parent = items;
         WeaponModel = Instantiate(
                 items.gameObject.GetComponent<SpawnWeapons>().Weapons[WeaponIndex].WeaponItem.itemModel,

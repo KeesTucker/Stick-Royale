@@ -43,7 +43,7 @@ public class HealthAI : NetworkBehaviour {
             int id = refrenceKeeper.weaponInventory[i].id;
             if (hasAuthority)
             {
-                GetComponent<SpawnItem>().CmdSpawnDropped(weaponItem, transform.position, id, 0, refrenceKeeper.weaponInventory[i].currentBullets);
+                GetComponent<SpawnItem>().CmdSpawnKilled(weaponItem, transform.position, id, 0, refrenceKeeper.weaponInventory[i].currentBullets);
             }
         }
         refrenceKeeper.weaponInventory.Clear();

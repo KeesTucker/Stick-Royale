@@ -72,6 +72,16 @@ public class PlayerMovementAI : MonoBehaviour {
 
     public SyncMoveStateAI syncMoveState;
 
+    public float downForce;
+
+    public bool inAir;
+
+    public SpawnRocketAI spawnRocket;
+
+    public Rigidbody[] downForceLimbs;
+
+    public int layerMask = 1 << 12;
+
     void Start()
     {
         jetMaterialL = jetFlashL.GetComponent<Renderer>().material;
@@ -255,8 +265,8 @@ public class PlayerMovementAI : MonoBehaviour {
                 {
                     body.AddForce(0, (jumpForce * 0.5f - (i * 20)) * Time.deltaTime, 0);
 
-                    lFoot.AddForce(-lFoot.transform.right * 0.1f * (jumpForce - (i * 20)) * Time.deltaTime);
-                    rFoot.AddForce(rFoot.transform.right * 0.1f * (jumpForce - (i * 20)) * Time.deltaTime);
+                    lFoot.AddForce(-lFoot.transform.right * 0.05f * (jumpForce - (i * 20)) * Time.deltaTime);
+                    rFoot.AddForce(rFoot.transform.right * 0.05f * (jumpForce - (i * 20)) * Time.deltaTime);
 
                     spaceDepressed = false;
                     groundHitL = false;
@@ -300,11 +310,46 @@ public class PlayerMovementAI : MonoBehaviour {
             jetMaterialL.SetFloat("Vector1_B173D9FB", 0);
             jetMaterialR.SetFloat("Vector1_B173D9FB", 0);
         }
+        if (groundforce.touchingWall && jumpable)
+        {
+            if (spaceDepressed)
+            {
+                jumpable = false;
+                for (int i = 0; i < 15; i++)
+                {
+                    body.AddForce(0, (jumpForce * 0.4f - (i * 20)) * Time.deltaTime, 0);
+
+                    lFoot.AddForce(lFoot.transform.up * 0.1f * (jumpForce - (i * 20)) * Time.deltaTime);
+                    rFoot.AddForce(rFoot.transform.up * 0.1f * (jumpForce - (i * 20)) * Time.deltaTime);
+
+                    spaceDepressed = false;
+                }
+                StartCoroutine("wallTimer");
+            }
+        }
+        if (!groundforce.touchingWall && !groundforce.touchingObject && !inAir) //Add raycast so it doesnt apply imediatley!!!!!!!!!!!
+        {
+            inAir = true;
+        }
+        else if (groundforce.touchingWall || groundforce.touchingObject && inAir)
+        {
+            inAir = false;
+        }
+        if (inAir && !groundforce.grappled)
+        {
+            StartCoroutine("applyDownForce");
+            inAir = false;
+        }
     }
 
     IEnumerator jumpTimer()
     {
-        yield return new WaitForSeconds(0.001f);
+        yield return new WaitForSeconds(0.05f);
+        jumpable = true;
+    }
+    IEnumerator wallTimer()
+    {
+        yield return new WaitForSeconds(0.2f);
         jumpable = true;
     }
 
@@ -320,6 +365,20 @@ public class PlayerMovementAI : MonoBehaviour {
         {
             fire = false;
         }
+    }
+
+    IEnumerator applyDownForce()
+    {
+        float i = 15f;
+        while (inAir && !groundforce.grappled && spawnRocket.destroyed && body.velocity.y > -15f)
+        {
+            foreach (Rigidbody rb in downForceLimbs)
+            {
+                rb.AddForce(0, -i * Time.deltaTime * 100f, 0);
+            }
+            yield return new WaitForSeconds(Time.deltaTime * 1);
+        }
+        inAir = false;
     }
 
     public void jetTimer()

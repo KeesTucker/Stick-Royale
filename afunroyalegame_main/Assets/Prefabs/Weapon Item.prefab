@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114152776749390038}
   - component: {fileID: 135696111160776352}
   - component: {fileID: 114408882205438266}
+  - component: {fileID: 114709354502318556}
   m_Layer: 11
   m_Name: Weapon Item
   m_TagString: WeaponItem
@@ -53,7 +54,7 @@ Rigidbody:
   m_GameObject: {fileID: 1757743736535976}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 0.05
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -125,6 +126,23 @@ MonoBehaviour:
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
   m_AssetId: a2ab57fb811728d4b8e6d0fd2cc945ba
+--- !u!114 &114709354502318556
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1757743736535976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c50d7c6fe1d05d241819027e3b2b74a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  onServer: 0
+  parent: 0
+  localRelay: {fileID: 0}
+  speed: 2
+  weapon: {fileID: 0}
 --- !u!135 &135696111160776352
 SphereCollider:
   m_ObjectHideFlags: 1

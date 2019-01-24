@@ -20,6 +20,8 @@ public class GroundForceAI : MonoBehaviour
     public bool hitLLRL = true;
     public bool hitULLL = true;
     public bool hitLLLL = true;
+    public bool hitLowerBody = false;
+    public bool hitHead = false;
     public bool hitBodyObject = false;
     public bool hitULRAObject = false;
     public bool hitLLRAObject = false;
@@ -32,6 +34,7 @@ public class GroundForceAI : MonoBehaviour
     public bool hasHit = true;
     public bool touchingGround = true;
     public bool touchingObject = true;
+    public bool touchingWall = true;
 
     public float appliedForce;
     public float counter = 0;
@@ -43,6 +46,7 @@ public class GroundForceAI : MonoBehaviour
     public RaycastHit hitR;
 
     public RaycastHit hitC;
+    public RaycastHit hitb;
 
     [SerializeField]
     public GameObject[] playerParts;
@@ -55,9 +59,12 @@ public class GroundForceAI : MonoBehaviour
 
     public SyncMoveStateAI syncMoveState;
 
-    void Start()
+    IEnumerator Start()
     {
+        yield return new WaitForSeconds(0.3f);
         //grappleActivatorScript = grapple.GetComponent<grappleActivatorAI>(); //Grapple Needs to be a seperate type for ai
+        hitLowerBody = false;
+        hitHead = false;
     }
 
     void OnCollisionEnter(Collision collsionInfo)
@@ -164,6 +171,15 @@ public class GroundForceAI : MonoBehaviour
                 }
                 counterO = counterO + 2.0f;
             }
+        }
+
+        if (hitULRA == false && hitBody == false && hitLLRA == false && hitULLA == false && hitLLLA == false && hitULRL == false && hitLLRL == false && hitULLL == false && hitLLLL == false && !hitLowerBody && !hitHead)
+        {
+            touchingWall = false;
+        }
+        else
+        {
+            touchingWall = true;
         }
     }
 }

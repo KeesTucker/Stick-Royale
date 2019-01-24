@@ -52,7 +52,6 @@ public class PlayerSetup : NetworkBehaviour {
             transform.Find("RagdollPlaceholder").gameObject.SetActive(false);
             gameObject.name = "LocalRelay";
             m_NewColor = GameObject.Find("Local").GetComponent<ColourSetter>().m_NewColor;
-            GameObject.Find("Local/Ragdoll/ULRA/LLRA/Rotation Gun Manager/Weapon").GetComponent<SwitchWeapon>().Setup(gameObject);
             GameObject.Find("Local/Ragdoll/ULRA/LLRA/Rotation Gun Manager/Weapon").GetComponent<Shoot>().Setup(gameObject);
             GameObject.Find("Local/Ragdoll").GetComponent<AimShoot>().Setup(gameObject);
             /*sceneCamera = Camera.main;

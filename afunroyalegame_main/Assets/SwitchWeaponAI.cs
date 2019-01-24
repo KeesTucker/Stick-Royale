@@ -33,9 +33,9 @@ public class SwitchWeaponAI : MonoBehaviour {
     {
         if (refrenceKeeper.inventoryCount > 0)
         {
-            Destroy(WeaponHand.transform.GetChild(2).gameObject);
+            Destroy(WeaponHand.transform.GetChild(1).gameObject);
         }
-        if (WeaponHand.transform.childCount < 4)
+        if (WeaponHand.transform.childCount < 3)
         {
             shoot.StopReload();
             GameObject HandHeldWeapon = Instantiate(

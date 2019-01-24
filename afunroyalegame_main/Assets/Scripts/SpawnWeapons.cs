@@ -28,6 +28,8 @@ public class SpawnWeapons : NetworkBehaviour {
 
     public List<WeaponList> Weapons = new List<WeaponList>();
 
+    public bool done = false;
+
     void Start()
     {
         info = Resources.LoadAll("Items", typeof(Item));
@@ -37,6 +39,7 @@ public class SpawnWeapons : NetworkBehaviour {
             Weapons.Add(new WeaponList { WeaponItem = item, WeaponIndex = item.id });
         }
         Weapons.Sort();
+        done = true;
         if (isServer)
         {
             //Spawn Code Next

@@ -2907,7 +2907,7 @@ ConstantForce:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1822163060209856}
   m_Enabled: 1
-  m_Force: {x: 0, y: -66.666664, z: 0}
+  m_Force: {x: 0, y: -120, z: 0}
   m_RelativeForce: {x: 0, y: 0, z: 0}
   m_Torque: {x: 0, y: 0, z: 0}
   m_RelativeTorque: {x: 0, y: 0, z: 0}
@@ -3083,6 +3083,7 @@ MonoBehaviour:
   pickupDistance: 15
   aimShoot: {fileID: 114418638814728506}
   shoot: {fileID: 114787745658144268}
+  weaponItem: {fileID: 1757743736535976, guid: a2ab57fb811728d4b8e6d0fd2cc945ba, type: 2}
   refrenceKeeper: {fileID: 114668274629599624}
   spawnWeapons: {fileID: 0}
   switchWeapon: {fileID: 114394376543367992}
@@ -3400,7 +3401,10 @@ MonoBehaviour:
   switchedWeapon: {fileID: 0}
   spawnWeapons: {fileID: 0}
   items: {fileID: 0}
+  WeaponItem: {fileID: 1757743736535976, guid: a2ab57fb811728d4b8e6d0fd2cc945ba, type: 2}
   localiseTransform: {fileID: 0}
+  aim: {fileID: 4250060556721086}
+  force: 1000
 --- !u!114 &114593886363542084
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3623,6 +3627,7 @@ MonoBehaviour:
   hasHit: 0
   touchingGround: 0
   touchingObject: 0
+  touchingWall: 1
   appliedForce: 0
   counter: 0
   counterO: 0

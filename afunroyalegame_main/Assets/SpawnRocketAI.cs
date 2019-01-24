@@ -30,6 +30,8 @@ public class SpawnRocketAI : NetworkBehaviour
 
     public GameObject mainCam;
 
+    public bool destroyed = false;
+
     IEnumerator Start()
     {
         rocketGO = Instantiate(rocket, transform.position, transform.rotation); //Spawn Rocket
@@ -100,6 +102,7 @@ public class SpawnRocketAI : NetworkBehaviour
             }
         }
         yield return new WaitForSeconds(0.3f);
+        destroyed = true;
         Destroy(rocketGO);
     }
 }

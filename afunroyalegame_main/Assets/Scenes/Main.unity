@@ -1259,6 +1259,7 @@ MonoBehaviour:
   WeaponMat: {fileID: 2100000, guid: cfb258c728c27da4cb21a83213ab8aec, type: 2}
   WeaponModel: {fileID: 0}
   WeaponSpawnPoints: []
+  done: 0
 --- !u!114 &1950980130
 MonoBehaviour:
   m_ObjectHideFlags: 0
