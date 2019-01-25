@@ -34,7 +34,7 @@ public class HingeSwap : MonoBehaviour {
         }
         else
         {
-            hjFallBack.useSpring = true;
+            //hjFallBack.useSpring = true;
         }
 	}
 }

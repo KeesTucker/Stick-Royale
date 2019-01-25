@@ -199,7 +199,7 @@ public class PlayerMovementAI : MonoBehaviour {
         }
         else if (aDepressed == true)
         {
-            body.AddForce(-walkForce * Time.deltaTime * 1f, 0, 0);
+            body.AddForce(-walkForce * Time.deltaTime * 2f, 0, 0);
             anim.SetTrigger(walkingL);
             state = 1;
             //syncMoveState.CmdSetState(state);
@@ -234,7 +234,7 @@ public class PlayerMovementAI : MonoBehaviour {
         }
         else if (dDepressed == true)
         {
-            body.AddForce(walkForce * Time.deltaTime * 1f, 0, 0);
+            body.AddForce(walkForce * Time.deltaTime * 2f, 0, 0);
             anim.SetTrigger(walkingR);
             state = 0;
             //syncMoveState.CmdSetState(state);
@@ -317,7 +317,7 @@ public class PlayerMovementAI : MonoBehaviour {
                 jumpable = false;
                 for (int i = 0; i < 15; i++)
                 {
-                    body.AddForce(0, (jumpForce * 0.4f - (i * 20)) * Time.deltaTime, 0);
+                    body.AddForce(0, (jumpForce * 0.65f - (i * 20)) * Time.deltaTime, 0);
 
                     lFoot.AddForce(lFoot.transform.up * 0.1f * (jumpForce - (i * 20)) * Time.deltaTime);
                     rFoot.AddForce(rFoot.transform.up * 0.1f * (jumpForce - (i * 20)) * Time.deltaTime);
