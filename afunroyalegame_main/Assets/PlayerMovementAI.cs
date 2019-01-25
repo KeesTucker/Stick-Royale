@@ -82,6 +82,13 @@ public class PlayerMovementAI : MonoBehaviour {
 
     public int layerMask = 1 << 12;
 
+    public bool jumping = true;
+
+    public GameObject footL;
+    public GameObject footR;
+
+    public GameObject jumpParticle;
+
     void Start()
     {
         jetMaterialL = jetFlashL.GetComponent<Renderer>().material;
@@ -158,13 +165,27 @@ public class PlayerMovementAI : MonoBehaviour {
             keysTouched = true;
         }
 
-        if (aDepressed && Ragdoll.velocity.x < -maxSpeed)
+        if (shiftDepressed)
         {
-            body.AddForce(walkForce * Time.deltaTime * 2f, 0, 0);
+            if (aDepressed && Ragdoll.velocity.x < -maxSpeed)
+            {
+                body.AddForce(walkForce * Time.deltaTime * 2f, 0, 0);
+            }
+            if (dDepressed && Ragdoll.velocity.x > maxSpeed)
+            {
+                body.AddForce(-walkForce * Time.deltaTime * 2f, 0, 0);
+            }
         }
-        if (dDepressed && Ragdoll.velocity.x > maxSpeed)
+        else
         {
-            body.AddForce(-walkForce * Time.deltaTime * 2f, 0, 0);
+            if (aDepressed && Ragdoll.velocity.x < -maxSpeed / 2)
+            {
+                body.AddForce(walkForce * Time.deltaTime * 2f, 0, 0);
+            }
+            if (dDepressed && Ragdoll.velocity.x > maxSpeed / 2)
+            {
+                body.AddForce(-walkForce * Time.deltaTime * 2f, 0, 0);
+            }
         }
         if (!dDepressed && !aDepressed && !spaceDepressed && groundforce.touchingGround && !grappleSince && !fire)
         {
@@ -175,8 +196,8 @@ public class PlayerMovementAI : MonoBehaviour {
         {
             if (shiftDepressed == true)
             {
-                lFoot.AddForce(-walkForce * Time.deltaTime * 0.85f, walkForce * Time.deltaTime * 0.05f, 0);
-                rFoot.AddForce(-walkForce * Time.deltaTime * 0.85f, walkForce * Time.deltaTime * 0.05f, 0);
+                //lFoot.AddForce(-walkForce * Time.deltaTime * 0.45f, walkForce * Time.deltaTime * 0.05f, 0);
+                //rFoot.AddForce(-walkForce * Time.deltaTime * 0.45f, walkForce * Time.deltaTime * 0.05f, 0);
                 body.AddForce(-walkForce * Time.deltaTime * 1f, 0, 0);
                 anim.SetTrigger(walkingL);
                 state = 1;
@@ -187,9 +208,9 @@ public class PlayerMovementAI : MonoBehaviour {
 
             else
             {
-                lFoot.AddForce(-walkForce * Time.deltaTime * 0.45f, walkForce * Time.deltaTime * 0.05f, 0);
-                rFoot.AddForce(-walkForce * Time.deltaTime * 0.45f, walkForce * Time.deltaTime * 0.05f, 0);
-                body.AddForce(-walkForce * Time.deltaTime * 1f, 0, 0);
+                //lFoot.AddForce(-walkForce * Time.deltaTime * 0.25f, walkForce * Time.deltaTime * 0.05f, 0);
+                //rFoot.AddForce(-walkForce * Time.deltaTime * 0.25f, walkForce * Time.deltaTime * 0.05f, 0);
+                body.AddForce(-walkForce * Time.deltaTime * 0.6f, 0, 0);
                 anim.SetTrigger(walkingL);
                 state = 1;
                 //syncMoveState.CmdSetState(state);
@@ -199,7 +220,7 @@ public class PlayerMovementAI : MonoBehaviour {
         }
         else if (aDepressed == true)
         {
-            body.AddForce(-walkForce * Time.deltaTime * 2f, 0, 0);
+            body.AddForce(-walkForce * Time.deltaTime * 0.6f, 0, 0);
             anim.SetTrigger(walkingL);
             state = 1;
             //syncMoveState.CmdSetState(state);
@@ -210,8 +231,8 @@ public class PlayerMovementAI : MonoBehaviour {
         {
             if (shiftDepressed == true)
             {
-                lFoot.AddForce(walkForce * Time.deltaTime * 0.85f, walkForce * Time.deltaTime * 0.05f, 0);
-                rFoot.AddForce(walkForce * Time.deltaTime * 0.85f, walkForce * Time.deltaTime * 0.05f, 0);
+                //lFoot.AddForce(walkForce * Time.deltaTime * 0.45f, walkForce * Time.deltaTime * 0.05f, 0);
+                //rFoot.AddForce(walkForce * Time.deltaTime * 0.45f, walkForce * Time.deltaTime * 0.05f, 0);
                 body.AddForce(walkForce * Time.deltaTime * 1f, 0, 0);
                 anim.SetTrigger(walkingR);
                 state = 0;
@@ -222,9 +243,9 @@ public class PlayerMovementAI : MonoBehaviour {
 
             else
             {
-                lFoot.AddForce(walkForce * Time.deltaTime * 0.45f, walkForce * Time.deltaTime * 0.05f, 0);
-                rFoot.AddForce(walkForce * Time.deltaTime * 0.45f, walkForce * Time.deltaTime * 0.05f, 0);
-                body.AddForce(walkForce * Time.deltaTime * 1f, 0, 0);
+                //lFoot.AddForce(walkForce * Time.deltaTime * 0.25f, walkForce * Time.deltaTime * 0.05f, 0);
+                //rFoot.AddForce(walkForce * Time.deltaTime * 0.25f, walkForce * Time.deltaTime * 0.05f, 0);
+                body.AddForce(walkForce * Time.deltaTime * 0.6f, 0, 0);
                 anim.SetTrigger(walkingR);
                 state = 0;
                 //syncMoveState.CmdSetState(state);
@@ -234,7 +255,7 @@ public class PlayerMovementAI : MonoBehaviour {
         }
         else if (dDepressed == true)
         {
-            body.AddForce(walkForce * Time.deltaTime * 2f, 0, 0);
+            body.AddForce(walkForce * Time.deltaTime * 0.6f, 0, 0);
             anim.SetTrigger(walkingR);
             state = 0;
             //syncMoveState.CmdSetState(state);
@@ -265,13 +286,17 @@ public class PlayerMovementAI : MonoBehaviour {
                 {
                     body.AddForce(0, (jumpForce * 0.5f - (i * 20)) * Time.deltaTime, 0);
 
-                    lFoot.AddForce(-lFoot.transform.right * 0.05f * (jumpForce - (i * 20)) * Time.deltaTime);
-                    rFoot.AddForce(rFoot.transform.right * 0.05f * (jumpForce - (i * 20)) * Time.deltaTime);
+                    lFoot.AddForce(-lFoot.transform.right * 0.025f * (jumpForce - (i * 20)) * Time.deltaTime);
+                    rFoot.AddForce(rFoot.transform.right * 0.025f * (jumpForce - (i * 20)) * Time.deltaTime);
 
                     spaceDepressed = false;
                     groundHitL = false;
                     groundHitR = false;
                 }
+                GameObject particleL = Instantiate(jumpParticle, footL.transform.position, Quaternion.identity);
+                particleL.transform.parent = footL.transform;
+                GameObject particleR = Instantiate(jumpParticle, footR.transform.position, Quaternion.identity);
+                particleR.transform.parent = footR.transform;
                 StartCoroutine("jumpTimer");
             }
 
@@ -319,13 +344,23 @@ public class PlayerMovementAI : MonoBehaviour {
                 {
                     body.AddForce(0, (jumpForce * 0.65f - (i * 20)) * Time.deltaTime, 0);
 
-                    lFoot.AddForce(lFoot.transform.up * 0.1f * (jumpForce - (i * 20)) * Time.deltaTime);
-                    rFoot.AddForce(rFoot.transform.up * 0.1f * (jumpForce - (i * 20)) * Time.deltaTime);
+                    //body.velocity = new Vector3(body.velocity.x, body.velocity.y + 20f, 0);
+
+                    lFoot.AddForce(lFoot.transform.up * 0.05f * (jumpForce - (i * 20)) * Time.deltaTime);
+                    rFoot.AddForce(rFoot.transform.up * 0.05f * (jumpForce - (i * 20)) * Time.deltaTime);
 
                     spaceDepressed = false;
                 }
+                GameObject particleL = Instantiate(jumpParticle, footL.transform.position, Quaternion.identity);
+                particleL.transform.parent = footL.transform;
+                GameObject particleR = Instantiate(jumpParticle, footR.transform.position, Quaternion.identity);
+                particleR.transform.parent = footR.transform;
                 StartCoroutine("wallTimer");
             }
+        }
+        if (groundforce.touchingWall || groundforce.touchingObject)
+        {
+            jumping = true;
         }
         if (!groundforce.touchingWall && !groundforce.touchingObject && !inAir) //Add raycast so it doesnt apply imediatley!!!!!!!!!!!
         {
@@ -335,10 +370,11 @@ public class PlayerMovementAI : MonoBehaviour {
         {
             inAir = false;
         }
-        if (inAir && !groundforce.grappled)
+        if (inAir && jumping)
         {
             StartCoroutine("applyDownForce");
             inAir = false;
+            jumping = false;
         }
     }
 
@@ -369,8 +405,8 @@ public class PlayerMovementAI : MonoBehaviour {
 
     IEnumerator applyDownForce()
     {
-        float i = 15f;
-        while (inAir && !groundforce.grappled && spawnRocket.destroyed && body.velocity.y > -15f)
+        float i = 25f;
+        while (inAir && spawnRocket.destroyed && body.velocity.y > -15f)
         {
             foreach (Rigidbody rb in downForceLimbs)
             {
@@ -379,6 +415,11 @@ public class PlayerMovementAI : MonoBehaviour {
             yield return new WaitForSeconds(Time.deltaTime * 1);
         }
         inAir = false;
+        /*yield return new WaitForSeconds(0.3f);
+        for (int i = 0; i < 30; i++)
+        {
+            body.velocity = new Vector3(body.velocity.x, -30f, 0);
+        }*/
     }
 
     public void jetTimer()

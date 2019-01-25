@@ -211,6 +211,7 @@ GameObject:
   - component: {fileID: 54232484096096368}
   - component: {fileID: 59214823071596010}
   - component: {fileID: 114631085067695682}
+  - component: {fileID: 114807664015927278}
   m_Layer: 24
   m_Name: LimbEnd
   m_TagString: Feet
@@ -307,6 +308,7 @@ GameObject:
   - component: {fileID: 54384273978202088}
   - component: {fileID: 59766789991671058}
   - component: {fileID: 114031036906909410}
+  - component: {fileID: 114359205298052368}
   m_Layer: 24
   m_Name: LimbEnd
   m_TagString: Feet
@@ -2473,11 +2475,11 @@ HingeJoint:
     targetVelocity: 0
     force: 0
     freeSpin: 0
-  m_UseLimits: 0
+  m_UseLimits: 1
   m_Limits:
-    min: 0
-    max: 0
-    bounciness: 0
+    min: -60
+    max: 60
+    bounciness: 0.2
     bounceMinVelocity: 0.2
     contactDistance: 0
   m_BreakForce: Infinity
@@ -2575,12 +2577,12 @@ HingeJoint:
     targetVelocity: 0
     force: 0
     freeSpin: 0
-  m_UseLimits: 0
+  m_UseLimits: 1
   m_Limits:
-    min: 0
-    max: 0
-    bounciness: 0
-    bounceMinVelocity: 0.2
+    min: -100
+    max: 100
+    bounciness: 0.3
+    bounceMinVelocity: 0
     contactDistance: 0
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -2677,11 +2679,11 @@ HingeJoint:
     targetVelocity: 0
     force: 0
     freeSpin: 0
-  m_UseLimits: 0
+  m_UseLimits: 1
   m_Limits:
-    min: 0
-    max: 0
-    bounciness: 0
+    min: -60
+    max: 60
+    bounciness: 0.2
     bounceMinVelocity: 0.2
     contactDistance: 0
   m_BreakForce: Infinity
@@ -2813,11 +2815,11 @@ HingeJoint:
     targetVelocity: 0
     force: 0
     freeSpin: 0
-  m_UseLimits: 0
+  m_UseLimits: 1
   m_Limits:
-    min: 0
-    max: 0
-    bounciness: 0
+    min: -60
+    max: 60
+    bounciness: 0.2
     bounceMinVelocity: 0.2
     contactDistance: 0
   m_BreakForce: Infinity
@@ -2847,11 +2849,11 @@ HingeJoint:
     targetVelocity: 0
     force: 0
     freeSpin: 0
-  m_UseLimits: 0
+  m_UseLimits: 1
   m_Limits:
-    min: 0
-    max: 0
-    bounciness: 0
+    min: -60
+    max: 60
+    bounciness: 0.2
     bounceMinVelocity: 0.2
     contactDistance: 0
   m_BreakForce: Infinity
@@ -2881,12 +2883,12 @@ HingeJoint:
     targetVelocity: 0
     force: 0
     freeSpin: 0
-  m_UseLimits: 0
+  m_UseLimits: 1
   m_Limits:
-    min: 0
-    max: 0
-    bounciness: 0
-    bounceMinVelocity: 0.2
+    min: -100
+    max: 100
+    bounciness: 0.3
+    bounceMinVelocity: 0
     contactDistance: 0
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -3964,6 +3966,8 @@ MonoBehaviour:
   dLast: 0
   space: 0
   r: 0
+  shift: 0
+  shiftLast: 0
   lClick: 0
   lClickLast: 0
   rClick: 0
@@ -4009,6 +4013,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   local: {fileID: 1617520046985736}
+--- !u!114 &114359205298052368
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1236749118734150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81ebb5dae4a9d40469a57616ff59e97d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particle: {fileID: 1850070325645720, guid: 1ce93cfb574b2e9449e448fd62f2d7d6, type: 2}
 --- !u!114 &114361755976040970
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4099,7 +4115,7 @@ MonoBehaviour:
   groundforce: {fileID: 114248129533816724}
   unCrouch: 0
   Ragdoll: {fileID: 54859679174687922}
-  walkForce: 4000
+  walkForce: 8000
   jumpForce: 100000
   grappleSince: 0
   anim: {fileID: 95787453140537200}
@@ -4125,6 +4141,11 @@ MonoBehaviour:
   - {fileID: 54379587980519534}
   - {fileID: 54948893214212112}
   layerMask: 4096
+  jumping: 1
+  footL: {fileID: 1477960591381292}
+  footR: {fileID: 1331178185378170}
+  jumpParticle: {fileID: 1863549347423534, guid: 523baf650ec9af74b939e668b98ed8ef,
+    type: 2}
 --- !u!114 &114434821567863798
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4221,6 +4242,8 @@ MonoBehaviour:
   punchForce: 700
   body: {fileID: 54859679174687922}
   lowerBody: {fileID: 54515762008015024}
+  punchParticle: {fileID: 1537627649243676, guid: c0b4589a86686fa4d8c158ddc5d8891c,
+    type: 2}
 --- !u!114 &114443363523932222
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4672,6 +4695,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_NewColor: {r: 0, g: 0, b: 0, a: 0}
   local: {fileID: 1617520046985736}
+--- !u!114 &114807664015927278
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1158823633546984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81ebb5dae4a9d40469a57616ff59e97d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particle: {fileID: 1850070325645720, guid: 1ce93cfb574b2e9449e448fd62f2d7d6, type: 2}
 --- !u!114 &114826089693111842
 MonoBehaviour:
   m_ObjectHideFlags: 1

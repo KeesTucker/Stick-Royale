@@ -101,6 +101,10 @@ public class ShootAI : MonoBehaviour {
     public Rigidbody body;
     public Rigidbody lowerBody;
 
+    public GameObject punchParticle;
+
+    public bool firstClick;
+
     IEnumerator Start()
     {
         for (int i = 0; i < LimbEnds.Length; i++)
@@ -166,6 +170,7 @@ public class ShootAI : MonoBehaviour {
         }
         if (!lClick)
         {
+            firstClick = true;
             fireButtonDown = false;
         }
         if (fireButtonDown == true && loopDown == true && refrenceKeeper.weaponHeld)
@@ -206,9 +211,10 @@ public class ShootAI : MonoBehaviour {
                 loopDown = false;
             }
         }
-        else if (fireButtonDown == true && loopDown == true && !refrenceKeeper.weaponHeld)
+        else if (fireButtonDown == true && loopDown == true && !refrenceKeeper.weaponHeld && firstClick)
         {
             StartCoroutine("Punch");
+            firstClick = false;
         }
     }
 
@@ -222,12 +228,14 @@ public class ShootAI : MonoBehaviour {
             for (int i = 0; i < 10; i++)
             {
                 LimbEnds[nextFist].AddForce(dir * -punchForce * Time.deltaTime);
+                GameObject dust = Instantiate(punchParticle, LimbEnds[nextFist].transform.position, Quaternion.identity);
+                dust.transform.parent = LimbEnds[nextFist].transform;
                 if (refrenceKeeper.isServer)
                 {
                     LimbDamagers[nextFist].onServer = true;
                     damager = nextFist;
                 }
-                lowerBody.AddForce(dir * punchForce * Time.deltaTime);
+                lowerBody.AddForce(dir * punchForce / 1.5f * Time.deltaTime);
             }
             if (nextFist == 0)
             {
@@ -244,12 +252,14 @@ public class ShootAI : MonoBehaviour {
             for (int i = 0; i < 10; i++)
             {
                 LimbEnds[nextFist + 2].AddForce(dir * (-punchForce / 2f) * Time.deltaTime);
+                GameObject dust = Instantiate(punchParticle, LimbEnds[nextFist + 2].transform.position, Quaternion.identity);
+                dust.transform.parent = LimbEnds[nextFist + 2].transform;
                 if (refrenceKeeper.isServer)
                 {
                     LimbDamagers[nextFist + 2].onServer = true;
                     damager = nextFist + 2;
                 }
-                body.AddForce(dir * (punchForce / 2f) * Time.deltaTime);
+                body.AddForce(dir * (punchForce / 3f) * Time.deltaTime);
             }
             if (nextFist == 0)
             {

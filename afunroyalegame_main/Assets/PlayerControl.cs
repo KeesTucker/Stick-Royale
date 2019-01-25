@@ -14,6 +14,8 @@ public class PlayerControl : NetworkBehaviour
     public bool dLast;
     public bool space;
     public bool r;
+    public bool shift;
+    public bool shiftLast;
     public bool lClick;
     public bool lClickLast;
     public bool rClick;
@@ -35,6 +37,11 @@ public class PlayerControl : NetworkBehaviour
     public ShootAI shoot;
     public RefrenceKeeperAI refrenceKeeper;
     public SpawnRocketAI spawnRocket;
+
+    void Start()
+    {
+        shift = true;
+    }
 
     // Update is called once per frame
     void Update()
@@ -71,6 +78,14 @@ public class PlayerControl : NetworkBehaviour
         {
             space = true;
         }
+        /*if (Input.GetKeyDown("left shift") || Input.GetKeyDown("right shift"))
+        {
+            shift = true;
+        }
+        if (Input.GetKeyUp("left shift") || Input.GetKeyUp("right shift"))
+        {
+            shift = false; //Just so always running
+        }*/
         if (Input.GetKeyDown("r"))
         {
             r = true;
@@ -180,6 +195,11 @@ public class PlayerControl : NetworkBehaviour
                 }
                 CmdSetKey("space", true);
             }
+            if (shift != shiftLast)
+            {
+                shiftLast = shift;
+                CmdSetKey("shift", shift);
+            }
             if (r)
             {
                 r = false;
@@ -246,6 +266,10 @@ public class PlayerControl : NetworkBehaviour
         if (key == "space")
         {
             playerMovement.space = state;
+        }
+        if (key == "shift")
+        {
+            playerMovement.shift = state;
         }
         if (key == "r")
         {
