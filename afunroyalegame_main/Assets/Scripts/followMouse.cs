@@ -11,5 +11,11 @@ public class followMouse : MonoBehaviour {
         {
             transform.position = new Vector3(cam.ScreenToWorldPoint(Input.mousePosition).x, cam.ScreenToWorldPoint(Input.mousePosition).y, 0);
         }
+        else if (transform.parent.GetComponent<AISetup>()) {
+            if (Camera.main && transform.parent.GetComponent<AISetup>().hasAuthority)
+            {
+                cam = Camera.main;
+            }
+        }
     }
 }

@@ -18,10 +18,6 @@ public class AbilityAffector : MonoBehaviour {
         {
             rb.AddForce(startForce * Time.deltaTime * transform.up);
         }
-        if (!onServer)
-        {
-            localRelay = GameObject.Find("Local/Physics Animator");
-        }
         yield return new WaitForSeconds(2f);
         if (collided)
         {
@@ -35,20 +31,17 @@ public class AbilityAffector : MonoBehaviour {
 
     IEnumerator OnCollisionEnter(Collision collisionInfo)
     {
-        if (!onServer)
+        if (collisionInfo.gameObject.layer == 24)
         {
-            if (collisionInfo.transform.parent.gameObject.name == "Local" || collisionInfo.transform.parent.parent.gameObject.name == "Local")
+            if (abilityIndex == 0)
             {
-                if (abilityIndex == 0)
-                {
-                    localRelay.GetComponent<PlayerMovement>().maxSpeed = 10;
-                    onServer = true;
-                    transform.parent = transform.parent.parent;
-                    collided = true;
-                    yield return new WaitForSeconds(10f);
-                    localRelay.GetComponent<PlayerMovement>().maxSpeed = 45;
-                    Destroy(gameObject);
-                }
+                localRelay.GetComponent<PlayerMovementAI>().maxSpeed = 10;
+                onServer = true;
+                transform.parent = transform.parent.parent;
+                collided = true;
+                yield return new WaitForSeconds(10f);
+                localRelay.GetComponent<PlayerMovementAI>().maxSpeed = 45;
+                Destroy(gameObject);
             }
         }
     }

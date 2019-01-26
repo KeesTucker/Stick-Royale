@@ -23,15 +23,4 @@ public class PlayerManagement : NetworkBehaviour {
         playerSpawned.GetComponent<AISetup>().parent = gameObject;
         NetworkServer.SpawnWithClientAuthority(playerSpawned, connectionToClient);
     }
-
-    [Command]
-    public void CmdAssignAuthority(NetworkIdentity identity)
-    {    
-        NetworkConnection currentOwner = identity.clientAuthorityOwner;
-        if (currentOwner != null)
-        {
-            identity.RemoveClientAuthority(currentOwner);
-        }
-        //identity.AssignClientAuthority();
-    }
 }

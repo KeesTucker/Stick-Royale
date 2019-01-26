@@ -13,6 +13,8 @@ public class HealthAI : NetworkBehaviour {
 
     public RefrenceKeeperAI refrenceKeeper;
 
+    public bool deaded;
+
     public GameObject Ghost;
 	
 	void Start()
@@ -22,15 +24,16 @@ public class HealthAI : NetworkBehaviour {
 
     void Update()
     {
-        if (health <= 0 && isServer)
+        if (health <= 0 && hasAuthority && !deaded)
         {
-            CmdDestroyPlayer();
+            DestroyPlayer();
+            deaded = true;
         }
     }
 
-    public void CmdDestroyPlayer()
+    public void DestroyPlayer()
     {
-        RpcDestroyPlayer();
+        CmdDestroyPlayer();
         GetComponent<GroundForceAI>().grappled = true;
         if (GetComponent<PlayerControl>())
         {
@@ -56,38 +59,81 @@ public class HealthAI : NetworkBehaviour {
         {
             Destroy(weapon.transform.GetChild(i).gameObject);
         }
+        CmdSpawnGhost();
+    }
+
+    [Command]
+    public void CmdSpawnGhost()
+    {
         GameObject currentSpawn = Instantiate(Ghost, transform.position, Quaternion.identity);
         currentSpawn.GetComponent<GhostMovement>().parent = gameObject;
-        NetworkServer.SpawnWithClientAuthority(currentSpawn, connectionToClient);
+        NetworkServer.SpawnWithClientAuthority(currentSpawn, GetComponent<AISetup>().parent);
     }
 
     [ClientRpc]
     public void RpcDestroyPlayer()
     {
-        GetComponent<GroundForceAI>().grappled = true;
-        if (GetComponent<PlayerControl>())
+        if (!hasAuthority)
         {
-            GetComponent<PlayerControl>().enabled = false;
-        }
-        else if (GetComponent<BaseControl>())
-        {
-            GetComponent<BaseControl>().enabled = false;
-        }
-        for (int i = 0; i < refrenceKeeper.weaponInventory.Count; i++)
-        {
-            int id = refrenceKeeper.weaponInventory[i].id;
-            if (hasAuthority)
+            GetComponent<GroundForceAI>().grappled = true;
+            if (GetComponent<PlayerControl>())
             {
-                GetComponent<SpawnItem>().CmdSpawnKilled(weaponItem, transform.position, id, 0, refrenceKeeper.weaponInventory[i].currentBullets);
+                GetComponent<PlayerControl>().enabled = false;
+            }
+            else if (GetComponent<BaseControl>())
+            {
+                GetComponent<BaseControl>().enabled = false;
+            }
+            for (int i = 0; i < refrenceKeeper.weaponInventory.Count; i++)
+            {
+                int id = refrenceKeeper.weaponInventory[i].id;
+                if (hasAuthority)
+                {
+                    GetComponent<SpawnItem>().CmdSpawnKilled(weaponItem, transform.position, id, 0, refrenceKeeper.weaponInventory[i].currentBullets);
+                }
+            }
+            refrenceKeeper.weaponInventory.Clear();
+            refrenceKeeper.itemInventory.Clear();
+            refrenceKeeper.inventoryCount = 0;
+            refrenceKeeper.itemCount = 0;
+            for (int i = 0; i < weapon.transform.childCount; i++)
+            {
+                Destroy(weapon.transform.GetChild(i).gameObject);
             }
         }
-        refrenceKeeper.weaponInventory.Clear();
-        refrenceKeeper.itemInventory.Clear();
-        refrenceKeeper.inventoryCount = 0;
-        refrenceKeeper.itemCount = 0;
-        for (int i = 0; i < weapon.transform.childCount; i++)
+    }
+
+    [Command]
+    public void CmdDestroyPlayer()
+    {
+        if (!hasAuthority)
         {
-            Destroy(weapon.transform.GetChild(i).gameObject);
+            GetComponent<GroundForceAI>().grappled = true;
+            if (GetComponent<PlayerControl>())
+            {
+                GetComponent<PlayerControl>().enabled = false;
+            }
+            else if (GetComponent<BaseControl>())
+            {
+                GetComponent<BaseControl>().enabled = false;
+            }
+            for (int i = 0; i < refrenceKeeper.weaponInventory.Count; i++)
+            {
+                int id = refrenceKeeper.weaponInventory[i].id;
+                if (hasAuthority)
+                {
+                    GetComponent<SpawnItem>().CmdSpawnKilled(weaponItem, transform.position, id, 0, refrenceKeeper.weaponInventory[i].currentBullets);
+                }
+            }
+            refrenceKeeper.weaponInventory.Clear();
+            refrenceKeeper.itemInventory.Clear();
+            refrenceKeeper.inventoryCount = 0;
+            refrenceKeeper.itemCount = 0;
+            for (int i = 0; i < weapon.transform.childCount; i++)
+            {
+                Destroy(weapon.transform.GetChild(i).gameObject);
+            }
+            RpcDestroyPlayer();
         }
     }
 

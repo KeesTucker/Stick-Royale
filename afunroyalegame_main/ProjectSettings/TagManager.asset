@@ -29,6 +29,7 @@ TagManager:
   - WeaponItem
   - Hands
   - Feet
+  - ghostLocal
   layers:
   - Default
   - TransparentFX

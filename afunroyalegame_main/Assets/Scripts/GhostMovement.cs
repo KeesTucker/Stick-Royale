@@ -5,8 +5,10 @@ using System.Collections.Generic;
 
 public class GhostMovement : NetworkBehaviour {
     GameObject MouseFollower;
-    Rigidbody rb;
+    public Rigidbody rb;
     public GameObject proj;
+
+    [SyncVar]
     public GameObject parent;
     public float force = 200f;
     public int shots = 3;
@@ -19,10 +21,15 @@ public class GhostMovement : NetworkBehaviour {
 
     public bool shootable = true;
 
+    public GameObject cameraGO;
+
     // Use this for initialization
-    void Start () {
+    public override void OnStartAuthority () {
         MouseFollower = parent.transform.Find("AIAim").gameObject;
-        rb = gameObject.GetComponent<Rigidbody>();
+        gameObject.tag = "ghostLocal";
+        Destroy(parent.GetComponent<CamControl>().cameraGO);
+        GameObject cam = Instantiate(cameraGO, transform.position, Quaternion.identity);
+        cam.GetComponent<CamFollowAI>().parent = transform;
     }
 
 	// Update is called once per frame
@@ -62,7 +69,7 @@ public class GhostMovement : NetworkBehaviour {
     }
 
 	void FixedUpdate () {
-        if (rb.velocity.magnitude < 60f)
+        if (rb.velocity.magnitude < 60f && MouseFollower)
         {
             if (MouseFollower.transform.position.x > transform.position.x)
             {

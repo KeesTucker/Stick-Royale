@@ -155,38 +155,54 @@ public class DamageDealer : MonoBehaviour {
                     hit = Instantiate(hitMarker, info.contacts[0].point, Quaternion.identity);
                     hit.GetComponent<SpriteRenderer>().color = oldColor;
                 }
-                oldColor = info.gameObject.GetComponent<SpriteRenderer>().color;
-                info.gameObject.GetComponent<SpriteRenderer>().color = ouchie;
+                if (info.gameObject.GetComponent<SpriteRenderer>().color != ouchie)
+                {
+                    oldColor = info.gameObject.GetComponent<SpriteRenderer>().color;
+                }
+                if (!particleDone)
+                {
+                    info.gameObject.GetComponent<SpriteRenderer>().color = ouchie;
+                }
                 yield return new WaitForSeconds(0.2f);
                 info.gameObject.GetComponent<SpriteRenderer>().color = oldColor;
                 if (punching)
                 {
                     Destroy(hit);
                 }
+                yield return new WaitForEndOfFrame();
+                info.gameObject.GetComponent<SpriteRenderer>().color = oldColor;
             }
             else
             {
                 system.startColor = info.transform.GetChild(0).GetComponent<SpriteRenderer>().color;
-                GameObject ouchParticle = Instantiate(particle, info.contacts[0].point, Quaternion.identity);
+                GameObject ouchParticle = Instantiate(particle, new Vector3(info.contacts[0].point.x, info.contacts[0].point.y, 1), Quaternion.identity);
                 ouchParticle.transform.forward = new Vector3(-info.contacts[0].normal.x, -info.contacts[info.contacts.Length - 1].normal.y, info.contacts[info.contacts.Length - 1].normal.z);
                 if (punching)
                 {
                     hit = Instantiate(hitMarker, info.contacts[0].point, Quaternion.identity);
                     hit.GetComponent<SpriteRenderer>().color = oldColor;
                 }
-                oldColor = info.transform.GetChild(0).GetComponent<SpriteRenderer>().color;
-                info.transform.GetChild(0).GetComponent<SpriteRenderer>().color = ouchie;
-                yield return new WaitForSeconds(0.2f);
+                if (info.transform.GetChild(0).GetComponent<SpriteRenderer>().color != ouchie)
+                {
+                    oldColor = info.transform.GetChild(0).GetComponent<SpriteRenderer>().color;
+                }
+                if (!particleDone)
+                {
+                    info.transform.GetChild(0).GetComponent<SpriteRenderer>().color = ouchie;
+                }
+                yield return new WaitForSeconds(0.1f);
                 info.transform.GetChild(0).GetComponent<SpriteRenderer>().color = oldColor;
                 if (punching)
                 {
                     Destroy(hit);
                 }
+                yield return new WaitForEndOfFrame();
+                info.transform.GetChild(0).GetComponent<SpriteRenderer>().color = oldColor;
             }
         }
         else if (gameObject.layer == 9)
         {
-            GameObject particle = Instantiate(gunParticle, info.contacts[0].point, Quaternion.identity);
+            GameObject particle = Instantiate(gunParticle, new Vector3(info.contacts[0].point.x, info.contacts[0].point.y, 1), Quaternion.identity);
             particle.transform.forward = info.contacts[0].normal;
         }
     }

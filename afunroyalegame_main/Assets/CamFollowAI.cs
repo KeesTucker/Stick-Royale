@@ -6,6 +6,8 @@ public class CamFollowAI : MonoBehaviour {
 
     public Transform parent;
 
+    public Transform pos;
+
     public Transform aim;
 
     public Vector3 offset;
@@ -23,9 +25,17 @@ public class CamFollowAI : MonoBehaviour {
     }
 
 	void FixedUpdate () {
-        if (parent && aim)
+        if (parent && !pos)
         {
-            target = (((parent.position * 5) + aim.position) / 6) + offset;
+            pos = parent;
+        }
+        if (pos && aim)
+        {
+            target = (((pos.position * 5) + aim.position) / 6) + offset;
+        }
+        else if (pos)
+        {
+            target = pos.position;
         }
         rb.AddForce(new Vector3(force * Time.deltaTime * (target.x - transform.position.x), force * Time.deltaTime * (target.y - transform.position.y), 0));
     }

@@ -363,11 +363,14 @@ public class PlayerMovementAI : MonoBehaviour {
     IEnumerator applyDownForce()
     {
         float i = 25f;
-        while (inAir && spawnRocket.destroyed && body.velocity.y > -15f)
+        while (inAir && spawnRocket.destroyed)
         {
-            foreach (Rigidbody rb in downForceLimbs)
+            if (body.velocity.y > -15f)
             {
-                rb.AddForce(0, -i * Time.deltaTime * 100f, 0);
+                foreach (Rigidbody rb in downForceLimbs)
+                {
+                    rb.AddForce(0, -i * Time.deltaTime * 100f, 0);
+                }
             }
             yield return new WaitForSeconds(Time.deltaTime * 1);
         }

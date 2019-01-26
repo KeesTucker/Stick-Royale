@@ -9,15 +9,17 @@ public class CamControl : NetworkBehaviour {
 
     public GameObject cam;
 
+    public GameObject cameraGO;
+
     // Use this for initialization
     public override void OnStartAuthority()
     {
         if (hasAuthority)
         {
-            GameObject camera = Instantiate(cam, transform.position, Quaternion.identity);
-            camera.GetComponent<CamFollowAI>().parent = transform;
-            camera.GetComponent<CamFollowAI>().aim = aim;
-            aim.gameObject.GetComponent<followMouse>().cam = camera.GetComponent<Camera>();
+            cameraGO = Instantiate(cam, transform.position, Quaternion.identity);
+            cameraGO.GetComponent<CamFollowAI>().parent = transform;
+            cameraGO.GetComponent<CamFollowAI>().aim = aim;
+            aim.gameObject.GetComponent<followMouse>().cam = cameraGO.GetComponent<Camera>();
         }
     }
 }
