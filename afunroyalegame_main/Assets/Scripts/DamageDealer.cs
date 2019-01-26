@@ -56,7 +56,6 @@ public class DamageDealer : MonoBehaviour {
             destroyThis = collisionInfo.gameObject;
             StartCoroutine("Destroyer");
         }
-
         if (collisionInfo.gameObject.layer == 24 && !particleDone && gameObject.tag != "WeaponItem" && gameObject.name != "LimbEnd")
         {
             StartCoroutine(SpawnParticle(collisionInfo));
@@ -72,7 +71,7 @@ public class DamageDealer : MonoBehaviour {
             StartCoroutine(SpawnParticle(collisionInfo));
             particleDone = true;
         }
-        else if(gameObject.layer == 9)
+        else if(gameObject.layer == 9 && !particleDone)
         {
             StartCoroutine(SpawnParticle(collisionInfo));
         }
@@ -151,32 +150,38 @@ public class DamageDealer : MonoBehaviour {
                 system.startColor = info.gameObject.GetComponent<SpriteRenderer>().color;
                 GameObject ouchParticle = Instantiate(particle, info.contacts[0].point, Quaternion.identity);
                 ouchParticle.transform.forward = new Vector3(-info.contacts[0].normal.x, -info.contacts[info.contacts.Length - 1].normal.y, info.contacts[info.contacts.Length - 1].normal.z);
-                oldColor = info.gameObject.GetComponent<SpriteRenderer>().color;
                 if (punching)
                 {
                     hit = Instantiate(hitMarker, info.contacts[0].point, Quaternion.identity);
                     hit.GetComponent<SpriteRenderer>().color = oldColor;
                 }
+                oldColor = info.gameObject.GetComponent<SpriteRenderer>().color;
                 info.gameObject.GetComponent<SpriteRenderer>().color = ouchie;
                 yield return new WaitForSeconds(0.2f);
                 info.gameObject.GetComponent<SpriteRenderer>().color = oldColor;
-                Destroy(hit);
+                if (punching)
+                {
+                    Destroy(hit);
+                }
             }
             else
             {
                 system.startColor = info.transform.GetChild(0).GetComponent<SpriteRenderer>().color;
                 GameObject ouchParticle = Instantiate(particle, info.contacts[0].point, Quaternion.identity);
                 ouchParticle.transform.forward = new Vector3(-info.contacts[0].normal.x, -info.contacts[info.contacts.Length - 1].normal.y, info.contacts[info.contacts.Length - 1].normal.z);
-                oldColor = info.transform.GetChild(0).GetComponent<SpriteRenderer>().color;
                 if (punching)
                 {
                     hit = Instantiate(hitMarker, info.contacts[0].point, Quaternion.identity);
                     hit.GetComponent<SpriteRenderer>().color = oldColor;
                 }
+                oldColor = info.transform.GetChild(0).GetComponent<SpriteRenderer>().color;
                 info.transform.GetChild(0).GetComponent<SpriteRenderer>().color = ouchie;
                 yield return new WaitForSeconds(0.2f);
                 info.transform.GetChild(0).GetComponent<SpriteRenderer>().color = oldColor;
-                Destroy(hit);
+                if (punching)
+                {
+                    Destroy(hit);
+                }
             }
         }
         else if (gameObject.layer == 9)

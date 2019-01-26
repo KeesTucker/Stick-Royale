@@ -21,22 +21,22 @@ public class GhostMovement : NetworkBehaviour {
 
     // Use this for initialization
     void Start () {
-        MouseFollower = GameObject.Find("MouseFollower");
+        MouseFollower = parent.transform.Find("AIAim").gameObject;
         rb = gameObject.GetComponent<Rigidbody>();
-        parent.GetComponent<Health>().CmdAssignAuthority(GetComponent<NetworkIdentity>());
     }
 
 	// Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("space") && hasAuthority && shots > 0 && shootable)
+        if (Input.GetKeyDown("space") && hasAuthority)
         {
-            CmdSetSpace(true);
-            shots--;
+            spaceDepressed = true;
+            CmdSetSpace();
         }
-        if (spaceDepressed && spaceDepressedLocal)
+        if (spaceDepressed && shots > 0 && shootable)
         {
-            spaceDepressedLocal = false;
+            spaceDepressed = false;
+            shots--;
             shootable = false;
             GameObject projInst = Instantiate(proj, transform.position, Quaternion.identity);
             for (int i = 0; i < projInst.transform.childCount; i++)
@@ -49,32 +49,20 @@ public class GhostMovement : NetworkBehaviour {
         }
     }
 
+    [Command]
+    public void CmdSetSpace()
+    {
+        spaceDepressed = true;
+    }
+
     IEnumerator DelayFalse()
     {
         yield return new WaitForSeconds(2f);
         shootable = true;
-        CmdSetSpace(false);
-    }
-
-    [Command]
-    void CmdSetSpace(bool state)
-    {
-        spaceDepressed = state;
-        if (state)
-        {
-            RpcSetSpace();
-            spaceDepressedLocal = true;
-        }
-    }
-
-    [ClientRpc]
-    void RpcSetSpace()
-    {
-        spaceDepressedLocal = true;
     }
 
 	void FixedUpdate () {
-        if (hasAuthority && rb.velocity.magnitude < 60f)
+        if (rb.velocity.magnitude < 60f)
         {
             if (MouseFollower.transform.position.x > transform.position.x)
             {

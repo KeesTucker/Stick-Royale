@@ -12,6 +12,8 @@ public class HealthAI : NetworkBehaviour {
     public GameObject weaponItem;
 
     public RefrenceKeeperAI refrenceKeeper;
+
+    public GameObject Ghost;
 	
 	void Start()
     {
@@ -54,6 +56,9 @@ public class HealthAI : NetworkBehaviour {
         {
             Destroy(weapon.transform.GetChild(i).gameObject);
         }
+        GameObject currentSpawn = Instantiate(Ghost, transform.position, Quaternion.identity);
+        currentSpawn.GetComponent<GhostMovement>().parent = gameObject;
+        NetworkServer.SpawnWithClientAuthority(currentSpawn, connectionToClient);
     }
 
     [ClientRpc]

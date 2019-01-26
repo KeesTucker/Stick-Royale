@@ -3970,6 +3970,7 @@ MonoBehaviour:
   weapon: {fileID: 1198879070589158}
   weaponItem: {fileID: 1757743736535976, guid: a2ab57fb811728d4b8e6d0fd2cc945ba, type: 2}
   refrenceKeeper: {fileID: 114169648274511698}
+  Ghost: {fileID: 1881230412041522, guid: eddec3f38fcb0644da1b4a8e5d33588a, type: 2}
 --- !u!114 &114347183182424706
 MonoBehaviour:
   m_ObjectHideFlags: 1

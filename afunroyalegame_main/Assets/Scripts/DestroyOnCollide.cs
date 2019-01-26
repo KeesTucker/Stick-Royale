@@ -6,7 +6,7 @@ public class DestroyOnCollide : MonoBehaviour {
 
     void OnCollisionEnter(Collision collsionInfo)
     {
-        if(collsionInfo.gameObject.layer == 15)
+        if(collsionInfo.gameObject.layer == 24)
         {
             StartCoroutine(HitPlayer());
         }

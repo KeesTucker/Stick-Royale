@@ -181,8 +181,8 @@ public class PlayerMovementAI : MonoBehaviour {
 
         if (aDepressed == true && (groundHitL == true || groundHitR == true))
         {
-            //lFoot.AddForce(-walkForce * Time.deltaTime * 0.45f, walkForce * Time.deltaTime * 0.05f, 0);
-            //rFoot.AddForce(-walkForce * Time.deltaTime * 0.45f, walkForce * Time.deltaTime * 0.05f, 0);
+            lFoot.AddForce(-walkForce * Time.deltaTime * 0.15f, walkForce * Time.deltaTime * 0.05f, 0);
+            rFoot.AddForce(-walkForce * Time.deltaTime * 0.15f, walkForce * Time.deltaTime * 0.05f, 0);
             body.AddForce(-walkForce * Time.deltaTime * 1f, 0, 0);
             anim.SetTrigger(walkingL);
             state = 1;
@@ -201,8 +201,8 @@ public class PlayerMovementAI : MonoBehaviour {
         }
         else if (dDepressed == true && (groundHitL == true || groundHitR == true))
         {
-            //lFoot.AddForce(walkForce * Time.deltaTime * 0.45f, walkForce * Time.deltaTime * 0.05f, 0);
-            //rFoot.AddForce(walkForce * Time.deltaTime * 0.45f, walkForce * Time.deltaTime * 0.05f, 0);
+            lFoot.AddForce(walkForce * Time.deltaTime * 0.15f, walkForce * Time.deltaTime * 0.05f, 0);
+            rFoot.AddForce(walkForce * Time.deltaTime * 0.15f, walkForce * Time.deltaTime * 0.05f, 0);
             body.AddForce(walkForce * Time.deltaTime * 1f, 0, 0);
             anim.SetTrigger(walkingR);
             state = 0;

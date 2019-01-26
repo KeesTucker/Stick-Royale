@@ -149,7 +149,9 @@ public class ItemCheck : NetworkBehaviour {
         }
         else
         {
-            StartCoroutine("DestroySlow");
+            closestItem.GetComponent<NetworkTransform>().enabled = false;
+            closestItem.GetComponent<NetworkIdentity>().enabled = false;
+            Destroy(closestItem);
         }
         
         checkDistances();
@@ -176,11 +178,5 @@ public class ItemCheck : NetworkBehaviour {
             updateUI.UpdateSlotsUI();
             updateUI.HighlightSlotOnPickup(refrenceKeeper.activeSlot);
         }
-    }
-
-    public IEnumerator DestroySlow()
-    {
-        yield return new WaitForSeconds(0.05f);
-        Destroy(closestItem);
     }
 }
