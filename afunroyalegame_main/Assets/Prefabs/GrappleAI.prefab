@@ -149,8 +149,10 @@ MonoBehaviour:
   onLocal: 1
   attractable: 1
   aimShoot: {fileID: 0}
+  syncMoveState: {fileID: 0}
   invisible: {fileID: 2100000, guid: 20175f56df2cfbb4f87cc87a4f50b660, type: 2}
   parent: {fileID: 0}
+  particle: {fileID: 1850070325645720, guid: 1ce93cfb574b2e9449e448fd62f2d7d6, type: 2}
 --- !u!114 &114576705712043792
 MonoBehaviour:
   m_ObjectHideFlags: 1

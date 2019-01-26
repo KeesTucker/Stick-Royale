@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 75189962531646946}
   - component: {fileID: 59212987112588980}
   - component: {fileID: 114443363523932222}
+  - component: {fileID: 114704266453676542}
   m_Layer: 24
   m_Name: LimbEnd
   m_TagString: Hands
@@ -948,6 +949,7 @@ GameObject:
   - component: {fileID: 75361480261276302}
   - component: {fileID: 59987712100494578}
   - component: {fileID: 114193098051282052}
+  - component: {fileID: 114918668769552472}
   m_Layer: 24
   m_Name: LimbEnd
   m_TagString: Hands
@@ -3648,12 +3650,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c50d7c6fe1d05d241819027e3b2b74a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 30
+  damage: 20
   onServer: 0
   parent: 0
   speed: 5
   weapon: {fileID: 0}
   isAWeapon: 0
+  particle: {fileID: 1914801538564046, guid: 0047934e19f5dfa4782fe618071f7125, type: 2}
+  gunParticle: {fileID: 1778453083565316, guid: 4a5282bb60a81fd489c6629f11bf7beb,
+    type: 2}
+  rb: {fileID: 0}
+  particleDone: 0
+  punching: 0
+  velocityX: 0
+  velocityY: 0
+  weaponParticle: 0
+  ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
+  hitMarker: {fileID: 1515018597900156, guid: a1a66d51af9473045834472520dcc367, type: 2}
 --- !u!114 &114048955995680624
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3797,12 +3810,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c50d7c6fe1d05d241819027e3b2b74a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 30
+  damage: 15
   onServer: 0
   parent: 0
   speed: 5
   weapon: {fileID: 0}
   isAWeapon: 0
+  particle: {fileID: 1914801538564046, guid: 0047934e19f5dfa4782fe618071f7125, type: 2}
+  gunParticle: {fileID: 1778453083565316, guid: 4a5282bb60a81fd489c6629f11bf7beb,
+    type: 2}
+  rb: {fileID: 0}
+  particleDone: 0
+  punching: 0
+  velocityX: 0
+  velocityY: 0
+  weaponParticle: 0
+  ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
+  hitMarker: {fileID: 1515018597900156, guid: a1a66d51af9473045834472520dcc367, type: 2}
 --- !u!114 &114239791581768832
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4239,11 +4263,12 @@ MonoBehaviour:
   - {fileID: 1158823633546984}
   nextFist: 0
   aim: {fileID: 4650092873021232}
-  punchForce: 700
+  punchForce: 1000
   body: {fileID: 54859679174687922}
   lowerBody: {fileID: 54515762008015024}
   punchParticle: {fileID: 1537627649243676, guid: c0b4589a86686fa4d8c158ddc5d8891c,
     type: 2}
+  firstClick: 0
 --- !u!114 &114443363523932222
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4255,12 +4280,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c50d7c6fe1d05d241819027e3b2b74a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 30
+  damage: 15
   onServer: 0
   parent: 0
   speed: 5
   weapon: {fileID: 0}
   isAWeapon: 0
+  particle: {fileID: 1914801538564046, guid: 0047934e19f5dfa4782fe618071f7125, type: 2}
+  gunParticle: {fileID: 1778453083565316, guid: 4a5282bb60a81fd489c6629f11bf7beb,
+    type: 2}
+  rb: {fileID: 0}
+  particleDone: 0
+  punching: 0
+  velocityX: 0
+  velocityY: 0
+  weaponParticle: 0
+  ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
+  hitMarker: {fileID: 1515018597900156, guid: a1a66d51af9473045834472520dcc367, type: 2}
 --- !u!114 &114444865420430908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4476,12 +4512,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c50d7c6fe1d05d241819027e3b2b74a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 30
+  damage: 20
   onServer: 0
   parent: 0
   speed: 5
   weapon: {fileID: 0}
   isAWeapon: 0
+  particle: {fileID: 1914801538564046, guid: 0047934e19f5dfa4782fe618071f7125, type: 2}
+  gunParticle: {fileID: 1778453083565316, guid: 4a5282bb60a81fd489c6629f11bf7beb,
+    type: 2}
+  rb: {fileID: 0}
+  particleDone: 0
+  punching: 0
+  velocityX: 0
+  velocityY: 0
+  weaponParticle: 0
+  ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
+  hitMarker: {fileID: 1515018597900156, guid: a1a66d51af9473045834472520dcc367, type: 2}
 --- !u!114 &114642567197220008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4583,6 +4630,18 @@ MonoBehaviour:
   hj: {fileID: 59003861026150002}
   target: {fileID: 4063986925939036}
   invert: 0
+--- !u!114 &114704266453676542
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1029035516324904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81ebb5dae4a9d40469a57616ff59e97d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particle: {fileID: 1850070325645720, guid: 1ce93cfb574b2e9449e448fd62f2d7d6, type: 2}
 --- !u!114 &114766943715799110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4811,6 +4870,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_NewColor: {r: 0, g: 0, b: 0, a: 0}
   local: {fileID: 1617520046985736}
+--- !u!114 &114918668769552472
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1915913879698198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81ebb5dae4a9d40469a57616ff59e97d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particle: {fileID: 1850070325645720, guid: 1ce93cfb574b2e9449e448fd62f2d7d6, type: 2}
 --- !u!114 &114943691905562258
 MonoBehaviour:
   m_ObjectHideFlags: 1

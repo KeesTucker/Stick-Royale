@@ -69,7 +69,7 @@ public class SwitchWeaponAI : MonoBehaviour {
                 shoot.hasMag = spawnWeapons.Weapons[WeaponIndex].WeaponItem.mag;
                 shoot.burstCount = 0;
                 HandHeldWeapon.layer = 10;
-                muzzleFlash.transform.localScale = spawnWeapons.Weapons[WeaponIndex].WeaponItem.muzzleFlashScale;
+                muzzleFlash.transform.localScale = spawnWeapons.Weapons[WeaponIndex].WeaponItem.muzzleFlashScale * 0.1f;
                 for (int z = 0; z < HandHeldWeapon.transform.childCount; z++)
                 {
                     HandHeldWeapon.transform.GetChild(z).gameObject.layer = 10;

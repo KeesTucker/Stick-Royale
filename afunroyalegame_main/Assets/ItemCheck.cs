@@ -143,14 +143,14 @@ public class ItemCheck : NetworkBehaviour {
         updateUI.UpdateSlotsUI();
         updateUI.HighlightSlotOnPickup(refrenceKeeper.activeSlot);
 
-        //if (!isServer)
-        //{
-        Destroy(closestItem);
-        //}
-        /*else
+        if (!isServer)
+        {
+            Destroy(closestItem);
+        }
+        else
         {
             StartCoroutine("DestroySlow");
-        }*/
+        }
         
         checkDistances();
     }
@@ -180,8 +180,7 @@ public class ItemCheck : NetworkBehaviour {
 
     public IEnumerator DestroySlow()
     {
-        yield return new WaitForSeconds(0.1f);
-        closestItem.tag = "Untagged";
+        yield return new WaitForSeconds(0.05f);
         Destroy(closestItem);
     }
 }

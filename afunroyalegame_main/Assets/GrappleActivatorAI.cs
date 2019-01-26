@@ -26,6 +26,7 @@ public class GrappleActivatorAI : MonoBehaviour {
     public SyncMoveStateAI syncMoveState;
     public Material invisible;
     public GameObject parent; //AI that sent it
+    public GameObject particle;
     void Start()
     {
         GameObject[] playerParts_ = parent.GetComponent<GroundForceAI>().playerParts;
@@ -61,6 +62,9 @@ public class GrappleActivatorAI : MonoBehaviour {
         }
         transform.position = hitTarg.transform.position + hitCoords;
         transform.parent = hitTarg.transform;
+
+        Instantiate(particle, transform.position, Quaternion.identity);
+
         rend.material = invisible;
         //}
     }

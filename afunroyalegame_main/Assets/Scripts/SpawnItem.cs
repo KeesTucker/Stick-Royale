@@ -41,6 +41,8 @@ public class SpawnItem : NetworkBehaviour {
         //    WeaponModel.transform.GetChild(z).gameObject.layer = 11;
         //}
         switchedWeapon.GetComponent<DamageDealer>().isAWeapon = true;
+        switchedWeapon.GetComponent<DamageDealer>().weaponParticle = true;
+        
         switchedWeapon.transform.SetParent(items.transform);
         Rigidbody rb = switchedWeapon.GetComponent<Rigidbody>();
         Vector3 dir = new Vector3(transform.position.x - aim.position.x, transform.position.y - aim.position.y, 0) * Random.Range(0.7f, 2.5f);
@@ -52,7 +54,15 @@ public class SpawnItem : NetworkBehaviour {
         }
         //localiseTransform.setTransformItem(WeaponModel, id);
         NetworkServer.Spawn(switchedWeapon);
+        RpcSpawnDropped(switchedWeapon);
     }
+
+    [ClientRpc]
+    public void RpcSpawnDropped(GameObject gun)
+    {
+        gun.GetComponent<DamageDealer>().weaponParticle = true;
+    }
+
     [Command]
     public void CmdSpawnKilled(GameObject ItemPrefab, Vector3 position, int id, float direction, int bulletsLeft)
     {

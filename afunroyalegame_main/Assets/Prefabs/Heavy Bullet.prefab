@@ -219,7 +219,20 @@ MonoBehaviour:
   damage: 0
   onServer: 0
   parent: 0
-  localRelay: {fileID: 0}
+  speed: 5
+  weapon: {fileID: 0}
+  isAWeapon: 0
+  particle: {fileID: 1914801538564046, guid: 0047934e19f5dfa4782fe618071f7125, type: 2}
+  gunParticle: {fileID: 1778453083565316, guid: 4a5282bb60a81fd489c6629f11bf7beb,
+    type: 2}
+  rb: {fileID: 0}
+  particleDone: 0
+  punching: 0
+  velocityX: 0
+  velocityY: 0
+  weaponParticle: 0
+  ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
+  hitMarker: {fileID: 1515018597900156, guid: a1a66d51af9473045834472520dcc367, type: 2}
 --- !u!114 &114616574979267118
 MonoBehaviour:
   m_ObjectHideFlags: 1

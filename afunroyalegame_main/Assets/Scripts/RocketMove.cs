@@ -28,25 +28,27 @@ public class RocketMove : MonoBehaviour {
 	
 	void OnCollisionEnter()
     {
-        spawnRocket.spaceDepressed = true;
+        if (spawnRocket)
+        {
+            spawnRocket.spaceDepressed = true;
+        }
     }
 
     void FixedUpdate()
     {
-        if (ragdoll && !spawnRocket.spaceDepressed)
-        {
-            if (ragdoll.GetComponent<SpawnRocketAI>().hasAuthority)
-            {
-                ragdoll.position = transform.position;
-            }
-            else
-            {
-                transform.position = ragdoll.position;
-            }
-        }
-        
         if (spawnRocket)
         {
+            if (ragdoll && !spawnRocket.spaceDepressed)
+            {
+                if (ragdoll.GetComponent<SpawnRocketAI>().hasAuthority)
+                {
+                    ragdoll.position = transform.position;
+                }
+                else
+                {
+                    transform.position = ragdoll.position;
+                }
+            }
             if (rb.velocity.magnitude < 120f && !spawnRocket.spaceDepressed) //Move toward cursor
             {
                 if (MouseFollower.position.x > transform.position.x)
