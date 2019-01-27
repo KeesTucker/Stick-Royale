@@ -1471,6 +1471,8 @@ MonoBehaviour:
   biome: {fileID: 0}
   type: 0
   subtype: 0
+  tree: {fileID: 0}
+  DragonBones: 0
 --- !u!114 &114058484448904052
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1485,6 +1487,8 @@ MonoBehaviour:
   biome: {fileID: 0}
   type: 0
   subtype: 0
+  tree: {fileID: 0}
+  DragonBones: 0
 --- !u!114 &114060750177727650
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1514,6 +1518,8 @@ MonoBehaviour:
   biome: {fileID: 0}
   type: 0
   subtype: 0
+  tree: {fileID: 0}
+  DragonBones: 0
 --- !u!114 &114316157652101436
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1539,6 +1545,8 @@ MonoBehaviour:
   biome: {fileID: 0}
   type: 3
   subtype: 5
+  tree: {fileID: 0}
+  DragonBones: 0
 --- !u!114 &114338282756069312
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1564,6 +1572,8 @@ MonoBehaviour:
   biome: {fileID: 0}
   type: 1
   subtype: 3
+  tree: {fileID: 0}
+  DragonBones: 0
 --- !u!114 &114408728083179122
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1589,6 +1599,8 @@ MonoBehaviour:
   biome: {fileID: 0}
   type: 2
   subtype: 0
+  tree: {fileID: 1665625212104444}
+  DragonBones: 0
 --- !u!114 &114412029876765198
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1638,6 +1650,8 @@ MonoBehaviour:
   biome: {fileID: 0}
   type: 0
   subtype: 0
+  tree: {fileID: 0}
+  DragonBones: 0
 --- !u!114 &114642855302656856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1676,6 +1690,8 @@ MonoBehaviour:
   biome: {fileID: 0}
   type: 0
   subtype: 0
+  tree: {fileID: 0}
+  DragonBones: 0
 --- !u!114 &114719446249492170
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1701,6 +1717,8 @@ MonoBehaviour:
   biome: {fileID: 0}
   type: 0
   subtype: 0
+  tree: {fileID: 0}
+  DragonBones: 0
 --- !u!114 &114877408923832402
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1726,6 +1744,8 @@ MonoBehaviour:
   biome: {fileID: 0}
   type: 1
   subtype: 1
+  tree: {fileID: 0}
+  DragonBones: 0
 --- !u!114 &114912700338785642
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1784,6 +1804,8 @@ MonoBehaviour:
   biome: {fileID: 0}
   type: 1
   subtype: 0
+  tree: {fileID: 0}
+  DragonBones: 0
 --- !u!135 &135655849036642284
 SphereCollider:
   m_ObjectHideFlags: 1

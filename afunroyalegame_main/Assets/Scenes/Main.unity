@@ -509,7 +509,7 @@ MonoBehaviour:
   - {fileID: 0}
   loaderP: {fileID: 1640340324769478, guid: 626f44b844a4e3f45916835f91ab3c21, type: 2}
   info: []
-  size: 14
+  size: 13
   currentPosition: 0
   startPos: 0
 --- !u!114 &875645039

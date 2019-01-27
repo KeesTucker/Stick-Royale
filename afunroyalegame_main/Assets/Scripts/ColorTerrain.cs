@@ -8,6 +8,7 @@ public class ColorTerrain : MonoBehaviour {
     public int type;
     public int subtype;
     public GameObject tree;
+    public bool DragonBones;
 
     public void color()
     {
@@ -36,15 +37,22 @@ public class ColorTerrain : MonoBehaviour {
             GameObject treeN = Instantiate(biome.trees[subtype], new Vector3(0, 0, 0), Quaternion.identity);
             treeN.transform.parent = transform;
             treeN.transform.position = transform.position;
-            foreach (SpriteRenderer spriteRenderer in transform.GetComponentsInChildren<SpriteRenderer>())
+            if (DragonBones)
             {
-                if (spriteRenderer.transform.parent.gameObject.tag == "TreeTop")
+                //colourise somehow
+            }
+            else
+            {
+                foreach (SpriteRenderer spriteRenderer in transform.GetComponentsInChildren<SpriteRenderer>())
                 {
-                    spriteRenderer.color = biome.grassColor;
-                }
-                else
-                {
-                    spriteRenderer.color = biome.trunkColor;
+                    if (spriteRenderer.transform.parent.gameObject.tag == "TreeTop")
+                    {
+                        spriteRenderer.color = biome.grassColor;
+                    }
+                    else
+                    {
+                        spriteRenderer.color = biome.trunkColor;
+                    }
                 }
             }
         }
