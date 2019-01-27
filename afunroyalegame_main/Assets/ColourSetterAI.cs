@@ -31,11 +31,7 @@ public class ColourSetterAI : NetworkBehaviour
     [Command]
     public void CmdSetColor()
     {
-        m_NewColor = new Color(
-            Random.Range(0f, 1f),
-            Random.Range(0f, 1f),
-            Random.Range(0f, 1f)
-            );
+        m_NewColor = Random.ColorHSV(0, 1, 0.5f, 1, 0.5f, 1);
 
         foreach (ColouriserAI cai in GetComponentsInChildren<ColouriserAI>())
         {

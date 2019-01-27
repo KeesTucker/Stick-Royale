@@ -149,6 +149,7 @@ public class ShootAI : MonoBehaviour {
         }
         if (r && refrenceKeeper.weaponHeld && magSize > 1 && !reloading)
         {
+            r = false;
             reloading = true;
             StartCoroutine("Reload");
         }

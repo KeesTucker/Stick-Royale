@@ -5,49 +5,32 @@ using Mirror;
 
 public class KillPlayer : NetworkBehaviour {
 
-    private GameObject localRelay;
-    private GameObject localSpawner;
-
-    IEnumerator Start()
-    {
-        yield return new WaitForSeconds(0.3f);
-        localRelay = GameObject.Find("LocalRelay");
-        if (isServer)
-        {
-            localSpawner = GameObject.Find("SpawnPlayer(Clone)");
-        }
-    }
+    public float damage = 100000;
 
     void OnCollisionEnter(Collision collisionInfo)
     {
         if (isServer)
         {
-            if (collisionInfo.gameObject.layer == 15)
+            if (collisionInfo.gameObject.layer == 24)
             {
-                if (collisionInfo.transform.parent.gameObject.name == "Local")
+                if (collisionInfo.gameObject.tag == "PosRelay")
                 {
-                    localRelay.GetComponent<Health>().CmdUpdateHealth(10000f);
+                    collisionInfo.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
                     return;
                 }
-                else if (collisionInfo.transform.parent.gameObject.name == "PositionRelay(Clone)")
+                else if (collisionInfo.transform.parent.gameObject.tag == "PosRelay")
                 {
-                    if (true)
-                    {
-                        collisionInfo.transform.parent.gameObject.GetComponent<Health>().CmdUpdateHealth(10000f);
-                    }
+                    collisionInfo.transform.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
                     return;
                 }
-                else if (collisionInfo.transform.parent.parent.gameObject.name == "Local")
+                else if (collisionInfo.transform.parent.parent.gameObject.tag == "PosRelay")
                 {
-                    localRelay.GetComponent<Health>().CmdUpdateHealth(10000f);
+                    collisionInfo.transform.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
                     return;
                 }
-                else if (collisionInfo.transform.parent.parent.gameObject.name == "PositionRelay(Clone)")
+                else if (collisionInfo.transform.parent.parent.parent.gameObject.tag == "PosRelay")
                 {
-                    if (true)
-                    {
-                        collisionInfo.transform.parent.parent.gameObject.GetComponent<Health>().CmdUpdateHealth(10000f);
-                    }
+                    collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
                     return;
                 }
             }

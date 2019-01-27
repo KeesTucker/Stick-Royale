@@ -33,7 +33,7 @@ public class HealthAI : NetworkBehaviour {
 
     public void DestroyPlayer()
     {
-        CmdDestroyPlayer();
+        CmdDestroyPlayer();        
         GetComponent<GroundForceAI>().grappled = true;
         if (GetComponent<PlayerControl>())
         {
@@ -59,6 +59,12 @@ public class HealthAI : NetworkBehaviour {
         {
             Destroy(weapon.transform.GetChild(i).gameObject);
         }
+
+        foreach (HingeJoint hj in GetComponentsInChildren<HingeJoint>())
+        {
+            hj.useSpring = false;
+        }
+
         CmdSpawnGhost();
     }
 
@@ -100,6 +106,10 @@ public class HealthAI : NetworkBehaviour {
             {
                 Destroy(weapon.transform.GetChild(i).gameObject);
             }
+            foreach (HingeJoint hj in GetComponentsInChildren<HingeJoint>())
+            {
+                hj.useSpring = false;
+            }
         }
     }
 
@@ -132,6 +142,10 @@ public class HealthAI : NetworkBehaviour {
             for (int i = 0; i < weapon.transform.childCount; i++)
             {
                 Destroy(weapon.transform.GetChild(i).gameObject);
+            }
+            foreach (HingeJoint hj in GetComponentsInChildren<HingeJoint>())
+            {
+                hj.useSpring = false;
             }
             RpcDestroyPlayer();
         }

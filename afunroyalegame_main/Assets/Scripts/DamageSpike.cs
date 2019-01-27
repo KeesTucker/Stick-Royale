@@ -5,63 +5,37 @@ using UnityEngine;
 public class DamageSpike : MonoBehaviour {
 
     public float damage;
-    public GameObject localRelay;
     public bool damagable = true;
 
     IEnumerator OnCollisionEnter(Collision collisionInfo)
     {
-        if (!localRelay)
+        if (collisionInfo.gameObject.tag == "PosRelay")
         {
-            localRelay = GameObject.Find("LocalRelay");
+            collisionInfo.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
+            damagable = false;
+            yield return new WaitForSeconds(0.5f);
+            damagable = true;
         }
-        
-        if (collisionInfo.gameObject.layer == 15 && damagable)
+        else if (collisionInfo.transform.parent.gameObject.tag == "PosRelay")
         {
-            if (collisionInfo.transform.parent.gameObject.name == "Local")
-            {
-                localRelay.GetComponent<Health>().CmdUpdateHealth(damage);
-                damagable = false;
-                yield return new WaitForSeconds(0.5f);
-                damagable = true;
-            }
-            else if (collisionInfo.transform.parent.parent.gameObject.name == "Local")
-            {
-                damagable = false;
-                localRelay.GetComponent<Health>().CmdUpdateHealth(damage);
-                yield return new WaitForSeconds(0.5f);
-                damagable = true;
-            }
-            else if (collisionInfo.transform.parent.parent.parent.gameObject.name == "Local")
-            {
-                damagable = false;
-                localRelay.GetComponent<Health>().CmdUpdateHealth(damage);
-                yield return new WaitForSeconds(0.5f);
-                damagable = true;
-            }
+            collisionInfo.transform.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
+            damagable = false;
+            yield return new WaitForSeconds(0.5f);
+            damagable = true;
         }
-        if (collisionInfo.gameObject.layer == 24 && damagable)
+        else if (collisionInfo.transform.parent.parent.gameObject.tag == "PosRelay")
         {
-            if (collisionInfo.transform.parent.gameObject.tag == "PosRelay")
-            {
-                collisionInfo.transform.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
-                damagable = false;
-                yield return new WaitForSeconds(0.5f);
-                damagable = true;
-            }
-            else if (collisionInfo.transform.parent.parent.gameObject.tag == "PosRelay")
-            {
-                damagable = false;
-                collisionInfo.transform.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
-                yield return new WaitForSeconds(0.5f);
-                damagable = true;
-            }
-            else if (collisionInfo.transform.parent.parent.parent.gameObject.tag == "PosRelay")
-            {
-                damagable = false;
-                collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
-                yield return new WaitForSeconds(0.5f);
-                damagable = true;
-            }
+            collisionInfo.transform.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
+            damagable = false;
+            yield return new WaitForSeconds(0.5f);
+            damagable = true;
+        }
+        else if (collisionInfo.transform.parent.parent.parent.gameObject.tag == "PosRelay")
+        {
+            collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
+            damagable = false;
+            yield return new WaitForSeconds(0.5f);
+            damagable = true;
         }
     }
 }

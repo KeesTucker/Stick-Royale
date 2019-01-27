@@ -179,9 +179,6 @@ MonoBehaviour:
   force: 200
   shots: 3
   abilityIndex: 0
-  spaceDepressed: 0
-  spaceDepressedLocal: 1
-  shootable: 1
   cameraGO: {fileID: 1372930870883988, guid: f3c184be121444a4e99a315347c1b84b, type: 2}
 --- !u!114 &114580392924836686
 MonoBehaviour:

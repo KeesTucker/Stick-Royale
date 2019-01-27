@@ -155,14 +155,11 @@ public class DamageDealer : MonoBehaviour {
                     hit = Instantiate(hitMarker, info.contacts[0].point, Quaternion.identity);
                     hit.GetComponent<SpriteRenderer>().color = oldColor;
                 }
-                if (info.gameObject.GetComponent<SpriteRenderer>().color != ouchie)
-                {
-                    oldColor = info.gameObject.GetComponent<SpriteRenderer>().color;
-                }
-                if (!particleDone)
-                {
-                    info.gameObject.GetComponent<SpriteRenderer>().color = ouchie;
-                }
+
+                oldColor = info.gameObject.GetComponent<ColouriserAI>().m_NewColor;
+
+                info.gameObject.GetComponent<SpriteRenderer>().color = ouchie;
+                
                 yield return new WaitForSeconds(0.2f);
                 info.gameObject.GetComponent<SpriteRenderer>().color = oldColor;
                 if (punching)
@@ -182,14 +179,11 @@ public class DamageDealer : MonoBehaviour {
                     hit = Instantiate(hitMarker, info.contacts[0].point, Quaternion.identity);
                     hit.GetComponent<SpriteRenderer>().color = oldColor;
                 }
-                if (info.transform.GetChild(0).GetComponent<SpriteRenderer>().color != ouchie)
-                {
-                    oldColor = info.transform.GetChild(0).GetComponent<SpriteRenderer>().color;
-                }
-                if (!particleDone)
-                {
-                    info.transform.GetChild(0).GetComponent<SpriteRenderer>().color = ouchie;
-                }
+
+                oldColor = info.transform.GetChild(0).gameObject.GetComponent<ColouriserAI>().m_NewColor;
+
+                info.transform.GetChild(0).GetComponent<SpriteRenderer>().color = ouchie;
+
                 yield return new WaitForSeconds(0.1f);
                 info.transform.GetChild(0).GetComponent<SpriteRenderer>().color = oldColor;
                 if (punching)

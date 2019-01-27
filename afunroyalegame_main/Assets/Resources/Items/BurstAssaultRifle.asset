@@ -37,8 +37,8 @@ MonoBehaviour:
   muzzleFlashScale: {x: 3.77, y: 10, z: 0}
   itemModel: {fileID: 1240280511901566, guid: dfb93fdcf63cde64098f7084fb65182d, type: 2}
   bulletSplit: 1
-  burstSize: 5
-  burstTime: 1.3
+  burstSize: 3
+  burstTime: 0.5
   mag: 1
   currentBullets: 30
   ItemColliderPos: {x: 0, y: 0, z: 0}

@@ -509,7 +509,7 @@ MonoBehaviour:
   - {fileID: 0}
   loaderP: {fileID: 1640340324769478, guid: 626f44b844a4e3f45916835f91ab3c21, type: 2}
   info: []
-  size: 100
+  size: 14
   currentPosition: 0
   startPos: 0
 --- !u!114 &875645039
@@ -1105,6 +1105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02a612615614bd242b4f13fa854de5b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 100000
 --- !u!114 &1536487682
 MonoBehaviour:
   m_ObjectHideFlags: 0
