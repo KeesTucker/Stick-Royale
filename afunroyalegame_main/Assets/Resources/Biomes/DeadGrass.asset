@@ -27,6 +27,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b3ca062423a06a447a85d2bdd324b0cf, type: 3}
   trees:
   - {fileID: 1355971969950606, guid: 5e190933568368a4d857ef00399bc40d, type: 2}
-  - {fileID: 1355971969950606, guid: 5e190933568368a4d857ef00399bc40d, type: 2}
+  - {fileID: 1642208386534222, guid: 7f539f8e02fef4441b8d88cc1431e541, type: 2}
   - {fileID: 1321231702334520, guid: bdbdedf6aafb6c0469d340c4f07ea1cb, type: 2}
-  - {fileID: 1321231702334520, guid: bdbdedf6aafb6c0469d340c4f07ea1cb, type: 2}
+  - {fileID: 1520874021680574, guid: 3f85bac461dc60f438dfe9136e2561c8, type: 2}

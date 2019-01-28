@@ -9,33 +9,36 @@ public class DamageSpike : MonoBehaviour {
 
     IEnumerator OnCollisionEnter(Collision collisionInfo)
     {
-        if (collisionInfo.gameObject.tag == "PosRelay")
+        if (damagable)
         {
-            collisionInfo.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
-            damagable = false;
-            yield return new WaitForSeconds(0.5f);
-            damagable = true;
-        }
-        else if (collisionInfo.transform.parent.gameObject.tag == "PosRelay")
-        {
-            collisionInfo.transform.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
-            damagable = false;
-            yield return new WaitForSeconds(0.5f);
-            damagable = true;
-        }
-        else if (collisionInfo.transform.parent.parent.gameObject.tag == "PosRelay")
-        {
-            collisionInfo.transform.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
-            damagable = false;
-            yield return new WaitForSeconds(0.5f);
-            damagable = true;
-        }
-        else if (collisionInfo.transform.parent.parent.parent.gameObject.tag == "PosRelay")
-        {
-            collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
-            damagable = false;
-            yield return new WaitForSeconds(0.5f);
-            damagable = true;
+            if (collisionInfo.gameObject.tag == "PosRelay")
+            {
+                collisionInfo.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
+                damagable = false;
+                yield return new WaitForSeconds(0.5f);
+                damagable = true;
+            }
+            else if (collisionInfo.transform.parent.gameObject.tag == "PosRelay")
+            {
+                collisionInfo.transform.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
+                damagable = false;
+                yield return new WaitForSeconds(0.5f);
+                damagable = true;
+            }
+            else if (collisionInfo.transform.parent.parent.gameObject.tag == "PosRelay")
+            {
+                collisionInfo.transform.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
+                damagable = false;
+                yield return new WaitForSeconds(0.5f);
+                damagable = true;
+            }
+            else if (collisionInfo.transform.parent.parent.parent.gameObject.tag == "PosRelay")
+            {
+                collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
+                damagable = false;
+                yield return new WaitForSeconds(0.5f);
+                damagable = true;
+            }
         }
     }
 }

@@ -9629,7 +9629,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   biome: {fileID: 0}
   type: 2
-  subtype: 0
+  subtype: 3
   tree: {fileID: 1096325863112344}
   DragonBones: 0
 --- !u!114 &114552435563334040
