@@ -10,6 +10,6 @@ public class Biome : ScriptableObject
     public Color trunkColor;
     public Color rockColor;
 
-    public Sprite[] detail;
+    public GameObject[] detail;
     public GameObject[] trees;
 }

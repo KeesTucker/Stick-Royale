@@ -28,8 +28,11 @@ public class ColorTerrain : MonoBehaviour {
         }
         else if (type == 1)
         {
-            transform.GetChild(0).GetComponent<SpriteRenderer>().color = biome.grassColor;
-            transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = biome.detail[subtype];
+            Destroy(transform.GetChild(0).gameObject);
+            GameObject plantObject = Instantiate(biome.detail[subtype], transform.position, Quaternion.identity);
+            plantObject.transform.parent = transform;
+            plantObject.transform.GetChild(0).GetComponent<SpriteRenderer>().color = biome.grassColor;
+            //transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = biome.detail[subtype];
         }
         else if (type == 2)
         {
@@ -58,8 +61,11 @@ public class ColorTerrain : MonoBehaviour {
         }
         if (type == 3)
         {
-            transform.GetChild(0).GetComponent<SpriteRenderer>().color = biome.rockColor;
-            transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = biome.detail[subtype];
+            Destroy(transform.GetChild(0).gameObject);
+            GameObject plantObject = Instantiate(biome.detail[subtype], transform.position, Quaternion.identity);
+            plantObject.transform.parent = transform;
+            plantObject.transform.GetChild(0).GetComponent<SpriteRenderer>().color = biome.rockColor;
+            //transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = biome.detail[subtype];
         }
     }
 }
