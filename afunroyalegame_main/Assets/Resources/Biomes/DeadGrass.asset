@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ba68a1467c598948b5158b68cd2fe08, type: 3}
   m_Name: DeadGrass
   m_EditorClassIdentifier: 
-  name: Dead Grass
-  BiomeIndex: 1
+  name: Desert
+  BiomeIndex: 0
   grassColor: {r: 0.8207547, g: 0.72660637, b: 0.46844962, a: 1}
   baseColor: {r: 0.3490566, g: 0.2998528, b: 0.22886258, a: 1}
   trunkColor: {r: 0.6509434, g: 0.47502983, b: 0.29783732, a: 1}
@@ -28,5 +28,5 @@ MonoBehaviour:
   trees:
   - {fileID: 1355971969950606, guid: 5e190933568368a4d857ef00399bc40d, type: 2}
   - {fileID: 1355971969950606, guid: 5e190933568368a4d857ef00399bc40d, type: 2}
-  - {fileID: 1355971969950606, guid: 5e190933568368a4d857ef00399bc40d, type: 2}
-  - {fileID: 1355971969950606, guid: 5e190933568368a4d857ef00399bc40d, type: 2}
+  - {fileID: 1321231702334520, guid: bdbdedf6aafb6c0469d340c4f07ea1cb, type: 2}
+  - {fileID: 1321231702334520, guid: bdbdedf6aafb6c0469d340c4f07ea1cb, type: 2}
