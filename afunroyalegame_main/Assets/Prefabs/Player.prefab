@@ -3427,6 +3427,7 @@ MonoBehaviour:
   weapon: {fileID: 4358649039786720}
   offset: 0
   health: {fileID: 114469010814628966}
+  frames: 0
 --- !u!114 &114109691875069828
 MonoBehaviour:
   m_ObjectHideFlags: 1
