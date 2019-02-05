@@ -16,10 +16,7 @@ public class PlayerManagement : NetworkBehaviour {
             CmdSpawn(); //Spawn code here
             if (isServer)
             {
-                for (int i = 0; i < 20; i++)
-                {
-                    CmdBotSpawn();
-                }
+                CmdBotSpawn();
             }
         } 
 	}

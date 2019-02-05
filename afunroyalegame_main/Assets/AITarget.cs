@@ -48,8 +48,6 @@ public class AITarget : MonoBehaviour {
 
     public HealthAI health;
 
-    public int frames;
-
     // Bit shift the index of the layer (8) to get a bit mask
     int layerMask = 1 << 24;
 
@@ -57,7 +55,6 @@ public class AITarget : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        frames = Random.Range(0, 12);
         isServer = parent.GetComponent<AISetup>().isServer;
         spawnWeapons = GameObject.Find("Items").GetComponent<SpawnWeapons>();
         // This would cast rays only against colliders in layer 8.
@@ -65,7 +62,7 @@ public class AITarget : MonoBehaviour {
         layerMask = ~layerMask;
     }
 
-    /*void OnDrawGizmos()
+    void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(parent.transform.position, radius);
@@ -83,336 +80,330 @@ public class AITarget : MonoBehaviour {
         }
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, 4f);
-    }*/
+    }
 
 	// Update is called once per frame
 	void Update () {
-        frames++;
-        if (frames >= 12 && !health.deaded)
+        if (isServer)
         {
-            frames = 0;
-            if (isServer)
+            if (!spawnRocket.destroyed && !selectedStart)
             {
-                if (!spawnRocket.destroyed && !selectedStart)
-                {
-                    GameObject[] weapons = GameObject.FindGameObjectsWithTag("WeaponItem");
-                    targetGO(weapons[Random.Range(0, weapons.Length - 1)]);
-                    selectedStart = true;
-                }
-                /*
-                startCheckG = true;
-                startCheckP = true;
-                startCheckW = true;
+                GameObject[] weapons = GameObject.FindGameObjectsWithTag("WeaponItem");
+                targetGO(weapons[Random.Range(0, weapons.Length - 1)]);
+                selectedStart = true;
+            }
 
-                foreach (Collider objectCol in Physics.OverlapSphere(parent.transform.position, radius))
+            startCheckG = true;
+            startCheckP = true;
+            startCheckW = true;
+
+            foreach (Collider objectCol in Physics.OverlapSphere(parent.transform.position, radius))
+            {
+                if (objectCol.gameObject.GetComponent<AISetup>() && objectCol.gameObject != parent)
                 {
-                    if (objectCol.gameObject.GetComponent<AISetup>() && objectCol.gameObject != parent)
+                    if (startCheckP)
                     {
-                        if (startCheckP)
-                        {
-                            minPlayerDistance = Vector3.Distance(objectCol.transform.position, parent.transform.position);
-                            closestPlayer = objectCol.transform;
-                            startCheckP = false;
-                        }
-                        else if (Vector3.Distance(objectCol.transform.position, parent.transform.position) < minPlayerDistance)
-                        {
-                            minPlayerDistance = Vector3.Distance(objectCol.transform.position, parent.transform.position);
-                            closestPlayer = objectCol.transform;
-                        }
+                        minPlayerDistance = Vector3.Distance(objectCol.transform.position, parent.transform.position);
+                        closestPlayer = objectCol.transform;
+                        startCheckP = false;
                     }
-                    else if (objectCol.gameObject.tag == "WeaponItem")
+                    else if (Vector3.Distance(objectCol.transform.position, parent.transform.position) < minPlayerDistance)
                     {
-                        if (startCheckW)
-                        {
-                            minWeaponDistance = Vector3.Distance(objectCol.transform.position, parent.transform.position);
-                            closestWeapon = objectCol.transform;
-                            startCheckW = false;
-                        }
-                        else if (Vector3.Distance(objectCol.transform.position, parent.transform.position) < minWeaponDistance)
-                        {
-                            minWeaponDistance = Vector3.Distance(objectCol.transform.position, parent.transform.position);
-                            closestWeapon = objectCol.transform;
-                        }
+                        minPlayerDistance = Vector3.Distance(objectCol.transform.position, parent.transform.position);
+                        closestPlayer = objectCol.transform;
                     }
-                    else if (objectCol.gameObject.tag == "TerrainPart" || objectCol.gameObject.tag == "NoAttract")
+                }
+                else if (objectCol.gameObject.tag == "WeaponItem")
+                {
+                    if (startCheckW)
                     {
-                        if (startCheckG)
-                        {
-                            minGrappleDistance = Vector3.Distance(objectCol.transform.position, parent.transform.position);
-                            closestGrapple = objectCol.transform;
-                            startCheckG = false;
-                        }
-                        else if (Vector3.Distance(objectCol.transform.position, parent.transform.position) < minGrappleDistance)
-                        {
-                            minGrappleDistance = Vector3.Distance(objectCol.transform.position, parent.transform.position);
-                            closestGrapple = objectCol.transform;
-                        }
+                        minWeaponDistance = Vector3.Distance(objectCol.transform.position, parent.transform.position);
+                        closestWeapon = objectCol.transform;
+                        startCheckW = false;
                     }
+                    else if (Vector3.Distance(objectCol.transform.position, parent.transform.position) < minWeaponDistance)
+                    {
+                        minWeaponDistance = Vector3.Distance(objectCol.transform.position, parent.transform.position);
+                        closestWeapon = objectCol.transform;
+                    }
+                }
+                else if (objectCol.gameObject.tag == "TerrainPart" || objectCol.gameObject.tag == "NoAttract")
+                {
                     if (startCheckG)
                     {
-                        closestGrapple = null;
+                        minGrappleDistance = Vector3.Distance(objectCol.transform.position, parent.transform.position);
+                        closestGrapple = objectCol.transform;
+                        startCheckG = false;
                     }
-                    else if (startCheckW)
+                    else if (Vector3.Distance(objectCol.transform.position, parent.transform.position) < minGrappleDistance)
                     {
-                        closestWeapon = null;
-                    }
-                    else if (startCheckP)
-                    {
-                        closestPlayer = null;
+                        minGrappleDistance = Vector3.Distance(objectCol.transform.position, parent.transform.position);
+                        closestGrapple = objectCol.transform;
                     }
                 }
-
-                if (refrenceKeeper.inventoryCount < 3 && closestWeapon)
+                if (startCheckG)
                 {
-                    if (minWeaponDistance < minPlayerDistance && !bulletTypes.Contains(spawnWeapons.Weapons[closestWeapon.GetComponent<WeaponIndexHolder>().WeaponIndex].WeaponItem.bullet)) //Make sure not picking up same weapontype
-                    {
-                        transform.position = closestWeapon.transform.position;
-                        targetType = 0;
-                    }
-                    else if (closestPlayer)
-                    {
-                        transform.position = closestPlayer.transform.position;
-                        targetType = 1;
-                    }
+                    closestGrapple = null;
+                }
+                else if (startCheckW)
+                {
+                    closestWeapon = null;
+                }
+                else if (startCheckP)
+                {
+                    closestPlayer = null;
+                }
+            }
+
+            if (refrenceKeeper.inventoryCount < 3 && closestWeapon)
+            {
+                if (minWeaponDistance < minPlayerDistance && !bulletTypes.Contains(spawnWeapons.Weapons[closestWeapon.GetComponent<WeaponIndexHolder>().WeaponIndex].WeaponItem.bullet)) //Make sure not picking up same weapontype
+                {
+                    transform.position = closestWeapon.transform.position;
+                    targetType = 0;
                 }
                 else if (closestPlayer)
                 {
                     transform.position = closestPlayer.transform.position;
                     targetType = 1;
                 }
-                else
-                {
-                    transform.position = new Vector3(0, transform.position.y, 0);
-                }
             }
-            if (targetType == 1)
+            else if (closestPlayer)
             {
-                if (minPlayerDistance < 35) //Melee Distance
-                {
-                    for (int i = 0; i < refrenceKeeper.weaponInventory.Count; i++)
-                    {
-                        if (refrenceKeeper.weaponInventory[i].bullet)
-                        {
-                            if (refrenceKeeper.weaponInventory[i].bullet.name == "Slugs") //Switch to shotty
-                            {
-                                shotty = true;
-                                if (refrenceKeeper.activeSlot != i)
-                                {
-                                    if (i == 0)
-                                    {
-                                        baseControl.one = true;
-                                    }
-                                    else if (i == 1)
-                                    {
-                                        baseControl.two = true;
-                                    }
-                                    else if (i == 2)
-                                    {
-                                        baseControl.three = true;
-                                    }
-                                }
-                            }
-                            else if (!shotty) //Use punch
-                            {
-                                baseControl.four = true;
-                            }
-                        }
-                    }
-                }
-                else if (minPlayerDistance < 60 && bulletTypes.Contains(typeGun[1]))
-                {
-                    for (int i = 0; i < refrenceKeeper.weaponInventory.Count; i++)
-                    {
-                        if (refrenceKeeper.weaponInventory[i].bullet)
-                        {
-                            if (refrenceKeeper.weaponInventory[i].bullet.name == "Small Bullet") //Switch gun to shortrange
-                            {
-                                if (refrenceKeeper.activeSlot != i)
-                                {
-                                    if (i == 0)
-                                    {
-                                        baseControl.one = true;
-                                    }
-                                    else if (i == 1)
-                                    {
-                                        baseControl.two = true;
-                                    }
-                                    else if (i == 2)
-                                    {
-                                        baseControl.three = true;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                else if (minPlayerDistance < 100 && bulletTypes.Contains(typeGun[2]))
-                {
-                    for (int i = 0; i < refrenceKeeper.weaponInventory.Count; i++)
-                    {
-                        if (refrenceKeeper.weaponInventory[i].bullet)
-                        {
-                            if (refrenceKeeper.weaponInventory[i].bullet.name == "Medium Bullet") //Switch gun to midrange
-                            {
-                                if (refrenceKeeper.activeSlot != i)
-                                {
-                                    if (i == 0)
-                                    {
-                                        baseControl.one = true;
-                                    }
-                                    else if (i == 1)
-                                    {
-                                        baseControl.two = true;
-                                    }
-                                    else if (i == 2)
-                                    {
-                                        baseControl.three = true;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                else if (minPlayerDistance < 150 && bulletTypes.Contains(typeGun[3]))
-                {
-                    for (int i = 0; i < refrenceKeeper.weaponInventory.Count; i++)
-                    {
-                        if (refrenceKeeper.weaponInventory[i].bullet)
-                        {
-                            if (refrenceKeeper.weaponInventory[i].bullet.name == "Heavy Bullet") //Switch gun to midrange
-                            {
-                                if (refrenceKeeper.activeSlot != i)
-                                {
-                                    if (i == 0)
-                                    {
-                                        baseControl.one = true;
-                                    }
-                                    else if (i == 1)
-                                    {
-                                        baseControl.two = true;
-                                    }
-                                    else if (i == 2)
-                                    {
-                                        baseControl.three = true;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                else if (minPlayerDistance < 100)
-                {
-                    if (refrenceKeeper.inventoryCount > 0)
-                    {
-                        int i = refrenceKeeper.inventoryCount - 1;
-                        if (i != refrenceKeeper.activeSlot)
-                        {
-                            if (i == 0)
-                            {
-                                baseControl.one = true;
-                            }
-                            else if (i == 1)
-                            {
-                                baseControl.two = true;
-                            }
-                            else if (i == 2)
-                            {
-                                baseControl.three = true;
-                            }
-                        }
-                    }
-                    else if (refrenceKeeper.activeSlot != 3)
-                    {
-                        baseControl.four = true;
-                    }
-                }
-                //Debug.DrawRay(weapon.position, -Vector3.Normalize(new Vector3(weapon.position.x - transform.position.x, weapon.position.y - transform.position.y, 0)) * (minPlayerDistance - 5f), Color.red);
-                if (refrenceKeeper.weaponHeld && !Physics.Raycast(weapon.position, -Vector3.Normalize(new Vector3(weapon.position.x - transform.position.x, weapon.position.y - transform.position.y, 0)), out hit, minPlayerDistance - 5f, layerMask))
-                {
-                    baseControl.lClick = true;
-                }
-                else if (refrenceKeeper.weaponHeld)
-                {
-                    baseControl.lClick = false;
-                }
-
-                if (minPlayerDistance < 35 && !refrenceKeeper.weaponHeld)
-                {
-                    if (!baseControl.lClick)
-                    {
-                        StartCoroutine("punchKill");
-                    }
-                }
+                transform.position = closestPlayer.transform.position;
+                targetType = 1;
             }
-
-            else if (targetType == 0)
+            else {
+                transform.position = new Vector3(0, transform.position.y, 0);
+            }
+        }
+        if (targetType == 1)
+        {
+            if (minPlayerDistance < 35) //Melee Distance
             {
-                if (minWeaponDistance < 15f)
+                for (int i = 0; i < refrenceKeeper.weaponInventory.Count; i++)
                 {
-                    bulletTypes.Add(spawnWeapons.Weapons[closestWeapon.GetComponent<WeaponIndexHolder>().WeaponIndex].WeaponItem.bullet);
-                    baseControl.e = true;
+                    if (refrenceKeeper.weaponInventory[i].bullet)
+                    {
+                        if (refrenceKeeper.weaponInventory[i].bullet.name == "Slugs") //Switch to shotty
+                        {
+                            shotty = true;
+                            if (refrenceKeeper.activeSlot != i)
+                            {
+                                if (i == 0)
+                                {
+                                    baseControl.one = true;
+                                }
+                                else if (i == 1)
+                                {
+                                    baseControl.two = true;
+                                }
+                                else if (i == 2)
+                                {
+                                    baseControl.three = true;
+                                }
+                            }
+                        }
+                        else if (!shotty) //Use punch
+                        {
+                            baseControl.four = true;
+                        }
+                    }
                 }
             }
+            else if (minPlayerDistance < 60 && bulletTypes.Contains(typeGun[1]))
+            {
+                for (int i = 0; i < refrenceKeeper.weaponInventory.Count; i++)
+                {
+                    if (refrenceKeeper.weaponInventory[i].bullet)
+                    {
+                        if (refrenceKeeper.weaponInventory[i].bullet.name == "Small Bullet") //Switch gun to shortrange
+                        {
+                            if (refrenceKeeper.activeSlot != i)
+                            {
+                                if (i == 0)
+                                {
+                                    baseControl.one = true;
+                                }
+                                else if (i == 1)
+                                {
+                                    baseControl.two = true;
+                                }
+                                else if (i == 2)
+                                {
+                                    baseControl.three = true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else if (minPlayerDistance < 100 && bulletTypes.Contains(typeGun[2]))
+            {
+                for (int i = 0; i < refrenceKeeper.weaponInventory.Count; i++)
+                {
+                    if (refrenceKeeper.weaponInventory[i].bullet)
+                    {
+                        if (refrenceKeeper.weaponInventory[i].bullet.name == "Medium Bullet") //Switch gun to midrange
+                        {
+                            if (refrenceKeeper.activeSlot != i)
+                            {
+                                if (i == 0)
+                                {
+                                    baseControl.one = true;
+                                }
+                                else if (i == 1)
+                                {
+                                    baseControl.two = true;
+                                }
+                                else if (i == 2)
+                                {
+                                    baseControl.three = true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else if (minPlayerDistance < 150 && bulletTypes.Contains(typeGun[3]))
+            {
+                for (int i = 0; i < refrenceKeeper.weaponInventory.Count; i++)
+                {
+                    if (refrenceKeeper.weaponInventory[i].bullet)
+                    {
+                        if (refrenceKeeper.weaponInventory[i].bullet.name == "Heavy Bullet") //Switch gun to midrange
+                        {
+                            if (refrenceKeeper.activeSlot != i)
+                            {
+                                if (i == 0)
+                                {
+                                    baseControl.one = true;
+                                }
+                                else if (i == 1)
+                                {
+                                    baseControl.two = true;
+                                }
+                                else if (i == 2)
+                                {
+                                    baseControl.three = true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else if (minPlayerDistance < 100)
+            {
+                if (refrenceKeeper.inventoryCount > 0)
+                {
+                    int i = refrenceKeeper.inventoryCount - 1;
+                    if (i != refrenceKeeper.activeSlot)
+                    {
+                        if (i == 0)
+                        {
+                            baseControl.one = true;
+                        }
+                        else if (i == 1)
+                        {
+                            baseControl.two = true;
+                        }
+                        else if (i == 2)
+                        {
+                            baseControl.three = true;
+                        }
+                    }
+                }
+                else if (refrenceKeeper.activeSlot != 3)
+                {
+                    baseControl.four = true;
+                }
+            }
+            Debug.DrawRay(weapon.position, -Vector3.Normalize(new Vector3(weapon.position.x - transform.position.x, weapon.position.y - transform.position.y, 0)) * (minPlayerDistance - 5f), Color.red);
+            if (refrenceKeeper.weaponHeld && !Physics.Raycast(weapon.position, -Vector3.Normalize(new Vector3(weapon.position.x - transform.position.x, weapon.position.y - transform.position.y, 0)), out hit, minPlayerDistance - 5f, layerMask))
+            {
+                baseControl.lClick = true;
+            }
+            else if (refrenceKeeper.weaponHeld)
+            {
+                baseControl.lClick = false;
+            }
 
-            //Movement
+            if (minPlayerDistance < 35 && !refrenceKeeper.weaponHeld)
+            {
+                if (!baseControl.lClick)
+                {
+                    StartCoroutine("punchKill");
+                }
+            }
+        }
+
+        else if (targetType == 0)
+        {
+            if (minWeaponDistance < 15f)
+            {
+                bulletTypes.Add(spawnWeapons.Weapons[closestWeapon.GetComponent<WeaponIndexHolder>().WeaponIndex].WeaponItem.bullet);
+                baseControl.e = true;
+            }
+        }
+
+        //Movement
+        if (transform.position.x > parent.transform.position.x)
+        {
+            offset = (400 - health.health) / 400 * 150;
+        }
+        else if (transform.position.x < parent.transform.position.x)
+        {
+            offset = (-400 + health.health) / 400 * 150;
+        }
+
+        if (targetType == 0 || targetType == 2)
+        {
             if (transform.position.x > parent.transform.position.x)
             {
-                offset = (400 - health.health) / 400 * 150;
-            }
-            else if (transform.position.x < parent.transform.position.x)
-            {
-                offset = (-400 + health.health) / 400 * 150;
-            }
-
-            if (targetType == 0 || targetType == 2)
-            {
-                if (transform.position.x > parent.transform.position.x)
-                {
-                    baseControl.d = true;
-                    baseControl.a = false;
-                    //Debug.DrawRay(parent.transform.position, Vector3.right * 5f, Color.green);
-                    if (Physics.Raycast(parent.transform.position, Vector3.right, out hit, 5f, layerMaskGround) || Physics.Raycast(parent.transform.position, -Vector3.right, out hit, 5f, layerMaskGround))
-                    {
-                        baseControl.space = true;
-                    }
-                }
-                else if (transform.position.x < parent.transform.position.x)
-                {
-                    baseControl.a = true;
-                    baseControl.d = false;
-                    //Debug.DrawRay(parent.transform.position, -Vector3.right * 5f, Color.green);
-                    if (Physics.Raycast(parent.transform.position, Vector3.right, out hit, 5f, layerMaskGround) || Physics.Raycast(parent.transform.position, -Vector3.right, out hit, 5f, layerMaskGround))
-                    {
-                        baseControl.space = true;
-                    }
-                }
-            }
-            else if (targetType == 1)
-            {
-                if (Random.Range(0, (int)(1 / Time.deltaTime * 10)) == 1)
+                baseControl.d = true;
+                baseControl.a = false;
+                Debug.DrawRay(parent.transform.position, Vector3.right * 5f, Color.green);
+                if (Physics.Raycast(parent.transform.position, Vector3.right, out hit, 5f, layerMaskGround) || Physics.Raycast(parent.transform.position, -Vector3.right, out hit, 5f, layerMaskGround))
                 {
                     baseControl.space = true;
                 }
-                if (transform.position.x - offset > parent.transform.position.x)
+            }
+            else if (transform.position.x < parent.transform.position.x)
+            {
+                baseControl.a = true;
+                baseControl.d = false;
+                Debug.DrawRay(parent.transform.position, -Vector3.right * 5f, Color.green);
+                if (Physics.Raycast(parent.transform.position, Vector3.right, out hit, 5f, layerMaskGround) || Physics.Raycast(parent.transform.position, -Vector3.right, out hit, 5f, layerMaskGround))
                 {
-                    baseControl.d = true;
-                    baseControl.a = false;
-                    //Debug.DrawRay(parent.transform.position, Vector3.right * 15f, Color.green);
-                    if (Physics.Raycast(parent.transform.position, Vector3.right, out hit, 5f, layerMaskGround) || Physics.Raycast(parent.transform.position, -Vector3.right, out hit, 5f, layerMaskGround))
-                    {
-                        baseControl.space = true;
-                    }
+                    baseControl.space = true;
                 }
-                else if (transform.position.x - offset < parent.transform.position.x)
+            }
+        }
+        else if (targetType == 1)
+        {
+            if (Random.Range(0, (int)(1 / Time.deltaTime)) == 1) 
+            {
+                baseControl.space = true;
+            }
+            if (transform.position.x - offset > parent.transform.position.x)
+            {
+                baseControl.d = true;
+                baseControl.a = false;
+                Debug.DrawRay(parent.transform.position, Vector3.right * 15f, Color.green);
+                if (Physics.Raycast(parent.transform.position, Vector3.right, out hit, 5f, layerMaskGround) || Physics.Raycast(parent.transform.position, -Vector3.right, out hit, 5f, layerMaskGround))
                 {
-                    baseControl.a = true;
-                    baseControl.d = false;
-                    //Debug.DrawRay(parent.transform.position, -Vector3.right * 15f, Color.green);
-                    if (Physics.Raycast(parent.transform.position, -Vector3.right, out hit, 5f, layerMaskGround) || Physics.Raycast(parent.transform.position, Vector3.right, out hit, 5f, layerMaskGround))
-                    {
-                        baseControl.space = true;
-                    }
-                }*/
+                    baseControl.space = true;
+                }
+            }
+            else if (transform.position.x - offset < parent.transform.position.x)
+            {
+                baseControl.a = true;
+                baseControl.d = false;
+                Debug.DrawRay(parent.transform.position, -Vector3.right * 15f, Color.green);
+                if (Physics.Raycast(parent.transform.position, -Vector3.right, out hit, 5f, layerMaskGround) || Physics.Raycast(parent.transform.position, Vector3.right, out hit, 5f, layerMaskGround))
+                {
+                    baseControl.space = true;
+                }
             }
         }
     }

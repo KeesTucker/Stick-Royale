@@ -53,12 +53,13 @@ public class RefrenceKeeperAI : NetworkBehaviour
     {
         if (hasAuthority)
         {
+            updateUI = GameObject.Find("PlayerUI").GetComponent<UpdateUIRefrence>().updateUI;
+            updateUI.refrenceKeeper = this;
+            updateUI.OpenClose();
+            Debug.Log("fuckyes");
             if (GetComponent<PlayerControl>())
             {
                 isPlayer = true;
-                updateUI = GameObject.Find("PlayerUI").GetComponent<UpdateUIRefrence>().updateUI;
-                updateUI.refrenceKeeper = this;
-                updateUI.OpenClose();
             }
             else
             {

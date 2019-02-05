@@ -30,7 +30,6 @@ TagManager:
   - Hands
   - Feet
   - ghostLocal
-  - TerrainPart
   layers:
   - Default
   - TransparentFX
