@@ -14,6 +14,8 @@ public class BaseControl : NetworkBehaviour {
     public bool dLast;
     public bool space;
     public bool r;
+    public bool shift;
+    public bool shiftLast;
     public bool lClick;
     public bool lClickLast;
     public bool rClick;
@@ -22,6 +24,9 @@ public class BaseControl : NetworkBehaviour {
     public bool two;
     public bool three;
     public bool four;
+
+    public float scroll = 1;
+    public bool oneDone = false;
 
     public bool spaceDone;
 
@@ -32,9 +37,14 @@ public class BaseControl : NetworkBehaviour {
     public RefrenceKeeperAI refrenceKeeper;
     public SpawnRocketAI spawnRocket;
 
-    // Update is called once per frame
-    void Update () {
+    void Start()
+    {
+        shift = true;
+    }
 
+    // Update is called once per frame
+    void Update()
+    {
         if (hasAuthority)
         {
             if (e)
@@ -66,6 +76,11 @@ public class BaseControl : NetworkBehaviour {
                     spaceDone = true;
                 }
                 CmdSetKey("space", true);
+            }
+            if (shift != shiftLast)
+            {
+                shiftLast = shift;
+                CmdSetKey("shift", shift);
             }
             if (r)
             {
@@ -128,6 +143,10 @@ public class BaseControl : NetworkBehaviour {
         if (key == "space")
         {
             playerMovement.space = state;
+        }
+        if (key == "shift")
+        {
+            playerMovement.shift = state;
         }
         if (key == "r")
         {

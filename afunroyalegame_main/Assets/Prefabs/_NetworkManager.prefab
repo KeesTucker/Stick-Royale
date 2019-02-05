@@ -97,7 +97,7 @@ MonoBehaviour:
   - {fileID: 1757743736535976, guid: a2ab57fb811728d4b8e6d0fd2cc945ba, type: 2}
   - {fileID: 1881230412041522, guid: eddec3f38fcb0644da1b4a8e5d33588a, type: 2}
   - {fileID: 1812291429154494, guid: 3e3d265b7e73163438623709c2ebd8c1, type: 2}
-  - {fileID: 1407491056654792, guid: e4c2002b21ec093498a5d52cc8c3b6f8, type: 2}
+  - {fileID: 0}
   - {fileID: 1822163060209856, guid: 98dd924f011935e4a9d28ee383b99329, type: 2}
   m_MaxConnections: 20
   m_UseWebSockets: 0

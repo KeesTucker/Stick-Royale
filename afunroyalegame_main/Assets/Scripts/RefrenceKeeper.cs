@@ -22,6 +22,8 @@ public class RefrenceKeeper : MonoBehaviour {
 
     public UpdateUI updateUI;
 
+    public bool isPlayer = true;
+
     public SwitchWeapon switchWeapon;
 
     IEnumerator Start()
@@ -30,7 +32,17 @@ public class RefrenceKeeper : MonoBehaviour {
         yield return new WaitForEndOfFrame();
         yield return new WaitForEndOfFrame();
         yield return new WaitForEndOfFrame();
-        updateUI.HighlightSlot(activeSlot);
+
+        if (GetComponent<PlayerControl>())
+        {
+            updateUI.HighlightSlot(activeSlot);
+            isPlayer = true;
+        }
+        else
+        {
+            isPlayer = false;
+        }
+        
         switchWeapon = GameObject.Find("Weapon").GetComponent<SwitchWeapon>();
     }
 
@@ -42,28 +54,40 @@ public class RefrenceKeeper : MonoBehaviour {
             {
                 activeSlot = 0;
                 activeSlot = Mathf.Clamp(activeSlot, 0, weaponInventory.Count - 1);
-                updateUI.HighlightSlot(activeSlot);
+                if (isPlayer)
+                {
+                    updateUI.HighlightSlot(activeSlot);
+                }
                 switchWeapon.Switch(weaponInventory[activeSlot].id);
             }
             if (Input.GetKeyDown("2"))
             {
                 activeSlot = 1;
                 activeSlot = Mathf.Clamp(activeSlot, 0, weaponInventory.Count - 1);
-                updateUI.HighlightSlot(activeSlot);
+                if (isPlayer)
+                {
+                    updateUI.HighlightSlot(activeSlot);
+                }
                 switchWeapon.Switch(weaponInventory[activeSlot].id);
             }
             if (Input.GetKeyDown("3"))
             {
                 activeSlot = 2;
                 activeSlot = Mathf.Clamp(activeSlot, 0, weaponInventory.Count - 1);
-                updateUI.HighlightSlot(activeSlot);
+                if (isPlayer)
+                {
+                    updateUI.HighlightSlot(activeSlot);
+                }
                 switchWeapon.Switch(weaponInventory[activeSlot].id);
             }
             if (Input.GetKeyDown("4"))
             {
                 activeSlot = 3;
                 activeSlot = Mathf.Clamp(activeSlot, 0, weaponInventory.Count - 1);
-                updateUI.HighlightSlot(activeSlot);
+                if (isPlayer)
+                {
+                    updateUI.HighlightSlot(activeSlot);
+                }
                 switchWeapon.Switch(weaponInventory[activeSlot].id);
             }
         }

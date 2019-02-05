@@ -732,7 +732,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 30
-  localRelay: {fileID: 0}
   damagable: 1
 --- !u!114 &114031557749184284
 MonoBehaviour:
@@ -746,7 +745,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 100
-  localRelay: {fileID: 0}
   damagable: 1
 --- !u!114 &114044518697900706
 MonoBehaviour:
@@ -760,7 +758,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 30
-  localRelay: {fileID: 0}
   damagable: 1
 --- !u!114 &114047996880543198
 MonoBehaviour:
@@ -774,7 +771,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  localRelay: {fileID: 0}
   damagable: 0
 --- !u!114 &114095880244863468
 MonoBehaviour:
@@ -788,7 +784,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 30
-  localRelay: {fileID: 0}
   damagable: 1
 --- !u!114 &114096495204764272
 MonoBehaviour:
@@ -802,7 +797,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  localRelay: {fileID: 0}
   damagable: 0
 --- !u!114 &114099691108993568
 MonoBehaviour:
@@ -816,7 +810,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 30
-  localRelay: {fileID: 0}
   damagable: 1
 --- !u!114 &114117349361542626
 MonoBehaviour:
@@ -830,7 +823,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 100
-  localRelay: {fileID: 0}
   damagable: 1
 --- !u!114 &114129378853640552
 MonoBehaviour:
@@ -844,7 +836,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 30
-  localRelay: {fileID: 0}
   damagable: 1
 --- !u!114 &114129707367331460
 MonoBehaviour:
@@ -858,7 +849,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 30
-  localRelay: {fileID: 0}
   damagable: 1
 --- !u!114 &114149257413027282
 MonoBehaviour:
@@ -872,7 +862,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 100
-  localRelay: {fileID: 0}
   damagable: 1
 --- !u!114 &114238073066145726
 MonoBehaviour:
@@ -886,7 +875,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 100
-  localRelay: {fileID: 0}
   damagable: 1
 --- !u!114 &114306358767500490
 MonoBehaviour:
@@ -900,7 +888,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  localRelay: {fileID: 0}
   damagable: 0
 --- !u!114 &114330619303633958
 MonoBehaviour:
@@ -914,7 +901,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 30
-  localRelay: {fileID: 0}
   damagable: 1
 --- !u!114 &114333640434994484
 MonoBehaviour:
@@ -928,7 +914,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 100
-  localRelay: {fileID: 0}
   damagable: 1
 --- !u!114 &114339497022632928
 MonoBehaviour:
@@ -942,7 +927,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  localRelay: {fileID: 0}
   damagable: 0
 --- !u!114 &114400705564419884
 MonoBehaviour:
@@ -956,7 +940,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  localRelay: {fileID: 0}
   damagable: 0
 --- !u!114 &114408419324915764
 MonoBehaviour:
@@ -970,7 +953,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 100
-  localRelay: {fileID: 0}
   damagable: 1
 --- !u!114 &114497820548718836
 MonoBehaviour:
@@ -984,7 +966,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 30
-  localRelay: {fileID: 0}
   damagable: 1
 --- !u!114 &114506038840348274
 MonoBehaviour:
@@ -998,7 +979,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 100
-  localRelay: {fileID: 0}
   damagable: 1
 --- !u!114 &114512858146668422
 MonoBehaviour:
@@ -1012,7 +992,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  localRelay: {fileID: 0}
   damagable: 0
 --- !u!114 &114551690586730538
 MonoBehaviour:
@@ -1026,7 +1005,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 100
-  localRelay: {fileID: 0}
   damagable: 1
 --- !u!114 &114601135883809798
 MonoBehaviour:
@@ -1040,7 +1018,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 30
-  localRelay: {fileID: 0}
   damagable: 1
 --- !u!114 &114653605343687010
 MonoBehaviour:
@@ -1054,7 +1031,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  localRelay: {fileID: 0}
   damagable: 0
 --- !u!114 &114725918362875252
 MonoBehaviour:
@@ -1068,7 +1044,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 30
-  localRelay: {fileID: 0}
   damagable: 1
 --- !u!114 &114875945695585830
 MonoBehaviour:
@@ -1082,7 +1057,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  localRelay: {fileID: 0}
   damagable: 0
 --- !u!114 &114962816969206158
 MonoBehaviour:
@@ -1096,7 +1070,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 30
-  localRelay: {fileID: 0}
   damagable: 1
 --- !u!114 &114966861361266990
 MonoBehaviour:

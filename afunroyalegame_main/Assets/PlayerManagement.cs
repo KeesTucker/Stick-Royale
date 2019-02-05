@@ -6,6 +6,7 @@ using Mirror;
 public class PlayerManagement : NetworkBehaviour {
 
     public GameObject AIPlayer;
+    public GameObject bot;
     private GameObject playerSpawned;
 
 	// Use this for initialization
@@ -13,6 +14,10 @@ public class PlayerManagement : NetworkBehaviour {
         if (isLocalPlayer)
         {
             CmdSpawn(); //Spawn code here
+            if (isServer)
+            {
+                CmdBotSpawn();
+            }
         } 
 	}
 
@@ -20,6 +25,14 @@ public class PlayerManagement : NetworkBehaviour {
     public void CmdSpawn()
     {
         playerSpawned = Instantiate(AIPlayer, transform.position, transform.rotation);
+        playerSpawned.GetComponent<AISetup>().parent = gameObject;
+        NetworkServer.SpawnWithClientAuthority(playerSpawned, connectionToClient);
+    }
+
+    [Command]
+    public void CmdBotSpawn()
+    {
+        playerSpawned = Instantiate(bot, transform.position, transform.rotation);
         playerSpawned.GetComponent<AISetup>().parent = gameObject;
         NetworkServer.SpawnWithClientAuthority(playerSpawned, connectionToClient);
     }

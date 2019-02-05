@@ -15,6 +15,8 @@ public class HealthAI : NetworkBehaviour {
 
     public bool deaded;
 
+    public bool isPlayer;
+
     public GameObject Ghost;
 	
 	void Start()
@@ -64,8 +66,10 @@ public class HealthAI : NetworkBehaviour {
         {
             hj.useSpring = false;
         }
-
-        CmdSpawnGhost();
+        if (isPlayer)
+        {
+            CmdSpawnGhost();
+        }
     }
 
     [Command]

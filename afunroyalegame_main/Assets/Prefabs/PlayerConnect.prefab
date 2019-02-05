@@ -80,3 +80,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AIPlayer: {fileID: 1617520046985736, guid: da30013b553d3db4fa1a7d9491184f73, type: 2}
+  bot: {fileID: 1822163060209856, guid: 98dd924f011935e4a9d28ee383b99329, type: 2}

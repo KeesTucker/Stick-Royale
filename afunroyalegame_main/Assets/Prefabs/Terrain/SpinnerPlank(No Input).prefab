@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 54890856745277062}
   m_Layer: 12
   m_Name: Stone
-  m_TagString: Untagged
+  m_TagString: TerrainPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 114612865442907222}
   m_Layer: 12
   m_Name: Plank
-  m_TagString: Untagged
+  m_TagString: TerrainPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 54995428235119200}
   m_Layer: 12
   m_Name: Centre
-  m_TagString: Untagged
+  m_TagString: TerrainPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 54375627775616902}
   m_Layer: 12
   m_Name: SpinnerPlank(No Input)
-  m_TagString: Untagged
+  m_TagString: TerrainPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

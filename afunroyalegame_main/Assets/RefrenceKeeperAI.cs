@@ -38,6 +38,8 @@ public class RefrenceKeeperAI : NetworkBehaviour
 
     private bool done = false;
 
+    public bool isPlayer = false;
+
     void Start()
     {
         for (int i = 0; i < 4; i++)
@@ -54,6 +56,15 @@ public class RefrenceKeeperAI : NetworkBehaviour
             updateUI = GameObject.Find("PlayerUI").GetComponent<UpdateUIRefrence>().updateUI;
             updateUI.refrenceKeeper = this;
             updateUI.OpenClose();
+            Debug.Log("fuckyes");
+            if (GetComponent<PlayerControl>())
+            {
+                isPlayer = true;
+            }
+            else
+            {
+                isPlayer = false;
+            }
         }
     }
 
@@ -86,7 +97,10 @@ public class RefrenceKeeperAI : NetworkBehaviour
                 }
                 if (hasAuthority)
                 {
-                    updateUI.HighlightSlot(activeSlot);
+                    if (isPlayer)
+                    {
+                        updateUI.HighlightSlot(activeSlot);
+                    }
                 }
                 one = false;
             }
@@ -104,7 +118,10 @@ public class RefrenceKeeperAI : NetworkBehaviour
                 }
                 if (hasAuthority)
                 {
-                    updateUI.HighlightSlot(activeSlot);
+                    if (isPlayer)
+                    {
+                        updateUI.HighlightSlot(activeSlot);
+                    }
                 }
                 two = false;
             }
@@ -122,7 +139,10 @@ public class RefrenceKeeperAI : NetworkBehaviour
                 }
                 if (hasAuthority)
                 {
-                    updateUI.HighlightSlot(activeSlot);
+                    if (isPlayer)
+                    {
+                        updateUI.HighlightSlot(activeSlot);
+                    }
                 }
                 three = false;
             }
@@ -140,7 +160,10 @@ public class RefrenceKeeperAI : NetworkBehaviour
                 }
                 if (hasAuthority)
                 {
-                    updateUI.HighlightSlot(activeSlot);
+                    if (isPlayer)
+                    {
+                        updateUI.HighlightSlot(activeSlot);
+                    }
                 }
                 four = false;
             }

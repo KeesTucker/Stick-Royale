@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114512066671436016}
   m_Layer: 12
   m_Name: MovingBlock
-  m_TagString: Untagged
+  m_TagString: TerrainPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 4081712633880450}
   m_Layer: 12
   m_Name: BlockHolder
-  m_TagString: Untagged
+  m_TagString: TerrainPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

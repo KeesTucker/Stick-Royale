@@ -832,7 +832,7 @@ GameObject:
   - component: {fileID: 114331578463406568}
   m_Layer: 12
   m_Name: Hanging Platform
-  m_TagString: Untagged
+  m_TagString: TerrainPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5073,6 +5073,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   biome: {fileID: 0}
   type: 0
+  subtype: 0
+  tree: {fileID: 0}
+  DragonBones: 0
 --- !u!114 &114328774227938798
 MonoBehaviour:
   m_ObjectHideFlags: 1

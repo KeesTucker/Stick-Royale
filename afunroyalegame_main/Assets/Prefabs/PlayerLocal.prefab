@@ -696,6 +696,7 @@ GameObject:
   - component: {fileID: 114576114535093198}
   - component: {fileID: 114319897853511756}
   - component: {fileID: 114605371200754930}
+  - component: {fileID: 114406196234290654}
   m_Layer: 24
   m_Name: PlayerLocal
   m_TagString: PosRelay
@@ -3655,6 +3656,7 @@ MonoBehaviour:
   weaponItem: {fileID: 1757743736535976, guid: a2ab57fb811728d4b8e6d0fd2cc945ba, type: 2}
   refrenceKeeper: {fileID: 114169648274511698}
   deaded: 0
+  isPlayer: 1
   Ghost: {fileID: 1881230412041522, guid: eddec3f38fcb0644da1b4a8e5d33588a, type: 2}
 --- !u!114 &114347183182424706
 MonoBehaviour:
@@ -3761,6 +3763,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
+--- !u!114 &114406196234290654
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1617520046985736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b0c0f905b8694c4ab33aafce0088065, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  limbs:
+  - {fileID: 4344667137206664}
+  - {fileID: 4354574004836206}
+  - {fileID: 4775264701893156}
+  - {fileID: 4221502667183694}
+  - {fileID: 4510878537195002}
+  - {fileID: 4323945545021322}
+  - {fileID: 4720385900040170}
+  - {fileID: 4028056770297958}
+  - {fileID: 4417184409303904}
+  - {fileID: 4724512181329858}
+  - {fileID: 4320791922551242}
+  - {fileID: 4153529969412958}
+  - {fileID: 4768628912787160}
+  - {fileID: 4898080396833800}
+  initialPos:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
 --- !u!114 &114427151881843098
 MonoBehaviour:
   m_ObjectHideFlags: 1

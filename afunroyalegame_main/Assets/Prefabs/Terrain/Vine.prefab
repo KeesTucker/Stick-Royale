@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 114650238188177220}
   m_Layer: 12
   m_Name: ChainLink (15)
-  m_TagString: Untagged
+  m_TagString: TerrainPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67,7 +67,7 @@ GameObject:
   - component: {fileID: 114048654972042962}
   m_Layer: 12
   m_Name: ChainLink (6)
-  m_TagString: Untagged
+  m_TagString: TerrainPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 114359205360481204}
   m_Layer: 12
   m_Name: ChainLink
-  m_TagString: Untagged
+  m_TagString: TerrainPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 114993546876146802}
   m_Layer: 12
   m_Name: ChainLink (16)
-  m_TagString: Untagged
+  m_TagString: TerrainPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 114660158339722196}
   m_Layer: 12
   m_Name: ChainLink (11)
-  m_TagString: Untagged
+  m_TagString: TerrainPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 114905937279833298}
   m_Layer: 12
   m_Name: ChainLink (1)
-  m_TagString: Untagged
+  m_TagString: TerrainPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 114203251671693924}
   m_Layer: 12
   m_Name: ChainLink (9)
-  m_TagString: Untagged
+  m_TagString: TerrainPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 114444475730794096}
   m_Layer: 12
   m_Name: ChainLink (3)
-  m_TagString: Untagged
+  m_TagString: TerrainPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 114385905950979710}
   m_Layer: 12
   m_Name: ChainLink (13)
-  m_TagString: Untagged
+  m_TagString: TerrainPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -235,7 +235,7 @@ GameObject:
   - component: {fileID: 114037091427177140}
   m_Layer: 12
   m_Name: ChainLink (5)
-  m_TagString: Untagged
+  m_TagString: TerrainPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -274,7 +274,7 @@ GameObject:
   - component: {fileID: 114257976841716600}
   m_Layer: 12
   m_Name: ChainLink (14)
-  m_TagString: Untagged
+  m_TagString: TerrainPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -295,7 +295,7 @@ GameObject:
   - component: {fileID: 114602281650343252}
   m_Layer: 12
   m_Name: ChainLink (4)
-  m_TagString: Untagged
+  m_TagString: TerrainPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -316,7 +316,7 @@ GameObject:
   - component: {fileID: 114147874841466136}
   m_Layer: 12
   m_Name: ChainLink (2)
-  m_TagString: Untagged
+  m_TagString: TerrainPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -337,7 +337,7 @@ GameObject:
   - component: {fileID: 114614075396744898}
   m_Layer: 12
   m_Name: ChainLink (12)
-  m_TagString: Untagged
+  m_TagString: TerrainPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -358,7 +358,7 @@ GameObject:
   - component: {fileID: 114572333905340666}
   m_Layer: 12
   m_Name: ChainLink (7)
-  m_TagString: Untagged
+  m_TagString: TerrainPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -379,7 +379,7 @@ GameObject:
   - component: {fileID: 114827336868612162}
   m_Layer: 12
   m_Name: ChainLink (10)
-  m_TagString: Untagged
+  m_TagString: TerrainPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -395,7 +395,7 @@ GameObject:
   - component: {fileID: 114339003005807274}
   m_Layer: 12
   m_Name: Vine
-  m_TagString: Untagged
+  m_TagString: TerrainPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -416,7 +416,7 @@ GameObject:
   - component: {fileID: 114421915233907140}
   m_Layer: 12
   m_Name: ChainLink (8)
-  m_TagString: Untagged
+  m_TagString: TerrainPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 136773934980458812}
   m_Layer: 12
   m_Name: DesertTreeHolder3
-  m_TagString: Untagged
+  m_TagString: TerrainPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

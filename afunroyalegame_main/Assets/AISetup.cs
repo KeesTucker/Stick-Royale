@@ -29,11 +29,14 @@ public class AISetup : NetworkBehaviour
         if (hasAuthority)
         {
             local = true;
-            foreach (ChunkLoad chunk in GameObject.Find("Terrain").GetComponentsInChildren<ChunkLoad>())
+            if (GetComponent<PlayerControl>())
             {
-                chunk.local = transform;
+                foreach (ChunkLoad chunk in GameObject.Find("Terrain").GetComponentsInChildren<ChunkLoad>())
+                {
+                    chunk.local = transform;
+                }
+                GameObject.Find("Inventory").GetComponent<UpdateUI>().refrenceKeeper = GetComponent<RefrenceKeeperAI>();
             }
-            GameObject.Find("Inventory").GetComponent<UpdateUI>().refrenceKeeper = GetComponent<RefrenceKeeperAI>();
         }
     }
 }

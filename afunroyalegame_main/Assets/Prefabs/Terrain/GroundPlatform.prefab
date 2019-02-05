@@ -70,7 +70,7 @@ Transform:
   m_GameObject: {fileID: 1858164320744616}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 13.33332, y: 100, z: 1}
+  m_LocalScale: {x: 13.33332, y: 200, z: 1}
   m_Children:
   - {fileID: 4687759765748660}
   - {fileID: 4529434561414718}
@@ -128,6 +128,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   biome: {fileID: 0}
   type: 0
+  subtype: 0
+  tree: {fileID: 0}
+  DragonBones: 0
 --- !u!114 &114379640931977970
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -184,7 +187,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 6
+  m_SortingOrder: 49
   m_Sprite: {fileID: 21300000, guid: 1e63df28e72680243bc1e33f3d663b71, type: 3}
   m_Color: {r: 0.77254903, g: 0.5411765, b: 0.3019608, a: 1}
   m_FlipX: 0

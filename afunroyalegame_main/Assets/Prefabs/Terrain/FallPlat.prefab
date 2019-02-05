@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 114810147610167228}
   m_Layer: 12
   m_Name: FallPlat
-  m_TagString: Untagged
+  m_TagString: TerrainPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
