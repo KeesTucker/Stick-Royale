@@ -75,12 +75,18 @@ public class AimShootAI : MonoBehaviour {
     IEnumerator Start()
     {
         fireGrapple = true;
-        colliders = transform.gameObject.GetComponent<AISetup>().colliders;
+        colliders = transform.gameObject.GetComponent<SetupLoading>().colliders;
         yield return new WaitForEndOfFrame();
-        activeSlot = refrenceKeeper.activeSlot;
+        if (refrenceKeeper)
+        {
+            activeSlot = refrenceKeeper.activeSlot;
+        }
         hingeSpring = hinge.spring;
         yield return new WaitForSeconds(0.3f);
-        localiseTransform = GameObject.Find("Items").GetComponent<LocaliseTransform>();
+        if (GameObject.Find("Items"))
+        {
+            localiseTransform = GameObject.Find("Items").GetComponent<LocaliseTransform>();
+        }
     }
 
     void Update()
@@ -147,10 +153,18 @@ public class AimShootAI : MonoBehaviour {
             }
         }
 
-        if (refrenceKeeper.weaponHeld)
+        if (refrenceKeeper)
         {
-            RHT.gameObject.GetComponent<HingeJoint>().useSpring = true;
-            location.gameObject.GetComponent<HingeJoint>().useSpring = true;
+            if (refrenceKeeper.weaponHeld)
+            {
+                RHT.gameObject.GetComponent<HingeJoint>().useSpring = true;
+                location.gameObject.GetComponent<HingeJoint>().useSpring = true;
+            }
+            else
+            {
+                RHT.gameObject.GetComponent<HingeJoint>().useSpring = false;
+                location.gameObject.GetComponent<HingeJoint>().useSpring = false;
+            }
         }
         else
         {

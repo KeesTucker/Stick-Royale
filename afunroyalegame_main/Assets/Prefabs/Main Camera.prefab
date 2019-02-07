@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4141290018615692}
   - component: {fileID: 212796507061372854}
+  - component: {fileID: 114732789744246394}
   m_Layer: 0
   m_Name: vin
   m_TagString: Untagged
@@ -224,6 +225,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backGround: {fileID: 1556409560518624, guid: 7f672baf687d1b644bb1f4b9b9a4cc4d, type: 2}
+  inLoadScene: 1
+--- !u!114 &114732789744246394
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1500354341247754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f28e14feac6278d4788552d66e29133a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spr: {fileID: 212796507061372854}
+  biomeCol: {r: 0.6431373, g: 0.5058824, b: 0.19215687, a: 1}
+  loadingCol: {r: 0.36078432, g: 0.36078432, b: 0.36078432, a: 1}
+  isLoading: 0
 --- !u!212 &212796507061372854
 SpriteRenderer:
   m_ObjectHideFlags: 1

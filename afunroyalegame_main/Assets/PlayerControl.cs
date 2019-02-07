@@ -46,125 +46,124 @@ public class PlayerControl : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("f") || Input.GetKeyDown("e"))
-        {
-            e = true;
-        }
-        if (Input.GetKeyDown("a"))
-        {
-            a = true;
-        }
-        if (Input.GetKeyUp("a"))
-        {
-            a = false;
-        }
-        if (Input.GetKeyDown("s"))
-        {
-            s = true;
-        }
-        if (Input.GetKeyUp("s"))
-        {
-            s = false;
-        }
-        if (Input.GetKeyDown("d"))
-        {
-            d = true;
-        }
-        if (Input.GetKeyUp("d"))
-        {
-            d = false;
-        }
-        if (Input.GetKeyDown("space") || Input.GetKeyDown("w"))
-        {
-            space = true;
-        }
-        /*if (Input.GetKeyDown("left shift") || Input.GetKeyDown("right shift"))
-        {
-            shift = true;
-        }
-        if (Input.GetKeyUp("left shift") || Input.GetKeyUp("right shift"))
-        {
-            shift = false; //Just so always running
-        }*/
-        if (Input.GetKeyDown("r"))
-        {
-            r = true;
-        }
-        if (Input.GetKeyDown("1"))
-        {
-            one = true;
-            scroll = 1;
-        }
-        if (Input.GetKeyDown("2"))
-        {
-            two = true;
-            scroll = 2;
-        }
-        if (Input.GetKeyDown("3"))
-        {
-            three = true;
-            scroll = 3;
-        }
-        if (Input.GetKeyDown("4"))
-        {
-            four = true;
-            scroll = 4;
-        }
-
-        if (Input.mouseScrollDelta.y != 0)
-        {
-            scroll -= Input.mouseScrollDelta.y * 1f;
-            scroll = Mathf.Clamp(scroll, 1, 4);
-            if ((int)scroll == 1 && !oneDone)
-            {
-                one = true;
-                oneDone = true;
-            }
-            if ((int)scroll == 2)
-            {
-                two = true;
-                oneDone = false;
-            }
-            if ((int)scroll == 3)
-            {
-                three = true;
-                oneDone = false;
-            }
-            if ((int)scroll == 4 && !oneDone)
-            {
-                four = true;
-                oneDone = true;
-            }
-        }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            lClick = true;
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
-            lClick = false;
-        }
-        if (Input.GetMouseButtonDown(1))
-        {
-            rClick = true;
-        }
-        if (Input.GetMouseButtonUp(1))
-        {
-            rClick = false;
-        }
-        if (Input.GetKeyDown("i"))
-        {
-            i = true;
-        }
-        if (Input.GetKeyUp("i"))
-        {
-            i = false;
-        }
-
-
         if (hasAuthority)
         {
+            if (Input.GetKeyDown("f") || Input.GetKeyDown("e"))
+            {
+                e = true;
+            }
+            if (Input.GetKeyDown("a"))
+            {
+                a = true;
+            }
+            if (Input.GetKeyUp("a"))
+            {
+                a = false;
+            }
+            if (Input.GetKeyDown("s"))
+            {
+                s = true;
+            }
+            if (Input.GetKeyUp("s"))
+            {
+                s = false;
+            }
+            if (Input.GetKeyDown("d"))
+            {
+                d = true;
+            }
+            if (Input.GetKeyUp("d"))
+            {
+                d = false;
+            }
+            if (Input.GetKeyDown("space") || Input.GetKeyDown("w"))
+            {
+                space = true;
+            }
+            /*if (Input.GetKeyDown("left shift") || Input.GetKeyDown("right shift"))
+            {
+                shift = true;
+            }
+            if (Input.GetKeyUp("left shift") || Input.GetKeyUp("right shift"))
+            {
+                shift = false; //Just so always running
+            }*/
+            if (Input.GetKeyDown("r"))
+            {
+                r = true;
+            }
+            if (Input.GetKeyDown("1"))
+            {
+                one = true;
+                scroll = 1;
+            }
+            if (Input.GetKeyDown("2"))
+            {
+                two = true;
+                scroll = 2;
+            }
+            if (Input.GetKeyDown("3"))
+            {
+                three = true;
+                scroll = 3;
+            }
+            if (Input.GetKeyDown("4"))
+            {
+                four = true;
+                scroll = 4;
+            }
+
+            if (Input.mouseScrollDelta.y != 0)
+            {
+                scroll -= Input.mouseScrollDelta.y * 1f;
+                scroll = Mathf.Clamp(scroll, 1, 4);
+                if ((int)scroll == 1 && !oneDone)
+                {
+                    one = true;
+                    oneDone = true;
+                }
+                if ((int)scroll == 2)
+                {
+                    two = true;
+                    oneDone = false;
+                }
+                if ((int)scroll == 3)
+                {
+                    three = true;
+                    oneDone = false;
+                }
+                if ((int)scroll == 4 && !oneDone)
+                {
+                    four = true;
+                    oneDone = true;
+                }
+            }
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                lClick = true;
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                lClick = false;
+            }
+            if (Input.GetMouseButtonDown(1))
+            {
+                rClick = true;
+            }
+            if (Input.GetMouseButtonUp(1))
+            {
+                rClick = false;
+            }
+            if (Input.GetKeyDown("i"))
+            {
+                i = true;
+            }
+            if (Input.GetKeyUp("i"))
+            {
+                i = false;
+            }
+
             if (e)
             {
                 e = false;

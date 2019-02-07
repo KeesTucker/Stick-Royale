@@ -1,10 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Mirror;
 
-public class CamControl : NetworkBehaviour
-{
+public class LoadingCam : MonoBehaviour {
 
     public Transform aim;
 
@@ -12,15 +10,15 @@ public class CamControl : NetworkBehaviour
 
     public GameObject cameraGO;
 
-    // Use this for initialization
-    public override void OnStartAuthority()
+    void Start()
     {
-        if (hasAuthority)
+        if (gameObject.name == "LoadingPlayer")
         {
             cameraGO = Instantiate(cam, transform.position, Quaternion.identity);
             cameraGO.GetComponent<CamFollowAI>().parent = transform;
             cameraGO.GetComponent<CamFollowAI>().aim = aim;
             aim.gameObject.GetComponent<followMouse>().cam = cameraGO.GetComponent<Camera>();
+            cameraGO.transform.GetChild(0).gameObject.GetComponent<ColorBack>().isLoading = true;
         }
     }
 }
