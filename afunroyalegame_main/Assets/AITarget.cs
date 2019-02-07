@@ -106,7 +106,7 @@ public class AITarget : MonoBehaviour {
 
                 foreach (Collider objectCol in Physics.OverlapSphere(parent.transform.position, radius))
                 {
-                    if (objectCol.gameObject.GetComponent<AISetup>() && objectCol.gameObject != parent)
+                    if (objectCol.gameObject.GetComponent<AISetup>() && objectCol.gameObject != parent && !objectCol.GetComponent<HealthAI>().deaded)
                     {
                         if (startCheckP)
                         {
@@ -138,11 +138,11 @@ public class AITarget : MonoBehaviour {
                     {
                         if (startCheckG)
                         {
-                            minGrappleDistance = Vector3.Distance(objectCol.transform.position, parent.transform.position);
+                            minGrappleDistance = Vector3.Distance(objectCol.transform.position, transform.position);
                             closestGrapple = objectCol.transform;
                             startCheckG = false;
                         }
-                        else if (Vector3.Distance(objectCol.transform.position, parent.transform.position) < minGrappleDistance)
+                        else if (Vector3.Distance(objectCol.transform.position, transform.position) < minGrappleDistance)
                         {
                             minGrappleDistance = Vector3.Distance(objectCol.transform.position, parent.transform.position);
                             closestGrapple = objectCol.transform;
@@ -166,18 +166,66 @@ public class AITarget : MonoBehaviour {
                 {
                     if (minWeaponDistance < minPlayerDistance && !bulletTypes.Contains(spawnWeapons.Weapons[closestWeapon.GetComponent<WeaponIndexHolder>().WeaponIndex].WeaponItem.bullet)) //Make sure not picking up same weapontype
                     {
-                        transform.position = closestWeapon.transform.position;
+                        if (Random.Range(0, 10) == 1)
+                        {
+                            if (closestGrapple.name.Contains("Tree"))
+                            {
+                                transform.position = closestGrapple.transform.position + new Vector3(0, 30f, 0);
+                            }
+                            else
+                            {
+                                transform.position = closestGrapple.transform.position;
+                            }
+                            baseControl.rClick = true;
+                            StartCoroutine("StopGrapple");
+                        }
+                        else
+                        {
+                            transform.position = closestWeapon.transform.position;
+                        }
                         targetType = 0;
                     }
                     else if (closestPlayer)
                     {
-                        transform.position = closestPlayer.transform.position;
+                        if (Random.Range(0, 8) == 1)
+                        {
+                            if (closestGrapple.name.Contains("Tree"))
+                            {
+                                transform.position = closestGrapple.transform.position + new Vector3(0, 30f, 0);
+                            }
+                            else
+                            {
+                                transform.position = closestGrapple.transform.position;
+                            }
+                            baseControl.rClick = true;
+                            StartCoroutine("StopGrapple");
+                        }
+                        else
+                        {
+                            transform.position = closestPlayer.transform.position;
+                        }
                         targetType = 1;
                     }
                 }
                 else if (closestPlayer)
                 {
-                    transform.position = closestPlayer.transform.position;
+                    if (Random.Range(0, 8) == 1)
+                    {
+                        if (closestGrapple.name.Contains("Tree"))
+                        {
+                            transform.position = closestGrapple.transform.position + new Vector3(0, 30f, 0);
+                        }
+                        else
+                        {
+                            transform.position = closestGrapple.transform.position;
+                        }
+                        baseControl.rClick = true;
+                        StartCoroutine("StopGrapple");
+                    }
+                    else
+                    {
+                        transform.position = closestPlayer.transform.position;
+                    }
                     targetType = 1;
                 }
                 else
@@ -323,7 +371,7 @@ public class AITarget : MonoBehaviour {
                     }
                     else if (refrenceKeeper.activeSlot != 3)
                     {
-                        baseControl.four = true;
+                        baseControl.one = true;
                     }
                 }
                 Debug.DrawRay(weapon.position, -Vector3.Normalize(new Vector3(weapon.position.x - transform.position.x, weapon.position.y - transform.position.y, 0)) * (minPlayerDistance - 5f), Color.red);
@@ -352,6 +400,12 @@ public class AITarget : MonoBehaviour {
                     bulletTypes.Add(spawnWeapons.Weapons[closestWeapon.GetComponent<WeaponIndexHolder>().WeaponIndex].WeaponItem.bullet);
                     baseControl.e = true;
                 }
+            }
+
+            if (Random.Range(0, 15) == 1)
+            {
+                baseControl.rClick = true;
+                StartCoroutine("StopGrapple");
             }
 
             //Movement
@@ -427,5 +481,11 @@ public class AITarget : MonoBehaviour {
         baseControl.lClick = true;
         yield return new WaitForSeconds(0.2f);
         baseControl.lClick = false;
+    }
+
+    IEnumerator StopGrapple()
+    {
+        yield return new WaitForSeconds(Random.Range(0.5f, 4f));
+        baseControl.rClick = false;
     }
 }
