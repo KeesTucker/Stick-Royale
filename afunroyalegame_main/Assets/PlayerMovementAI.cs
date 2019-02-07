@@ -34,13 +34,8 @@ public class PlayerMovementAI : MonoBehaviour {
     public bool groundHitR;
     public bool jumpable = true;
     public bool boostable = true;
-    private bool jetTimed = false;
-
-    public bool jetOn;
 
     public int getDown = 0;
-
-    public int jetCounter = 0;
 
     public GroundForceAI groundforce;
 
@@ -59,8 +54,6 @@ public class PlayerMovementAI : MonoBehaviour {
     private RaycastHit hit;
 
     public ShootAI shoot;
-
-    public bool hasJetPack = false;
 
     public float maxSpeed = 45;
 
@@ -88,14 +81,6 @@ public class PlayerMovementAI : MonoBehaviour {
     public GameObject footR;
 
     public GameObject jumpParticle;
-
-    void Start()
-    {
-        jetMaterialL = jetFlashL.GetComponent<Renderer>().material;
-        jetMaterialL.SetFloat("Vector1_B173D9FB", 0);
-        jetMaterialR = jetFlashR.GetComponent<Renderer>().material;
-        jetMaterialR.SetFloat("Vector1_B173D9FB", 0);
-    }
 
     // Update is called once per frame
     void FixedUpdate()
@@ -250,11 +235,11 @@ public class PlayerMovementAI : MonoBehaviour {
                     groundHitL = false;
                     groundHitR = false;
                 }
+                StartCoroutine("jumpTimer");
                 GameObject particleL = Instantiate(jumpParticle, footL.transform.position, Quaternion.identity);
                 particleL.transform.parent = footL.transform;
                 GameObject particleR = Instantiate(jumpParticle, footR.transform.position, Quaternion.identity);
                 particleR.transform.parent = footR.transform;
-                StartCoroutine("jumpTimer");
             }
 
             if (sDepressed)
@@ -273,24 +258,6 @@ public class PlayerMovementAI : MonoBehaviour {
                 rLeg.AddForce(0, 3000f * Time.deltaTime, 0);
 
             }
-        }
-        else if (spaceJetDepressed && boostable && spaceDepressed && hasJetPack)
-        {
-            jetpack.AddForce(jetpack.transform.up * jumpForce * Time.deltaTime * 0.3f);
-            jetTimer();
-            if (!jetTimed)
-            {
-                jetTimed = true;
-            }
-            jetOn = true;
-            jetMaterialL.SetFloat("Vector1_B173D9FB", 1);
-            jetMaterialR.SetFloat("Vector1_B173D9FB", 1);
-        }
-        else
-        {
-            jetOn = false;
-            jetMaterialL.SetFloat("Vector1_B173D9FB", 0);
-            jetMaterialR.SetFloat("Vector1_B173D9FB", 0);
         }
         if (groundforce.touchingWall && jumpable)
         {
@@ -381,18 +348,4 @@ public class PlayerMovementAI : MonoBehaviour {
             body.velocity = new Vector3(body.velocity.x, -30f, 0);
         }*/
     }
-
-    public void jetTimer()
-    {
-        jetCounter++;
-        if (jetCounter > 100)
-        {
-            jetCounter = 0;
-            boostable = false;
-            jetTimed = false;
-            jetMaterialL.SetFloat("Vector1_B173D9FB", 0);
-            jetMaterialR.SetFloat("Vector1_B173D9FB", 0);
-        }
-    }
-
 }

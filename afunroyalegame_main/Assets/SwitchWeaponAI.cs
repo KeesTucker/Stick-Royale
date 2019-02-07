@@ -31,7 +31,7 @@ public class SwitchWeaponAI : MonoBehaviour {
 
     public void Switch(int WeaponIndex)
     {
-        if (WeaponHand.transform.childCount > 1)
+        if (WeaponHand.transform.childCount > 1 && WeaponHand.transform.GetChild(1).name != "Bullet Positioner")
         {
             Destroy(WeaponHand.transform.GetChild(1).gameObject);
         }

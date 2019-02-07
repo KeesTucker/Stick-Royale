@@ -8,6 +8,7 @@ public class PlayerManagement : NetworkBehaviour {
     public GameObject AIPlayer;
     public GameObject bot;
     private GameObject playerSpawned;
+    public int numPlayers = 1;
 
 	// Use this for initialization
 	void Start () {
@@ -16,7 +17,10 @@ public class PlayerManagement : NetworkBehaviour {
             CmdSpawn(); //Spawn code here
             if (isServer)
             {
-                CmdBotSpawn();
+                for (int i = 0; i < numPlayers; i++)
+                {
+                    CmdBotSpawn();
+                }
             }
         } 
 	}

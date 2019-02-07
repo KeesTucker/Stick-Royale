@@ -254,8 +254,8 @@ public class ShootAI : MonoBehaviour {
             Vector3 dir = new Vector3(transform.position.x - aim.position.x, transform.position.y - aim.position.y, 0) * Random.Range(0.7f, 2.5f);
             for (int i = 0; i < 10; i++)
             {
-                LimbEnds[nextFist + 2].AddForce(dir * (-punchForce / 2f) * Time.deltaTime);
-                body.AddForce(dir * (punchForce / 3f) * Time.deltaTime);
+                LimbEnds[nextFist + 2].AddForce(dir * -punchForce / 2 * Time.deltaTime);
+                lowerBody.AddForce(dir * punchForce / 3 * Time.deltaTime);
             }
             GameObject dust = Instantiate(punchParticle, LimbEnds[nextFist + 2].transform.position, Quaternion.identity);
             dust.transform.parent = LimbEnds[nextFist + 2].transform;

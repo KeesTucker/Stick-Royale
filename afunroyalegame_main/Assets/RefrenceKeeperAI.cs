@@ -51,20 +51,17 @@ public class RefrenceKeeperAI : NetworkBehaviour
 
     public override void OnStartAuthority()
     {
-        if (hasAuthority)
+        if (hasAuthority && GetComponent<PlayerControl>())
         {
             updateUI = GameObject.Find("PlayerUI").GetComponent<UpdateUIRefrence>().updateUI;
             updateUI.refrenceKeeper = this;
             updateUI.OpenClose();
-            Debug.Log("fuckyes");
-            if (GetComponent<PlayerControl>())
-            {
-                isPlayer = true;
-            }
-            else
-            {
-                isPlayer = false;
-            }
+            
+            isPlayer = true;
+        }
+        else
+        {
+            isPlayer = false;
         }
     }
 
