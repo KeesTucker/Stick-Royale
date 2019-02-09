@@ -231,6 +231,7 @@ GameObject:
   - component: {fileID: 54632918830292782}
   - component: {fileID: 135102538261413608}
   - component: {fileID: 114725918362875252}
+  - component: {fileID: 114906144340861044}
   m_Layer: 12
   m_Name: SpinnerSpikes
   m_TagString: Untagged
@@ -1058,6 +1059,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   damagable: 0
+--- !u!114 &114906144340861044
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1753706247141828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca65fa6191d624e429fb628e68be6636, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  started: 0
 --- !u!114 &114962816969206158
 MonoBehaviour:
   m_ObjectHideFlags: 1

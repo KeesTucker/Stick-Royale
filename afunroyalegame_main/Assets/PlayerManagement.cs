@@ -7,9 +7,10 @@ public class PlayerManagement : NetworkBehaviour {
 
     public GameObject AIPlayer;
     public GameObject bot;
-    private GameObject playerSpawned;
+    public GameObject playerSpawned;
     public int numPlayers = 1;
     public int currentNum = 1;
+    public int totalPlayers;
     private Vector3 pos;
     public PlayerManagement playerManagement;
 
@@ -29,7 +30,7 @@ public class PlayerManagement : NetworkBehaviour {
                     CmdBotSpawn();
                 }
             }
-        } 
+        }
 	}
 
     [Command]

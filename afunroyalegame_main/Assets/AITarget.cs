@@ -55,6 +55,10 @@ public class AITarget : MonoBehaviour {
 
     public int frames = 0;
 
+    int chosenWeapon;
+
+    GameObject[] weapons;
+
     // Use this for initialization
     void Start () {
         isServer = parent.GetComponent<AISetup>().isServer;
@@ -95,9 +99,14 @@ public class AITarget : MonoBehaviour {
             {
                 if (!spawnRocket.destroyed && !selectedStart)
                 {
-                    GameObject[] weapons = GameObject.FindGameObjectsWithTag("WeaponItem");
-                    targetGO(weapons[Random.Range(0, weapons.Length - 1)]);
+                    weapons = GameObject.FindGameObjectsWithTag("WeaponItem");
+                    chosenWeapon = Random.Range(0, weapons.Length - 1);
+                    targetGO(weapons[chosenWeapon]);
                     selectedStart = true;
+                }
+                else if (!spawnRocket.destroyed && selectedStart)
+                {
+                    targetGO(weapons[chosenWeapon]);
                 }
 
                 startCheckG = true;
@@ -106,15 +115,20 @@ public class AITarget : MonoBehaviour {
 
                 foreach (Collider objectCol in Physics.OverlapSphere(parent.transform.position, radius))
                 {
-                    if (objectCol.gameObject.GetComponent<AISetup>() && objectCol.gameObject != parent && !objectCol.GetComponent<HealthAI>().deaded)
+                    if (objectCol.gameObject.GetComponent<AISetup>() && objectCol.gameObject != parent)
                     {
-                        if (startCheckP)
+                        if (objectCol.gameObject.GetComponent<PlayerControl>())
+                        {
+                            minPlayerDistance = 0;
+                            closestPlayer = objectCol.transform;
+                        }
+                        else if (startCheckP && !objectCol.gameObject.GetComponent<HealthAI>().deaded)
                         {
                             minPlayerDistance = Vector3.Distance(objectCol.transform.position, parent.transform.position);
                             closestPlayer = objectCol.transform;
                             startCheckP = false;
                         }
-                        else if (Vector3.Distance(objectCol.transform.position, parent.transform.position) < minPlayerDistance)
+                        else if (Vector3.Distance(objectCol.transform.position, parent.transform.position) < minPlayerDistance && !objectCol.gameObject.GetComponent<HealthAI>().deaded)
                         {
                             minPlayerDistance = Vector3.Distance(objectCol.transform.position, parent.transform.position);
                             closestPlayer = objectCol.transform;
@@ -473,7 +487,10 @@ public class AITarget : MonoBehaviour {
 
     public void targetGO(GameObject target)
     {
-        transform.position = target.transform.position;
+        if (target)
+        {
+            transform.position = target.transform.position;
+        }
     }
 
     IEnumerator punchKill()

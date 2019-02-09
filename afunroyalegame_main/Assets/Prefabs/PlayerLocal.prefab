@@ -3825,6 +3825,8 @@ MonoBehaviour:
   - {fileID: 135778156045839498}
   parent: {fileID: 0}
   local: 0
+  manager: {fileID: 0}
+  health: {fileID: 114339696921955500}
 --- !u!114 &114564198616145310
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3891,6 +3893,7 @@ MonoBehaviour:
   destroyed: 0
   box: {fileID: 1172951099258526, guid: ba743cd1dae6f814d804382b1a6f6f10, type: 2}
   boxHold: {fileID: 0}
+  refrenceKeeper: {fileID: 114169648274511698}
   ready: 0
 --- !u!114 &114607978142549058
 MonoBehaviour:

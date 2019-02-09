@@ -127,7 +127,7 @@ public class GrappleActivatorAI : MonoBehaviour {
             {
                 if (onLocal)
                 {
-                    parent.transform.GetChild(0).gameObject.GetComponent<groundForce>().grappled = false;
+                    parent.transform.GetChild(0).gameObject.GetComponent<GroundForceAI>().grappled = false;
                 }
                 Destroy(grapple);
             }

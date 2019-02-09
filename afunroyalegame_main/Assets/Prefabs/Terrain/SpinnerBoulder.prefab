@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 114032263400222520}
   - component: {fileID: 54422792038424034}
   - component: {fileID: 135186530645407556}
+  - component: {fileID: 114633460220018178}
   m_Layer: 12
   m_Name: SpinnerBoulder
   m_TagString: TerrainPart
@@ -308,6 +309,18 @@ MonoBehaviour:
   amount: 500000
   rb: {fileID: 0}
   targetSpeed: 1
+--- !u!114 &114633460220018178
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1824576947097210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca65fa6191d624e429fb628e68be6636, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  started: 0
 --- !u!135 &135186530645407556
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -16,13 +16,13 @@ public class StartGame : MonoBehaviour{
     public int gamemode;
 
     public GameObject ip;
-    public InputField input;
 
     public GameObject error;
 
     void Start()
     {
         manager = GameObject.Find("_NetworkManager").GetComponent<NetworkManager>();
+        started = false;
     }
 
     public void StartHost()
@@ -31,10 +31,11 @@ public class StartGame : MonoBehaviour{
         {
             if (isHost)
             {
+                SyncData.gameMode = gamemode;
                 manager.StartHost();
                 started = true;
             }
-            else if (input.text != null || input.text != "")
+            else
             {
                 //manager.StartClient();
                 NetworkClient client = manager.StartClient();

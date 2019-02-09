@@ -830,6 +830,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4423804918562136}
   - component: {fileID: 114331578463406568}
+  - component: {fileID: 114848106657416254}
   m_Layer: 12
   m_Name: Hanging Platform
   m_TagString: TerrainPart
@@ -5471,6 +5472,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5814e4a036b80154e8fdc6d3bb2b35f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114848106657416254
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1823070966254786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca65fa6191d624e429fb628e68be6636, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  started: 0
 --- !u!114 &114880383626170646
 MonoBehaviour:
   m_ObjectHideFlags: 1

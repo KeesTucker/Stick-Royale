@@ -23,6 +23,13 @@ public class GhostMovement : NetworkBehaviour {
         Destroy(parent.GetComponent<CamControl>().cameraGO);
         GameObject cam = Instantiate(cameraGO, transform.position, Quaternion.identity);
         cam.GetComponent<CamFollowAI>().parent = transform;
+        foreach (GameObject go in GameObject.FindGameObjectsWithTag("Chunk"))
+        {
+            if (go.name == "TerrainLoader(Clone)")
+            {
+                go.GetComponent<ChunkLoad>().local = transform;
+            }
+        }
     }
 
 	void FixedUpdate () {

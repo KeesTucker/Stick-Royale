@@ -8,6 +8,13 @@ public class MoveBackground : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.position = new Vector3(cam.position.x - cam.position.x / 6, cam.position.y - cam.position.y / 50, 100);
+        if (cam)
+        {
+            transform.position = new Vector3(cam.position.x - cam.position.x / 6, cam.position.y - cam.position.y / 50, 100);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 	}
 }

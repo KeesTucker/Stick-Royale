@@ -393,6 +393,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4151362752480390}
   - component: {fileID: 114339003005807274}
+  - component: {fileID: 114376904409812160}
   m_Layer: 12
   m_Name: Vine
   m_TagString: TerrainPart
@@ -2031,6 +2032,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5814e4a036b80154e8fdc6d3bb2b35f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114376904409812160
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1950547919570150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca65fa6191d624e429fb628e68be6636, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  started: 0
 --- !u!114 &114385905950979710
 MonoBehaviour:
   m_ObjectHideFlags: 1

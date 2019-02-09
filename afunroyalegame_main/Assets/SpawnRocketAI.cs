@@ -35,6 +35,8 @@ public class SpawnRocketAI : NetworkBehaviour
     public GameObject box;
     public GameObject boxHold;
 
+    public RefrenceKeeperAI refrenceKeeper;
+
     [SyncVar]
     public bool ready;
 
@@ -62,6 +64,13 @@ public class SpawnRocketAI : NetworkBehaviour
             camActive = true;
         }
         rocketGO.GetComponent<SpriteRenderer>().color = gameObject.GetComponent<ColourSetterAI>().m_NewColor;
+        if (!isServer)
+        {
+            if (refrenceKeeper.updateUI)
+            {
+                refrenceKeeper.updateUI.fNote.SetActive(false);
+            }
+        }
     }
 
     void Update()
@@ -70,6 +79,10 @@ public class SpawnRocketAI : NetworkBehaviour
         {
             ready = true;
             StartCoroutine("timerToKill");
+            if (refrenceKeeper.updateUI)
+            {
+                refrenceKeeper.updateUI.fNote.SetActive(false);
+            }
         }
         if (AISpace)
         {

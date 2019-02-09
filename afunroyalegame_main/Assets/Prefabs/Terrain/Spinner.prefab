@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 65728680422914870}
   - component: {fileID: 135119206022262974}
   - component: {fileID: 114314713510215888}
+  - component: {fileID: 114407660120842182}
   m_Layer: 12
   m_Name: Spinner
   m_TagString: TerrainPart
@@ -217,6 +218,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5814e4a036b80154e8fdc6d3bb2b35f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114407660120842182
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1477164112781412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca65fa6191d624e429fb628e68be6636, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  started: 0
 --- !u!114 &114444907610227484
 MonoBehaviour:
   m_ObjectHideFlags: 1

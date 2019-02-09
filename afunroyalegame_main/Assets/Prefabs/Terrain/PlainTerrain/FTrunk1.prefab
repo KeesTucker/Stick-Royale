@@ -83,6 +83,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   biome: {fileID: 0}
   type: 1
+  subtype: 0
+  tree: {fileID: 0}
+  DragonBones: 0
 --- !u!212 &212792241241846376
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -8,7 +8,7 @@ public class SetIP : MonoBehaviour {
 
     public NetworkManager manager;
 
-    public InputField mainInputField;
+    public TMPro.TMP_InputField mainInputField;
 
     public void ValueChanged()
     {

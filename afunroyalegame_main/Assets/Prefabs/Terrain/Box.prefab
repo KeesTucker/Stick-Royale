@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 54192372944622534}
   - component: {fileID: 114889984773581846}
   - component: {fileID: 114704269607380568}
+  - component: {fileID: 114790557840542122}
   m_Layer: 12
   m_Name: Box
   m_TagString: TerrainPart
@@ -82,6 +83,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5814e4a036b80154e8fdc6d3bb2b35f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114790557840542122
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1629138784225976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca65fa6191d624e429fb628e68be6636, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  started: 0
 --- !u!114 &114889984773581846
 MonoBehaviour:
   m_ObjectHideFlags: 1

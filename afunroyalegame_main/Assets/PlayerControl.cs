@@ -157,7 +157,10 @@ public class PlayerControl : NetworkBehaviour
             
             if (Input.GetKeyDown("space") || Input.GetKeyDown("w"))
             {
-                space = true;
+                if (spawnRocket.ready)
+                {
+                    space = true;
+                }
             }
             /*if (Input.GetKeyDown("left shift") || Input.GetKeyDown("right shift"))
             {

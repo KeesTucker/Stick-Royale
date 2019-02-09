@@ -28,12 +28,12 @@ public class HealthAI : NetworkBehaviour {
     {
         if (health <= 0 && hasAuthority && !deaded)
         {
-            DestroyPlayer();
+            StartCoroutine("DestroyPlayer");
             deaded = true;
         }
     }
 
-    public void DestroyPlayer()
+    public IEnumerator DestroyPlayer()
     {
         CmdDestroyPlayer();        
         GetComponent<GroundForceAI>().grappled = true;
@@ -45,6 +45,14 @@ public class HealthAI : NetworkBehaviour {
         {
             GetComponent<BaseControl>().enabled = false;
         }
+        if (hasAuthority && GetComponent<PlayerControl>())
+        {
+            refrenceKeeper.updateUI.deadMessage.SetActive(true);
+            refrenceKeeper.updateUI.deadPanel.SetActive(true);
+            yield return new WaitForSeconds(3f);
+            refrenceKeeper.updateUI.deadPanel.SetActive(false);
+        }
+        transform.Find("Physics AnimatorAI").GetComponent<PlayerMovementAI>().enabled = false;
         for (int i = 0; i < refrenceKeeper.weaponInventory.Count; i++)
         {
             int id = refrenceKeeper.weaponInventory[i].id;
