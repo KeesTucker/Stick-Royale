@@ -26,9 +26,9 @@ public class RocketMove : MonoBehaviour {
         spawnRocket = ragdoll.gameObject.GetComponent<SpawnRocketAI>();
     }
 	
-	void OnCollisionEnter()
+	void OnCollisionEnter(Collision info)
     {
-        if (spawnRocket)
+        if (spawnRocket && info.gameObject.layer != 13)
         {
             spawnRocket.spaceDepressed = true;
         }

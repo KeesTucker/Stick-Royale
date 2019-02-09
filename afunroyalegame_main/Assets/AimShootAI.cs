@@ -75,7 +75,14 @@ public class AimShootAI : MonoBehaviour {
     IEnumerator Start()
     {
         fireGrapple = true;
-        colliders = transform.gameObject.GetComponent<SetupLoading>().colliders;
+        if (transform.gameObject.GetComponent<SetupLoading>())
+        {
+            colliders = transform.gameObject.GetComponent<SetupLoading>().colliders;
+        }
+        else
+        {
+            colliders = transform.gameObject.GetComponent<AISetup>().colliders;
+        }
         yield return new WaitForEndOfFrame();
         if (refrenceKeeper)
         {

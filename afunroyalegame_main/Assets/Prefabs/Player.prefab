@@ -3826,6 +3826,9 @@ MonoBehaviour:
   camActive: 0
   mainCam: {fileID: 0}
   destroyed: 0
+  box: {fileID: 1172951099258526, guid: ba743cd1dae6f814d804382b1a6f6f10, type: 2}
+  boxHold: {fileID: 0}
+  ready: 0
 --- !u!114 &114633573978534424
 MonoBehaviour:
   m_ObjectHideFlags: 1

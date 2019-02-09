@@ -45,7 +45,7 @@ public class SpawnWeapons : NetworkBehaviour {
             //Spawn Code Next
             for (int i = 0; i < spawnNumber; i++)
             {
-                WeaponSpawnPoints.Add(new Vector3((i * 20), 50f, 0)); //position code is just temporary for debugging
+                WeaponSpawnPoints.Add(new Vector3((i * 20), -100f, 0)); //position code is just temporary for debugging
                 WeaponIndex = Random.Range(0, Weapons.Count - 2);
                 GameObject WeaponItem = Instantiate(
                     WeaponItemPrefab,

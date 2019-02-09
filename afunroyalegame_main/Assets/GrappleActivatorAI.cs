@@ -71,13 +71,27 @@ public class GrappleActivatorAI : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetKeyDown("e"))
+        if (parent.GetComponent<PlayerControl>())
         {
-            if (onLocal)
+            if (parent.GetComponent<PlayerControl>().e)
             {
-                parent.transform.GetChild(0).gameObject.GetComponent<GroundForceAI>().grappled = false;
+                if (onLocal)
+                {
+                    parent.GetComponent<GroundForceAI>().grappled = false;
+                }
+                Destroy(grapple);
             }
-            Destroy(grapple);
+        }
+        else if (parent.GetComponent<BaseControl>())
+        {
+            if (parent.GetComponent<BaseControl>().e)
+            {
+                if (onLocal)
+                {
+                    parent.GetComponent<GroundForceAI>().grappled = false;
+                }
+                Destroy(grapple);
+            }
         }
     }
 

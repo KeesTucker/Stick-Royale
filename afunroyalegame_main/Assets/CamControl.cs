@@ -21,6 +21,10 @@ public class CamControl : NetworkBehaviour
             cameraGO.GetComponent<CamFollowAI>().parent = transform;
             cameraGO.GetComponent<CamFollowAI>().aim = aim;
             aim.gameObject.GetComponent<followMouse>().cam = cameraGO.GetComponent<Camera>();
+            if (gameObject.name != "LoadingPlayer")
+            {
+                cameraGO.GetComponent<SpawnBackgrounds>().inLoadScene = false;
+            }
         }
     }
 }

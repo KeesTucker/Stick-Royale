@@ -9,9 +9,16 @@ public class PlayerManagement : NetworkBehaviour {
     public GameObject bot;
     private GameObject playerSpawned;
     public int numPlayers = 1;
+    public int currentNum = 1;
+    private Vector3 pos;
+    public PlayerManagement playerManagement;
 
 	// Use this for initialization
 	void Start () {
+        if (!isLocalPlayer && isServer)
+        {
+            playerManagement = GameObject.Find("LocalConnection").GetComponent<PlayerManagement>();
+        }
         if (isLocalPlayer)
         {
             CmdSpawn(); //Spawn code here
@@ -28,16 +35,44 @@ public class PlayerManagement : NetworkBehaviour {
     [Command]
     public void CmdSpawn()
     {
-        playerSpawned = Instantiate(AIPlayer, transform.position, transform.rotation);
+        if (playerManagement)
+        {
+            if (playerManagement.currentNum % 2 == 0)
+            {
+                pos = new Vector3((playerManagement.currentNum / 2) * 500, 0, 0);
+            }
+            else
+            {
+                pos = new Vector3((int)(-playerManagement.currentNum / 2) * 500, 0, 0);
+            }
+        }
+        playerSpawned = Instantiate(AIPlayer, pos, transform.rotation);
         playerSpawned.GetComponent<AISetup>().parent = gameObject;
         NetworkServer.SpawnWithClientAuthority(playerSpawned, connectionToClient);
+        if (playerManagement)
+        {
+            playerManagement.currentNum++;
+        }
+        else
+        {
+            currentNum++;
+        }
     }
 
     [Command]
     public void CmdBotSpawn()
     {
-        playerSpawned = Instantiate(bot, transform.position, transform.rotation);
+        if (currentNum % 2 == 0)
+        {
+            pos = new Vector3((currentNum / 2) * 500, 0, 0);
+        }
+        else
+        {
+            pos = new Vector3((int)(-currentNum / 2) * 500, 0, 0);
+        }
+        playerSpawned = Instantiate(bot, pos, transform.rotation);
         playerSpawned.GetComponent<AISetup>().parent = gameObject;
         NetworkServer.SpawnWithClientAuthority(playerSpawned, connectionToClient);
+        currentNum++;
     }
 }

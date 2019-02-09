@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class LoadGameSpike : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public StartGame startGame;
+
+	void OnCollisionEnter(Collision info)
+    {
+        if (info.gameObject.layer == 24)
+        {
+            startGame.StartHost();
+        }
+    }
 }

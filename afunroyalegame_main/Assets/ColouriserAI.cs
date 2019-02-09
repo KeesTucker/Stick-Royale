@@ -14,7 +14,14 @@ public class ColouriserAI : MonoBehaviour {
     {
         //Fetch the SpriteRenderer from the GameObject
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
-        m_NewColor = local.GetComponent<ColourSetterAI>().m_NewColor;
+        if (local.GetComponent<ColourSetterAI>())
+        {
+            m_NewColor = local.GetComponent<ColourSetterAI>().m_NewColor;
+        }
+        else if (local.GetComponent<ColourSetterLoad>())
+        {
+            m_NewColor = local.GetComponent<ColourSetterLoad>().m_NewColor;
+        }
 
         //Set the SpriteRenderer to the Color defined by the Sliders
         m_SpriteRenderer.color = m_NewColor;

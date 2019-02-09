@@ -31,7 +31,14 @@ public class ColourSetterAI : NetworkBehaviour
     [Command]
     public void CmdSetColor()
     {
-        m_NewColor = Random.ColorHSV(0, 1, 0.5f, 1, 0.5f, 1);
+        if (GetComponent<PlayerControl>())
+        {
+            m_NewColor = SyncData.color; //Replace with colour from home menu
+        }
+        else
+        {
+            m_NewColor = Random.ColorHSV(0, 1, 0.5f, 1, 0.5f, 1);
+        }
 
         foreach (ColouriserAI cai in GetComponentsInChildren<ColouriserAI>())
         {

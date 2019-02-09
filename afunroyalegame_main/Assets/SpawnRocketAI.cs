@@ -32,12 +32,18 @@ public class SpawnRocketAI : NetworkBehaviour
 
     public bool destroyed = false;
 
+    public GameObject box;
+    public GameObject boxHold;
+
+    [SyncVar]
+    public bool ready;
+
     IEnumerator Start()
     {
         rocketGO = Instantiate(rocket, transform.position, transform.rotation); //Spawn Rocket
         rocketGO.transform.GetChild(1).gameObject.SetActive(false);
         rocketGO.GetComponent<RocketMove>().ragdoll = transform;
-        StartCoroutine("timerToKill");
+        boxHold = Instantiate(box, transform.position, Quaternion.identity);
         ragdollColliders = GetComponentsInChildren<Collider>();
         ragdollSpriteRenderers = GetComponentsInChildren<SpriteRenderer>();
         foreach (Collider col in ragdollColliders)
@@ -60,6 +66,11 @@ public class SpawnRocketAI : NetworkBehaviour
 
     void Update()
     {
+        if (isServer && !ready && Input.GetKey("f"))
+        {
+            ready = true;
+            StartCoroutine("timerToKill");
+        }
         if (AISpace)
         {
             spaceDepressed = true;
@@ -80,6 +91,18 @@ public class SpawnRocketAI : NetworkBehaviour
             rocketGO.GetComponent<Collider>().enabled = false;
             StartCoroutine("destroy");
             done = true;
+        }
+    }
+
+    void LateUpdate()
+    {
+        if (boxHold)
+        {
+            rocketGO.transform.position = boxHold.transform.position;
+        }
+        if (ready)
+        {
+            Destroy(boxHold);
         }
     }
 

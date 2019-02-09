@@ -47,75 +47,78 @@ public class BaseControl : NetworkBehaviour {
     {
         if (hasAuthority)
         {
-            if (e)
+            if (gameObject.GetComponent<SpawnRocketAI>().spaceDepressed)
             {
-                e = false;
-                CmdSetKey("e", true);
-            }
-            if (a != aLast)
-            {
-                aLast = a;
-                CmdSetKey("a", a);
-            }
-            if (d != dLast)
-            {
-                dLast = d;
-                CmdSetKey("d", d);
-            }
-            if (s != sLast)
-            {
-                sLast = s;
-                CmdSetKey("s", s);
-            }
-            if (space)
-            {
-                space = false;
-                if (!spaceDone)
+                if (e)
                 {
-                    CmdSetKey("spaceFirst", true);
-                    spaceDone = true;
+                    e = false;
+                    CmdSetKey("e", true);
                 }
-                CmdSetKey("space", true);
-            }
-            if (shift != shiftLast)
-            {
-                shiftLast = shift;
-                CmdSetKey("shift", shift);
-            }
-            if (r)
-            {
-                r = false;
-                CmdSetKey("r", true);
-            }
-            if (rClick != rClickLast)
-            {
-                rClickLast = rClick;
-                CmdSetKey("rClick", rClick);
-            }
-            if (lClick != lClickLast)
-            {
-                lClickLast = lClick;
-                CmdSetKey("lClick", lClick);
-            }
-            if (one)
-            {
-                one = false;
-                CmdSetKey("one", true);
-            }
-            if (two)
-            {
-                two = false;
-                CmdSetKey("two", true);
-            }
-            if (three)
-            {
-                three = false;
-                CmdSetKey("three", true);
-            }
-            if (four)
-            {
-                four = false;
-                CmdSetKey("four", true);
+                if (a != aLast)
+                {
+                    aLast = a;
+                    CmdSetKey("a", a);
+                }
+                if (d != dLast)
+                {
+                    dLast = d;
+                    CmdSetKey("d", d);
+                }
+                if (s != sLast)
+                {
+                    sLast = s;
+                    CmdSetKey("s", s);
+                }
+                if (shift != shiftLast)
+                {
+                    shiftLast = shift;
+                    CmdSetKey("shift", shift);
+                }
+                if (r)
+                {
+                    r = false;
+                    CmdSetKey("r", true);
+                }
+                if (rClick != rClickLast)
+                {
+                    rClickLast = rClick;
+                    CmdSetKey("rClick", rClick);
+                }
+                if (lClick != lClickLast)
+                {
+                    lClickLast = lClick;
+                    CmdSetKey("lClick", lClick);
+                }
+                if (one)
+                {
+                    one = false;
+                    CmdSetKey("one", true);
+                }
+                if (two)
+                {
+                    two = false;
+                    CmdSetKey("two", true);
+                }
+                if (three)
+                {
+                    three = false;
+                    CmdSetKey("three", true);
+                }
+                if (four)
+                {
+                    four = false;
+                    CmdSetKey("four", true);
+                }
+                if (space)
+                {
+                    space = false;
+                    if (!spaceDone)
+                    {
+                        CmdSetKey("spaceFirst", true);
+                        spaceDone = true;
+                    }
+                    CmdSetKey("space", true);
+                }
             }
         }
     }
