@@ -9,4 +9,8 @@ public static class SyncData : object {
     public static int gameMode;
 
     public static bool failed;
+
+    public static int numPlayers;
+
+    public static string name;
 }

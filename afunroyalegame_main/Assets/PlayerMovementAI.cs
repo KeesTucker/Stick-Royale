@@ -241,7 +241,6 @@ public class PlayerMovementAI : MonoBehaviour {
                 GameObject particleR = Instantiate(jumpParticle, footR.transform.position, Quaternion.identity);
                 particleR.transform.parent = footR.transform;
             }
-
             if (sDepressed)
             {
                 body.AddForce(0, -30000 * Time.deltaTime, 0);
@@ -252,12 +251,15 @@ public class PlayerMovementAI : MonoBehaviour {
                     getDown++;
                 }
             }
-
             if ((Physics.Raycast(rLeg.gameObject.transform.position, -Vector3.up, out hit, 5f)) && !spaceDepressed)
             {
                 rLeg.AddForce(0, 3000f * Time.deltaTime, 0);
 
             }
+        }
+        if (sDepressed)
+        {
+            body.AddForce(0, -30000 * Time.deltaTime, 0);
         }
         if (groundforce.touchingWall && jumpable)
         {

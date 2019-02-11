@@ -57,7 +57,7 @@ public class SpawnRocketAI : NetworkBehaviour
             sprite.enabled = false;
         }
         yield return new WaitForSeconds(0.2f);
-        if (gameObject.name == "PlayerLocal(Clone)" && hasAuthority)
+        if (gameObject.name == "LocalPlayer" && hasAuthority)
         {
             mainCam = GameObject.Find("Main Camera(Clone)");
             mainCam.GetComponent<Camera>().orthographicSize = 100;

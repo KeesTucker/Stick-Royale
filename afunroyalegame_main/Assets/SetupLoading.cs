@@ -6,9 +6,12 @@ public class SetupLoading : MonoBehaviour
 {
     public Collider[] colliders;
 
+    public GameObject name;
+
     // Use this for initialization
     void Start()
     {
+        GameObject nameTag = Instantiate(name, transform.position, Quaternion.identity);
         for (int i = 0; i < colliders.Length; i++)
         {
             //if (!isServer && !GetComponent<PlayerControl>())

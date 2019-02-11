@@ -56,8 +56,6 @@ public class SpawnWeapons : NetworkBehaviour {
                 WeaponItem.transform.localScale = new Vector3(1, 1, 1);
                 WeaponItem.gameObject.layer = 11;
                 WeaponItem.GetComponent<BulletsLeft>().bullets = Weapons[WeaponIndex].WeaponItem.magazineSize;
-                WeaponItem.GetComponent<SphereCollider>().center = Weapons[WeaponIndex].WeaponItem.ItemColliderPos;
-                WeaponItem.GetComponent<SphereCollider>().radius = 3f;
                 /*NetworkServer.Spawn(WeaponItem);
                 WeaponModel = Instantiate(
                     Weapons[WeaponIndex].WeaponItem.itemModel,

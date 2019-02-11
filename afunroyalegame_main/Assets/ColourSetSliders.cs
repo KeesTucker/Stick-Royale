@@ -10,8 +10,11 @@ public class ColourSetSliders : MonoBehaviour {
 
     public ColourSetterLoad colourSetter;
 
+    public TMPro.TMP_Text nameTag;
+
     void Start()
     {
+        nameTag = GameObject.Find("Nametag(Clone)").transform.GetChild(0).gameObject.GetComponent<TMPro.TMP_Text>();
         UpdateColor();
     }
 
@@ -20,5 +23,6 @@ public class ColourSetSliders : MonoBehaviour {
         Color color = new Color(1 + r.localPosition.x, 1 + g.localPosition.x, 1 + b.localPosition.x, 1);
         colourSetter.SetColor(color);
         SyncData.color = color;
+        nameTag.color = color;
     }
 }

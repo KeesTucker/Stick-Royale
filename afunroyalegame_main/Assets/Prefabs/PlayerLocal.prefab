@@ -3827,6 +3827,9 @@ MonoBehaviour:
   local: 0
   manager: {fileID: 0}
   health: {fileID: 114339696921955500}
+  playerManagement: {fileID: 0}
+  dead: 0
+  nameTag: {fileID: 1989945171437490, guid: b89332b51ea1ef04c9ae97043df98cd5, type: 2}
 --- !u!114 &114564198616145310
 MonoBehaviour:
   m_ObjectHideFlags: 1

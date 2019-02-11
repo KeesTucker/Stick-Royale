@@ -23,9 +23,9 @@ GameObject:
   - component: {fileID: 114322209198698278}
   - component: {fileID: 114677809329220096}
   - component: {fileID: 114152776749390038}
-  - component: {fileID: 135696111160776352}
   - component: {fileID: 114408882205438266}
   - component: {fileID: 114709354502318556}
+  - component: {fileID: 114683897440085020}
   m_Layer: 11
   m_Name: Weapon Item
   m_TagString: WeaponItem
@@ -55,11 +55,11 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0.05
-  m_AngularDrag: 0.05
+  m_AngularDrag: 1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 8
+  m_Constraints: 24
   m_CollisionDetection: 0
 --- !u!114 &114152776749390038
 MonoBehaviour:
@@ -126,6 +126,18 @@ MonoBehaviour:
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
   m_AssetId: a2ab57fb811728d4b8e6d0fd2cc945ba
+--- !u!114 &114683897440085020
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1757743736535976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4911e1d6b7e7684fae6196385053295, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 54944288256134990}
 --- !u!114 &114709354502318556
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -154,15 +166,3 @@ MonoBehaviour:
   weaponParticle: 0
   ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
   hitMarker: {fileID: 1515018597900156, guid: a1a66d51af9473045834472520dcc367, type: 2}
---- !u!135 &135696111160776352
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1757743736535976}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 5
-  m_Center: {x: 0, y: 0, z: 0}

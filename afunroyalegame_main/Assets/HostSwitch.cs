@@ -10,11 +10,11 @@ public class HostSwitch : MonoBehaviour {
 	void Update () {
         if (rb.angularVelocity.z != 0)
         {
-            if (transform.localRotation.eulerAngles.z > 315)
+            if (transform.localRotation.eulerAngles.z > 335)
             {
                 startGame.isHost = false;
             }
-            else if (transform.localRotation.eulerAngles.z < 315)
+            else if (transform.localRotation.eulerAngles.z < 295)
             {
                 startGame.isHost = true;
             }

@@ -8,6 +8,7 @@ public class AISetup : NetworkBehaviour
 
     public Collider[] colliders;
 
+    [SyncVar]
     public GameObject parent;
 
     public bool local = false;
@@ -20,12 +21,12 @@ public class AISetup : NetworkBehaviour
 
     public bool dead = false;
 
+    public GameObject nameTag;
+
     // Use this for initialization
     void Start()
     {
         manager = GameObject.Find("_NetworkManager").GetComponent<NetworkManager>();
-        playerManagement = GameObject.Find("LocalConnection").GetComponent<PlayerManagement>();
-        playerManagement.totalPlayers++;
         for (int i = 0; i < colliders.Length; i++)
         {
             if (!isServer && !GetComponent<PlayerControl>())
@@ -37,6 +38,15 @@ public class AISetup : NetworkBehaviour
                 Physics.IgnoreCollision(colliders[i], colliders[v]);
             }
         }
+        if (isServer)
+        {
+            playerManagement = GameObject.Find("LocalConnection").GetComponent<PlayerManagement>();
+        }
+        else
+        {
+            playerManagement = GameObject.Find("PlayerConnect(Clone)").GetComponent<PlayerManagement>();
+        }
+        playerManagement.totalPlayers++;
     }
 
     public override void OnStartAuthority()
@@ -56,33 +66,48 @@ public class AISetup : NetworkBehaviour
             local = true;
             if (GetComponent<PlayerControl>())
             {
+                gameObject.name = "LocalPlayer";
                 foreach (ChunkLoad chunk in GameObject.Find("Terrain").GetComponentsInChildren<ChunkLoad>())
                 {
                     chunk.local = transform;
                 }
                 GameObject.Find("Inventory").GetComponent<UpdateUI>().refrenceKeeper = GetComponent<RefrenceKeeperAI>();
+
+                CmdSpawnName();
             }
         }
     }
 
+    [Command]
+    public void CmdSpawnName()
+    {
+        GameObject nameTagObject = Instantiate(nameTag, transform.position, Quaternion.identity);
+        NetworkServer.SpawnWithClientAuthority(nameTagObject, parent);
+        nameTagObject.GetComponent<SyncName>().CmdUpdateParent(gameObject);
+    }
+
     void Update()
     {
-        if (playerManagement.totalPlayers <= 1)
+        if (playerManagement)
         {
-            GetComponent<RefrenceKeeperAI>().updateUI.won.SetActive(true);
-            if (Input.GetKey("f") && GetComponent<PlayerControl>() && hasAuthority)
+            if (playerManagement.totalPlayers <= 1)
             {
-                if (!isServer)
+                GetComponent<RefrenceKeeperAI>().updateUI.won.SetActive(true);
+                if (Input.GetKey("f") && GetComponent<PlayerControl>() && hasAuthority)
                 {
-                    manager.StopClient();
-                }
-                else
-                {
-                    manager.StopClient();
-                    manager.StopServer();
+                    if (!isServer)
+                    {
+                        manager.StopClient();
+                    }
+                    else
+                    {
+                        manager.StopClient();
+                        manager.StopServer();
+                    }
                 }
             }
         }
+        
         if (health.health <= 0)
         {
             if (!dead)

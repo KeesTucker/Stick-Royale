@@ -17,6 +17,8 @@ public class StartGame : MonoBehaviour{
 
     public GameObject ip;
 
+    public GameObject numEnter;
+
     public GameObject error;
 
     void Start()
@@ -57,9 +59,11 @@ public class StartGame : MonoBehaviour{
         if (!isHost && !ip.activeSelf)
         {
             ip.SetActive(true);
+            numEnter.SetActive(false);
         }
         else if (isHost && ip.activeSelf)
         {
+            numEnter.SetActive(true);
             ip.SetActive(false);
         }
     }

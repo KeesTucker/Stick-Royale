@@ -8,6 +8,7 @@ public class PlayerManagement : NetworkBehaviour {
     public GameObject AIPlayer;
     public GameObject bot;
     public GameObject playerSpawned;
+    public GameObject playerSpawnedReal;
     public int numPlayers = 1;
     public int currentNum = 1;
     public int totalPlayers;
@@ -16,6 +17,7 @@ public class PlayerManagement : NetworkBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        numPlayers = SyncData.numPlayers;
         if (!isLocalPlayer && isServer)
         {
             playerManagement = GameObject.Find("LocalConnection").GetComponent<PlayerManagement>();

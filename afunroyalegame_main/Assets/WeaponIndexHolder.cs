@@ -53,7 +53,7 @@ public class WeaponIndexHolder : NetworkBehaviour {
         }
         WeaponModel.transform.localPosition = items.gameObject.GetComponent<SpawnWeapons>().Weapons[WeaponIndex].WeaponItem.spawnPosition;
         WeaponModel.transform.localEulerAngles = items.gameObject.GetComponent<SpawnWeapons>().Weapons[WeaponIndex].WeaponItem.spawnRotation;
-        WeaponModel.transform.localScale = items.gameObject.GetComponent<SpawnWeapons>().Weapons[WeaponIndex].WeaponItem.spawnScale;
+        WeaponModel.transform.localScale = items.gameObject.GetComponent<SpawnWeapons>().Weapons[WeaponIndex].WeaponItem.spawnScale * 2;
         items.gameObject.GetComponent<LocaliseTransform>().setTransformItem(gameObject.transform.GetChild(0).gameObject, WeaponIndex);
     }
 }
