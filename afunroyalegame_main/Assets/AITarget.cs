@@ -175,7 +175,27 @@ public class AITarget : MonoBehaviour {
                         closestPlayer = null;
                     }
                 }
-
+                if (refrenceKeeper.inventoryCount == 0 && closestWeapon)
+                {
+                    if (Random.Range(0, 10) == 1)
+                    {
+                        if (closestGrapple.name.Contains("Tree"))
+                        {
+                            transform.position = closestGrapple.transform.position + new Vector3(0, 30f, 0);
+                        }
+                        else
+                        {
+                            transform.position = closestGrapple.transform.position;
+                        }
+                        baseControl.rClick = true;
+                        StartCoroutine("StopGrapple");
+                    }
+                    else
+                    {
+                        transform.position = closestWeapon.transform.position;
+                    }
+                    targetType = 0;
+                }
                 if (refrenceKeeper.inventoryCount < 3 && closestWeapon)
                 {
                     if (minWeaponDistance < minPlayerDistance && !bulletTypes.Contains(spawnWeapons.Weapons[closestWeapon.GetComponent<WeaponIndexHolder>().WeaponIndex].WeaponItem.bullet)) //Make sure not picking up same weapontype
@@ -249,6 +269,10 @@ public class AITarget : MonoBehaviour {
             }
             if (targetType == 1)
             {
+                if (refrenceKeeper.inventoryCount == 1 && Random.Range(0, 2) == 1)
+                {
+                    baseControl.one = true;
+                }
                 if (minPlayerDistance < 35) //Melee Distance
                 {
                     for (int i = 0; i < refrenceKeeper.weaponInventory.Count; i++)

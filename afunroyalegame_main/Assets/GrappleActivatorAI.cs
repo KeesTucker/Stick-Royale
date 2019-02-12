@@ -97,6 +97,13 @@ public class GrappleActivatorAI : MonoBehaviour {
 
     void FixedUpdate()
     {
+        if (!backTime && !Collided)
+        {
+            if (rb.velocity.magnitude < 100)
+            {
+                rb.AddForce(rb.velocity.normalized * (100000 / 50) * Time.deltaTime);
+            }
+        }
         angle = AngleBetweenPoints(hand.GetComponent<Transform>().position, transform.position);
         rotation = Quaternion.Euler(0, 0, angle);
         direction = rotation * -Vector3.right;
@@ -122,7 +129,7 @@ public class GrappleActivatorAI : MonoBehaviour {
         }
         if (backTime)
         {
-            rb.AddForce(-direction * 90000 * Time.deltaTime);
+            rb.AddForce(-direction * (90000 / 25) * Time.deltaTime);
             if (Vector3.Distance(handSingle.transform.position, transform.position) < 2)
             {
                 if (onLocal)
@@ -141,7 +148,7 @@ public class GrappleActivatorAI : MonoBehaviour {
 
     IEnumerator endTime()
     {
-        yield return new WaitForSeconds(0.75f);
+        yield return new WaitForSeconds(0.42f);
         if (Collided == false)
         {
             backTime = true;

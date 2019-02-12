@@ -235,11 +235,8 @@ public class ShootAI : MonoBehaviour {
             dust.transform.parent = LimbEnds[nextFist].transform;
             LimbDamagers[nextFist].punching = true;
             LimbDamagers[nextFist].particleDone = false;
-            if (refrenceKeeper.isServer)
-            {
-                LimbDamagers[nextFist].onServer = true;
-                damager = nextFist;
-            }
+            LimbDamagers[nextFist].hitable = true;
+            damager = nextFist;
             if (nextFist == 0)
             {
                 nextFist = 1;
@@ -261,11 +258,8 @@ public class ShootAI : MonoBehaviour {
             dust.transform.parent = LimbEnds[nextFist + 2].transform;
             LimbDamagers[nextFist + 2].punching = true;
             LimbDamagers[nextFist + 2].particleDone = false;
-            if (refrenceKeeper.isServer)
-            {
-                LimbDamagers[nextFist + 2].onServer = true;
-                damager = nextFist + 2;
-            }
+            LimbDamagers[nextFist + 2].hitable = true;
+            damager = nextFist + 2;
             if (nextFist == 0)
             {
                 nextFist = 1;
@@ -278,10 +272,7 @@ public class ShootAI : MonoBehaviour {
         yield return new WaitForSeconds(0.3f);
         loopDown = true;
         yield return new WaitForSeconds(0.15f);
-        if (refrenceKeeper.isServer)
-        {
-            LimbDamagers[damager].onServer = false;
-        }
+        LimbDamagers[damager].hitable = false;
         LimbDamagers[damager].punching = false;
     }
 
@@ -383,7 +374,7 @@ public class ShootAI : MonoBehaviour {
                 bullet.GetComponent<MissLinks>().Miss(hit.collider.gameObject.GetComponent<BulletAvoidPlat>().chainLinks);
             }
             bullet.GetComponent<DamageDealer>().damage = refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].damage;
-            bullet.GetComponent<DamageDealer>().onServer = ragdoll.GetComponent<AISetup>().isServer;
+            bullet.GetComponent<DamageDealer>().hitable = true;
             Destroy(bullet, 5.0f);
         }
         shell = Instantiate(

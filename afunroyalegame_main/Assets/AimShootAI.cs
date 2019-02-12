@@ -239,7 +239,7 @@ public class AimShootAI : MonoBehaviour {
             }
             for (int i = 0; i < 20; i++)
             {
-                grapple.GetComponent<Rigidbody>().AddForce(startAngle * 600 * Time.deltaTime * 100);
+                grapple.GetComponent<Rigidbody>().AddForce(startAngle * (600 / 50) * Time.deltaTime * 100);
             }
         }
         fireGrapple = false;

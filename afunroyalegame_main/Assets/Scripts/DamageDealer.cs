@@ -23,6 +23,7 @@ public class DamageDealer : MonoBehaviour {
     Color oldColor;
     public GameObject hitMarker;
     GameObject hit;
+    public bool hitable = false;
 
     IEnumerator Start()
     {
@@ -82,56 +83,145 @@ public class DamageDealer : MonoBehaviour {
             {
                 if (collisionInfo.gameObject.tag == "PosRelay")
                 {
-                    collisionInfo.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
+                    if (collisionInfo.gameObject.GetComponent<AISetup>().hasAuthority)
+                    {
+                        onServer = true;
+                    }
+                    else
+                    {
+                        onServer = false;
+                    }
+                    if (onServer)
+                    {
+                        collisionInfo.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
+                    }
                     weapon = null;
                     return;
                 }
                 else if (collisionInfo.transform.parent.gameObject.tag == "PosRelay")
                 {
-                    collisionInfo.transform.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
+                    if (collisionInfo.transform.parent.gameObject.GetComponent<AISetup>().hasAuthority)
+                    {
+                        onServer = true;
+                    }
+                    else
+                    {
+                        onServer = false;
+                    }
+                    if (onServer)
+                    {
+                        collisionInfo.transform.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
+                    }
                     weapon = null;
                     return;
                 }
                 else if (collisionInfo.transform.parent.parent.gameObject.tag == "PosRelay")
                 {
-                    collisionInfo.transform.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
+                    if (collisionInfo.transform.parent.parent.gameObject.GetComponent<AISetup>().hasAuthority)
+                    {
+                        onServer = true;
+                    }
+                    else
+                    {
+                        onServer = false;
+                    }
+                    if (onServer)
+                    {
+                        collisionInfo.transform.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
+                    }
                     weapon = null;
                     return;
                 }
                 else if (collisionInfo.transform.parent.parent.parent.gameObject.tag == "PosRelay")
                 {
-                    collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
+                    if (collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<AISetup>().hasAuthority)
+                    {
+                        onServer = true;
+                    }
+                    else
+                    {
+                        onServer = false;
+                    }
+                    if (onServer)
+                    {
+                        collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
+                    }
                     weapon = null;
                     return;
                 }
             }
+
         }
-        else if (onServer)
+        else if(hitable)
         {
             if (collisionInfo.gameObject.layer == 24)
             {
                 if (collisionInfo.gameObject.tag == "PosRelay")
                 {
-                    collisionInfo.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
-                    onServer = false;
+                    if (collisionInfo.gameObject.GetComponent<AISetup>().hasAuthority)
+                    {
+                        onServer = true;
+                    }
+                    else
+                    {
+                        onServer = false;
+                    }
+                    if (onServer)
+                    {
+                        collisionInfo.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
+                    }
+                    hitable = false;
                     return;
                 }
                 else if (collisionInfo.transform.parent.gameObject.tag == "PosRelay")
                 {
-                    collisionInfo.transform.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
-                    onServer = false;
+                    if (collisionInfo.transform.parent.gameObject.GetComponent<AISetup>().hasAuthority)
+                    {
+                        onServer = true;
+                    }
+                    else
+                    {
+                        onServer = false;
+                    }
+                    if (onServer)
+                    {
+                        collisionInfo.transform.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
+                    }
+                    hitable = false;
                     return;
                 }
                 else if (collisionInfo.transform.parent.parent.gameObject.tag == "PosRelay")
                 {
-                    collisionInfo.transform.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
-                    onServer = false;
+                    if (collisionInfo.transform.parent.parent.gameObject.GetComponent<AISetup>().hasAuthority)
+                    {
+                        onServer = true;
+                    }
+                    else
+                    {
+                        onServer = false;
+                    }
+                    if (onServer)
+                    {
+                        collisionInfo.transform.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
+                    }
+                    hitable = false;
                     return;
                 }
                 else if (collisionInfo.transform.parent.parent.parent.gameObject.tag == "PosRelay")
                 {
-                    collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
-                    onServer = false;
+                    if (collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<AISetup>().hasAuthority)
+                    {
+                        onServer = true;
+                    }
+                    else
+                    {
+                        onServer = false;
+                    }
+                    if (onServer)
+                    {
+                        collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
+                    }
+                    hitable = false;
                     return;
                 }
             }

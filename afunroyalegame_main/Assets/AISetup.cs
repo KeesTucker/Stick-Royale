@@ -90,7 +90,7 @@ public class AISetup : NetworkBehaviour
     {
         if (playerManagement)
         {
-            if (playerManagement.totalPlayers <= 1)
+            if (playerManagement.totalPlayers <= 1 && !health.deaded && gameObject.name != "Player(Clone)")
             {
                 GetComponent<RefrenceKeeperAI>().updateUI.won.SetActive(true);
                 if (Input.GetKey("f") && GetComponent<PlayerControl>() && hasAuthority)

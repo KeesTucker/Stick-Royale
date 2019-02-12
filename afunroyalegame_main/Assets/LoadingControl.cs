@@ -30,31 +30,31 @@ public class LoadingControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("a"))
+        if (Input.GetKeyDown(SyncData.a))
         {
             a = true;
         }
-        if (Input.GetKeyUp("a"))
+        if (Input.GetKeyUp(SyncData.a))
         {
             a = false;
         }
-        if (Input.GetKeyDown("s"))
+        if (Input.GetKeyDown(SyncData.s))
         {
             s = true;
         }
-        if (Input.GetKeyUp("s"))
+        if (Input.GetKeyUp(SyncData.s))
         {
             s = false;
         }
-        if (Input.GetKeyDown("d"))
+        if (Input.GetKeyDown(SyncData.d))
         {
             d = true;
         }
-        if (Input.GetKeyUp("d"))
+        if (Input.GetKeyUp(SyncData.d))
         {
             d = false;
         }
-        if (Input.GetKeyDown("space") || Input.GetKeyDown("w"))
+        if (Input.GetKeyDown(SyncData.space))
         {
             space = true;
         }

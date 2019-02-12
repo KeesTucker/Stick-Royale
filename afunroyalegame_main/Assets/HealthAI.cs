@@ -22,6 +22,14 @@ public class HealthAI : NetworkBehaviour {
 	void Start()
     {
         refrenceKeeper = GetComponent<RefrenceKeeperAI>();
+        if (GetComponent<AISetup>().isServer)
+        {
+            health = SyncData.health;
+        }
+        else
+        {
+            health = GameObject.Find("Player(Clone)").GetComponent<HealthAI>().health;
+        }
     }
 
     void Update()
@@ -163,6 +171,7 @@ public class HealthAI : NetworkBehaviour {
         }
     }
 
+    [Command]
     public void CmdUpdateHealth(float damage)
     {
         health -= damage;

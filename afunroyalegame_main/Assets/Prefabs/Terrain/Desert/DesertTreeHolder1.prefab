@@ -171,7 +171,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1676381246766802}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 14.7, z: 0.1}
+  m_LocalPosition: {x: 0, y: 18.2, z: 0.1}
   m_LocalScale: {x: 1.9505, y: 1.9505, z: 1.9505}
   m_Children:
   - {fileID: 4728333661047446}
@@ -524,8 +524,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f7cda25ac13d234591042684b9b4bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 40
+  damage: 10
   damagable: 1
+  onServer: 0
+  parent: 0
+  speed: 5
+  weapon: {fileID: 0}
+  isAWeapon: 0
+  particle: {fileID: 1914801538564046, guid: 0047934e19f5dfa4782fe618071f7125, type: 2}
+  gunParticle: {fileID: 0}
+  rb: {fileID: 0}
+  particleDone: 0
+  punching: 0
+  velocityX: 0
+  velocityY: 0
+  weaponParticle: 0
+  ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
+  hitMarker: {fileID: 0}
 --- !u!114 &114204708587061550
 MonoBehaviour:
   m_ObjectHideFlags: 1

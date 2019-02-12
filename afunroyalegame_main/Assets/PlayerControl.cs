@@ -50,35 +50,35 @@ public class PlayerControl : NetworkBehaviour
         {
             if (gameObject.GetComponent<SpawnRocketAI>().spaceDepressed)
             {
-                if (Input.GetKeyDown("f") || Input.GetKeyDown("e"))
+                if (Input.GetKeyDown(SyncData.f))
                 {
                     e = true;
                 }
-                if (Input.GetKeyDown("a"))
+                if (Input.GetKeyDown(SyncData.a))
                 {
                     a = true;
                 }
-                if (Input.GetKeyUp("a"))
+                if (Input.GetKeyUp(SyncData.a))
                 {
                     a = false;
                 }
-                if (Input.GetKeyDown("s"))
+                if (Input.GetKeyDown(SyncData.s))
                 {
                     s = true;
                 }
-                if (Input.GetKeyUp("s"))
+                if (Input.GetKeyUp(SyncData.s))
                 {
                     s = false;
                 }
-                if (Input.GetKeyDown("d"))
+                if (Input.GetKeyDown(SyncData.d))
                 {
                     d = true;
                 }
-                if (Input.GetKeyUp("d"))
+                if (Input.GetKeyUp(SyncData.d))
                 {
                     d = false;
                 }
-                if (Input.GetKeyDown("r"))
+                if (Input.GetKeyDown(SyncData.r))
                 {
                     r = true;
                 }
@@ -145,17 +145,17 @@ public class PlayerControl : NetworkBehaviour
                 {
                     rClick = false;
                 }
-                if (Input.GetKeyDown("i"))
+                if (Input.GetKeyDown(SyncData.i))
                 {
                     i = true;
                 }
-                if (Input.GetKeyUp("i"))
+                if (Input.GetKeyUp(SyncData.i))
                 {
                     i = false;
                 }
             }
             
-            if (Input.GetKeyDown("space") || Input.GetKeyDown("w"))
+            if (Input.GetKeyDown(SyncData.space))
             {
                 if (spawnRocket.ready)
                 {

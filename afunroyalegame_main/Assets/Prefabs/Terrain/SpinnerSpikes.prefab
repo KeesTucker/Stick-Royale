@@ -734,6 +734,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 30
   damagable: 1
+  onServer: 0
+  parent: 0
+  speed: 5
+  weapon: {fileID: 0}
+  isAWeapon: 0
+  particle: {fileID: 0}
+  gunParticle: {fileID: 0}
+  rb: {fileID: 0}
+  particleDone: 0
+  punching: 0
+  velocityX: 0
+  velocityY: 0
+  weaponParticle: 0
+  ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
+  hitMarker: {fileID: 0}
 --- !u!114 &114031557749184284
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -745,8 +760,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f7cda25ac13d234591042684b9b4bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  damage: 30
   damagable: 1
+  onServer: 0
+  parent: 0
+  speed: 5
+  weapon: {fileID: 0}
+  isAWeapon: 0
+  particle: {fileID: 1914801538564046, guid: 0047934e19f5dfa4782fe618071f7125, type: 2}
+  gunParticle: {fileID: 0}
+  rb: {fileID: 0}
+  particleDone: 0
+  punching: 0
+  velocityX: 0
+  velocityY: 0
+  weaponParticle: 0
+  ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
+  hitMarker: {fileID: 0}
 --- !u!114 &114044518697900706
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -760,6 +790,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 30
   damagable: 1
+  onServer: 0
+  parent: 0
+  speed: 5
+  weapon: {fileID: 0}
+  isAWeapon: 0
+  particle: {fileID: 0}
+  gunParticle: {fileID: 0}
+  rb: {fileID: 0}
+  particleDone: 0
+  punching: 0
+  velocityX: 0
+  velocityY: 0
+  weaponParticle: 0
+  ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
+  hitMarker: {fileID: 0}
 --- !u!114 &114047996880543198
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -773,6 +818,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   damagable: 0
+  onServer: 0
+  parent: 0
+  speed: 5
+  weapon: {fileID: 0}
+  isAWeapon: 0
+  particle: {fileID: 0}
+  gunParticle: {fileID: 0}
+  rb: {fileID: 0}
+  particleDone: 0
+  punching: 0
+  velocityX: 0
+  velocityY: 0
+  weaponParticle: 0
+  ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
+  hitMarker: {fileID: 0}
 --- !u!114 &114095880244863468
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -786,6 +846,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 30
   damagable: 1
+  onServer: 0
+  parent: 0
+  speed: 5
+  weapon: {fileID: 0}
+  isAWeapon: 0
+  particle: {fileID: 0}
+  gunParticle: {fileID: 0}
+  rb: {fileID: 0}
+  particleDone: 0
+  punching: 0
+  velocityX: 0
+  velocityY: 0
+  weaponParticle: 0
+  ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
+  hitMarker: {fileID: 0}
 --- !u!114 &114096495204764272
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -799,6 +874,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   damagable: 0
+  onServer: 0
+  parent: 0
+  speed: 5
+  weapon: {fileID: 0}
+  isAWeapon: 0
+  particle: {fileID: 0}
+  gunParticle: {fileID: 0}
+  rb: {fileID: 0}
+  particleDone: 0
+  punching: 0
+  velocityX: 0
+  velocityY: 0
+  weaponParticle: 0
+  ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
+  hitMarker: {fileID: 0}
 --- !u!114 &114099691108993568
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -812,6 +902,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 30
   damagable: 1
+  onServer: 0
+  parent: 0
+  speed: 5
+  weapon: {fileID: 0}
+  isAWeapon: 0
+  particle: {fileID: 0}
+  gunParticle: {fileID: 0}
+  rb: {fileID: 0}
+  particleDone: 0
+  punching: 0
+  velocityX: 0
+  velocityY: 0
+  weaponParticle: 0
+  ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
+  hitMarker: {fileID: 0}
 --- !u!114 &114117349361542626
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -823,8 +928,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f7cda25ac13d234591042684b9b4bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  damage: 30
   damagable: 1
+  onServer: 0
+  parent: 0
+  speed: 5
+  weapon: {fileID: 0}
+  isAWeapon: 0
+  particle: {fileID: 1914801538564046, guid: 0047934e19f5dfa4782fe618071f7125, type: 2}
+  gunParticle: {fileID: 0}
+  rb: {fileID: 0}
+  particleDone: 0
+  punching: 0
+  velocityX: 0
+  velocityY: 0
+  weaponParticle: 0
+  ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
+  hitMarker: {fileID: 0}
 --- !u!114 &114129378853640552
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -838,6 +958,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 30
   damagable: 1
+  onServer: 0
+  parent: 0
+  speed: 5
+  weapon: {fileID: 0}
+  isAWeapon: 0
+  particle: {fileID: 0}
+  gunParticle: {fileID: 0}
+  rb: {fileID: 0}
+  particleDone: 0
+  punching: 0
+  velocityX: 0
+  velocityY: 0
+  weaponParticle: 0
+  ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
+  hitMarker: {fileID: 0}
 --- !u!114 &114129707367331460
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -851,6 +986,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 30
   damagable: 1
+  onServer: 0
+  parent: 0
+  speed: 5
+  weapon: {fileID: 0}
+  isAWeapon: 0
+  particle: {fileID: 0}
+  gunParticle: {fileID: 0}
+  rb: {fileID: 0}
+  particleDone: 0
+  punching: 0
+  velocityX: 0
+  velocityY: 0
+  weaponParticle: 0
+  ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
+  hitMarker: {fileID: 0}
 --- !u!114 &114149257413027282
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -862,8 +1012,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f7cda25ac13d234591042684b9b4bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  damage: 30
   damagable: 1
+  onServer: 0
+  parent: 0
+  speed: 5
+  weapon: {fileID: 0}
+  isAWeapon: 0
+  particle: {fileID: 1914801538564046, guid: 0047934e19f5dfa4782fe618071f7125, type: 2}
+  gunParticle: {fileID: 0}
+  rb: {fileID: 0}
+  particleDone: 0
+  punching: 0
+  velocityX: 0
+  velocityY: 0
+  weaponParticle: 0
+  ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
+  hitMarker: {fileID: 0}
 --- !u!114 &114238073066145726
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -875,8 +1040,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f7cda25ac13d234591042684b9b4bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  damage: 30
   damagable: 1
+  onServer: 0
+  parent: 0
+  speed: 5
+  weapon: {fileID: 0}
+  isAWeapon: 0
+  particle: {fileID: 1914801538564046, guid: 0047934e19f5dfa4782fe618071f7125, type: 2}
+  gunParticle: {fileID: 0}
+  rb: {fileID: 0}
+  particleDone: 0
+  punching: 0
+  velocityX: 0
+  velocityY: 0
+  weaponParticle: 0
+  ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
+  hitMarker: {fileID: 0}
 --- !u!114 &114306358767500490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -890,6 +1070,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   damagable: 0
+  onServer: 0
+  parent: 0
+  speed: 5
+  weapon: {fileID: 0}
+  isAWeapon: 0
+  particle: {fileID: 0}
+  gunParticle: {fileID: 0}
+  rb: {fileID: 0}
+  particleDone: 0
+  punching: 0
+  velocityX: 0
+  velocityY: 0
+  weaponParticle: 0
+  ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
+  hitMarker: {fileID: 0}
 --- !u!114 &114330619303633958
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -903,6 +1098,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 30
   damagable: 1
+  onServer: 0
+  parent: 0
+  speed: 5
+  weapon: {fileID: 0}
+  isAWeapon: 0
+  particle: {fileID: 0}
+  gunParticle: {fileID: 0}
+  rb: {fileID: 0}
+  particleDone: 0
+  punching: 0
+  velocityX: 0
+  velocityY: 0
+  weaponParticle: 0
+  ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
+  hitMarker: {fileID: 0}
 --- !u!114 &114333640434994484
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -914,8 +1124,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f7cda25ac13d234591042684b9b4bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  damage: 30
   damagable: 1
+  onServer: 0
+  parent: 0
+  speed: 5
+  weapon: {fileID: 0}
+  isAWeapon: 0
+  particle: {fileID: 1914801538564046, guid: 0047934e19f5dfa4782fe618071f7125, type: 2}
+  gunParticle: {fileID: 0}
+  rb: {fileID: 0}
+  particleDone: 0
+  punching: 0
+  velocityX: 0
+  velocityY: 0
+  weaponParticle: 0
+  ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
+  hitMarker: {fileID: 0}
 --- !u!114 &114339497022632928
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -929,6 +1154,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   damagable: 0
+  onServer: 0
+  parent: 0
+  speed: 5
+  weapon: {fileID: 0}
+  isAWeapon: 0
+  particle: {fileID: 0}
+  gunParticle: {fileID: 0}
+  rb: {fileID: 0}
+  particleDone: 0
+  punching: 0
+  velocityX: 0
+  velocityY: 0
+  weaponParticle: 0
+  ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
+  hitMarker: {fileID: 0}
 --- !u!114 &114400705564419884
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -942,6 +1182,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   damagable: 0
+  onServer: 0
+  parent: 0
+  speed: 5
+  weapon: {fileID: 0}
+  isAWeapon: 0
+  particle: {fileID: 0}
+  gunParticle: {fileID: 0}
+  rb: {fileID: 0}
+  particleDone: 0
+  punching: 0
+  velocityX: 0
+  velocityY: 0
+  weaponParticle: 0
+  ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
+  hitMarker: {fileID: 0}
 --- !u!114 &114408419324915764
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -953,8 +1208,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f7cda25ac13d234591042684b9b4bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  damage: 30
   damagable: 1
+  onServer: 0
+  parent: 0
+  speed: 5
+  weapon: {fileID: 0}
+  isAWeapon: 0
+  particle: {fileID: 1914801538564046, guid: 0047934e19f5dfa4782fe618071f7125, type: 2}
+  gunParticle: {fileID: 0}
+  rb: {fileID: 0}
+  particleDone: 0
+  punching: 0
+  velocityX: 0
+  velocityY: 0
+  weaponParticle: 0
+  ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
+  hitMarker: {fileID: 0}
 --- !u!114 &114497820548718836
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -968,6 +1238,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 30
   damagable: 1
+  onServer: 0
+  parent: 0
+  speed: 5
+  weapon: {fileID: 0}
+  isAWeapon: 0
+  particle: {fileID: 0}
+  gunParticle: {fileID: 0}
+  rb: {fileID: 0}
+  particleDone: 0
+  punching: 0
+  velocityX: 0
+  velocityY: 0
+  weaponParticle: 0
+  ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
+  hitMarker: {fileID: 0}
 --- !u!114 &114506038840348274
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -979,8 +1264,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f7cda25ac13d234591042684b9b4bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  damage: 30
   damagable: 1
+  onServer: 0
+  parent: 0
+  speed: 5
+  weapon: {fileID: 0}
+  isAWeapon: 0
+  particle: {fileID: 1914801538564046, guid: 0047934e19f5dfa4782fe618071f7125, type: 2}
+  gunParticle: {fileID: 0}
+  rb: {fileID: 0}
+  particleDone: 0
+  punching: 0
+  velocityX: 0
+  velocityY: 0
+  weaponParticle: 0
+  ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
+  hitMarker: {fileID: 0}
 --- !u!114 &114512858146668422
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -994,6 +1294,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   damagable: 0
+  onServer: 0
+  parent: 0
+  speed: 5
+  weapon: {fileID: 0}
+  isAWeapon: 0
+  particle: {fileID: 0}
+  gunParticle: {fileID: 0}
+  rb: {fileID: 0}
+  particleDone: 0
+  punching: 0
+  velocityX: 0
+  velocityY: 0
+  weaponParticle: 0
+  ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
+  hitMarker: {fileID: 0}
 --- !u!114 &114551690586730538
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1005,8 +1320,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f7cda25ac13d234591042684b9b4bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  damage: 30
   damagable: 1
+  onServer: 0
+  parent: 0
+  speed: 5
+  weapon: {fileID: 0}
+  isAWeapon: 0
+  particle: {fileID: 1914801538564046, guid: 0047934e19f5dfa4782fe618071f7125, type: 2}
+  gunParticle: {fileID: 0}
+  rb: {fileID: 0}
+  particleDone: 0
+  punching: 0
+  velocityX: 0
+  velocityY: 0
+  weaponParticle: 0
+  ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
+  hitMarker: {fileID: 0}
 --- !u!114 &114601135883809798
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1020,6 +1350,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 30
   damagable: 1
+  onServer: 0
+  parent: 0
+  speed: 5
+  weapon: {fileID: 0}
+  isAWeapon: 0
+  particle: {fileID: 0}
+  gunParticle: {fileID: 0}
+  rb: {fileID: 0}
+  particleDone: 0
+  punching: 0
+  velocityX: 0
+  velocityY: 0
+  weaponParticle: 0
+  ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
+  hitMarker: {fileID: 0}
 --- !u!114 &114653605343687010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1033,6 +1378,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   damagable: 0
+  onServer: 0
+  parent: 0
+  speed: 5
+  weapon: {fileID: 0}
+  isAWeapon: 0
+  particle: {fileID: 0}
+  gunParticle: {fileID: 0}
+  rb: {fileID: 0}
+  particleDone: 0
+  punching: 0
+  velocityX: 0
+  velocityY: 0
+  weaponParticle: 0
+  ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
+  hitMarker: {fileID: 0}
 --- !u!114 &114725918362875252
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1046,6 +1406,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 30
   damagable: 1
+  onServer: 0
+  parent: 0
+  speed: 5
+  weapon: {fileID: 0}
+  isAWeapon: 0
+  particle: {fileID: 1914801538564046, guid: 0047934e19f5dfa4782fe618071f7125, type: 2}
+  gunParticle: {fileID: 0}
+  rb: {fileID: 0}
+  particleDone: 0
+  punching: 0
+  velocityX: 0
+  velocityY: 0
+  weaponParticle: 0
+  ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
+  hitMarker: {fileID: 0}
 --- !u!114 &114875945695585830
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1059,6 +1434,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   damagable: 0
+  onServer: 0
+  parent: 0
+  speed: 5
+  weapon: {fileID: 0}
+  isAWeapon: 0
+  particle: {fileID: 0}
+  gunParticle: {fileID: 0}
+  rb: {fileID: 0}
+  particleDone: 0
+  punching: 0
+  velocityX: 0
+  velocityY: 0
+  weaponParticle: 0
+  ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
+  hitMarker: {fileID: 0}
 --- !u!114 &114906144340861044
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1084,6 +1474,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 30
   damagable: 1
+  onServer: 0
+  parent: 0
+  speed: 5
+  weapon: {fileID: 0}
+  isAWeapon: 0
+  particle: {fileID: 0}
+  gunParticle: {fileID: 0}
+  rb: {fileID: 0}
+  particleDone: 0
+  punching: 0
+  velocityX: 0
+  velocityY: 0
+  weaponParticle: 0
+  ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
+  hitMarker: {fileID: 0}
 --- !u!114 &114966861361266990
 MonoBehaviour:
   m_ObjectHideFlags: 1

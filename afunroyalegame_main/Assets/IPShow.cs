@@ -9,11 +9,8 @@ public class IPShow : MonoBehaviour {
 
     public TMPro.TMP_Text inputField;
 
-    private object myExtIPWWW;
-    private object myExtIP;
-
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update() {
         /*if (inputField.text != )
         {
             inputField.text = Network.player.ipAddress;

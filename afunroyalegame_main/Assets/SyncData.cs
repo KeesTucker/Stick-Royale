@@ -10,7 +10,17 @@ public static class SyncData : object {
 
     public static bool failed;
 
-    public static int numPlayers;
+    public static int numPlayers = 5;
 
     public static string name;
+
+    public static int health = 400;
+
+    public static KeyCode a = KeyCode.A;
+    public static KeyCode d = KeyCode.D;
+    public static KeyCode s = KeyCode.S;
+    public static KeyCode space = KeyCode.Space;
+    public static KeyCode i = KeyCode.I;
+    public static KeyCode f = KeyCode.F;
+    public static KeyCode r = KeyCode.R;
 }
