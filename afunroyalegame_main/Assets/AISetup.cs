@@ -29,10 +29,6 @@ public class AISetup : NetworkBehaviour
         manager = GameObject.Find("_NetworkManager").GetComponent<NetworkManager>();
         for (int i = 0; i < colliders.Length; i++)
         {
-            if (!isServer && !GetComponent<PlayerControl>())
-            {
-                colliders[i].gameObject.layer = 14;
-            }
             for (int v = 0; v < colliders.Length; v++)
             {
                 Physics.IgnoreCollision(colliders[i], colliders[v]);

@@ -12,20 +12,16 @@ public class WeaponIndexHolder : NetworkBehaviour {
     public Material WeaponMat;
 
     [SyncVar]
-    public int WeaponIndex;
+    public int WeaponIndex = 9999;
 
     IEnumerator Start()
     {
         items = GameObject.Find("Items").transform;
-        if (items.gameObject.GetComponent<SpawnWeapons>().done)
+        while (WeaponIndex == 9999)
         {
-            GetModel();
+            yield return null;
         }
-        else
-        {
-            yield return new WaitForSeconds(0.2f);
-            GetModel();
-        }
+        GetModel();
     }
 
     public void GetModel()

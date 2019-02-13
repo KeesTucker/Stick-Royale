@@ -4232,6 +4232,7 @@ MonoBehaviour:
   isRes: 0
   textFullScreen: {fileID: 0}
   health: 100
+  worldSize: 13
 --- !u!114 &618651180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4908,6 +4909,7 @@ MonoBehaviour:
   isRes: 0
   textFullScreen: {fileID: 0}
   health: 100
+  worldSize: 13
 --- !u!114 &756885172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12490,6 +12492,7 @@ MonoBehaviour:
   isRes: 1
   textFullScreen: {fileID: 1393136455}
   health: 100
+  worldSize: 13
 --- !u!224 &1741262530
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13891,7 +13894,7 @@ Prefab:
     - target: {fileID: 114329973218860268, guid: b1f695b770db60742bc94d14a542410e,
         type: 2}
       propertyPath: showGUI
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1f695b770db60742bc94d14a542410e, type: 2}
@@ -13954,7 +13957,7 @@ MonoBehaviour:
   info: []
   WeaponMat: {fileID: 2100000, guid: cfb258c728c27da4cb21a83213ab8aec, type: 2}
   WeaponModel: {fileID: 0}
-  WeaponSpawnPoints: []
+  spawns: []
   done: 0
 --- !u!114 &1950980130
 MonoBehaviour:
@@ -15162,6 +15165,7 @@ MonoBehaviour:
   isRes: 0
   textFullScreen: {fileID: 0}
   health: 100
+  worldSize: 13
 --- !u!114 &2104810957
 MonoBehaviour:
   m_ObjectHideFlags: 0

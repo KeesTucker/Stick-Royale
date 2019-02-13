@@ -148,6 +148,7 @@ public class SpawnRocketAI : NetworkBehaviour
 
     IEnumerator destroy()
     {
+        transform.position = rocketGO.transform.position;
         if (camActive)
         {
             float size = 100;

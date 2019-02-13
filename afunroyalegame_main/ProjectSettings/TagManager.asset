@@ -30,6 +30,8 @@ TagManager:
   - Hands
   - Feet
   - ghostLocal
+  - TerrainPart
+  - WeaponSpawn
   layers:
   - Default
   - TransparentFX

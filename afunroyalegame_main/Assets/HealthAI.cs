@@ -43,7 +43,13 @@ public class HealthAI : NetworkBehaviour {
 
     public IEnumerator DestroyPlayer()
     {
-        CmdDestroyPlayer();        
+        GetComponent<SpriteRenderer>().color = Color.red;
+        foreach (SpriteRenderer sr in transform.GetComponentsInChildren<SpriteRenderer>())
+        {
+            sr.color = Color.red;
+        }
+        CmdDestroyPlayer();
+        GetComponent<AimShootAI>().RClick = false;
         GetComponent<GroundForceAI>().grappled = true;
         if (GetComponent<PlayerControl>())
         {
@@ -107,6 +113,7 @@ public class HealthAI : NetworkBehaviour {
         
         if (!hasAuthority)
         {
+            GetComponent<AimShootAI>().RClick = false;
             GetComponent<GroundForceAI>().grappled = true;
             if (GetComponent<PlayerControl>())
             {
@@ -149,6 +156,7 @@ public class HealthAI : NetworkBehaviour {
         }
         if (!hasAuthority)
         {
+            GetComponent<AimShootAI>().RClick = false;
             GetComponent<GroundForceAI>().grappled = true;
             if (GetComponent<PlayerControl>())
             {

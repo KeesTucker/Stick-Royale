@@ -95,14 +95,17 @@ public class AITarget : MonoBehaviour {
         if (frames >= 12 && !health.deaded)
         {
             frames = 0;
-            if (isServer)
+            if (isServer && spawnRocket.ready)
             {
                 if (!spawnRocket.destroyed && !selectedStart)
                 {
                     weapons = GameObject.FindGameObjectsWithTag("WeaponItem");
-                    chosenWeapon = Random.Range(0, weapons.Length - 1);
-                    targetGO(weapons[chosenWeapon]);
-                    selectedStart = true;
+                    if (weapons.Length > 0)
+                    {
+                        chosenWeapon = Random.Range(0, weapons.Length - 1);
+                        targetGO(weapons[chosenWeapon]);
+                        selectedStart = true;
+                    }
                 }
                 else if (!spawnRocket.destroyed && selectedStart)
                 {

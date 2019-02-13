@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using System.Collections;
 
 public class SpawnWeapons : NetworkBehaviour {
 
@@ -22,7 +23,7 @@ public class SpawnWeapons : NetworkBehaviour {
 
     public GameObject WeaponModel;
 
-    public List<Vector3> WeaponSpawnPoints = new List<Vector3>();
+    public GameObject[] spawns;
     
     // Use this for initialization
 
@@ -40,48 +41,37 @@ public class SpawnWeapons : NetworkBehaviour {
         }
         Weapons.Sort();
         done = true;
+        
         if (isServer)
         {
-            //Spawn Code Next
-            for (int i = 0; i < spawnNumber; i++)
-            {
-                WeaponSpawnPoints.Add(new Vector3((i * 20), -100f, 0)); //position code is just temporary for debugging
-                WeaponIndex = Random.Range(0, Weapons.Count - 2);
-                GameObject WeaponItem = Instantiate(
-                    WeaponItemPrefab,
-                    WeaponSpawnPoints[i],
-                    transform.rotation);
-                WeaponItem.GetComponent<WeaponIndexHolder>().WeaponIndex = WeaponIndex;
-                WeaponItem.transform.SetParent(ItemsParent);
-                WeaponItem.transform.localScale = new Vector3(1, 1, 1);
-                WeaponItem.gameObject.layer = 11;
-                WeaponItem.GetComponent<BulletsLeft>().bullets = Weapons[WeaponIndex].WeaponItem.magazineSize;
-                /*NetworkServer.Spawn(WeaponItem);
-                WeaponModel = Instantiate(
-                    Weapons[WeaponIndex].WeaponItem.itemModel,
-                    WeaponItem.transform.position,
-                    transform.rotation);
-                WeaponModel.gameObject.layer = 11;
-                for (int z = 0; z < WeaponModel.transform.childCount; z++)
-                {
-                    WeaponModel.transform.GetChild(z).gameObject.layer = 11;
-                }
-                WeaponModel.transform.SetParent(WeaponItem.transform);
-                colliders = WeaponModel.transform.GetComponentsInChildren<MeshCollider>();
-                /*foreach (MeshCollider collider in colliders)
-                {
-                    collider.convex = true;
-                }
-                renderers = WeaponModel.transform.GetComponentsInChildren<Renderer>();
-                foreach (Renderer renderer in renderers)
-                {
-                    renderer.material = WeaponMat;
-                }
-                WeaponModel.transform.localPosition = Weapons[WeaponIndex].WeaponItem.spawnPosition;
-                WeaponModel.transform.localEulerAngles = Weapons[WeaponIndex].WeaponItem.spawnRotation;
-                WeaponModel.transform.localScale = Weapons[WeaponIndex].WeaponItem.spawnScale;*/
-                NetworkServer.Spawn(WeaponItem);
-            }
+            StartCoroutine("Wait");
+        }
+    }
+
+    IEnumerator Wait()
+    {
+        while (!GameObject.Find("LocalPlayer"))
+        {
+            yield return null;
+        }
+        SpawnRocketAI spawnRocket = GameObject.Find("LocalPlayer").GetComponent<SpawnRocketAI>();
+        while (!spawnRocket.ready)
+        {
+            yield return null;
+        }
+        yield return new WaitForSeconds(0.3f);
+        spawns = GameObject.FindGameObjectsWithTag("WeaponSpawn");
+        for (int i = 0; i < spawns.Length; i++)
+        {
+            WeaponIndex = Random.Range(0, Weapons.Count - 2);
+            GameObject WeaponItem = Instantiate(
+                WeaponItemPrefab,
+                spawns[i].transform.position,
+                transform.rotation);
+            WeaponItem.GetComponent<WeaponIndexHolder>().WeaponIndex = WeaponIndex;
+            WeaponItem.transform.SetParent(ItemsParent);
+            WeaponItem.GetComponent<BulletsLeft>().bullets = Weapons[WeaponIndex].WeaponItem.magazineSize;
+            NetworkServer.Spawn(WeaponItem);
         }
     }
 }
