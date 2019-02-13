@@ -26,6 +26,10 @@ public class GenerateTerrain : NetworkBehaviour {
     public float startPos;
 	// Use this for initialization
 	void Start () {
+        if (isServer)
+        {
+            size = SyncData.worldSize;
+        }
         info = Resources.LoadAll("Biomes", typeof(Biome));
         foreach (UnityEngine.Object fileInfo in info)
         {

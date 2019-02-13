@@ -13,11 +13,14 @@ public class UpdateValue : MonoBehaviour {
     public bool isRes = false;
     public TMPro.TMP_Text textFullScreen;
     public int health = 400;
+    public int worldSize = 13;
 
     void Start()
     {
         volume = 100;
         volumeSFX = 100;
+        health = 400;
+        worldSize = 13;
         res = new Vector2(Screen.currentResolution.width, Screen.currentResolution.height);
         fullScreen = Screen.fullScreen;
         if (text.text == "400")
@@ -106,6 +109,23 @@ public class UpdateValue : MonoBehaviour {
         health = Mathf.Clamp(health, 100, 1000);
         text.text = health.ToString();
         SyncData.health = health;
+        EventSystem.current.SetSelectedGameObject(null);
+    }
+
+    public void WorldDown()
+    {
+        worldSize -= 1;
+        worldSize = Mathf.Clamp(worldSize, 2, 200);
+        text.text = worldSize.ToString();
+        SyncData.worldSize = worldSize;
+        EventSystem.current.SetSelectedGameObject(null);
+    }
+    public void WorldUp()
+    {
+        worldSize += 1;
+        worldSize = Mathf.Clamp(worldSize, 2, 200);
+        text.text = worldSize.ToString();
+        SyncData.worldSize = worldSize;
         EventSystem.current.SetSelectedGameObject(null);
     }
 }

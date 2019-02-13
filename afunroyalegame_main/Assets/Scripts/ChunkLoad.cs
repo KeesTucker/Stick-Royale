@@ -25,13 +25,17 @@ public class ChunkLoad : NetworkBehaviour {
         if (local)
         {
             distance = Mathf.Abs(centre - local.position.x);
-            if (distance > cullF && lastX/* && !isServer*/) //Need to make it only do this once all players have joined
+            /*if (distance > cullF && lastX)
             {
-                transform.GetChild(0).gameObject.SetActive(false);
-                lastX = false;
+                if (false)
+                {
+                    Debug.Log("wh");
+                    transform.GetChild(0).gameObject.SetActive(false);
+                    lastX = false;
+                }
             }
             else
-            {
+            {*/
                 if (distance < cullF && !lastX)
                 {
                     transform.GetChild(0).gameObject.SetActive(true);
@@ -74,7 +78,7 @@ public class ChunkLoad : NetworkBehaviour {
                     last = true;
                     transform.GetChild(0).gameObject.GetComponent<BiomeHolder>().GetBiome();
                 }
-            }
+            //}
         }
     }
 }

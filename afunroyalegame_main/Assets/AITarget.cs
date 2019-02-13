@@ -108,97 +108,75 @@ public class AITarget : MonoBehaviour {
                 {
                     targetGO(weapons[chosenWeapon]);
                 }
-
-                startCheckG = true;
-                startCheckP = true;
-                startCheckW = true;
-
-                foreach (Collider objectCol in Physics.OverlapSphere(parent.transform.position, radius))
+                else
                 {
-                    if (objectCol.gameObject.GetComponent<AISetup>() && objectCol.gameObject != parent)
+                    startCheckG = true;
+                    startCheckP = true;
+                    startCheckW = true;
+
+                    foreach (Collider objectCol in Physics.OverlapSphere(parent.transform.position, radius))
                     {
-                        if (objectCol.gameObject.GetComponent<PlayerControl>())
+                        if (objectCol.gameObject.GetComponent<AISetup>() && objectCol.gameObject != parent)
                         {
-                            minPlayerDistance = 0;
-                            closestPlayer = objectCol.transform;
+                            if (objectCol.gameObject.GetComponent<PlayerControl>())
+                            {
+                                minPlayerDistance = 0;
+                                closestPlayer = objectCol.transform;
+                            }
+                            else if (startCheckP && !objectCol.gameObject.GetComponent<HealthAI>().deaded)
+                            {
+                                minPlayerDistance = Vector3.Distance(objectCol.transform.position, parent.transform.position);
+                                closestPlayer = objectCol.transform;
+                                startCheckP = false;
+                            }
+                            else if (Vector3.Distance(objectCol.transform.position, parent.transform.position) < minPlayerDistance && !objectCol.gameObject.GetComponent<HealthAI>().deaded)
+                            {
+                                minPlayerDistance = Vector3.Distance(objectCol.transform.position, parent.transform.position);
+                                closestPlayer = objectCol.transform;
+                            }
                         }
-                        else if (startCheckP && !objectCol.gameObject.GetComponent<HealthAI>().deaded)
+                        else if (objectCol.gameObject.layer == 11)
                         {
-                            minPlayerDistance = Vector3.Distance(objectCol.transform.position, parent.transform.position);
-                            closestPlayer = objectCol.transform;
-                            startCheckP = false;
+                            if (startCheckW)
+                            {
+                                minWeaponDistance = Vector3.Distance(objectCol.transform.position, parent.transform.position);
+                                closestWeapon = objectCol.transform;
+                                startCheckW = false;
+                            }
+                            else if (Vector3.Distance(objectCol.transform.position, parent.transform.position) < minWeaponDistance)
+                            {
+                                minWeaponDistance = Vector3.Distance(objectCol.transform.position, parent.transform.position);
+                                closestWeapon = objectCol.transform;
+                            }
                         }
-                        else if (Vector3.Distance(objectCol.transform.position, parent.transform.position) < minPlayerDistance && !objectCol.gameObject.GetComponent<HealthAI>().deaded)
+                        else if (objectCol.gameObject.tag == "TerrainPart" || objectCol.gameObject.tag == "NoAttract")
                         {
-                            minPlayerDistance = Vector3.Distance(objectCol.transform.position, parent.transform.position);
-                            closestPlayer = objectCol.transform;
+                            if (startCheckG)
+                            {
+                                minGrappleDistance = Vector3.Distance(objectCol.transform.position, transform.position);
+                                closestGrapple = objectCol.transform;
+                                startCheckG = false;
+                            }
+                            else if (Vector3.Distance(objectCol.transform.position, transform.position) < minGrappleDistance)
+                            {
+                                minGrappleDistance = Vector3.Distance(objectCol.transform.position, parent.transform.position);
+                                closestGrapple = objectCol.transform;
+                            }
                         }
-                    }
-                    else if (objectCol.gameObject.tag == "WeaponItem")
-                    {
-                        if (startCheckW)
-                        {
-                            minWeaponDistance = Vector3.Distance(objectCol.transform.position, parent.transform.position);
-                            closestWeapon = objectCol.transform;
-                            startCheckW = false;
-                        }
-                        else if (Vector3.Distance(objectCol.transform.position, parent.transform.position) < minWeaponDistance)
-                        {
-                            minWeaponDistance = Vector3.Distance(objectCol.transform.position, parent.transform.position);
-                            closestWeapon = objectCol.transform;
-                        }
-                    }
-                    else if (objectCol.gameObject.tag == "TerrainPart" || objectCol.gameObject.tag == "NoAttract")
-                    {
                         if (startCheckG)
                         {
-                            minGrappleDistance = Vector3.Distance(objectCol.transform.position, transform.position);
-                            closestGrapple = objectCol.transform;
-                            startCheckG = false;
+                            closestGrapple = null;
                         }
-                        else if (Vector3.Distance(objectCol.transform.position, transform.position) < minGrappleDistance)
+                        else if (startCheckW)
                         {
-                            minGrappleDistance = Vector3.Distance(objectCol.transform.position, parent.transform.position);
-                            closestGrapple = objectCol.transform;
+                            closestWeapon = null;
                         }
-                    }
-                    if (startCheckG)
-                    {
-                        closestGrapple = null;
-                    }
-                    else if (startCheckW)
-                    {
-                        closestWeapon = null;
-                    }
-                    else if (startCheckP)
-                    {
-                        closestPlayer = null;
-                    }
-                }
-                if (refrenceKeeper.inventoryCount == 0 && closestWeapon)
-                {
-                    if (Random.Range(0, 10) == 1)
-                    {
-                        if (closestGrapple.name.Contains("Tree"))
+                        else if (startCheckP)
                         {
-                            transform.position = closestGrapple.transform.position + new Vector3(0, 30f, 0);
+                            closestPlayer = null;
                         }
-                        else
-                        {
-                            transform.position = closestGrapple.transform.position;
-                        }
-                        baseControl.rClick = true;
-                        StartCoroutine("StopGrapple");
                     }
-                    else
-                    {
-                        transform.position = closestWeapon.transform.position;
-                    }
-                    targetType = 0;
-                }
-                if (refrenceKeeper.inventoryCount < 3 && closestWeapon)
-                {
-                    if (minWeaponDistance < minPlayerDistance && !bulletTypes.Contains(spawnWeapons.Weapons[closestWeapon.GetComponent<WeaponIndexHolder>().WeaponIndex].WeaponItem.bullet)) //Make sure not picking up same weapontype
+                    if (refrenceKeeper.inventoryCount == 0 && closestWeapon)
                     {
                         if (Random.Range(0, 10) == 1)
                         {
@@ -219,9 +197,55 @@ public class AITarget : MonoBehaviour {
                         }
                         targetType = 0;
                     }
+                    else if (refrenceKeeper.inventoryCount < 3 && closestWeapon)
+                    {
+                        if (minWeaponDistance < minPlayerDistance && !bulletTypes.Contains(spawnWeapons.Weapons[closestWeapon.parent.parent.GetComponent<WeaponIndexHolder>().WeaponIndex].WeaponItem.bullet)) //Make sure not picking up same weapontype
+                        {
+                            if (Random.Range(0, 10) == 1)
+                            {
+                                if (closestGrapple.name.Contains("Tree"))
+                                {
+                                    transform.position = closestGrapple.transform.position + new Vector3(0, 30f, 0);
+                                }
+                                else
+                                {
+                                    transform.position = closestGrapple.transform.position;
+                                }
+                                baseControl.rClick = true;
+                                StartCoroutine("StopGrapple");
+                            }
+                            else
+                            {
+                                transform.position = closestWeapon.transform.position;
+                            }
+                            targetType = 0;
+                        }
+                        else if (closestPlayer)
+                        {
+                            if (Random.Range(0, 8) == 1 && closestGrapple)
+                            {
+                                if (closestGrapple.name.Contains("Tree"))
+                                {
+                                    transform.position = closestGrapple.transform.position + new Vector3(0, 30f, 0);
+                                }
+                                else
+                                {
+                                    transform.position = closestGrapple.transform.position;
+                                }
+                                baseControl.rClick = true;
+                                transform.position = closestPlayer.transform.position;
+                                StartCoroutine("StopGrapple");
+                            }
+                            else
+                            {
+                                transform.position = closestPlayer.transform.position;
+                            }
+                            targetType = 1;
+                        }
+                    }
                     else if (closestPlayer)
                     {
-                        if (Random.Range(0, 8) == 1)
+                        if (Random.Range(0, 8) == 1 && closestGrapple)
                         {
                             if (closestGrapple.name.Contains("Tree"))
                             {
@@ -232,6 +256,7 @@ public class AITarget : MonoBehaviour {
                                 transform.position = closestGrapple.transform.position;
                             }
                             baseControl.rClick = true;
+                            transform.position = closestPlayer.transform.position;
                             StartCoroutine("StopGrapple");
                         }
                         else
@@ -240,31 +265,10 @@ public class AITarget : MonoBehaviour {
                         }
                         targetType = 1;
                     }
-                }
-                else if (closestPlayer)
-                {
-                    if (Random.Range(0, 8) == 1)
-                    {
-                        if (closestGrapple.name.Contains("Tree"))
-                        {
-                            transform.position = closestGrapple.transform.position + new Vector3(0, 30f, 0);
-                        }
-                        else
-                        {
-                            transform.position = closestGrapple.transform.position;
-                        }
-                        baseControl.rClick = true;
-                        StartCoroutine("StopGrapple");
-                    }
                     else
                     {
-                        transform.position = closestPlayer.transform.position;
+                        transform.position = new Vector3(0, transform.position.y, 0);
                     }
-                    targetType = 1;
-                }
-                else
-                {
-                    transform.position = new Vector3(0, transform.position.y, 0);
                 }
             }
             if (targetType == 1)
@@ -435,7 +439,7 @@ public class AITarget : MonoBehaviour {
             {
                 if (minWeaponDistance < 15f && closestWeapon)
                 {
-                    bulletTypes.Add(spawnWeapons.Weapons[closestWeapon.GetComponent<WeaponIndexHolder>().WeaponIndex].WeaponItem.bullet);
+                    bulletTypes.Add(spawnWeapons.Weapons[closestWeapon.parent.parent.GetComponent<WeaponIndexHolder>().WeaponIndex].WeaponItem.bullet);
                     baseControl.e = true;
                 }
             }
@@ -443,6 +447,10 @@ public class AITarget : MonoBehaviour {
             if (Random.Range(0, 15) == 1)
             {
                 baseControl.rClick = true;
+                if (targetType == 1 && closestPlayer)
+                {
+                    transform.position = closestPlayer.transform.position;
+                }
                 StartCoroutine("StopGrapple");
             }
 

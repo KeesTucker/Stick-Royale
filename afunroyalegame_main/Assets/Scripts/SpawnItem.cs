@@ -22,7 +22,7 @@ public class SpawnItem : NetworkBehaviour {
 	void Update () {
 		
 	}
-    [Command]
+
     public void CmdSpawnDropped(GameObject ItemPrefab, Vector3 position, int id, float direction, int bulletsLeft)
     {
         switchedWeapon = Instantiate(WeaponItem, position, Quaternion.identity);

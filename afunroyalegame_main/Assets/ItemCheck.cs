@@ -15,6 +15,9 @@ public class ItemCheck : NetworkBehaviour {
     public int indexMin;
     public int weaponIndex;
 
+    [SyncVar]
+    public GameObject NetworkedItem;
+
     public bool e;
 
     public float pickupDistance;
@@ -53,14 +56,18 @@ public class ItemCheck : NetworkBehaviour {
 	void Update () {
         if (e)
         {
-            checkDistances();
-            if (minDistance < pickupDistance)
+            if (isServer)
             {
-                pickupItem();
-            }
-            else if (refrenceKeeper.inventoryCount > 3)
-            {
-                ThrowItem();
+                checkDistances();
+                if (minDistance < pickupDistance)
+                {
+                    PickupItem();
+                }
+                else if (refrenceKeeper.inventoryCount > 3)
+                {
+                    ThrowItem();
+                }
+                
             }
             e = false;
         }
@@ -96,7 +103,7 @@ public class ItemCheck : NetworkBehaviour {
         }
     }
 
-    public void pickupItem()
+    public void PickupItem()
     {
         if (aim.transform.position.x > transform.position.x)
         {
@@ -119,7 +126,7 @@ public class ItemCheck : NetworkBehaviour {
         }
         else
         {
-            if (hasAuthority && refrenceKeeper.weaponHeld)
+            if (refrenceKeeper.weaponHeld)
             {
                 GetComponent<SpawnItem>().CmdSpawnDropped(weaponItem, transform.position, refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].id, direction, refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].currentBullets);
             }
@@ -140,19 +147,12 @@ public class ItemCheck : NetworkBehaviour {
         shoot.bulletsLeft[refrenceKeeper.activeSlot] = closestItem.GetComponent<BulletsLeft>().bullets;
         //Update Stats
 
-        updateUI.UpdateSlotsUI();
-        updateUI.HighlightSlotOnPickup(refrenceKeeper.activeSlot);
+        //updateUI.UpdateSlotsUI();
+        //updateUI.HighlightSlotOnPickup(refrenceKeeper.activeSlot);
 
-        if (!isServer)
-        {
-            Destroy(closestItem);
-        }
-        else
-        {
-            closestItem.GetComponent<NetworkTransform>().enabled = false;
-            closestItem.GetComponent<NetworkIdentity>().enabled = false;
-            Destroy(closestItem);
-        }
+        RpcPickupWeapon(weaponIndex, closestItem.GetComponent<BulletsLeft>().bullets);
+
+        Destroy(closestItem);
         
         checkDistances();
     }
@@ -175,6 +175,42 @@ public class ItemCheck : NetworkBehaviour {
             }
             refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot] = fists;
             switchWeapon.Switch(100);
+            updateUI.UpdateSlotsUI();
+            updateUI.HighlightSlotOnPickup(refrenceKeeper.activeSlot);
+        }
+    }
+
+    [ClientRpc]
+    public void RpcPickupWeapon(int wI, int bulletsLeft)
+    {
+        weaponIndex = wI;
+        refrenceKeeper.inventoryCount++;
+        refrenceKeeper.inventoryCount = Mathf.Clamp(refrenceKeeper.inventoryCount, 0, 5);
+
+        if (refrenceKeeper.inventoryCount <= 4)
+        {
+            refrenceKeeper.activeSlot = refrenceKeeper.inventoryCount - 1;
+            refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot] = spawnWeapons.Weapons[weaponIndex].WeaponItem;
+        }
+        else
+        {
+            int id = refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].id;
+            refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot] = spawnWeapons.Weapons[weaponIndex].WeaponItem;
+        }
+
+        switchWeapon.Switch(weaponIndex);
+
+        aimShoot.scale = spawnWeapons.Weapons[weaponIndex].WeaponItem.scale;
+        aimShoot.position = spawnWeapons.Weapons[weaponIndex].WeaponItem.position;
+        aimShoot.positionFlipped = spawnWeapons.Weapons[weaponIndex].WeaponItem.positionFlipped;
+        shoot.fireRate = spawnWeapons.Weapons[weaponIndex].WeaponItem.fireRate;
+        shoot.recoil = spawnWeapons.Weapons[weaponIndex].WeaponItem.recoil;
+        shoot.impact = spawnWeapons.Weapons[weaponIndex].WeaponItem.impact;
+        shoot.bulletsLeft[refrenceKeeper.activeSlot] = bulletsLeft;
+        //Update Stats
+
+        if (hasAuthority)
+        {
             updateUI.UpdateSlotsUI();
             updateUI.HighlightSlotOnPickup(refrenceKeeper.activeSlot);
         }

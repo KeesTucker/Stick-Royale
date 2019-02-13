@@ -14,6 +14,8 @@ public static class SyncData : object {
 
     public static string name;
 
+    public static int worldSize = 13;
+
     public static int health = 400;
 
     public static KeyCode a = KeyCode.A;

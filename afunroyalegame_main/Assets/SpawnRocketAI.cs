@@ -37,6 +37,10 @@ public class SpawnRocketAI : NetworkBehaviour
 
     public RefrenceKeeperAI refrenceKeeper;
 
+    public bool fall = false;
+
+    public int rocketCount = 0;
+
     [SyncVar]
     public bool ready;
 
@@ -107,15 +111,32 @@ public class SpawnRocketAI : NetworkBehaviour
         }
     }
 
+    void FixedUpdate()
+    {
+        if (spaceDepressed && rocketCount < 40)
+        {
+            rocketCount++;
+            GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+        }
+    }
+
     void LateUpdate()
     {
-        if (boxHold)
+        if (boxHold && rocketGO)
         {
             rocketGO.transform.position = boxHold.transform.position;
         }
         if (ready)
         {
             Destroy(boxHold);
+            if (hasAuthority && !fall && GetComponent<PlayerControl>())
+            {
+                fall = true;
+                foreach (FallTerrain ft in GameObject.Find("Terrain").transform.GetComponentsInChildren<FallTerrain>())
+                {
+                    ft.StartWrapper();
+                }
+            }
         }
     }
 

@@ -7,8 +7,13 @@ public class FallTerrain : MonoBehaviour {
     public bool started;
 
 	// Use this for initialization
-	IEnumerator Start () {
-        yield return new WaitForSeconds(Mathf.Clamp(300 - Mathf.Abs(transform.position.x / 10), 0, 3600));
+    public void StartWrapper()
+    {
+        StartCoroutine("ReplaceRigidbody");
+    }
+
+	IEnumerator ReplaceRigidbody() {
+        yield return new WaitForSeconds(Mathf.Clamp((SyncData.worldSize * 25) - Mathf.Abs(transform.position.x / 7), 0, 36000));
         StartCoroutine("DestroySlow");
         if (GetComponent<Rigidbody>())
         {

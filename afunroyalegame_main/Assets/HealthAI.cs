@@ -99,6 +99,12 @@ public class HealthAI : NetworkBehaviour {
     [ClientRpc]
     public void RpcDestroyPlayer()
     {
+        GetComponent<SpriteRenderer>().color = Color.red;
+        foreach (SpriteRenderer sr in transform.GetComponentsInChildren<SpriteRenderer>())
+        {
+            sr.color = Color.red;
+        }
+        
         if (!hasAuthority)
         {
             GetComponent<GroundForceAI>().grappled = true;
@@ -136,6 +142,11 @@ public class HealthAI : NetworkBehaviour {
     [Command]
     public void CmdDestroyPlayer()
     {
+        GetComponent<SpriteRenderer>().color = Color.red;
+        foreach (SpriteRenderer sr in transform.GetComponentsInChildren<SpriteRenderer>())
+        {
+            sr.color = Color.red;
+        }
         if (!hasAuthority)
         {
             GetComponent<GroundForceAI>().grappled = true;

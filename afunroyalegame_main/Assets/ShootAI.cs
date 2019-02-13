@@ -162,7 +162,11 @@ public class ShootAI : MonoBehaviour {
                 changeHandPos = true;
                 StartCoroutine("ChangeReload");
             }
-            targetReload = new Vector3(transform.position.x - 3f * multiplier, bulletPosition.position.y - 0.3f + reloadRandomiser, transform.position.z);
+            if (transform && bulletPosition)
+            {
+                targetReload = new Vector3(transform.position.x - 3f * multiplier, bulletPosition.position.y - 0.3f + reloadRandomiser, transform.position.z);
+            }
+            
             LeftHand.GetComponent<Rigidbody>().AddForce(new Vector3(Mathf.Clamp(targetReload.x - LeftHand.transform.position.x, -1, 1), Mathf.Clamp(targetReload.y - LeftHand.transform.position.y, -1, 1), 0) * Time.deltaTime * 5000);
         }
         if (lClick)

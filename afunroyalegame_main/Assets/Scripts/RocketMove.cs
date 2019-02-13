@@ -72,11 +72,17 @@ public class RocketMove : MonoBehaviour {
 
             if (rb.velocity.y < 0)
             {
-                transform.rotation = Quaternion.Euler(0, 0, -1 * Mathf.Atan(rb.velocity.x / rb.velocity.y) * Mathf.Rad2Deg + 180);
+                if (rb.velocity.x != 0 && rb.velocity.y != 0)
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, -1 * Mathf.Atan(rb.velocity.x / rb.velocity.y) * Mathf.Rad2Deg + 180);
+                }
             }
             else
             {
-                transform.rotation = Quaternion.Euler(0, 0, -1 * Mathf.Atan(rb.velocity.x / rb.velocity.y) * Mathf.Rad2Deg);
+                if (rb.velocity.x != 0 && rb.velocity.y != 0)
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, -1 * Mathf.Atan(rb.velocity.x / rb.velocity.y) * Mathf.Rad2Deg);
+                }
             }
         }
     }
