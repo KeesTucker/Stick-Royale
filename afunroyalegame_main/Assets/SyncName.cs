@@ -22,6 +22,17 @@ public class SyncName : NetworkBehaviour {
         if (GameObject.Find("LoadingPlayer"))
         {
             parent = GameObject.Find("LoadingPlayer");
+            if (PlayerPrefs.HasKey("wins"))
+            {
+                wins = PlayerPrefs.GetInt("wins");
+            }
+            if (PlayerPrefs.HasKey("name"))
+            {
+                SyncData.name = PlayerPrefs.GetString("name");
+                name = SyncData.name + " *" + wins.ToString() + "*";
+
+                text.text = name;
+            }
         }
         else
         {

@@ -26,13 +26,13 @@ public class ColourSetSliders : MonoBehaviour {
 
     public void UpdateColor()
     {
-        Color color = new Color(1 + r.localPosition.x, 1 + g.localPosition.x, 1 + b.localPosition.x, 1);
+        Color color = new Color(1 + r.localPosition.x, 1 + g.localPosition.x, 1 + b.localPosition.x);
         colourSetter.SetColor(color);
         SyncData.color = color;
         nameTag.color = color;
         PlayerPrefs.SetFloat("r", color.r);
         PlayerPrefs.SetFloat("g", color.g);
-        PlayerPrefs.SetFloat("b", color.g);
+        PlayerPrefs.SetFloat("b", color.b);
         PlayerPrefs.Save();
     }
 }

@@ -61,11 +61,9 @@ public class UpdateValue : MonoBehaviour {
         
         if (isRes)
         {
-            text.text = res.x.ToString() + "X" + res.y.ToString();
-            textFullScreen.text = fullScreen.ToString();
             if (PlayerPrefs.HasKey("resX") && PlayerPrefs.HasKey("resY"))
             {
-                res = new Vector2(PlayerPrefs.GetFloat("resX"), PlayerPrefs.GetFloat("resY"));
+                res = new Vector2(PlayerPrefs.GetInt("resX"), PlayerPrefs.GetInt("resY"));
             }
             else
             {
@@ -85,6 +83,8 @@ public class UpdateValue : MonoBehaviour {
                     fullScreen = true;
                 }
             }
+            text.text = res.x.ToString() + "X" + res.y.ToString();
+            textFullScreen.text = fullScreen.ToString();
             Screen.SetResolution((int)res.x, (int)res.y, fullScreen);
         }
     }

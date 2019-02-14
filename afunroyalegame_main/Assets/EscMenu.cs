@@ -7,6 +7,137 @@ public class EscMenu : MonoBehaviour {
     public GameObject escMenu;
     public bool state = false;
     public bool esc;
+    public Vector2 res;
+    public bool fullScreen;
+    public int vsync;
+    public int aA;
+
+    void Start()
+    {
+        if (PlayerPrefs.HasKey("a"))
+        {
+            SyncData.a = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("a"));
+        }
+        else
+        {
+            PlayerPrefs.SetString("a", KeyCode.A.ToString());
+            PlayerPrefs.Save();
+        }
+        if (PlayerPrefs.HasKey("d"))
+        {
+            SyncData.d = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("d"));
+        }
+        else
+        {
+            PlayerPrefs.SetString("d", KeyCode.D.ToString());
+            PlayerPrefs.Save();
+        }
+        if (PlayerPrefs.HasKey("space"))
+        {
+            SyncData.space = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("space"));
+        }
+        else
+        {
+            PlayerPrefs.SetString("space", KeyCode.Space.ToString());
+            PlayerPrefs.Save();
+        }
+        if (PlayerPrefs.HasKey("f"))
+        {
+            SyncData.f = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("f"));
+        }
+        else
+        {
+            PlayerPrefs.SetString("f", KeyCode.F.ToString());
+            PlayerPrefs.Save();
+        }
+        if (PlayerPrefs.HasKey("r"))
+        {
+            SyncData.r = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("r"));
+        }
+        else
+        {
+            PlayerPrefs.SetString("r", KeyCode.R.ToString());
+            PlayerPrefs.Save();
+        }
+        if (PlayerPrefs.HasKey("i"))
+        {
+            SyncData.i = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("i"));
+        }
+        else
+        {
+            PlayerPrefs.SetString("i", KeyCode.I.ToString());
+            PlayerPrefs.Save();
+        }
+        if (PlayerPrefs.HasKey("health"))
+        {
+            SyncData.health = PlayerPrefs.GetInt("health");
+        }
+
+        if (PlayerPrefs.HasKey("worldSize"))
+        {
+            SyncData.worldSize = PlayerPrefs.GetInt("worldSize");
+        }
+        if (PlayerPrefs.HasKey("sfx"))
+        {
+            //volumeSFX = PlayerPrefs.GetInt("sfx");
+        }
+        if (PlayerPrefs.HasKey("volume"))
+        {
+            //volume = PlayerPrefs.GetInt("volume");
+        }
+        if (PlayerPrefs.HasKey("resX") && PlayerPrefs.HasKey("resY"))
+        {
+            res = new Vector2(PlayerPrefs.GetInt("resX"), PlayerPrefs.GetInt("resY"));
+        }
+        else
+        {
+            res = new Vector2(Screen.currentResolution.width, Screen.currentResolution.height);
+            PlayerPrefs.SetInt("resX", Screen.currentResolution.width);
+            PlayerPrefs.SetInt("resY", Screen.currentResolution.height);
+            PlayerPrefs.Save();
+        }
+        if (PlayerPrefs.HasKey("fullScreen"))
+        {
+            if (PlayerPrefs.GetInt("fullScreen") == 0)
+            {
+                fullScreen = false;
+            }
+            else
+            {
+                fullScreen = true;
+            }
+        }
+        else
+        {
+            fullScreen = true;
+        }
+        Screen.SetResolution((int)res.x, (int)res.y, fullScreen);
+
+        if (PlayerPrefs.HasKey("vsync"))
+        {
+            if (PlayerPrefs.GetInt("vsync") == 1)
+            {
+                Application.targetFrameRate = -1;
+            }
+            else
+            {
+                Application.targetFrameRate = 60;
+            }
+            vsync = PlayerPrefs.GetInt("vsync");
+        }
+        else
+        {
+            Application.targetFrameRate = -1;
+        }
+        QualitySettings.vSyncCount = vsync;
+
+        if (PlayerPrefs.HasKey("aA"))
+        {
+            aA = PlayerPrefs.GetInt("aA");
+        }
+
+        QualitySettings.antiAliasing = aA;
+    }
 
 	// Update is called once per frame
 	void Update () {

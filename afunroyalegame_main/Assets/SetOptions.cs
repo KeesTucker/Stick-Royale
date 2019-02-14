@@ -20,12 +20,13 @@ public class SetOptions : MonoBehaviour {
     public TMPro.TMP_Text text;
     public int vsync = 0;
     public int aA = 0;
-
+    public bool isAA;
+    public bool isVsync;
     public GameObject keybinds;
 
     void Start()
     {
-        if (PlayerPrefs.HasKey("vsync"))
+        if (PlayerPrefs.HasKey("vsync") && isVsync)
         {
             if (PlayerPrefs.GetInt("vsync") == 1)
             {
@@ -36,6 +37,8 @@ public class SetOptions : MonoBehaviour {
                 Application.targetFrameRate = 60;
             }
             vsync = PlayerPrefs.GetInt("vsync");
+            Vsync();
+            Vsync();
         }
         else
         {
@@ -43,12 +46,19 @@ public class SetOptions : MonoBehaviour {
         }
         QualitySettings.vSyncCount = vsync;
 
-        if (PlayerPrefs.HasKey("aA"))
+        if (PlayerPrefs.HasKey("aA") && isAA)
         {
             aA = PlayerPrefs.GetInt("aA");
+            AA();
+            AA();
         }
 
         QualitySettings.antiAliasing = aA;
+
+        if (true)
+        {
+
+        }
     }
 
     public void SetName()

@@ -91,7 +91,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 112000002, guid: 47ea6935e4e2fd147a239b1fc064c767,
     type: 2}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -6766,6 +6766,8 @@ MonoBehaviour:
   text: {fileID: 1662503421}
   vsync: 0
   aA: 0
+  isAA: 0
+  isVsync: 0
   keybinds: {fileID: 0}
 --- !u!114 &1624134335
 MonoBehaviour:
@@ -8460,6 +8462,21 @@ Prefab:
         type: 2}
       propertyPath: m_text
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114504900188179504, guid: 6393845f7fb188642a454e9d3dd869d3,
+        type: 2}
+      propertyPath: isVsync
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114504900188179504, guid: 6393845f7fb188642a454e9d3dd869d3,
+        type: 2}
+      propertyPath: isAA
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114307019658535460, guid: 6393845f7fb188642a454e9d3dd869d3,
+        type: 2}
+      propertyPath: isVsync
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6393845f7fb188642a454e9d3dd869d3, type: 2}

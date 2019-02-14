@@ -14,28 +14,52 @@ public class UpdateKeybind : MonoBehaviour {
     void Start()
     {
         updating = false;
-        if (placeHolder.text == "A")
+        if (text.text == "A")
         {
+            if (PlayerPrefs.HasKey("a"))
+            {
+                SyncData.a = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("a"));
+            }
             text.text = SyncData.a.ToString();
         }
-        else if (placeHolder.text == "D")
+        else if (text.text == "D")
         {
+            if (PlayerPrefs.HasKey("d"))
+            {
+                SyncData.d = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("d"));
+            }
             text.text = SyncData.d.ToString();
         }
-        else if (placeHolder.text == "SPACE")
+        else if (text.text == "SPACE")
         {
+            if (PlayerPrefs.HasKey("space"))
+            {
+                SyncData.space = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("space"));
+            }
             text.text = SyncData.space.ToString();
         }
-        else if (placeHolder.text == "F")
+        else if (text.text == "F")
         {
+            if (PlayerPrefs.HasKey("f"))
+            {
+                SyncData.f = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("f"));
+            }
             text.text = SyncData.f.ToString();
         }
-        else if (placeHolder.text == "R")
+        else if (text.text == "R")
         {
+            if (PlayerPrefs.HasKey("r"))
+            {
+                SyncData.r = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("r"));
+            }
             text.text = SyncData.r.ToString();
         }
-        else if (placeHolder.text == "I")
+        else if (text.text == "I")
         {
+            if (PlayerPrefs.HasKey("i"))
+            {
+                SyncData.i = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("i"));
+            }
             text.text = SyncData.i.ToString();
         }
     }
@@ -67,7 +91,8 @@ public class UpdateKeybind : MonoBehaviour {
             if (keycode.ToString() != null && keycode.ToString() != "None" && keycode.ToString() != "")
             {
                 SyncData.a = keycode;
-                Debug.Log(keycode.ToString());
+                PlayerPrefs.SetString("a", keycode.ToString());
+                PlayerPrefs.Save();
                 EventSystem.current.SetSelectedGameObject(null);
             }
         }
@@ -93,7 +118,8 @@ public class UpdateKeybind : MonoBehaviour {
             if (keycode.ToString() != null && keycode.ToString() != "None" && keycode.ToString() != "")
             {
                 SyncData.s = keycode;
-                Debug.Log(keycode.ToString());
+                PlayerPrefs.SetString("s", keycode.ToString());
+                PlayerPrefs.Save();
                 EventSystem.current.SetSelectedGameObject(null);
             }
         }
@@ -119,7 +145,8 @@ public class UpdateKeybind : MonoBehaviour {
             if (keycode.ToString() != null && keycode.ToString() != "None" && keycode.ToString() != "")
             {
                 SyncData.d = keycode;
-                Debug.Log(keycode.ToString());
+                PlayerPrefs.SetString("d", keycode.ToString());
+                PlayerPrefs.Save();
                 EventSystem.current.SetSelectedGameObject(null);
             }
         }
@@ -145,7 +172,8 @@ public class UpdateKeybind : MonoBehaviour {
             if (keycode.ToString() != null && keycode.ToString() != "None" && keycode.ToString() != "")
             {
                 SyncData.space = keycode;
-                Debug.Log(keycode.ToString());
+                PlayerPrefs.SetString("space", keycode.ToString());
+                PlayerPrefs.Save();
                 EventSystem.current.SetSelectedGameObject(null);
             }
         }
@@ -171,7 +199,8 @@ public class UpdateKeybind : MonoBehaviour {
             if (keycode.ToString() != null && keycode.ToString() != "None" && keycode.ToString() != "")
             {
                 SyncData.r = keycode;
-                Debug.Log(keycode.ToString());
+                PlayerPrefs.SetString("r", keycode.ToString());
+                PlayerPrefs.Save();
                 EventSystem.current.SetSelectedGameObject(null);
             }
         }
@@ -197,7 +226,8 @@ public class UpdateKeybind : MonoBehaviour {
             if (keycode.ToString() != null && keycode.ToString() != "None" && keycode.ToString() != "")
             {
                 SyncData.i = keycode;
-                Debug.Log(keycode.ToString());
+                PlayerPrefs.SetString("i", keycode.ToString());
+                PlayerPrefs.Save();
                 EventSystem.current.SetSelectedGameObject(null);
             }
         }
@@ -223,7 +253,8 @@ public class UpdateKeybind : MonoBehaviour {
             if (keycode.ToString() != null && keycode.ToString() != "None" && keycode.ToString() != "")
             {
                 SyncData.f = keycode;
-                Debug.Log(keycode.ToString());
+                PlayerPrefs.SetString("f", keycode.ToString());
+                PlayerPrefs.Save();
                 EventSystem.current.SetSelectedGameObject(null);
             }
         }

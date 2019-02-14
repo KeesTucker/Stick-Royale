@@ -1414,6 +1414,8 @@ MonoBehaviour:
   text: {fileID: 0}
   vsync: 0
   aA: 0
+  isAA: 0
+  isVsync: 0
   keybinds: {fileID: 0}
 --- !u!114 &150844734
 MonoBehaviour:
@@ -2137,6 +2139,8 @@ MonoBehaviour:
   text: {fileID: 0}
   vsync: 0
   aA: 0
+  isAA: 0
+  isVsync: 0
   keybinds: {fileID: 0}
 --- !u!114 &233335932
 MonoBehaviour:
@@ -2494,6 +2498,8 @@ MonoBehaviour:
   text: {fileID: 0}
   vsync: 0
   aA: 0
+  isAA: 0
+  isVsync: 0
   keybinds: {fileID: 0}
 --- !u!114 &337121243
 MonoBehaviour:
@@ -4309,6 +4315,8 @@ MonoBehaviour:
   text: {fileID: 0}
   vsync: 0
   aA: 0
+  isAA: 0
+  isVsync: 0
   keybinds: {fileID: 0}
 --- !u!114 &618651182
 MonoBehaviour:
@@ -4987,6 +4995,8 @@ MonoBehaviour:
   text: {fileID: 0}
   vsync: 0
   aA: 0
+  isAA: 0
+  isVsync: 0
   keybinds: {fileID: 0}
 --- !u!114 &756885174
 MonoBehaviour:
@@ -6211,6 +6221,8 @@ MonoBehaviour:
   text: {fileID: 280621395}
   vsync: 0
   aA: 0
+  isAA: 1
+  isVsync: 0
   keybinds: {fileID: 0}
 --- !u!114 &981339885
 MonoBehaviour:
@@ -7182,6 +7194,8 @@ MonoBehaviour:
   text: {fileID: 0}
   vsync: 0
   aA: 0
+  isAA: 0
+  isVsync: 0
   keybinds: {fileID: 0}
 --- !u!114 &1107683113
 MonoBehaviour:
@@ -8909,6 +8923,8 @@ MonoBehaviour:
   text: {fileID: 1592702940}
   vsync: 0
   aA: 0
+  isAA: 0
+  isVsync: 1
   keybinds: {fileID: 0}
 --- !u!114 &1306648886
 MonoBehaviour:
@@ -10888,6 +10904,8 @@ MonoBehaviour:
   text: {fileID: 0}
   vsync: 0
   aA: 0
+  isAA: 0
+  isVsync: 0
   keybinds: {fileID: 1231800742}
 --- !u!114 &1448517612
 MonoBehaviour:
@@ -11411,6 +11429,8 @@ MonoBehaviour:
   text: {fileID: 0}
   vsync: 0
   aA: 0
+  isAA: 0
+  isVsync: 0
   keybinds: {fileID: 1231800742}
 --- !u!114 &1501341484
 MonoBehaviour:
@@ -12624,6 +12644,8 @@ MonoBehaviour:
   text: {fileID: 0}
   vsync: 0
   aA: 0
+  isAA: 0
+  isVsync: 0
   keybinds: {fileID: 0}
 --- !u!114 &1741262533
 MonoBehaviour:
@@ -12696,6 +12718,10 @@ MonoBehaviour:
   escMenu: {fileID: 1264847026}
   state: 0
   esc: 0
+  res: {x: 0, y: 0}
+  fullScreen: 0
+  vsync: 0
+  aA: 0
 --- !u!114 &1757050731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13210,6 +13236,8 @@ MonoBehaviour:
   text: {fileID: 0}
   vsync: 0
   aA: 0
+  isAA: 0
+  isVsync: 0
   keybinds: {fileID: 0}
 --- !u!114 &1821833927
 MonoBehaviour:
@@ -13362,6 +13390,8 @@ MonoBehaviour:
   text: {fileID: 0}
   vsync: 0
   aA: 0
+  isAA: 0
+  isVsync: 0
   keybinds: {fileID: 1231800742}
 --- !u!114 &1836740663
 MonoBehaviour:
@@ -14185,6 +14215,8 @@ MonoBehaviour:
   text: {fileID: 0}
   vsync: 0
   aA: 0
+  isAA: 0
+  isVsync: 0
   keybinds: {fileID: 0}
 --- !u!114 &1985802896
 MonoBehaviour:
@@ -15278,6 +15310,8 @@ MonoBehaviour:
   text: {fileID: 180335013}
   vsync: 0
   aA: 0
+  isAA: 0
+  isVsync: 0
   keybinds: {fileID: 0}
 --- !u!114 &2104810959
 MonoBehaviour:
