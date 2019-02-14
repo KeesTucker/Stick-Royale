@@ -15,6 +15,8 @@ public class SyncName : NetworkBehaviour {
     [SyncVar]
     public GameObject serverParent;
 
+    public int wins;
+
 	// Use this for initialization
 	IEnumerator Start () {
         if (GameObject.Find("LoadingPlayer"))
@@ -27,6 +29,7 @@ public class SyncName : NetworkBehaviour {
             if (!hasAuthority)
             {
                 parent = serverParent;
+                
                 text.text = name;
             }
             text.color = parent.GetComponent<ColourSetterAI>().m_NewColor;
@@ -52,21 +55,34 @@ public class SyncName : NetworkBehaviour {
     {
         if (hasAuthority)
         {
-            CmdUpdateName(SyncData.name);
+            if (PlayerPrefs.HasKey("name"))
+            {
+                SyncData.name = PlayerPrefs.GetString("name");
+            }
+            if (PlayerPrefs.HasKey("wins"))
+            {
+                wins = PlayerPrefs.GetInt("wins");
+            }
+            else
+            {
+                wins = 0;
+            }
+            CmdUpdateName(SyncData.name, wins);
             UpdateName();
         }
     }
 
     public void UpdateName()
     {
-        name = SyncData.name;
+        name = SyncData.name + " *" + wins.ToString() + "*";
+
         text.text = name;
     }
 
     [Command]
-    public void CmdUpdateName(string nameS)
+    public void CmdUpdateName(string nameS, int winsS)
     {
-        name = nameS;
+        name = nameS + " *" + winsS.ToString() + "*";
         RpcUpdateTxt();
         text.text = name;
     }

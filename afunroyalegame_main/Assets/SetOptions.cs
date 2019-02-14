@@ -25,14 +25,37 @@ public class SetOptions : MonoBehaviour {
 
     void Start()
     {
+        if (PlayerPrefs.HasKey("vsync"))
+        {
+            if (PlayerPrefs.GetInt("vsync") == 1)
+            {
+                Application.targetFrameRate = -1;
+            }
+            else
+            {
+                Application.targetFrameRate = 60;
+            }
+            vsync = PlayerPrefs.GetInt("vsync");
+        }
+        else
+        {
+            Application.targetFrameRate = -1;
+        }
         QualitySettings.vSyncCount = vsync;
-        Application.targetFrameRate = -1;
+
+        if (PlayerPrefs.HasKey("aA"))
+        {
+            aA = PlayerPrefs.GetInt("aA");
+        }
+
         QualitySettings.antiAliasing = aA;
     }
 
     public void SetName()
     {
         SyncData.name = inputField.text;
+        PlayerPrefs.SetString("name", SyncData.name);
+        PlayerPrefs.Save();
         GameObject.Find("Nametag(Clone)").GetComponent<SyncName>().UpdateName();
     }
 
@@ -76,6 +99,8 @@ public class SetOptions : MonoBehaviour {
         {
             vsync = 1;
             QualitySettings.vSyncCount = vsync;
+            PlayerPrefs.SetInt("vsync", vsync);
+            PlayerPrefs.Save();
             Application.targetFrameRate = -1;
             text.text = "ON";
         }
@@ -83,6 +108,8 @@ public class SetOptions : MonoBehaviour {
         {
             vsync = 0;
             QualitySettings.vSyncCount = vsync;
+            PlayerPrefs.SetInt("vsync", vsync);
+            PlayerPrefs.Save();
             Application.targetFrameRate = -1;
             text.text = "OFF";
         }
@@ -94,12 +121,16 @@ public class SetOptions : MonoBehaviour {
         if (aA == 0)
         {
             aA = 2;
+            PlayerPrefs.SetInt("aA", aA);
+            PlayerPrefs.Save();
             QualitySettings.antiAliasing = aA;
             text.text = "ON";
         }
         else
         {
             aA = 0;
+            PlayerPrefs.SetInt("aA", aA);
+            PlayerPrefs.Save();
             QualitySettings.antiAliasing = aA;
             text.text = "OFF";
         }

@@ -91,7 +91,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 112000002, guid: 47ea6935e4e2fd147a239b1fc064c767,
     type: 2}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -8456,6 +8456,11 @@ Prefab:
       propertyPath: text
       value: 
       objectReference: {fileID: 1674722446}
+    - target: {fileID: 114408770071914194, guid: 6393845f7fb188642a454e9d3dd869d3,
+        type: 2}
+      propertyPath: m_text
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6393845f7fb188642a454e9d3dd869d3, type: 2}
   m_IsPrefabAsset: 0

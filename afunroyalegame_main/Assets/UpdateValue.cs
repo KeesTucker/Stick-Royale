@@ -23,16 +23,69 @@ public class UpdateValue : MonoBehaviour {
         volumeSFX = 100;
         health = 400;
         worldSize = 13;
-        res = new Vector2(Screen.width, Screen.height);
-        fullScreen = Screen.fullScreen;
+        
         if (text.text == "400")
         {
+            if (PlayerPrefs.HasKey("health"))
+            {
+                SyncData.health = PlayerPrefs.GetInt("health");
+                health = PlayerPrefs.GetInt("health");
+            }
             text.text = SyncData.health.ToString();
         }
+        if (text.text == "13")
+        {
+            if (PlayerPrefs.HasKey("worldSize"))
+            {
+                SyncData.worldSize = PlayerPrefs.GetInt("worldSize");
+                worldSize = PlayerPrefs.GetInt("worldSize");
+            }
+            text.text = SyncData.worldSize.ToString();
+        }
+        if (text.text == "50")
+        {
+            if (PlayerPrefs.HasKey("sfx"))
+            {
+                volumeSFX = PlayerPrefs.GetInt("sfx");
+            }
+            text.text = volumeSFX.ToString();
+        }
+        if (text.text == "100")
+        {
+            if (PlayerPrefs.HasKey("volume"))
+            {
+                volume = PlayerPrefs.GetInt("volume");
+            }
+            text.text = volume.ToString();
+        }
+        
         if (isRes)
         {
             text.text = res.x.ToString() + "X" + res.y.ToString();
             textFullScreen.text = fullScreen.ToString();
+            if (PlayerPrefs.HasKey("resX") && PlayerPrefs.HasKey("resY"))
+            {
+                res = new Vector2(PlayerPrefs.GetFloat("resX"), PlayerPrefs.GetFloat("resY"));
+            }
+            else
+            {
+                res = new Vector2(Screen.currentResolution.width, Screen.currentResolution.height);
+                PlayerPrefs.SetInt("resX", Screen.currentResolution.width);
+                PlayerPrefs.SetInt("resY", Screen.currentResolution.height);
+                PlayerPrefs.Save();
+            }
+            if (PlayerPrefs.HasKey("fullScreen"))
+            {
+                if (PlayerPrefs.GetInt("fullScreen") == 0)
+                {
+                    fullScreen = false;
+                }
+                else
+                {
+                    fullScreen = true;
+                }
+            }
+            Screen.SetResolution((int)res.x, (int)res.y, fullScreen);
         }
     }
 
@@ -40,6 +93,8 @@ public class UpdateValue : MonoBehaviour {
     {
         volume -= 10;
         volume = Mathf.Clamp(volume, 0, 100);
+        PlayerPrefs.SetInt("volume", volume);
+        PlayerPrefs.Save();
         text.text = volume.ToString();
         EventSystem.current.SetSelectedGameObject(null);
     }
@@ -47,6 +102,8 @@ public class UpdateValue : MonoBehaviour {
     {
         volume += 10;
         volume = Mathf.Clamp(volume, 0, 100);
+        PlayerPrefs.SetInt("volume", volume);
+        PlayerPrefs.Save();
         text.text = volume.ToString();
         EventSystem.current.SetSelectedGameObject(null);
     }
@@ -56,6 +113,8 @@ public class UpdateValue : MonoBehaviour {
         volumeSFX -= 10;
         volumeSFX = Mathf.Clamp(volumeSFX, 0, 100);
         text.text = volumeSFX.ToString();
+        PlayerPrefs.SetInt("sfx", volume);
+        PlayerPrefs.Save();
         EventSystem.current.SetSelectedGameObject(null);
     }
     public void VolumeUpSFX()
@@ -63,6 +122,8 @@ public class UpdateValue : MonoBehaviour {
         volumeSFX += 10;
         volumeSFX = Mathf.Clamp(volumeSFX, 0, 100);
         text.text = volumeSFX.ToString();
+        PlayerPrefs.SetInt("sfx", volume);
+        PlayerPrefs.Save();
         EventSystem.current.SetSelectedGameObject(null);
     }
 
@@ -74,9 +135,12 @@ public class UpdateValue : MonoBehaviour {
             {
                 res = new Vector2(resolutions[Mathf.Clamp(i + 1, 6, resolutions.Length)].x, resolutions[Mathf.Clamp(i + 1, 0, resolutions.Length)].y);
                 Screen.SetResolution((int)res.x, (int)res.y, fullScreen);
+                PlayerPrefs.SetInt("resX", (int)res.x);
+                PlayerPrefs.SetInt("resY", (int)res.y);
                 //text.text = res.x.ToString() + "X" + res.y.ToString();
                 text.text = Screen.width + "X" + Screen.height;
                 StartCoroutine("ResUpdate");
+                PlayerPrefs.Save();
             }
         }
         text.text = Screen.width + "X" + Screen.height;
@@ -89,9 +153,12 @@ public class UpdateValue : MonoBehaviour {
             {
                 res = new Vector2(resolutions[Mathf.Clamp(i - 1, 6, resolutions.Length)].x, resolutions[Mathf.Clamp(i - 1, 0, resolutions.Length)].y);
                 Screen.SetResolution((int)res.x, (int)res.y, fullScreen);
+                PlayerPrefs.SetInt("resX", (int)res.x);
+                PlayerPrefs.SetInt("resY", (int)res.y);
                 //text.text = res.x.ToString() + "X" + res.y.ToString();
                 text.text = Screen.width + "X" + Screen.height;
                 StartCoroutine("ResUpdate");
+                PlayerPrefs.Save();
             }
         }
         text.text = Screen.width + "X" + Screen.height;
@@ -101,6 +168,15 @@ public class UpdateValue : MonoBehaviour {
         fullScreen = !fullScreen;
         Screen.fullScreen = fullScreen;
         textFullScreen.text = fullScreen.ToString();
+        if (fullScreen == true)
+        {
+            PlayerPrefs.SetInt("fullScreen", 1);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("fullScreen", 0);
+        }
+        PlayerPrefs.Save();
     }
 
     public void HealthDown()
@@ -109,6 +185,8 @@ public class UpdateValue : MonoBehaviour {
         health = Mathf.Clamp(health, 100, 1000);
         text.text = health.ToString();
         SyncData.health = health;
+        PlayerPrefs.SetInt("health", health);
+        PlayerPrefs.Save();
         EventSystem.current.SetSelectedGameObject(null);
     }
     public void HealthUp()
@@ -117,6 +195,8 @@ public class UpdateValue : MonoBehaviour {
         health = Mathf.Clamp(health, 100, 1000);
         text.text = health.ToString();
         SyncData.health = health;
+        PlayerPrefs.SetInt("health", health);
+        PlayerPrefs.Save();
         EventSystem.current.SetSelectedGameObject(null);
     }
 
@@ -126,6 +206,8 @@ public class UpdateValue : MonoBehaviour {
         worldSize = Mathf.Clamp(worldSize, 2, 200);
         text.text = worldSize.ToString();
         SyncData.worldSize = worldSize;
+        PlayerPrefs.SetInt("worldSize", worldSize);
+        PlayerPrefs.Save();
         EventSystem.current.SetSelectedGameObject(null);
     }
     public void WorldUp()
@@ -134,6 +216,8 @@ public class UpdateValue : MonoBehaviour {
         worldSize = Mathf.Clamp(worldSize, 2, 200);
         text.text = worldSize.ToString();
         SyncData.worldSize = worldSize;
+        PlayerPrefs.SetInt("worldSize", worldSize);
+        PlayerPrefs.Save();
         EventSystem.current.SetSelectedGameObject(null);
     }
 

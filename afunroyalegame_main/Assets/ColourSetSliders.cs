@@ -15,6 +15,12 @@ public class ColourSetSliders : MonoBehaviour {
     void Start()
     {
         nameTag = GameObject.Find("Nametag(Clone)").transform.GetChild(0).gameObject.GetComponent<TMPro.TMP_Text>();
+        if (PlayerPrefs.HasKey("r") && PlayerPrefs.HasKey("g") && PlayerPrefs.HasKey("b"))
+        {
+            r.localPosition = new Vector3(PlayerPrefs.GetFloat("r") - 1, r.localPosition.y, r.localPosition.z);
+            g.localPosition = new Vector3(PlayerPrefs.GetFloat("g") - 1, g.localPosition.y, g.localPosition.z);
+            b.localPosition = new Vector3(PlayerPrefs.GetFloat("b") - 1, b.localPosition.y, b.localPosition.z);
+        }
         UpdateColor();
     }
 
@@ -24,5 +30,9 @@ public class ColourSetSliders : MonoBehaviour {
         colourSetter.SetColor(color);
         SyncData.color = color;
         nameTag.color = color;
+        PlayerPrefs.SetFloat("r", color.r);
+        PlayerPrefs.SetFloat("g", color.g);
+        PlayerPrefs.SetFloat("b", color.g);
+        PlayerPrefs.Save();
     }
 }

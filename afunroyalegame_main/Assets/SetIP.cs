@@ -13,6 +13,18 @@ public class SetIP : MonoBehaviour {
 
     int result;
 
+    void Start()
+    {
+        if (mainInputField.text == "5")
+        {
+            if (PlayerPrefs.HasKey("playerNum"))
+            {
+                SyncData.numPlayers = PlayerPrefs.GetInt("playerNum");
+                mainInputField.text = PlayerPrefs.GetInt("playerNum").ToString();
+            }
+        }
+    }
+
     public void ValueChanged()
     {
         manager.networkAddress = mainInputField.text;
@@ -36,5 +48,7 @@ public class SetIP : MonoBehaviour {
             mainInputField.text = "Thats not a number -_-";
         }
         SyncData.numPlayers = result;
+        PlayerPrefs.SetInt("playerNum", result);
+        PlayerPrefs.Save();
     }
 }
