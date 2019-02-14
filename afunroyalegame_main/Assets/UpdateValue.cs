@@ -85,7 +85,7 @@ public class UpdateValue : MonoBehaviour {
     {
         for (int i = 0; i < resolutions.Length; i++)
         {
-            if (Screen.width == resolutions[i].x && Screen.height == resolutions[i].y && i >= 6)
+            if (Screen.width == resolutions[i].x && Screen.height == resolutions[i].y && i >= 7)
             {
                 res = new Vector2(resolutions[Mathf.Clamp(i - 1, 6, resolutions.Length)].x, resolutions[Mathf.Clamp(i - 1, 0, resolutions.Length)].y);
                 Screen.SetResolution((int)res.x, (int)res.y, fullScreen);
