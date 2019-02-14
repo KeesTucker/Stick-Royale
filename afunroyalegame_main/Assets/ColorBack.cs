@@ -18,9 +18,10 @@ public class ColorBack : MonoBehaviour {
         {
             spr.color = loadingCol;
         }
-        else
-        {
-            spr.color = biomeCol;
-        }
 	}
+
+    public void Color()
+    {
+        spr.color = biomeCol;
+    }
 }

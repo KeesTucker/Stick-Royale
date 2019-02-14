@@ -902,7 +902,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: cfb258c728c27da4cb21a83213ab8aec, type: 2}
+  - {fileID: 2100000, guid: 65a41eb30d0de6e4abd7b0172eac4b5e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4233,6 +4233,7 @@ MonoBehaviour:
   textFullScreen: {fileID: 0}
   health: 100
   worldSize: 13
+  resolutions: []
 --- !u!114 &618651180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4423,7 +4424,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: cfb258c728c27da4cb21a83213ab8aec, type: 2}
+  - {fileID: 2100000, guid: 65a41eb30d0de6e4abd7b0172eac4b5e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4910,6 +4911,7 @@ MonoBehaviour:
   textFullScreen: {fileID: 0}
   health: 100
   worldSize: 13
+  resolutions: []
 --- !u!114 &756885172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5571,11 +5573,16 @@ MonoBehaviour:
   - {fileID: 1812291429154494, guid: 3e3d265b7e73163438623709c2ebd8c1, type: 2}
   BiomesCompare:
   - {fileID: 11400000, guid: c1b012d5981390a44b37cdedf0c3e7ac, type: 2}
-  - {fileID: 11400000, guid: c1b012d5981390a44b37cdedf0c3e7ac, type: 2}
+  - {fileID: 11400000, guid: fda52e281e7dc0748bfedb9ecde91b84, type: 2}
+  - {fileID: 11400000, guid: b2696d069f031a74a8c83d8fd49d0bea, type: 2}
+  - {fileID: 11400000, guid: b2696d069f031a74a8c83d8fd49d0bea, type: 2}
+  - {fileID: 11400000, guid: b2696d069f031a74a8c83d8fd49d0bea, type: 2}
+  - {fileID: 11400000, guid: b2696d069f031a74a8c83d8fd49d0bea, type: 2}
   loaderP: {fileID: 1640340324769478, guid: 626f44b844a4e3f45916835f91ab3c21, type: 2}
   info: []
   size: 13
   currentPosition: 0
+  done: 0
   startPos: 0
 --- !u!114 &875645039
 MonoBehaviour:
@@ -7426,7 +7433,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: BUGGED
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
@@ -7502,11 +7509,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -12493,6 +12500,35 @@ MonoBehaviour:
   textFullScreen: {fileID: 1393136455}
   health: 100
   worldSize: 13
+  resolutions:
+  - {x: 320, y: 200}
+  - {x: 320, y: 240}
+  - {x: 400, y: 300}
+  - {x: 512, y: 384}
+  - {x: 640, y: 400}
+  - {x: 640, y: 480}
+  - {x: 800, y: 600}
+  - {x: 1024, y: 768}
+  - {x: 1152, y: 864}
+  - {x: 1280, y: 600}
+  - {x: 1280, y: 720}
+  - {x: 1280, y: 768}
+  - {x: 1280, y: 800}
+  - {x: 1280, y: 960}
+  - {x: 1280, y: 1024}
+  - {x: 1360, y: 768}
+  - {x: 1366, y: 768}
+  - {x: 1400, y: 1050}
+  - {x: 1440, y: 900}
+  - {x: 1600, y: 900}
+  - {x: 1680, y: 1050}
+  - {x: 1920, y: 1080}
+  - {x: 1920, y: 1200}
+  - {x: 2048, y: 1152}
+  - {x: 2560, y: 1080}
+  - {x: 2560, y: 1440}
+  - {x: 3440, y: 1440}
+  - {x: 3840, y: 2160}
 --- !u!224 &1741262530
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12548,7 +12584,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1741262533}
   m_OnClick:
     m_PersistentCalls:
@@ -13955,7 +13991,7 @@ MonoBehaviour:
   colliders: []
   renderers: []
   info: []
-  WeaponMat: {fileID: 2100000, guid: cfb258c728c27da4cb21a83213ab8aec, type: 2}
+  WeaponMat: {fileID: 2100000, guid: 1208630c13d3969488f1fe3a4a70dc3b, type: 2}
   WeaponModel: {fileID: 0}
   spawns: []
   done: 0
@@ -15166,6 +15202,7 @@ MonoBehaviour:
   textFullScreen: {fileID: 0}
   health: 100
   worldSize: 13
+  resolutions: []
 --- !u!114 &2104810957
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -109,7 +109,7 @@ MonoBehaviour:
   WeaponModel: {fileID: 0}
   colliders: []
   renderers: []
-  WeaponMat: {fileID: 2100000, guid: cfb258c728c27da4cb21a83213ab8aec, type: 2}
+  WeaponMat: {fileID: 2100000, guid: 1208630c13d3969488f1fe3a4a70dc3b, type: 2}
   WeaponIndex: 0
 --- !u!114 &114677809329220096
 MonoBehaviour:
@@ -166,3 +166,4 @@ MonoBehaviour:
   weaponParticle: 0
   ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
   hitMarker: {fileID: 1515018597900156, guid: a1a66d51af9473045834472520dcc367, type: 2}
+  hitable: 0

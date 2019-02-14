@@ -23,7 +23,7 @@ public class SpawnWeapons : NetworkBehaviour {
 
     public GameObject WeaponModel;
 
-    public GameObject[] spawns;
+    public List<GameObject> spawns = new List<GameObject>();
     
     // Use this for initialization
 
@@ -60,8 +60,7 @@ public class SpawnWeapons : NetworkBehaviour {
             yield return null;
         }
         yield return new WaitForSeconds(0.3f);
-        spawns = GameObject.FindGameObjectsWithTag("WeaponSpawn");
-        for (int i = 0; i < spawns.Length; i++)
+        for (int i = 0; i < spawns.Count; i++)
         {
             WeaponIndex = Random.Range(0, Weapons.Count - 2);
             GameObject WeaponItem = Instantiate(

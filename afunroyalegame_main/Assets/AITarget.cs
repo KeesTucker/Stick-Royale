@@ -202,7 +202,7 @@ public class AITarget : MonoBehaviour {
                     }
                     else if (refrenceKeeper.inventoryCount < 3 && closestWeapon)
                     {
-                        if (minWeaponDistance < minPlayerDistance && !bulletTypes.Contains(spawnWeapons.Weapons[closestWeapon.parent.parent.GetComponent<WeaponIndexHolder>().WeaponIndex].WeaponItem.bullet)) //Make sure not picking up same weapontype
+                        if (minWeaponDistance < minPlayerDistance && (!bulletTypes.Contains(spawnWeapons.Weapons[closestWeapon.parent.parent.GetComponent<WeaponIndexHolder>().WeaponIndex].WeaponItem.bullet) || spawnWeapons.Weapons[closestWeapon.parent.parent.GetComponent<WeaponIndexHolder>().WeaponIndex].WeaponItem.special)) //Make sure not picking up same weapontype
                         {
                             if (Random.Range(0, 10) == 1)
                             {
@@ -286,7 +286,7 @@ public class AITarget : MonoBehaviour {
                     {
                         if (refrenceKeeper.weaponInventory[i].bullet)
                         {
-                            if (refrenceKeeper.weaponInventory[i].bullet.name == "Slugs") //Switch to shotty
+                            if (refrenceKeeper.weaponInventory[i].bullet.name == "Slugs" || refrenceKeeper.weaponInventory[i].special) //Switch to shotty
                             {
                                 shotty = true;
                                 if (refrenceKeeper.activeSlot != i)
@@ -318,7 +318,7 @@ public class AITarget : MonoBehaviour {
                     {
                         if (refrenceKeeper.weaponInventory[i].bullet)
                         {
-                            if (refrenceKeeper.weaponInventory[i].bullet.name == "Small Bullet") //Switch gun to shortrange
+                            if (refrenceKeeper.weaponInventory[i].bullet.name == "Small Bullet" || refrenceKeeper.weaponInventory[i].special) //Switch gun to shortrange
                             {
                                 if (refrenceKeeper.activeSlot != i)
                                 {
@@ -345,7 +345,7 @@ public class AITarget : MonoBehaviour {
                     {
                         if (refrenceKeeper.weaponInventory[i].bullet)
                         {
-                            if (refrenceKeeper.weaponInventory[i].bullet.name == "Medium Bullet") //Switch gun to midrange
+                            if (refrenceKeeper.weaponInventory[i].bullet.name == "Medium Bullet" || refrenceKeeper.weaponInventory[i].special) //Switch gun to midrange
                             {
                                 if (refrenceKeeper.activeSlot != i)
                                 {
@@ -372,7 +372,7 @@ public class AITarget : MonoBehaviour {
                     {
                         if (refrenceKeeper.weaponInventory[i].bullet)
                         {
-                            if (refrenceKeeper.weaponInventory[i].bullet.name == "Heavy Bullet") //Switch gun to midrange
+                            if (refrenceKeeper.weaponInventory[i].bullet.name == "Heavy Bullet" || refrenceKeeper.weaponInventory[i].special) //Switch gun to midrange
                             {
                                 if (refrenceKeeper.activeSlot != i)
                                 {

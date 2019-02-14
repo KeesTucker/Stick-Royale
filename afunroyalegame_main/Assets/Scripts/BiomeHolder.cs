@@ -12,7 +12,7 @@ public class BiomeHolder : NetworkBehaviour {
 
     public void GetBiome()
     {
-        biome = GameObject.Find("Terrain").GetComponent<GenerateTerrain>().Biomes[biomeIndex].BiomeItem;
+        biome = GameObject.Find("Terrain").GetComponent<GenerateTerrain>().BiomesIndexes[biomeIndex].BiomeItem;
 
         ColorTerrain[] colorTerrains = transform.GetComponentsInChildren<ColorTerrain>();
         foreach (ColorTerrain ct in colorTerrains)

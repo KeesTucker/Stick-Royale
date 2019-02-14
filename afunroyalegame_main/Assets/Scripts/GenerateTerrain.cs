@@ -11,6 +11,8 @@ public class GenerateTerrain : NetworkBehaviour {
     [SerializeField]
     public Biome[] BiomesCompare;
 
+    public SyncListInt BiomesIndex = new SyncListInt();
+
     public GameObject loaderP;
 
     public UnityEngine.Object[] info;
@@ -19,8 +21,10 @@ public class GenerateTerrain : NetworkBehaviour {
     public int size;
 
     public List<BiomeList> Biomes = new List<BiomeList>();
+    public List<BiomeList> BiomesIndexes = new List<BiomeList>();
 
     public float currentPosition = 0;
+    public bool done = false;
 
     [SyncVar]
     public float startPos;
@@ -37,12 +41,31 @@ public class GenerateTerrain : NetworkBehaviour {
             Biomes.Add(new BiomeList { BiomeItem = biome, BiomeIndex = biome.BiomeIndex });
         }
         Biomes.Sort();
-        foreach (BiomeList biome in Biomes)
+        BiomesIndexes = Biomes;
+        if (isServer)
         {
-            BiomesCompare[biome.BiomeIndex] = biome.BiomeItem;
+            foreach (UnityEngine.Object fileInfo in info)
+            {
+                Biome biome = (Biome)fileInfo;
+                Biomes.Add(new BiomeList { BiomeItem = biome, BiomeIndex = biome.BiomeIndex });
+            }
+            for (int i = 0; i < Biomes.Count; i++)
+            {
+                BiomesCompare[i] = Biomes[i].BiomeItem;
+            }
+            RandomizeBiome(BiomesCompare);
+            for (int i = 0; i < BiomesCompare.Length; i++)
+            {
+                BiomesIndex.Add(BiomesCompare[i].BiomeIndex);
+            }
         }
-
-
+        if (isClient)
+        {
+            for (int i = 0; i < BiomesIndex.Count; i++)
+            {
+                BiomesCompare[i] = Biomes[BiomesIndex[i]].BiomeItem;
+            }
+        }
         if (isServer)
         {
             RandomizeArray(chunks);
@@ -82,15 +105,25 @@ public class GenerateTerrain : NetworkBehaviour {
                 NetworkServer.Spawn(chunk);
             }
         }
-        
+        done = true;
 	}
 
     public void RandomizeArray(GameObject[] arr)
     {
-        for (int i = arr.Length - 1; i > 0; i--)
+        for (int i = arr.Length - 1; i >= 0; i--)
         {
-            int r = UnityEngine.Random.Range(0, i);
+            int r = UnityEngine.Random.Range(0, arr.Length);
             GameObject tmp = arr[i];
+            arr[i] = arr[r];
+            arr[r] = tmp;
+        }
+    }
+    public void RandomizeBiome(Biome[] arr)
+    {
+        for (int i = arr.Length - 1; i >= 0; i--)
+        {
+            int r = UnityEngine.Random.Range(0, arr.Length);
+            Biome tmp = arr[i];
             arr[i] = arr[r];
             arr[r] = tmp;
         }

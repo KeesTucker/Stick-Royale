@@ -61,5 +61,7 @@ public class Item : ScriptableObject {
 
     public Vector3 ItemColliderPos = new Vector3(0, 0, 0);
 
-    public float damage; 
+    public float damage;
+
+    public bool special = false;
 }

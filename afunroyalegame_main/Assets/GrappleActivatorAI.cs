@@ -148,7 +148,7 @@ public class GrappleActivatorAI : MonoBehaviour {
 
     IEnumerator endTime()
     {
-        yield return new WaitForSeconds(0.42f);
+        yield return new WaitForSeconds(0.47f);
         if (Collided == false)
         {
             backTime = true;

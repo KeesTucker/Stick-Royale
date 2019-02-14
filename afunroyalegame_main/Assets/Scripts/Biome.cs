@@ -12,4 +12,7 @@ public class Biome : ScriptableObject
 
     public GameObject[] detail;
     public GameObject[] trees;
+
+    public Sprite background;
+    public Color backColor;
 }

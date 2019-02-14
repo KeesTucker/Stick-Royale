@@ -18,6 +18,8 @@ public class HealthAI : NetworkBehaviour {
     public bool isPlayer;
 
     public GameObject Ghost;
+
+    public GameObject deathExplode;
 	
 	void Start()
     {
@@ -43,10 +45,18 @@ public class HealthAI : NetworkBehaviour {
 
     public IEnumerator DestroyPlayer()
     {
+        ParticleSystem.MainModule system = deathExplode.GetComponent<ParticleSystem>().main;
+        system.startColor = GetComponent<ColourSetterAI>().m_NewColor;
+        deathExplode.SetActive(true);
         GetComponent<SpriteRenderer>().color = Color.red;
+        GetComponent<ColouriserAI>().m_NewColor = Color.red;
         foreach (SpriteRenderer sr in transform.GetComponentsInChildren<SpriteRenderer>())
         {
             sr.color = Color.red;
+        }
+        foreach (ColouriserAI c in transform.GetComponentsInChildren<ColouriserAI>())
+        {
+            c.m_NewColor = Color.red;
         }
         CmdDestroyPlayer();
         GetComponent<AimShootAI>().RClick = false;
@@ -105,12 +115,20 @@ public class HealthAI : NetworkBehaviour {
     [ClientRpc]
     public void RpcDestroyPlayer()
     {
+        ParticleSystem.MainModule system = deathExplode.GetComponent<ParticleSystem>().main;
+        system.startColor = GetComponent<ColourSetterAI>().m_NewColor;
+        deathExplode.SetActive(true);
         GetComponent<SpriteRenderer>().color = Color.red;
+        GetComponent<ColouriserAI>().m_NewColor = Color.red;
         foreach (SpriteRenderer sr in transform.GetComponentsInChildren<SpriteRenderer>())
         {
             sr.color = Color.red;
         }
-        
+        foreach (ColouriserAI c in transform.GetComponentsInChildren<ColouriserAI>())
+        {
+            c.m_NewColor = Color.red;
+        }
+
         if (!hasAuthority)
         {
             GetComponent<AimShootAI>().RClick = false;
@@ -149,11 +167,20 @@ public class HealthAI : NetworkBehaviour {
     [Command]
     public void CmdDestroyPlayer()
     {
+        ParticleSystem.MainModule system = deathExplode.GetComponent<ParticleSystem>().main;
+        system.startColor = GetComponent<ColourSetterAI>().m_NewColor;
+        deathExplode.SetActive(true);
         GetComponent<SpriteRenderer>().color = Color.red;
+        GetComponent<ColouriserAI>().m_NewColor = Color.red;
         foreach (SpriteRenderer sr in transform.GetComponentsInChildren<SpriteRenderer>())
         {
             sr.color = Color.red;
         }
+        foreach (ColouriserAI c in transform.GetComponentsInChildren<ColouriserAI>())
+        {
+            c.m_NewColor = Color.red;
+        }
+        deathExplode.SetActive(true);
         if (!hasAuthority)
         {
             GetComponent<AimShootAI>().RClick = false;

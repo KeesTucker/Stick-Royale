@@ -149,7 +149,8 @@ public class ItemCheck : NetworkBehaviour {
 
         //updateUI.UpdateSlotsUI();
         //updateUI.HighlightSlotOnPickup(refrenceKeeper.activeSlot);
-
+        updateUI.UpdateSlotsUI();
+        updateUI.HighlightSlotOnPickup(refrenceKeeper.activeSlot);
         RpcPickupWeapon(weaponIndex, closestItem.GetComponent<BulletsLeft>().bullets);
 
         Destroy(closestItem);
@@ -183,36 +184,39 @@ public class ItemCheck : NetworkBehaviour {
     [ClientRpc]
     public void RpcPickupWeapon(int wI, int bulletsLeft)
     {
-        weaponIndex = wI;
-        refrenceKeeper.inventoryCount++;
-        refrenceKeeper.inventoryCount = Mathf.Clamp(refrenceKeeper.inventoryCount, 0, 5);
-
-        if (refrenceKeeper.inventoryCount <= 4)
+        if (!isServer)
         {
-            refrenceKeeper.activeSlot = refrenceKeeper.inventoryCount - 1;
-            refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot] = spawnWeapons.Weapons[weaponIndex].WeaponItem;
-        }
-        else
-        {
-            int id = refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].id;
-            refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot] = spawnWeapons.Weapons[weaponIndex].WeaponItem;
-        }
+            weaponIndex = wI;
+            refrenceKeeper.inventoryCount++;
+            refrenceKeeper.inventoryCount = Mathf.Clamp(refrenceKeeper.inventoryCount, 0, 5);
 
-        switchWeapon.Switch(weaponIndex);
+            if (refrenceKeeper.inventoryCount <= 4)
+            {
+                refrenceKeeper.activeSlot = refrenceKeeper.inventoryCount - 1;
+                refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot] = spawnWeapons.Weapons[weaponIndex].WeaponItem;
+            }
+            else
+            {
+                int id = refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].id;
+                refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot] = spawnWeapons.Weapons[weaponIndex].WeaponItem;
+            }
 
-        aimShoot.scale = spawnWeapons.Weapons[weaponIndex].WeaponItem.scale;
-        aimShoot.position = spawnWeapons.Weapons[weaponIndex].WeaponItem.position;
-        aimShoot.positionFlipped = spawnWeapons.Weapons[weaponIndex].WeaponItem.positionFlipped;
-        shoot.fireRate = spawnWeapons.Weapons[weaponIndex].WeaponItem.fireRate;
-        shoot.recoil = spawnWeapons.Weapons[weaponIndex].WeaponItem.recoil;
-        shoot.impact = spawnWeapons.Weapons[weaponIndex].WeaponItem.impact;
-        shoot.bulletsLeft[refrenceKeeper.activeSlot] = bulletsLeft;
-        //Update Stats
+            switchWeapon.Switch(weaponIndex);
 
-        if (hasAuthority)
-        {
-            updateUI.UpdateSlotsUI();
-            updateUI.HighlightSlotOnPickup(refrenceKeeper.activeSlot);
+            aimShoot.scale = spawnWeapons.Weapons[weaponIndex].WeaponItem.scale;
+            aimShoot.position = spawnWeapons.Weapons[weaponIndex].WeaponItem.position;
+            aimShoot.positionFlipped = spawnWeapons.Weapons[weaponIndex].WeaponItem.positionFlipped;
+            shoot.fireRate = spawnWeapons.Weapons[weaponIndex].WeaponItem.fireRate;
+            shoot.recoil = spawnWeapons.Weapons[weaponIndex].WeaponItem.recoil;
+            shoot.impact = spawnWeapons.Weapons[weaponIndex].WeaponItem.impact;
+            shoot.bulletsLeft[refrenceKeeper.activeSlot] = bulletsLeft;
+            //Update Stats
+
+            if (hasAuthority)
+            {
+                updateUI.UpdateSlotsUI();
+                updateUI.HighlightSlotOnPickup(refrenceKeeper.activeSlot);
+            }
         }
     }
 }

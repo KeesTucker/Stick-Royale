@@ -233,6 +233,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4327351318989796}
+  - component: {fileID: 114045734401725626}
   m_Layer: 0
   m_Name: WeaponSpawn (2)
   m_TagString: WeaponSpawn
@@ -314,6 +315,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4596748670296974}
+  - component: {fileID: 114119892773161470}
   m_Layer: 0
   m_Name: WeaponSpawn (3)
   m_TagString: WeaponSpawn
@@ -2924,6 +2926,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4246997769474752}
+  - component: {fileID: 114528973066364538}
   m_Layer: 0
   m_Name: WeaponSpawn (1)
   m_TagString: WeaponSpawn
@@ -3373,6 +3376,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4893729684670362}
+  - component: {fileID: 114891942587777310}
   m_Layer: 0
   m_Name: WeaponSpawn
   m_TagString: WeaponSpawn
@@ -11547,6 +11551,17 @@ MonoBehaviour:
   _flipX: 0
   _flipY: 0
   _closeCombineMeshs: 0
+--- !u!114 &114045734401725626
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1063669223530288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e597b47788cc2845b9b07142f65c408, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114056659037040380
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11690,6 +11705,17 @@ MonoBehaviour:
   _flipX: 1
   _flipY: 0
   _closeCombineMeshs: 0
+--- !u!114 &114119892773161470
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1098715068206124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e597b47788cc2845b9b07142f65c408, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114128370432226928
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12279,6 +12305,17 @@ MonoBehaviour:
   subtype: 0
   tree: {fileID: 0}
   DragonBones: 0
+--- !u!114 &114528973066364538
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1732664251715208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e597b47788cc2845b9b07142f65c408, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114542558913720310
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12667,6 +12704,17 @@ MonoBehaviour:
   subtype: 2
   tree: {fileID: 0}
   DragonBones: 0
+--- !u!114 &114891942587777310
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1818268013669566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e597b47788cc2845b9b07142f65c408, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114907156369467466
 MonoBehaviour:
   m_ObjectHideFlags: 1

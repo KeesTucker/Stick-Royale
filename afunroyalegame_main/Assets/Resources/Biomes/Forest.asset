@@ -9,14 +9,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ba68a1467c598948b5158b68cd2fe08, type: 3}
-  m_Name: DeadGrass
+  m_Name: Forest
   m_EditorClassIdentifier: 
-  name: Desert
-  BiomeIndex: 0
-  grassColor: {r: 0.9529412, g: 0.6745098, b: 0.32941177, a: 1}
-  baseColor: {r: 0.755, g: 0.5181736, b: 0.19025998, a: 1}
-  trunkColor: {r: 0.4, g: 0.35686275, b: 0.32156864, a: 1}
-  rockColor: {r: 0.671, g: 0.37061462, b: 0.29591098, a: 1}
+  name: Forest
+  BiomeIndex: 1
+  grassColor: {r: 0.37254903, g: 0.41960785, b: 0.29803923, a: 1}
+  baseColor: {r: 0.7764706, g: 0.78431374, b: 0.5764706, a: 1}
+  trunkColor: {r: 0.524, g: 0.25540546, b: 0.16506, a: 1}
+  rockColor: {r: 0.65, g: 0.65, b: 0.65, a: 1}
   detail:
   - {fileID: 1372892261651362, guid: 6cad0f151008de74fbb5543dad34f471, type: 2}
   - {fileID: 1367568753336642, guid: 184e4bf50e67d1940a090a5d4fa97232, type: 2}
@@ -30,5 +30,5 @@ MonoBehaviour:
   - {fileID: 1642208386534222, guid: 7f539f8e02fef4441b8d88cc1431e541, type: 2}
   - {fileID: 1321231702334520, guid: bdbdedf6aafb6c0469d340c4f07ea1cb, type: 2}
   - {fileID: 1520874021680574, guid: 3f85bac461dc60f438dfe9136e2561c8, type: 2}
-  background: {fileID: 21300000, guid: b911812ea863f5449a1378eb17c9e06e, type: 3}
-  backColor: {r: 0.6431373, g: 0.5058824, b: 0.19215687, a: 1}
+  background: {fileID: 21300000, guid: dcab49c8005730848a70702348efbea4, type: 3}
+  backColor: {r: 0.27269477, g: 0.315, b: 0.149625, a: 1}

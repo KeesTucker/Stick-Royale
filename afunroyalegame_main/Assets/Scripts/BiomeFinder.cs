@@ -10,7 +10,10 @@ public class BiomeFinder : MonoBehaviour {
 	// Use this for initialization
 	IEnumerator Start () {
         generateTerrain = GetComponent<GenerateTerrain>();
-        yield return new WaitForSeconds(0.3f);
+        while (!generateTerrain.done)
+        {
+            yield return null;
+        }
         run = true;
     }
 	
@@ -18,7 +21,7 @@ public class BiomeFinder : MonoBehaviour {
 	void Update () {
         if (run)
         {
-            float width = generateTerrain.size / generateTerrain.Biomes.Count;
+            float width = generateTerrain.size / generateTerrain.BiomesCompare.Length;
             if (width < 1)
             {
                 width = 1f;
@@ -26,12 +29,11 @@ public class BiomeFinder : MonoBehaviour {
             int widthInt = (int)width;
 
             int biomeCount = 0;
-
             for (int i = 0; i < transform.childCount; i++)
             {
                 if (transform.GetChild(i).GetChild(0).GetComponent<BiomeHolder>().isServer)
                 {
-                    transform.GetChild(i).GetChild(0).GetComponent<BiomeHolder>().biomeIndex = (int)(biomeCount / width);
+                    transform.GetChild(i).GetChild(0).GetComponent<BiomeHolder>().biomeIndex = generateTerrain.BiomesCompare[Mathf.Clamp((int)(biomeCount / width), 0, generateTerrain.Biomes.Count - 1)].BiomeIndex;
                 }
                 
                 transform.GetChild(i).GetChild(0).GetComponent<BiomeHolder>().GetBiome();

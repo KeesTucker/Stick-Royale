@@ -8,12 +8,14 @@ public class UpdateValue : MonoBehaviour {
     public int volume = 100;
     public int volumeSFX = 100;
     public TMPro.TMP_Text text;
-    public Vector2 res = new Vector2(1920, 1080);
+    public Vector2 res;
     public bool fullScreen = true;
     public bool isRes = false;
     public TMPro.TMP_Text textFullScreen;
     public int health = 400;
     public int worldSize = 13;
+    [SerializeField]
+    public Vector2[] resolutions;
 
     void Start()
     {
@@ -21,7 +23,7 @@ public class UpdateValue : MonoBehaviour {
         volumeSFX = 100;
         health = 400;
         worldSize = 13;
-        res = new Vector2(Screen.currentResolution.width, Screen.currentResolution.height);
+        res = new Vector2(Screen.width, Screen.height);
         fullScreen = Screen.fullScreen;
         if (text.text == "400")
         {
@@ -29,7 +31,7 @@ public class UpdateValue : MonoBehaviour {
         }
         if (isRes)
         {
-            //text.text = res.x.ToString() + "X" + res.y.ToString();
+            text.text = res.x.ToString() + "X" + res.y.ToString();
             textFullScreen.text = fullScreen.ToString();
         }
     }
@@ -66,27 +68,33 @@ public class UpdateValue : MonoBehaviour {
 
     public void ResUp()
     {
-        for (int i = 0; i < Screen.resolutions.Length; i++)
-        {
-            if (Screen.currentResolution.width == Screen.resolutions[i].width && Screen.currentResolution.height == Screen.resolutions[i].height)
+        for (int i = 0; i < resolutions.Length; i++)
+        { 
+            if (Screen.width == resolutions[i].x && Screen.height == resolutions[i].y && i <= resolutions.Length - 1)
             {
-                res = new Vector2(Screen.resolutions[Mathf.Clamp(i + 1, 0, Screen.resolutions.Length)].width, Screen.resolutions[Mathf.Clamp(i + 1, 0, Screen.resolutions.Length)].height);
+                res = new Vector2(resolutions[Mathf.Clamp(i + 1, 6, resolutions.Length)].x, resolutions[Mathf.Clamp(i + 1, 0, resolutions.Length)].y);
                 Screen.SetResolution((int)res.x, (int)res.y, fullScreen);
-                text.text = res.x.ToString() + "X" + res.y.ToString();
+                //text.text = res.x.ToString() + "X" + res.y.ToString();
+                text.text = Screen.width + "X" + Screen.height;
+                StartCoroutine("ResUpdate");
             }
         }
+        text.text = Screen.width + "X" + Screen.height;
     }
     public void ResDown()
     {
-        for (int i = 0; i < Screen.resolutions.Length; i++)
+        for (int i = 0; i < resolutions.Length; i++)
         {
-            if (Screen.currentResolution.width == Screen.resolutions[i].width && Screen.currentResolution.height == Screen.resolutions[i].height)
+            if (Screen.width == resolutions[i].x && Screen.height == resolutions[i].y && i >= 6)
             {
-                res = new Vector2(Screen.resolutions[Mathf.Clamp(i - 1, 0, Screen.resolutions.Length)].width, Screen.resolutions[Mathf.Clamp(i - 1, 0, Screen.resolutions.Length)].height);
+                res = new Vector2(resolutions[Mathf.Clamp(i - 1, 6, resolutions.Length)].x, resolutions[Mathf.Clamp(i - 1, 0, resolutions.Length)].y);
                 Screen.SetResolution((int)res.x, (int)res.y, fullScreen);
-                text.text = res.x.ToString() + "X" + res.y.ToString();
+                //text.text = res.x.ToString() + "X" + res.y.ToString();
+                text.text = Screen.width + "X" + Screen.height;
+                StartCoroutine("ResUpdate");
             }
         }
+        text.text = Screen.width + "X" + Screen.height;
     }
     public void SwitchFullScreen()
     {
@@ -127,5 +135,11 @@ public class UpdateValue : MonoBehaviour {
         text.text = worldSize.ToString();
         SyncData.worldSize = worldSize;
         EventSystem.current.SetSelectedGameObject(null);
+    }
+
+    IEnumerator ResUpdate()
+    {
+        yield return new WaitForSeconds(0.2f);
+        text.text = Screen.width + "X" + Screen.height;
     }
 }

@@ -277,7 +277,7 @@ public class Shoot : MonoBehaviour {
             }
             for (int i = 0; i < 20; i++)
             {
-                bullet.GetComponent<Rigidbody>().AddForce(new Vector3(startAngle.x + (Random.Range(-bloom, bloom) / 360), startAngle.y + Random.Range(-bloom, bloom), startAngle.z) * (impact / 3) * Time.deltaTime * 100);
+                bullet.GetComponent<Rigidbody>().AddForce(new Vector3(startAngle.x + (Random.Range(-bloom, bloom) / 360), startAngle.y + Random.Range(-bloom, bloom), startAngle.z) * (impact / 2) * Time.deltaTime * 100);
             }
             if (missLinks)
             {
