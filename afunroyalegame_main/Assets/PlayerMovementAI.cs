@@ -82,6 +82,9 @@ public class PlayerMovementAI : MonoBehaviour {
 
     public GameObject jumpParticle;
 
+    public AudioSource audioSource;
+    public AudioClip jump;
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -223,6 +226,7 @@ public class PlayerMovementAI : MonoBehaviour {
         {
             if (spaceDepressed)
             {
+                audioSource.PlayOneShot(jump);
                 jumpable = false;
                 for (int i = 0; i < 15; i++)
                 {

@@ -91,7 +91,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 112000002, guid: 47ea6935e4e2fd147a239b1fc064c767,
     type: 2}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2717,37 +2717,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 114932894694478322, guid: c2954a45956026b4ea4fee807ea7ae3b,
-        type: 2}
-      propertyPath: spawnRocket
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114581592623972364, guid: c2954a45956026b4ea4fee807ea7ae3b,
-        type: 2}
-      propertyPath: m_NewColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114581592623972364, guid: c2954a45956026b4ea4fee807ea7ae3b,
-        type: 2}
-      propertyPath: m_NewColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114581592623972364, guid: c2954a45956026b4ea4fee807ea7ae3b,
-        type: 2}
-      propertyPath: m_NewColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114581592623972364, guid: c2954a45956026b4ea4fee807ea7ae3b,
-        type: 2}
-      propertyPath: m_NewColor.a
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114760122986350236, guid: c2954a45956026b4ea4fee807ea7ae3b,
-        type: 2}
-      propertyPath: name
-      value: 
-      objectReference: {fileID: 1989945171437490, guid: b89332b51ea1ef04c9ae97043df98cd5,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2954a45956026b4ea4fee807ea7ae3b, type: 2}
   m_IsPrefabAsset: 0
@@ -6351,25 +6320,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4886941905184092, guid: ff60f83473c613d4d87a060aff569742,
     type: 2}
   m_PrefabInternal: {fileID: 1053756897}
---- !u!1 &1436734211 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1489902280508144, guid: c2954a45956026b4ea4fee807ea7ae3b,
+--- !u!114 &1436734224 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114915463846792992, guid: c2954a45956026b4ea4fee807ea7ae3b,
     type: 2}
   m_PrefabInternal: {fileID: 581661076}
---- !u!114 &1436734224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1436734211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc8ab56434141264687b1141211659ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_NewColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  grappleMat: {fileID: 0}
-  local: 0
 --- !u!1 &1443139934 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1817962294248106, guid: ff60f83473c613d4d87a060aff569742,
@@ -8476,6 +8432,16 @@ Prefab:
     - target: {fileID: 114307019658535460, guid: 6393845f7fb188642a454e9d3dd869d3,
         type: 2}
       propertyPath: isVsync
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114141134694670032, guid: 6393845f7fb188642a454e9d3dd869d3,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114249992526882822, guid: 6393845f7fb188642a454e9d3dd869d3,
+        type: 2}
+      propertyPath: m_Interactable
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

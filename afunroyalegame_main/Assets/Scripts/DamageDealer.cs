@@ -25,6 +25,10 @@ public class DamageDealer : MonoBehaviour {
     GameObject hit;
     public bool hitable = false;
 
+    public AudioClip splat;
+    public AudioClip ping;
+    public AudioSource audioSource;
+
     IEnumerator Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -54,26 +58,34 @@ public class DamageDealer : MonoBehaviour {
     {
         if (collisionInfo.gameObject.tag == "Breakable")
         {
+            audioSource.PlayOneShot(ping, SyncData.sfx);
             destroyThis = collisionInfo.gameObject;
             StartCoroutine("Destroyer");
         }
         if (collisionInfo.gameObject.layer == 24 && !particleDone && gameObject.tag != "WeaponItem" && gameObject.name != "LimbEnd")
         {
+            audioSource.PlayOneShot(splat, SyncData.sfx);
             StartCoroutine(SpawnParticle(collisionInfo));
             particleDone = true;
         }
         else if (collisionInfo.gameObject.layer == 24 && !particleDone && weaponParticle && gameObject.name != "LimbEnd")
         {
+            audioSource.PlayOneShot(splat, SyncData.sfx);
             StartCoroutine(SpawnParticle(collisionInfo));
             particleDone = true;
         }
         else if (collisionInfo.gameObject.layer == 24 && !particleDone && gameObject.tag != "WeaponItem" && punching)
         {
+            audioSource.PlayOneShot(splat, SyncData.sfx);
             StartCoroutine(SpawnParticle(collisionInfo));
             particleDone = true;
         }
         else if(gameObject.layer == 9 && !particleDone)
         {
+            if (gameObject.tag != "WeaponItem")
+            {
+                audioSource.PlayOneShot(ping, SyncData.sfx);
+            }
             StartCoroutine(SpawnParticle(collisionInfo));
         }
 

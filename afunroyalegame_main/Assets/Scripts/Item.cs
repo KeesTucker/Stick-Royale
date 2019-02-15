@@ -64,4 +64,7 @@ public class Item : ScriptableObject {
     public float damage;
 
     public bool special = false;
+
+    public AudioClip shot;
+    public AudioClip reload;
 }

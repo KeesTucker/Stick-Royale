@@ -47,6 +47,7 @@ public class UpdateValue : MonoBehaviour {
             if (PlayerPrefs.HasKey("sfx"))
             {
                 volumeSFX = PlayerPrefs.GetInt("sfx");
+                SyncData.sfx = volumeSFX / 100;
             }
             text.text = volumeSFX.ToString();
         }
@@ -55,6 +56,7 @@ public class UpdateValue : MonoBehaviour {
             if (PlayerPrefs.HasKey("volume"))
             {
                 volume = PlayerPrefs.GetInt("volume");
+                SyncData.volume = volume / 100;
             }
             text.text = volume.ToString();
         }
@@ -95,6 +97,7 @@ public class UpdateValue : MonoBehaviour {
         volume = Mathf.Clamp(volume, 0, 100);
         PlayerPrefs.SetInt("volume", volume);
         PlayerPrefs.Save();
+        SyncData.volume = volume / 100;
         text.text = volume.ToString();
         EventSystem.current.SetSelectedGameObject(null);
     }
@@ -104,6 +107,7 @@ public class UpdateValue : MonoBehaviour {
         volume = Mathf.Clamp(volume, 0, 100);
         PlayerPrefs.SetInt("volume", volume);
         PlayerPrefs.Save();
+        SyncData.volume = volume / 100;
         text.text = volume.ToString();
         EventSystem.current.SetSelectedGameObject(null);
     }
@@ -115,6 +119,7 @@ public class UpdateValue : MonoBehaviour {
         text.text = volumeSFX.ToString();
         PlayerPrefs.SetInt("sfx", volume);
         PlayerPrefs.Save();
+        SyncData.sfx = volumeSFX / 100;
         EventSystem.current.SetSelectedGameObject(null);
     }
     public void VolumeUpSFX()
@@ -124,6 +129,7 @@ public class UpdateValue : MonoBehaviour {
         text.text = volumeSFX.ToString();
         PlayerPrefs.SetInt("sfx", volume);
         PlayerPrefs.Save();
+        SyncData.sfx = volumeSFX / 100;
         EventSystem.current.SetSelectedGameObject(null);
     }
 

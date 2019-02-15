@@ -59,6 +59,7 @@ public class SwitchWeapon : MonoBehaviour {
             shoot.burstTime = spawnWeapons.Weapons[WeaponIndex].WeaponItem.burstTime;
             shoot.hasMag = spawnWeapons.Weapons[WeaponIndex].WeaponItem.mag;
             shoot.burstCount = 0;
+            
             HandHeldWeapon.layer = 10;
             muzzleFlash.transform.localScale = spawnWeapons.Weapons[WeaponIndex].WeaponItem.muzzleFlashScale;
             for (int z = 0; z < HandHeldWeapon.transform.childCount; z++)

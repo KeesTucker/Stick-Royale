@@ -27,8 +27,14 @@ public class GrappleActivatorAI : MonoBehaviour {
     public Material invisible;
     public GameObject parent; //AI that sent it
     public GameObject particle;
+    public AudioSource audioSource;
+    public AudioClip grappleSwoosh;
+    public AudioClip grappled;
+    public AudioClip grappleFail;
+
     void Start()
     {
+        audioSource.PlayOneShot(grappleSwoosh, SyncData.sfx);
         GameObject[] playerParts_ = parent.GetComponent<GroundForceAI>().playerParts;
         StartCoroutine("endTime");
         aimShoot = parent.transform.GetChild(0).gameObject.GetComponent<AimShootAI>();
@@ -45,11 +51,17 @@ public class GrappleActivatorAI : MonoBehaviour {
         if (collsionInfo.gameObject.tag == "NoGrapple")
         {
             backTime = true;
+            audioSource.PlayOneShot(grappleFail, SyncData.sfx);
             return;
         }
         else if (collsionInfo.gameObject.tag == "NoAttract")
         {
             attractable = false;
+            audioSource.PlayOneShot(grappled, SyncData.sfx);
+        }
+        else
+        {
+            audioSource.PlayOneShot(grappled, SyncData.sfx);
         }
         grapple.layer = 14;
         hitTarg = collsionInfo.gameObject;

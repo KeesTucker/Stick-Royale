@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class ShootAI : MonoBehaviour {
 
     public bool fireButtonDown;
@@ -105,8 +106,14 @@ public class ShootAI : MonoBehaviour {
 
     public bool firstClick;
 
+    public AudioClip gunShot;
+    public AudioClip reload;
+    public AudioClip punch;
+    AudioSource audioSource;
+
     IEnumerator Start()
     {
+        audioSource = GetComponent<AudioSource>();
         for (int i = 0; i < LimbEnds.Length; i++)
         {
             LimbDamagers[i] = LimbEnds[i].gameObject.GetComponent<DamageDealer>();
@@ -225,6 +232,7 @@ public class ShootAI : MonoBehaviour {
 
     IEnumerator Punch()
     {
+        audioSource.PlayOneShot(punch, SyncData.sfx);
         int damager = 0;
         loopDown = false;
         if (groundForce.touchingWall || groundForce.touchingObject)
@@ -298,6 +306,7 @@ public class ShootAI : MonoBehaviour {
     {
         if (refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].magazineSize > 1)
         {
+            audioSource.PlayOneShot(reload, SyncData.sfx);
             reloading = true;
             yield return new WaitForSeconds(0.3f);
             if (reloading)
@@ -360,6 +369,7 @@ public class ShootAI : MonoBehaviour {
     {
         for (int x = 0; x < Mathf.Clamp(Random.Range(refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].bulletSplit / 2, refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].bulletSplit), 1, 9999); x++)
         {
+            audioSource.PlayOneShot(gunShot, SyncData.sfx);
             GameObject bullet = Instantiate(
                     bulletPrefab,
                     bulletPosition.position,

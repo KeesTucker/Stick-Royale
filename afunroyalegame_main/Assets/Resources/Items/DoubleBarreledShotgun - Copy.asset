@@ -43,3 +43,6 @@ MonoBehaviour:
   currentBullets: 1
   ItemColliderPos: {x: 0, y: 0, z: 0}
   damage: 15
+  special: 0
+  shot: {fileID: 8300000, guid: 1e0ede1f8425429459d557b7b0b9dff3, type: 3}
+  reload: {fileID: 0}
