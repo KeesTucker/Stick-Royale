@@ -44,5 +44,5 @@ MonoBehaviour:
   ItemColliderPos: {x: 0, y: 0, z: 0}
   damage: 23
   special: 0
-  shot: {fileID: 8300000, guid: 1e0ede1f8425429459d557b7b0b9dff3, type: 3}
-  reload: {fileID: 0}
+  shot: {fileID: 8300000, guid: 08bbfd69fd153a64ebbf41dfd5113843, type: 3}
+  reload: {fileID: 8300000, guid: 119fd31ddebc9e748ac6e9ae892e8158, type: 3}

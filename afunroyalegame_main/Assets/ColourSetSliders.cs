@@ -12,8 +12,9 @@ public class ColourSetSliders : MonoBehaviour {
 
     public TMPro.TMP_Text nameTag;
 
-    void Start()
+    IEnumerator Start()
     {
+        yield return new WaitForSeconds(0.2f);
         nameTag = GameObject.Find("Nametag(Clone)").transform.GetChild(0).gameObject.GetComponent<TMPro.TMP_Text>();
         if (PlayerPrefs.HasKey("r") && PlayerPrefs.HasKey("g") && PlayerPrefs.HasKey("b"))
         {

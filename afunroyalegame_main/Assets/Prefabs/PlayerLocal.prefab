@@ -3349,6 +3349,7 @@ MonoBehaviour:
   ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
   hitMarker: {fileID: 1515018597900156, guid: a1a66d51af9473045834472520dcc367, type: 2}
   hitable: 0
+  local: {fileID: 0}
   splat: {fileID: 0}
   ping: {fileID: 0}
   audioSource: {fileID: 0}
@@ -3504,6 +3505,7 @@ MonoBehaviour:
   ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
   hitMarker: {fileID: 1515018597900156, guid: a1a66d51af9473045834472520dcc367, type: 2}
   hitable: 0
+  local: {fileID: 0}
   splat: {fileID: 0}
   ping: {fileID: 0}
   audioSource: {fileID: 0}
@@ -3703,6 +3705,8 @@ MonoBehaviour:
   foot: 1
   audioSource: {fileID: 82166130458323914}
   footstep: {fileID: 8300000, guid: 37ce7aa6749805540a5f1a01c1f31859, type: 3}
+  local: {fileID: 0}
+  health: {fileID: 114339696921955500}
 --- !u!114 &114361755976040970
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3850,6 +3854,7 @@ MonoBehaviour:
     type: 2}
   audioSource: {fileID: 82166130458323914}
   jump: {fileID: 8300000, guid: 770857a015f10234b9fbd5b94cf5a8c8, type: 3}
+  local: {fileID: 0}
 --- !u!114 &114434821567863798
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3951,6 +3956,7 @@ MonoBehaviour:
   gunShot: {fileID: 8300000, guid: 1e0ede1f8425429459d557b7b0b9dff3, type: 3}
   reload: {fileID: 0}
   punch: {fileID: 8300000, guid: b8bebe7802cbf9743b4c4fddd60519eb, type: 3}
+  local: {fileID: 0}
 --- !u!114 &114443363523932222
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3980,6 +3986,7 @@ MonoBehaviour:
   ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
   hitMarker: {fileID: 1515018597900156, guid: a1a66d51af9473045834472520dcc367, type: 2}
   hitable: 0
+  local: {fileID: 0}
   splat: {fileID: 0}
   ping: {fileID: 0}
   audioSource: {fileID: 0}
@@ -4076,6 +4083,7 @@ MonoBehaviour:
   playerManagement: {fileID: 0}
   dead: 0
   nameTag: {fileID: 1989945171437490, guid: b89332b51ea1ef04c9ae97043df98cd5, type: 2}
+  stop: 0
 --- !u!114 &114564198616145310
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4215,6 +4223,7 @@ MonoBehaviour:
   ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
   hitMarker: {fileID: 1515018597900156, guid: a1a66d51af9473045834472520dcc367, type: 2}
   hitable: 0
+  local: {fileID: 0}
   splat: {fileID: 0}
   ping: {fileID: 0}
   audioSource: {fileID: 0}
@@ -4299,6 +4308,8 @@ MonoBehaviour:
   foot: 0
   audioSource: {fileID: 0}
   footstep: {fileID: 0}
+  local: {fileID: 0}
+  health: {fileID: 114339696921955500}
 --- !u!114 &114766943715799110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4412,6 +4423,8 @@ MonoBehaviour:
   foot: 1
   audioSource: {fileID: 82166130458323914}
   footstep: {fileID: 8300000, guid: 37ce7aa6749805540a5f1a01c1f31859, type: 3}
+  local: {fileID: 0}
+  health: {fileID: 114339696921955500}
 --- !u!114 &114826089693111842
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4531,6 +4544,8 @@ MonoBehaviour:
   foot: 0
   audioSource: {fileID: 0}
   footstep: {fileID: 0}
+  local: {fileID: 0}
+  health: {fileID: 114339696921955500}
 --- !u!114 &114943691905562258
 MonoBehaviour:
   m_ObjectHideFlags: 1

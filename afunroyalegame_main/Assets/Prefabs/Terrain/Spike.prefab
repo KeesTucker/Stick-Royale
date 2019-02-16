@@ -114,6 +114,8 @@ MonoBehaviour:
   weaponParticle: 0
   ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
   hitMarker: {fileID: 0}
+  audioSource: {fileID: 0}
+  splat: {fileID: 8300000, guid: 4da03d73ebf7c2c43ba8d7bad8f57d4e, type: 3}
 --- !u!114 &114311495208730984
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -154,6 +156,8 @@ MonoBehaviour:
   weaponParticle: 0
   ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
   hitMarker: {fileID: 0}
+  audioSource: {fileID: 0}
+  splat: {fileID: 0}
 --- !u!114 &114581565980488870
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -182,6 +186,8 @@ MonoBehaviour:
   weaponParticle: 0
   ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
   hitMarker: {fileID: 0}
+  audioSource: {fileID: 0}
+  splat: {fileID: 0}
 --- !u!212 &212406382673269442
 SpriteRenderer:
   m_ObjectHideFlags: 1

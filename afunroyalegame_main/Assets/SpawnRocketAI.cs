@@ -106,6 +106,7 @@ public class SpawnRocketAI : NetworkBehaviour
             rocketGO.transform.GetChild(0).gameObject.SetActive(false);
             rocketGO.GetComponent<SpriteRenderer>().enabled = false;
             rocketGO.GetComponent<Collider>().enabled = false;
+            
             StartCoroutine("destroy");
             done = true;
         }

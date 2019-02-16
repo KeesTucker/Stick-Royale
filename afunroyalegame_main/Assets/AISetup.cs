@@ -23,6 +23,8 @@ public class AISetup : NetworkBehaviour
 
     public GameObject nameTag;
 
+    public bool stop;
+
     // Use this for initialization
     void Start()
     {
@@ -89,13 +91,15 @@ public class AISetup : NetworkBehaviour
             if (playerManagement.totalPlayers <= 1 && !health.deaded && gameObject.name != "Player(Clone)")
             {
                 GetComponent<RefrenceKeeperAI>().updateUI.won.SetActive(true);
-                if (PlayerPrefs.HasKey("wins"))
+                if (PlayerPrefs.HasKey("wins") && !stop)
                 {
                     PlayerPrefs.SetInt("wins", PlayerPrefs.GetInt("wins") + 1);
+                    stop = true;
                 }
-                else
+                else if (!stop)
                 {
                     PlayerPrefs.SetInt("wins", 1);
+                    stop = true;
                 }
                 
                 if (Input.GetKey("f") && GetComponent<PlayerControl>() && hasAuthority)

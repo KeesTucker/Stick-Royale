@@ -24,6 +24,26 @@ public class DamageSpike : MonoBehaviour {
     Color oldColor;
     public GameObject hitMarker;
     GameObject hit;
+    public AudioSource audioSource;
+    public AudioClip splat;
+    public Transform local;
+
+    IEnumerator Start()
+    {
+        audioSource = gameObject.AddComponent<AudioSource>();
+        while (!GameObject.Find("LocalPlayer") && !GameObject.Find("LoadingPlayer"))
+        {
+            yield return null;
+        }
+        if (GameObject.Find("LocalPlayer"))
+        {
+            local = GameObject.Find("LocalPlayer").transform;
+        }
+        else if (GameObject.Find("LoadingPlayer"))
+        {
+            local = GameObject.Find("LoadingPlayer").transform;
+        }
+    }
 
     IEnumerator OnCollisionEnter(Collision collisionInfo)
     {
@@ -46,6 +66,7 @@ public class DamageSpike : MonoBehaviour {
                         collisionInfo.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
                     }
                     damagable = false;
+                    audioSource.PlayOneShot(splat, SyncData.sfx * 1.3f * (Mathf.Clamp((200 - Vector3.Distance(transform.position, local.position)), 0, 200) / 200));
                     StartCoroutine(SpawnParticle(collisionInfo));
                     yield return new WaitForSeconds(0.5f);
                     damagable = true;
@@ -65,6 +86,7 @@ public class DamageSpike : MonoBehaviour {
                         collisionInfo.transform.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
                     }
                     damagable = false;
+                    audioSource.PlayOneShot(splat, SyncData.sfx * 1.3f * (Mathf.Clamp((200 - Vector3.Distance(transform.position, local.position)), 0, 200) / 200));
                     StartCoroutine(SpawnParticle(collisionInfo));
                     yield return new WaitForSeconds(0.5f);
                     damagable = true;
@@ -84,6 +106,7 @@ public class DamageSpike : MonoBehaviour {
                         collisionInfo.transform.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
                     }
                     damagable = false;
+                    audioSource.PlayOneShot(splat, SyncData.sfx * 1.3f * (Mathf.Clamp((200 - Vector3.Distance(transform.position, local.position)), 0, 200) / 200));
                     StartCoroutine(SpawnParticle(collisionInfo));
                     yield return new WaitForSeconds(0.5f);
                     damagable = true;
@@ -104,6 +127,7 @@ public class DamageSpike : MonoBehaviour {
                     }
                     damagable = false;
                     StartCoroutine(SpawnParticle(collisionInfo));
+                    audioSource.PlayOneShot(splat, SyncData.sfx * 1.3f * (Mathf.Clamp((200 - Vector3.Distance(transform.position, local.position)), 0, 200) / 200));
                     yield return new WaitForSeconds(0.5f);
                     damagable = true;
                 }

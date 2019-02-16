@@ -32,6 +32,8 @@ TagManager:
   - ghostLocal
   - TerrainPart
   - WeaponSpawn
+  - sfx
+  - volume
   layers:
   - Default
   - TransparentFX

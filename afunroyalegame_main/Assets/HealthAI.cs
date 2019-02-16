@@ -45,6 +45,7 @@ public class HealthAI : NetworkBehaviour {
 
     public IEnumerator DestroyPlayer()
     {
+        GetComponent<GroundForceAI>().dead = true;
         ParticleSystem.MainModule system = deathExplode.GetComponent<ParticleSystem>().main;
         system.startColor = GetComponent<ColourSetterAI>().m_NewColor;
         deathExplode.SetActive(true);
@@ -63,11 +64,15 @@ public class HealthAI : NetworkBehaviour {
         GetComponent<GroundForceAI>().grappled = true;
         if (GetComponent<PlayerControl>())
         {
-            GetComponent<PlayerControl>().enabled = false;
+            GetComponent<PlayerControl>().a = false;
+            GetComponent<PlayerControl>().s = false;
+            GetComponent<PlayerControl>().d = false;
         }
         else if (GetComponent<BaseControl>())
         {
-            GetComponent<BaseControl>().enabled = false;
+            GetComponent<BaseControl>().a = false;
+            GetComponent<BaseControl>().s = false;
+            GetComponent<BaseControl>().d = false;
         }
         if (hasAuthority && GetComponent<PlayerControl>())
         {
@@ -102,6 +107,7 @@ public class HealthAI : NetworkBehaviour {
         {
             CmdSpawnGhost();
         }
+        GetComponent<GroundForceAI>().grappled = true;
     }
 
     [Command]
@@ -115,6 +121,7 @@ public class HealthAI : NetworkBehaviour {
     [ClientRpc]
     public void RpcDestroyPlayer()
     {
+        GetComponent<GroundForceAI>().dead = true;
         ParticleSystem.MainModule system = deathExplode.GetComponent<ParticleSystem>().main;
         system.startColor = GetComponent<ColourSetterAI>().m_NewColor;
         deathExplode.SetActive(true);
@@ -135,11 +142,15 @@ public class HealthAI : NetworkBehaviour {
             GetComponent<GroundForceAI>().grappled = true;
             if (GetComponent<PlayerControl>())
             {
-                GetComponent<PlayerControl>().enabled = false;
+                GetComponent<PlayerControl>().a = false;
+                GetComponent<PlayerControl>().s = false;
+                GetComponent<PlayerControl>().d = false;
             }
             else if (GetComponent<BaseControl>())
             {
-                GetComponent<BaseControl>().enabled = false;
+                GetComponent<BaseControl>().a = false;
+                GetComponent<BaseControl>().s = false;
+                GetComponent<BaseControl>().d = false;
             }
             for (int i = 0; i < refrenceKeeper.weaponInventory.Count; i++)
             {
@@ -161,12 +172,14 @@ public class HealthAI : NetworkBehaviour {
             {
                 hj.useSpring = false;
             }
+            GetComponent<GroundForceAI>().grappled = true;
         }
     }
 
     [Command]
     public void CmdDestroyPlayer()
     {
+        GetComponent<GroundForceAI>().dead = true;
         ParticleSystem.MainModule system = deathExplode.GetComponent<ParticleSystem>().main;
         system.startColor = GetComponent<ColourSetterAI>().m_NewColor;
         deathExplode.SetActive(true);
@@ -187,11 +200,15 @@ public class HealthAI : NetworkBehaviour {
             GetComponent<GroundForceAI>().grappled = true;
             if (GetComponent<PlayerControl>())
             {
-                GetComponent<PlayerControl>().enabled = false;
+                GetComponent<PlayerControl>().a = false;
+                GetComponent<PlayerControl>().s = false;
+                GetComponent<PlayerControl>().d = false;
             }
             else if (GetComponent<BaseControl>())
             {
-                GetComponent<BaseControl>().enabled = false;
+                GetComponent<BaseControl>().a = false;
+                GetComponent<BaseControl>().s = false;
+                GetComponent<BaseControl>().d = false;
             }
             for (int i = 0; i < refrenceKeeper.weaponInventory.Count; i++)
             {
@@ -213,6 +230,7 @@ public class HealthAI : NetworkBehaviour {
             {
                 hj.useSpring = false;
             }
+            GetComponent<GroundForceAI>().grappled = true;
             RpcDestroyPlayer();
         }
     }

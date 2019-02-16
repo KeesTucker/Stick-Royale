@@ -24,6 +24,7 @@ public class DamageDealer : MonoBehaviour {
     public GameObject hitMarker;
     GameObject hit;
     public bool hitable = false;
+    public Transform local;
 
     public AudioClip splat;
     public AudioClip ping;
@@ -31,6 +32,18 @@ public class DamageDealer : MonoBehaviour {
 
     IEnumerator Start()
     {
+        while (!GameObject.Find("LocalPlayer") && !GameObject.Find("LoadingPlayer"))
+        {
+            yield return null;
+        }
+        if (GameObject.Find("LocalPlayer"))
+        {
+            local = GameObject.Find("LocalPlayer").transform;
+        }
+        else if (GameObject.Find("LoadingPlayer"))
+        {
+            local = GameObject.Find("LoadingPlayer").transform;
+        }
         rb = GetComponent<Rigidbody>();
         yield return new WaitForSeconds(0.1f);
         if (isAWeapon)
@@ -58,25 +71,38 @@ public class DamageDealer : MonoBehaviour {
     {
         if (collisionInfo.gameObject.tag == "Breakable")
         {
-            audioSource.PlayOneShot(ping, SyncData.sfx);
+            if (local)
+            {
+                audioSource.PlayOneShot(ping, SyncData.sfx * 1.3f * (Mathf.Clamp((200 - Vector3.Distance(transform.position, local.position)), 0, 200) / 200));
+            }
+            
             destroyThis = collisionInfo.gameObject;
             StartCoroutine("Destroyer");
         }
         if (collisionInfo.gameObject.layer == 24 && !particleDone && gameObject.tag != "WeaponItem" && gameObject.name != "LimbEnd")
         {
-            audioSource.PlayOneShot(splat, SyncData.sfx);
+            if (local)
+            {
+                audioSource.PlayOneShot(splat, SyncData.sfx * 1.3f * (Mathf.Clamp((200 - Vector3.Distance(transform.position, local.position)), 0, 200) / 200));
+            }
             StartCoroutine(SpawnParticle(collisionInfo));
             particleDone = true;
         }
         else if (collisionInfo.gameObject.layer == 24 && !particleDone && weaponParticle && gameObject.name != "LimbEnd")
         {
-            audioSource.PlayOneShot(splat, SyncData.sfx);
+            if (local)
+            {
+                audioSource.PlayOneShot(splat, SyncData.sfx * 1.3f * (Mathf.Clamp((200 - Vector3.Distance(transform.position, local.position)), 0, 200) / 200));
+            }
             StartCoroutine(SpawnParticle(collisionInfo));
             particleDone = true;
         }
         else if (collisionInfo.gameObject.layer == 24 && !particleDone && gameObject.tag != "WeaponItem" && punching)
         {
-            audioSource.PlayOneShot(splat, SyncData.sfx);
+            if (local)
+            {
+                audioSource.PlayOneShot(splat, SyncData.sfx * 1.3f * (Mathf.Clamp((200 - Vector3.Distance(transform.position, local.position)), 0, 200) / 200));
+            }
             StartCoroutine(SpawnParticle(collisionInfo));
             particleDone = true;
         }
@@ -84,7 +110,10 @@ public class DamageDealer : MonoBehaviour {
         {
             if (gameObject.tag != "WeaponItem")
             {
-                audioSource.PlayOneShot(ping, SyncData.sfx);
+                if (audioSource.enabled && local)
+                {
+                    audioSource.PlayOneShot(ping, SyncData.sfx * 1.3f * (Mathf.Clamp((200 - Vector3.Distance(transform.position, local.position)), 0, 200) / 200));
+                }
             }
             StartCoroutine(SpawnParticle(collisionInfo));
         }

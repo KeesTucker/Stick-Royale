@@ -51,6 +51,8 @@ public class GroundForceAI : MonoBehaviour
     [SerializeField]
     public GameObject[] playerParts;
 
+    public bool dead = false;
+
     //public grappleActivatorAI grappleActivatorScript;
 
     public GameObject grapple;
@@ -146,6 +148,14 @@ public class GroundForceAI : MonoBehaviour
             }
         }
         else
+        {
+            foreach (GameObject playerPart in playerParts)
+            {
+                playerPart.GetComponent<HingeJoint>().useSpring = true;
+            }
+        }
+
+        if (dead)
         {
             foreach (GameObject playerPart in playerParts)
             {

@@ -111,8 +111,22 @@ public class ShootAI : MonoBehaviour {
     public AudioClip punch;
     AudioSource audioSource;
 
+    public Transform local;
+
     IEnumerator Start()
     {
+        while (!GameObject.Find("LocalPlayer") && !GameObject.Find("LoadingPlayer"))
+        {
+            yield return null;
+        }
+        if (GameObject.Find("LocalPlayer"))
+        {
+            local = GameObject.Find("LocalPlayer").transform;
+        }
+        else if (GameObject.Find("LoadingPlayer"))
+        {
+            local = GameObject.Find("LoadingPlayer").transform;
+        }
         audioSource = GetComponent<AudioSource>();
         for (int i = 0; i < LimbEnds.Length; i++)
         {
@@ -232,7 +246,7 @@ public class ShootAI : MonoBehaviour {
 
     IEnumerator Punch()
     {
-        audioSource.PlayOneShot(punch, SyncData.sfx);
+        audioSource.PlayOneShot(punch, SyncData.sfx * 0.2f * (Mathf.Clamp((200 - Vector3.Distance(transform.position, local.position)), 0, 200) / 200));
         int damager = 0;
         loopDown = false;
         if (groundForce.touchingWall || groundForce.touchingObject)
@@ -306,7 +320,7 @@ public class ShootAI : MonoBehaviour {
     {
         if (refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].magazineSize > 1)
         {
-            audioSource.PlayOneShot(reload, SyncData.sfx);
+            audioSource.PlayOneShot(reload, SyncData.sfx * 0.8f * (Mathf.Clamp((200 - Vector3.Distance(transform.position, local.position)), 0, 200) / 200));
             reloading = true;
             yield return new WaitForSeconds(0.3f);
             if (reloading)
@@ -367,9 +381,9 @@ public class ShootAI : MonoBehaviour {
 
     IEnumerator FireBullet()
     {
+        audioSource.PlayOneShot(gunShot, SyncData.sfx * 0.6f * (Mathf.Clamp((200 - Vector3.Distance(transform.position, local.position)), 0, 200) / 200));
         for (int x = 0; x < Mathf.Clamp(Random.Range(refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].bulletSplit / 2, refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].bulletSplit), 1, 9999); x++)
         {
-            audioSource.PlayOneShot(gunShot, SyncData.sfx);
             GameObject bullet = Instantiate(
                     bulletPrefab,
                     bulletPosition.position,

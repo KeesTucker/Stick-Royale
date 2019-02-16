@@ -31,10 +31,23 @@ public class GrappleActivatorAI : MonoBehaviour {
     public AudioClip grappleSwoosh;
     public AudioClip grappled;
     public AudioClip grappleFail;
+    public Transform local;
 
-    void Start()
+    IEnumerator Start()
     {
-        audioSource.PlayOneShot(grappleSwoosh, SyncData.sfx);
+        while (!GameObject.Find("LocalPlayer") && !GameObject.Find("LoadingPlayer"))
+        {
+            yield return null;
+        }
+        if (GameObject.Find("LocalPlayer"))
+        {
+            local = GameObject.Find("LocalPlayer").transform;
+        }
+        else if (GameObject.Find("LoadingPlayer"))
+        {
+            local = GameObject.Find("LoadingPlayer").transform;
+        }
+        audioSource.PlayOneShot(grappleSwoosh, SyncData.sfx * 0.4f * (Mathf.Clamp((200 - Vector3.Distance(transform.position, local.position)), 0, 200) / 200));
         GameObject[] playerParts_ = parent.GetComponent<GroundForceAI>().playerParts;
         StartCoroutine("endTime");
         aimShoot = parent.transform.GetChild(0).gameObject.GetComponent<AimShootAI>();
@@ -51,17 +64,17 @@ public class GrappleActivatorAI : MonoBehaviour {
         if (collsionInfo.gameObject.tag == "NoGrapple")
         {
             backTime = true;
-            audioSource.PlayOneShot(grappleFail, SyncData.sfx);
+            audioSource.PlayOneShot(grappleFail, SyncData.sfx * (Mathf.Clamp((200 - Vector3.Distance(transform.position, local.position)), 0, 200) / 200));
             return;
         }
         else if (collsionInfo.gameObject.tag == "NoAttract")
         {
             attractable = false;
-            audioSource.PlayOneShot(grappled, SyncData.sfx);
+            audioSource.PlayOneShot(grappled, SyncData.sfx * (Mathf.Clamp((200 - Vector3.Distance(transform.position, local.position)), 0, 200) / 200));
         }
         else
         {
-            audioSource.PlayOneShot(grappled, SyncData.sfx);
+            audioSource.PlayOneShot(grappled, SyncData.sfx * (Mathf.Clamp((200 - Vector3.Distance(transform.position, local.position)), 0, 200) / 200));
         }
         grapple.layer = 14;
         hitTarg = collsionInfo.gameObject;

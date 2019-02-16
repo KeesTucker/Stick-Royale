@@ -125,6 +125,7 @@ public class AITarget : MonoBehaviour {
                             {
                                 minPlayerDistance = 0;
                                 closestPlayer = objectCol.transform;
+                                startCheckP = false;
                             }
                             else if (startCheckP && !objectCol.gameObject.GetComponent<HealthAI>().deaded)
                             {
@@ -179,28 +180,7 @@ public class AITarget : MonoBehaviour {
                             closestPlayer = null;
                         }
                     }
-                    if (refrenceKeeper.inventoryCount == 0 && closestWeapon)
-                    {
-                        if (Random.Range(0, 10) == 1)
-                        {
-                            if (closestGrapple.name.Contains("Tree"))
-                            {
-                                transform.position = closestGrapple.transform.position + new Vector3(0, 30f, 0);
-                            }
-                            else
-                            {
-                                transform.position = closestGrapple.transform.position;
-                            }
-                            baseControl.rClick = true;
-                            StartCoroutine("StopGrapple");
-                        }
-                        else
-                        {
-                            transform.position = closestWeapon.transform.position;
-                        }
-                        targetType = 0;
-                    }
-                    else if (refrenceKeeper.inventoryCount < 3 && closestWeapon)
+                    if (refrenceKeeper.inventoryCount < 3 && closestWeapon)
                     {
                         if (minWeaponDistance < minPlayerDistance && (!bulletTypes.Contains(spawnWeapons.Weapons[closestWeapon.parent.parent.GetComponent<WeaponIndexHolder>().WeaponIndex].WeaponItem.bullet) || spawnWeapons.Weapons[closestWeapon.parent.parent.GetComponent<WeaponIndexHolder>().WeaponIndex].WeaponItem.special)) //Make sure not picking up same weapontype
                         {
@@ -276,7 +256,27 @@ public class AITarget : MonoBehaviour {
             }
             if (targetType == 1)
             {
-                if (refrenceKeeper.inventoryCount == 1 && Random.Range(0, 2) == 1)
+                if (Random.Range(0, 10) == 3)
+                {
+                    int rand = Random.Range(1, refrenceKeeper.inventoryCount);
+                    if (rand == 1)
+                    {
+                        baseControl.one = true;
+                    }
+                    else if (rand == 2)
+                    {
+                        baseControl.two = true;
+                    }
+                    else if (rand == 3)
+                    {
+                        baseControl.three = true;
+                    }
+                    else if (rand == 4)
+                    {
+                        baseControl.four = true;
+                    }
+                }
+                /*if (refrenceKeeper.inventoryCount == 1)
                 {
                     baseControl.one = true;
                 }
@@ -418,33 +418,30 @@ public class AITarget : MonoBehaviour {
                     {
                         baseControl.one = true;
                     }
-                }
+                }*/
                 Debug.DrawRay(weapon.position, -Vector3.Normalize(new Vector3(weapon.position.x - transform.position.x, weapon.position.y - transform.position.y, 0)) * (minPlayerDistance - 5f), Color.red);
-                if (refrenceKeeper.weaponHeld && !Physics.Raycast(weapon.position, -Vector3.Normalize(new Vector3(weapon.position.x - transform.position.x, weapon.position.y - transform.position.y, 0)), out hit, minPlayerDistance - 5f, layerMask))
-                {
-                    baseControl.lClick = true;
-                }
-                else if (refrenceKeeper.weaponHeld)
-                {
-                    baseControl.lClick = false;
-                }
-
                 if (minPlayerDistance < 35 && !refrenceKeeper.weaponHeld)
                 {
+                    baseControl.lClick = false;
                     if (!baseControl.lClick)
                     {
                         StartCoroutine("punchKill");
                     }
                 }
+                else if (refrenceKeeper.weaponHeld && !Physics.Raycast(weapon.position, -Vector3.Normalize(new Vector3(weapon.position.x - transform.position.x, weapon.position.y - transform.position.y, 0)), out hit, minPlayerDistance - 5f, layerMask))
+                {
+                    baseControl.lClick = true;
+                }
+                else
+                {
+                    baseControl.lClick = false;
+                }
             }
 
-            else if (targetType == 0)
+            if (minWeaponDistance < 15f && closestWeapon)
             {
-                if (minWeaponDistance < 15f && closestWeapon)
-                {
-                    bulletTypes.Add(spawnWeapons.Weapons[closestWeapon.parent.parent.GetComponent<WeaponIndexHolder>().WeaponIndex].WeaponItem.bullet);
-                    baseControl.e = true;
-                }
+                bulletTypes.Add(spawnWeapons.Weapons[closestWeapon.parent.parent.GetComponent<WeaponIndexHolder>().WeaponIndex].WeaponItem.bullet);
+                baseControl.e = true;
             }
 
             if (Random.Range(0, 15) == 1)
@@ -460,11 +457,11 @@ public class AITarget : MonoBehaviour {
             //Movement
             if (transform.position.x > parent.transform.position.x)
             {
-                offset = (400 - health.health) / 400 * 150;
+                offset = (SyncData.health - health.health) / SyncData.health * 150;
             }
             else if (transform.position.x < parent.transform.position.x)
             {
-                offset = (-400 + health.health) / 400 * 150;
+                offset = (-SyncData.health + health.health) / SyncData.health * 150;
             }
 
             if (targetType == 0 || targetType == 2)

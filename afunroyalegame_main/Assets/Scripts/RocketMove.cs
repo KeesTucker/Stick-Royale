@@ -16,7 +16,15 @@ public class RocketMove : MonoBehaviour {
     public Vector2 offset;
     public float angle;
 
+    public AudioSource audioSource;
+    public AudioClip rocketNoise;
+    public AudioClip explosion;
+
     public SpawnRocketAI spawnRocket;
+
+    public bool done = true;
+
+    public Transform local;
 
     // Use this for initialization
     IEnumerator Start () {
@@ -24,6 +32,21 @@ public class RocketMove : MonoBehaviour {
         MouseFollower = ragdoll.Find("AIAim");
         rb = gameObject.GetComponent<Rigidbody>();
         spawnRocket = ragdoll.gameObject.GetComponent<SpawnRocketAI>();
+        audioSource.loop = true;
+        audioSource.Play();
+        while (!GameObject.Find("LocalPlayer") && !GameObject.Find("LoadingPlayer"))
+        {
+            yield return null;
+        }
+        if (GameObject.Find("LocalPlayer"))
+        {
+            local = GameObject.Find("LocalPlayer").transform;
+        }
+        else if (GameObject.Find("LoadingPlayer"))
+        {
+            local = GameObject.Find("LoadingPlayer").transform;
+        }
+        done = false;
     }
 	
 	void OnCollisionEnter(Collision info)
@@ -34,12 +57,29 @@ public class RocketMove : MonoBehaviour {
         }
     }
 
+    void Update()
+    {
+        if (local && !done)
+        {
+            audioSource.volume = SyncData.sfx * 0.35f * (Mathf.Clamp((200f - Vector3.Distance(transform.position, local.position)), 0, 200) / 200f);
+        }
+        else
+        {
+            audioSource.volume = 0;
+        }
+    }
+
     void FixedUpdate()
     {
         if (spawnRocket)
         {
-            if (ragdoll && !spawnRocket.spaceDepressed)
+            if (!done && spawnRocket.spaceDepressed)
             {
+                ragdoll.GetComponent<AudioSource>().PlayOneShot(explosion, SyncData.sfx * 0.6f * (Mathf.Clamp((600f - Vector3.Distance(transform.position, local.position)), 0, 600) / 600f));
+                done = true;
+            }
+            if (ragdoll && !spawnRocket.spaceDepressed)
+            {                
                 if (ragdoll.GetComponent<SpawnRocketAI>().hasAuthority)
                 {
                     ragdoll.position = transform.position;

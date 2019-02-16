@@ -14,6 +14,78 @@ public class EscMenu : MonoBehaviour {
 
     void Start()
     {
+        if (PlayerPrefs.HasKey("health"))
+        {
+            SyncData.health = PlayerPrefs.GetInt("health");
+        }
+
+        if (PlayerPrefs.HasKey("worldSize"))
+        {
+            SyncData.worldSize = PlayerPrefs.GetInt("worldSize");
+        }
+        if (PlayerPrefs.HasKey("sfx"))
+        {
+            SyncData.sfx = (float)PlayerPrefs.GetInt("sfx") / 100f;
+            Debug.Log(SyncData.sfx);
+        }
+        if (PlayerPrefs.HasKey("volume"))
+        {
+            Debug.Log(SyncData.volume);
+            SyncData.volume = (float)PlayerPrefs.GetInt("volume") / 100f;
+        }
+        if (PlayerPrefs.HasKey("resX") && PlayerPrefs.HasKey("resY"))
+        {
+            res = new Vector2(PlayerPrefs.GetInt("resX"), PlayerPrefs.GetInt("resY"));
+        }
+        else
+        {
+            res = new Vector2(Screen.currentResolution.width, Screen.currentResolution.height);
+            PlayerPrefs.SetInt("resX", Screen.currentResolution.width);
+            PlayerPrefs.SetInt("resY", Screen.currentResolution.height);
+            PlayerPrefs.Save();
+        }
+        if (PlayerPrefs.HasKey("fullScreen"))
+        {
+            if (PlayerPrefs.GetInt("fullScreen") == 0)
+            {
+                fullScreen = false;
+            }
+            else
+            {
+                fullScreen = true;
+            }
+        }
+        else
+        {
+            fullScreen = true;
+        }
+        Screen.SetResolution((int)res.x, (int)res.y, fullScreen);
+
+        if (PlayerPrefs.HasKey("vsync"))
+        {
+            if (PlayerPrefs.GetInt("vsync") == 1)
+            {
+                Application.targetFrameRate = -1;
+            }
+            else
+            {
+                Application.targetFrameRate = 60;
+            }
+            vsync = PlayerPrefs.GetInt("vsync");
+        }
+        else
+        {
+            Application.targetFrameRate = -1;
+        }
+        QualitySettings.vSyncCount = vsync;
+
+        if (PlayerPrefs.HasKey("aA"))
+        {
+            aA = PlayerPrefs.GetInt("aA");
+        }
+
+        QualitySettings.antiAliasing = aA;
+
         if (PlayerPrefs.HasKey("a"))
         {
             SyncData.a = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("a"));
@@ -68,75 +140,7 @@ public class EscMenu : MonoBehaviour {
             PlayerPrefs.SetString("i", KeyCode.I.ToString());
             PlayerPrefs.Save();
         }
-        if (PlayerPrefs.HasKey("health"))
-        {
-            SyncData.health = PlayerPrefs.GetInt("health");
-        }
-
-        if (PlayerPrefs.HasKey("worldSize"))
-        {
-            SyncData.worldSize = PlayerPrefs.GetInt("worldSize");
-        }
-        if (PlayerPrefs.HasKey("sfx"))
-        {
-            //volumeSFX = PlayerPrefs.GetInt("sfx");
-        }
-        if (PlayerPrefs.HasKey("volume"))
-        {
-            //volume = PlayerPrefs.GetInt("volume");
-        }
-        if (PlayerPrefs.HasKey("resX") && PlayerPrefs.HasKey("resY"))
-        {
-            res = new Vector2(PlayerPrefs.GetInt("resX"), PlayerPrefs.GetInt("resY"));
-        }
-        else
-        {
-            res = new Vector2(Screen.currentResolution.width, Screen.currentResolution.height);
-            PlayerPrefs.SetInt("resX", Screen.currentResolution.width);
-            PlayerPrefs.SetInt("resY", Screen.currentResolution.height);
-            PlayerPrefs.Save();
-        }
-        if (PlayerPrefs.HasKey("fullScreen"))
-        {
-            if (PlayerPrefs.GetInt("fullScreen") == 0)
-            {
-                fullScreen = false;
-            }
-            else
-            {
-                fullScreen = true;
-            }
-        }
-        else
-        {
-            fullScreen = true;
-        }
-        Screen.SetResolution((int)res.x, (int)res.y, fullScreen);
-
-        if (PlayerPrefs.HasKey("vsync"))
-        {
-            if (PlayerPrefs.GetInt("vsync") == 1)
-            {
-                Application.targetFrameRate = -1;
-            }
-            else
-            {
-                Application.targetFrameRate = 60;
-            }
-            vsync = PlayerPrefs.GetInt("vsync");
-        }
-        else
-        {
-            Application.targetFrameRate = -1;
-        }
-        QualitySettings.vSyncCount = vsync;
-
-        if (PlayerPrefs.HasKey("aA"))
-        {
-            aA = PlayerPrefs.GetInt("aA");
-        }
-
-        QualitySettings.antiAliasing = aA;
+        
     }
 
 	// Update is called once per frame

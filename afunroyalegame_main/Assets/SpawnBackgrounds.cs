@@ -60,11 +60,31 @@ public class SpawnBackgrounds : MonoBehaviour {
 
     IEnumerator FindTerrain(Transform parent)
     {
-        if (parent.name == "TerrainLoader(Clone)")
+        if (parent)
         {
-            if (last)
+            if (parent.name == "TerrainLoader(Clone)")
             {
-                if (last != parent.GetChild(0).gameObject.GetComponent<BiomeHolder>().biome.background)
+                if (last)
+                {
+                    if (last != parent.GetChild(0).gameObject.GetComponent<BiomeHolder>().biome.background)
+                    {
+                        back.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+                        back.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = parent.GetChild(0).gameObject.GetComponent<BiomeHolder>().biome.background;
+                        last = back.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite;
+                        for (int i = 0; i < 100; i++)
+                        {
+                            back.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, (float)i / 99f);
+                            back.GetComponent<MoveBackground>().offset = Mathf.Lerp(back.GetComponent<MoveBackground>().offset, transform.position.x, (float)i / 99f);
+                            Color c = parent.GetChild(0).gameObject.GetComponent<BiomeHolder>().biome.backColor;
+                            cam.biomeCol = Color.Lerp(lastColor, c, i / 99f);
+                            cam.Color();
+                            yield return new WaitForEndOfFrame();
+                        }
+                        back.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().sprite = parent.GetChild(0).gameObject.GetComponent<BiomeHolder>().biome.background;
+                        lastColor = cam.biomeCol;
+                    }
+                }
+                else if (parent.GetChild(0).gameObject.GetComponent<BiomeHolder>().biome)
                 {
                     back.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
                     back.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = parent.GetChild(0).gameObject.GetComponent<BiomeHolder>().biome.background;
@@ -82,27 +102,17 @@ public class SpawnBackgrounds : MonoBehaviour {
                     lastColor = cam.biomeCol;
                 }
             }
-            else if (parent.GetChild(0).gameObject.GetComponent<BiomeHolder>().biome)
+            else
             {
-                back.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
-                back.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = parent.GetChild(0).gameObject.GetComponent<BiomeHolder>().biome.background;
-                last = back.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite;
-                for (int i = 0; i < 100; i++)
-                {
-                    back.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, (float)i / 99f);
-                    back.GetComponent<MoveBackground>().offset = Mathf.Lerp(back.GetComponent<MoveBackground>().offset, transform.position.x, (float)i / 99f);
-                    Color c = parent.GetChild(0).gameObject.GetComponent<BiomeHolder>().biome.backColor;
-                    cam.biomeCol = Color.Lerp(lastColor, c, i / 99f);
-                    cam.Color();
-                    yield return new WaitForEndOfFrame();
-                }
-                back.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().sprite = parent.GetChild(0).gameObject.GetComponent<BiomeHolder>().biome.background;
-                lastColor = cam.biomeCol;
+                StartCoroutine(FindTerrain(parent.parent));
             }
         }
         else
         {
-            StartCoroutine(FindTerrain(parent.parent));
+            if (parent)
+            {
+                StartCoroutine(FindTerrain(parent.parent));
+            }
         }
     }
 }

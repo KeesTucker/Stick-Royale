@@ -85,6 +85,24 @@ public class PlayerMovementAI : MonoBehaviour {
     public AudioSource audioSource;
     public AudioClip jump;
 
+    public Transform local;
+
+    IEnumerator Start()
+    {
+        while (!GameObject.Find("LocalPlayer") && !GameObject.Find("LoadingPlayer"))
+        {
+            yield return null;
+        }
+        if (GameObject.Find("LocalPlayer"))
+        {
+            local = GameObject.Find("LocalPlayer").transform;
+        }
+        else if (GameObject.Find("LoadingPlayer"))
+        {
+            local = GameObject.Find("LoadingPlayer").transform;
+        }
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -226,7 +244,7 @@ public class PlayerMovementAI : MonoBehaviour {
         {
             if (spaceDepressed)
             {
-                audioSource.PlayOneShot(jump);
+                audioSource.PlayOneShot(jump, SyncData.sfx * 0.2f * (Mathf.Clamp((200 - Vector3.Distance(transform.position, local.position)), 0, 200) / 200));
                 jumpable = false;
                 for (int i = 0; i < 15; i++)
                 {
