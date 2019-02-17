@@ -543,6 +543,7 @@ MonoBehaviour:
   hitMarker: {fileID: 0}
   audioSource: {fileID: 0}
   splat: {fileID: 8300000, guid: 4da03d73ebf7c2c43ba8d7bad8f57d4e, type: 3}
+  local: {fileID: 0}
 --- !u!114 &114204708587061550
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -594,7 +595,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1676381246766802}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 1
   m_Height: 5.38
   m_Direction: 1
@@ -607,7 +608,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1676381246766802}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 1
   m_Height: 5.38
   m_Direction: 1
@@ -620,7 +621,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1676381246766802}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 1
   m_Height: 5.38
   m_Direction: 1
@@ -633,7 +634,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1676381246766802}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 1.72
   m_Height: 19.77
   m_Direction: 1

@@ -18,7 +18,10 @@ public class EscMenu : MonoBehaviour {
         {
             SyncData.health = PlayerPrefs.GetInt("health");
         }
-
+        if (PlayerPrefs.HasKey("playerNum"))
+        {
+            SyncData.numPlayers = PlayerPrefs.GetInt("playerNum");
+        }
         if (PlayerPrefs.HasKey("worldSize"))
         {
             SyncData.worldSize = PlayerPrefs.GetInt("worldSize");
@@ -26,11 +29,9 @@ public class EscMenu : MonoBehaviour {
         if (PlayerPrefs.HasKey("sfx"))
         {
             SyncData.sfx = (float)PlayerPrefs.GetInt("sfx") / 100f;
-            Debug.Log(SyncData.sfx);
         }
         if (PlayerPrefs.HasKey("volume"))
         {
-            Debug.Log(SyncData.volume);
             SyncData.volume = (float)PlayerPrefs.GetInt("volume") / 100f;
         }
         if (PlayerPrefs.HasKey("resX") && PlayerPrefs.HasKey("resY"))

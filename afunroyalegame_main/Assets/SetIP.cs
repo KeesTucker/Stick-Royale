@@ -15,12 +15,13 @@ public class SetIP : MonoBehaviour {
 
     void Start()
     {
-        if (mainInputField.text == "5")
+        if (mainInputField.text == "5 Bots")
         {
             if (PlayerPrefs.HasKey("playerNum"))
             {
                 SyncData.numPlayers = PlayerPrefs.GetInt("playerNum");
-                mainInputField.text = PlayerPrefs.GetInt("playerNum").ToString();
+                Debug.Log(PlayerPrefs.GetInt("playerNum"));
+                mainInputField.text = PlayerPrefs.GetInt("playerNum").ToString() + " Bots";
             }
         }
     }

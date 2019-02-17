@@ -61,8 +61,19 @@ public class GroundForceAI : MonoBehaviour
 
     public SyncMoveStateAI syncMoveState;
 
+    public PlayerControl playerControl;
+    public BaseControl baseControl;
+
     IEnumerator Start()
     {
+        if (GetComponent<PlayerControl>())
+        {
+            playerControl = GetComponent<PlayerControl>();
+        }
+        else if (GetComponent<BaseControl>())
+        {
+            baseControl = GetComponent<BaseControl>();
+        }
         yield return new WaitForSeconds(0.3f);
         //grappleActivatorScript = grapple.GetComponent<grappleActivatorAI>(); //Grapple Needs to be a seperate type for ai
         hitLowerBody = false;
@@ -92,6 +103,24 @@ public class GroundForceAI : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        if (playerControl)
+        {
+            if (!playerControl.rClick && grappled)
+            {
+                grappled = false;
+            }
+        }
+        else if (baseControl && grappled)
+        {
+            if (!baseControl.rClick)
+            {
+                grappled = false;
+            }
+        }
+    }
+
     void FixedUpdate()
     {
         /*if (hitULRA == false && hitBody == false && hitLLRA == false && hitULLA == false && hitLLLA == false && hitULRL == false && hitLLRL == false && hitULLL == false && hitLLLL == false && Physics.Raycast(body.transform.position, Vector3.down, out hitR, dist, layerMask) == false)
@@ -104,7 +133,7 @@ public class GroundForceAI : MonoBehaviour
             
         }*/
 
-        if (Physics.Raycast(body.transform.position, Vector3.down, out hitC, Mathf.Infinity, layerMask))
+        if (Physics.Raycast(body.transform.position, Vector3.down, out hitC, Mathf.Infinity, layerMask) && !dead)
         {
             if (hitC.distance < 10 && !grappled)
             {
@@ -139,7 +168,7 @@ public class GroundForceAI : MonoBehaviour
             }
         }
 
-        if (!touchingGround)
+        if (!touchingGround && !dead)
         {
             //syncMoveState.CmdSetState(3);
             foreach (GameObject playerPart in playerParts)
@@ -147,7 +176,7 @@ public class GroundForceAI : MonoBehaviour
                 playerPart.GetComponent<HingeJoint>().useSpring = false;
             }
         }
-        else
+        else if (!dead)
         {
             foreach (GameObject playerPart in playerParts)
             {
@@ -159,7 +188,7 @@ public class GroundForceAI : MonoBehaviour
         {
             foreach (GameObject playerPart in playerParts)
             {
-                playerPart.GetComponent<HingeJoint>().useSpring = true;
+                Destroy(playerPart.GetComponent<HingeJoint>());
             }
         }
 

@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114709354502318556}
   - component: {fileID: 114683897440085020}
   - component: {fileID: 82108428024084268}
+  - component: {fileID: 114728870948313466}
   m_Layer: 11
   m_Name: Weapon Item
   m_TagString: WeaponItem
@@ -263,6 +264,20 @@ MonoBehaviour:
   ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
   hitMarker: {fileID: 1515018597900156, guid: a1a66d51af9473045834472520dcc367, type: 2}
   hitable: 0
+  local: {fileID: 0}
   splat: {fileID: 8300000, guid: 4da03d73ebf7c2c43ba8d7bad8f57d4e, type: 3}
   ping: {fileID: 8300000, guid: cdc0921fbb1ad0549aeafc797a29b97d, type: 3}
   audioSource: {fileID: 0}
+--- !u!114 &114728870948313466
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1757743736535976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c768a852faf77a4fb0c0a903f240c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x: 100000000
+  y: 100000000

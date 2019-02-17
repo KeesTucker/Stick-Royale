@@ -16,6 +16,7 @@ public class SyncName : NetworkBehaviour {
     public GameObject serverParent;
 
     public int wins;
+    public HealthAI healthAI;
 
 	// Use this for initialization
 	IEnumerator Start () {
@@ -40,7 +41,7 @@ public class SyncName : NetworkBehaviour {
             if (!hasAuthority)
             {
                 parent = serverParent;
-                
+                healthAI = parent.GetComponent<HealthAI>();
                 text.text = name;
             }
             text.color = parent.GetComponent<ColourSetterAI>().m_NewColor;
@@ -51,14 +52,14 @@ public class SyncName : NetworkBehaviour {
     void LateUpdate() {
         if (parent)
         {
-            if (parent.GetComponent<PlayerSetup>())
+            if (healthAI)
             {
-                transform.position = parent.transform.position + new Vector3(0, 10, -10);
+                if (healthAI.deaded)
+                {
+                    Destroy(gameObject);
+                }
             }
-            else
-            {
-                transform.position = parent.transform.position + new Vector3(0, 10, 10);
-            }
+            transform.position = parent.transform.position + new Vector3(0, 10, 10);
         }
 	}
 
@@ -102,6 +103,7 @@ public class SyncName : NetworkBehaviour {
     public void CmdUpdateParent(GameObject parentObject)
     {
         parent = parentObject;
+        healthAI = parent.GetComponent<HealthAI>();
         serverParent = parent;
         RpcUpdateParent(parent);
     }
@@ -110,6 +112,7 @@ public class SyncName : NetworkBehaviour {
     public void RpcUpdateParent(GameObject parentObject)
     {
         parent = parentObject;
+        healthAI = parent.GetComponent<HealthAI>();
     }
 
     [ClientRpc]

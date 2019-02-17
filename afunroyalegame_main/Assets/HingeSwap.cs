@@ -20,21 +20,28 @@ public class HingeSwap : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        if (hj.useSpring)
+        if (hj)
         {
-            hjFallBack.useSpring = false;
+            if (hj.useSpring)
+            {
+                hjFallBack.useSpring = false;
+            }
+            else if (gameObject.name == "Lower Body")
+            {
+                hjFallBack.useSpring = true;
+            }
+            else if (groundForce.grappled)
+            {
+                hjFallBack.useSpring = false;
+            }
+            else
+            {
+                //hjFallBack.useSpring = true;
+            }
         }
-        else if (gameObject.name == "Lower Body")
+        else if (hjFallBack)
         {
             hjFallBack.useSpring = true;
-        }
-        else if (groundForce.grappled)
-        {
-            hjFallBack.useSpring = false;
-        }
-        else
-        {
-            //hjFallBack.useSpring = true;
         }
 	}
 }

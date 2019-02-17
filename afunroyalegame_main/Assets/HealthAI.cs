@@ -20,8 +20,12 @@ public class HealthAI : NetworkBehaviour {
     public GameObject Ghost;
 
     public GameObject deathExplode;
+
+    public AudioSource audioSource;
+    public AudioClip explosion;
+    public Transform local;
 	
-	void Start()
+	IEnumerator Start()
     {
         refrenceKeeper = GetComponent<RefrenceKeeperAI>();
         if (GetComponent<AISetup>().isServer)
@@ -32,11 +36,23 @@ public class HealthAI : NetworkBehaviour {
         {
             health = GameObject.Find("Player(Clone)").GetComponent<HealthAI>().health;
         }
+        while (!GameObject.Find("LocalPlayer") && !GameObject.Find("LoadingPlayer"))
+        {
+            yield return null;
+        }
+        if (GameObject.Find("LocalPlayer"))
+        {
+            local = GameObject.Find("LocalPlayer").transform;
+        }
+        else if (GameObject.Find("LoadingPlayer"))
+        {
+            local = GameObject.Find("LoadingPlayer").transform;
+        }
     }
 
     void Update()
     {
-        if (health <= 0 && hasAuthority && !deaded)
+        if (health <= 0 && !deaded)
         {
             StartCoroutine("DestroyPlayer");
             deaded = true;
@@ -45,6 +61,7 @@ public class HealthAI : NetworkBehaviour {
 
     public IEnumerator DestroyPlayer()
     {
+        audioSource.PlayOneShot(explosion, SyncData.sfx * 0.6f * (Mathf.Clamp((200f - Vector3.Distance(transform.position, local.position) * 2f), 0, 200) / 200f));
         GetComponent<GroundForceAI>().dead = true;
         ParticleSystem.MainModule system = deathExplode.GetComponent<ParticleSystem>().main;
         system.startColor = GetComponent<ColourSetterAI>().m_NewColor;
@@ -59,9 +76,7 @@ public class HealthAI : NetworkBehaviour {
         {
             c.m_NewColor = Color.red;
         }
-        CmdDestroyPlayer();
         GetComponent<AimShootAI>().RClick = false;
-        GetComponent<GroundForceAI>().grappled = true;
         if (GetComponent<PlayerControl>())
         {
             GetComponent<PlayerControl>().a = false;
@@ -74,7 +89,7 @@ public class HealthAI : NetworkBehaviour {
             GetComponent<BaseControl>().s = false;
             GetComponent<BaseControl>().d = false;
         }
-        if (hasAuthority && GetComponent<PlayerControl>())
+        if (hasAuthority && GetComponent<PlayerControl>() && !refrenceKeeper.updateUI.won.activeInHierarchy)
         {
             refrenceKeeper.updateUI.deadMessage.SetActive(true);
             refrenceKeeper.updateUI.deadPanel.SetActive(true);
@@ -107,7 +122,6 @@ public class HealthAI : NetworkBehaviour {
         {
             CmdSpawnGhost();
         }
-        GetComponent<GroundForceAI>().grappled = true;
     }
 
     [Command]
@@ -121,6 +135,8 @@ public class HealthAI : NetworkBehaviour {
     [ClientRpc]
     public void RpcDestroyPlayer()
     {
+        audioSource.PlayOneShot(explosion, SyncData.sfx * 0.6f * (Mathf.Clamp((200f - Vector3.Distance(transform.position, local.position) * 2f), 0, 200) / 200f));
+        deaded = true;
         GetComponent<GroundForceAI>().dead = true;
         ParticleSystem.MainModule system = deathExplode.GetComponent<ParticleSystem>().main;
         system.startColor = GetComponent<ColourSetterAI>().m_NewColor;
@@ -139,7 +155,6 @@ public class HealthAI : NetworkBehaviour {
         if (!hasAuthority)
         {
             GetComponent<AimShootAI>().RClick = false;
-            GetComponent<GroundForceAI>().grappled = true;
             if (GetComponent<PlayerControl>())
             {
                 GetComponent<PlayerControl>().a = false;
@@ -172,13 +187,14 @@ public class HealthAI : NetworkBehaviour {
             {
                 hj.useSpring = false;
             }
-            GetComponent<GroundForceAI>().grappled = true;
         }
     }
 
     [Command]
     public void CmdDestroyPlayer()
     {
+        audioSource.PlayOneShot(explosion, SyncData.sfx * 0.6f * (Mathf.Clamp((200f - Vector3.Distance(transform.position, local.position) * 2f), 0, 200) / 200f));
+        deaded = true;
         GetComponent<GroundForceAI>().dead = true;
         ParticleSystem.MainModule system = deathExplode.GetComponent<ParticleSystem>().main;
         system.startColor = GetComponent<ColourSetterAI>().m_NewColor;
@@ -197,7 +213,6 @@ public class HealthAI : NetworkBehaviour {
         if (!hasAuthority)
         {
             GetComponent<AimShootAI>().RClick = false;
-            GetComponent<GroundForceAI>().grappled = true;
             if (GetComponent<PlayerControl>())
             {
                 GetComponent<PlayerControl>().a = false;
@@ -230,7 +245,6 @@ public class HealthAI : NetworkBehaviour {
             {
                 hj.useSpring = false;
             }
-            GetComponent<GroundForceAI>().grappled = true;
             RpcDestroyPlayer();
         }
     }

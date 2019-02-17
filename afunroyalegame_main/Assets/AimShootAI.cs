@@ -72,8 +72,11 @@ public class AimShootAI : MonoBehaviour {
 
     public HealthAI health;
 
+    public GroundForceAI groundForceAI;
+
     IEnumerator Start()
     {
+        groundForceAI = ragdoll.GetComponent<GroundForceAI>();
         fireGrapple = true;
         if (transform.gameObject.GetComponent<SetupLoading>())
         {
@@ -160,7 +163,7 @@ public class AimShootAI : MonoBehaviour {
             }
         }
 
-        if (refrenceKeeper)
+        if (refrenceKeeper && !groundForceAI.dead)
         {
             if (refrenceKeeper.weaponHeld)
             {
@@ -173,7 +176,7 @@ public class AimShootAI : MonoBehaviour {
                 location.gameObject.GetComponent<HingeJoint>().useSpring = false;
             }
         }
-        else
+        else if (!groundForceAI.dead)
         {
             RHT.gameObject.GetComponent<HingeJoint>().useSpring = false;
             location.gameObject.GetComponent<HingeJoint>().useSpring = false;
@@ -189,7 +192,7 @@ public class AimShootAI : MonoBehaviour {
             rightBeenClicked = false;
             Destroy(grapple, 0.1f);
             rightClick = false;
-            ragdoll.GetComponent<GroundForceAI>().grappled = false;
+            groundForceAI.grappled = false;
             fireGrapple = true;
         }
         if (rightClick == true)
@@ -210,7 +213,7 @@ public class AimShootAI : MonoBehaviour {
             GrappleArm.useSpring = false;
         }
 
-        if (rightClick == false && ragdoll.GetComponent<GroundForceAI>().touchingGround == true)
+        if (rightClick == false && groundForceAI.touchingGround == true && !groundForceAI.dead)
         {
             foreach (GameObject playerPart in playerParts)
             {

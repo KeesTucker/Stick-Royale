@@ -24,16 +24,16 @@ public class ColourSetterAI : NetworkBehaviour
     {
         if (hasAuthority)
         {
-            CmdSetColor();
+            CmdSetColor(SyncData.color);
         }
     }
 
     [Command]
-    public void CmdSetColor()
+    public void CmdSetColor(Color c)
     {
         if (GetComponent<PlayerControl>())
         {
-            m_NewColor = SyncData.color; //Replace with colour from home menu
+            m_NewColor = c; //Replace with colour from home menu
         }
         else
         {

@@ -123,12 +123,12 @@ public class AISetup : NetworkBehaviour
             {
                 playerManagement.totalPlayers--;
                 dead = true;
+                if (isServer && GetComponent<PlayerControl>() && !GetComponent<RefrenceKeeperAI>().updateUI.won.activeInHierarchy)
+                {
+                    GetComponent<RefrenceKeeperAI>().updateUI.deadMessageServer.SetActive(true);
+                }
             }
             
-            if (isServer && GetComponent<PlayerControl>())
-            {
-                GetComponent<RefrenceKeeperAI>().updateUI.deadMessageServer.SetActive(true);
-            }
             if (Input.GetKey("f") && GetComponent<PlayerControl>() && hasAuthority)
             {
                 if (!isServer)
