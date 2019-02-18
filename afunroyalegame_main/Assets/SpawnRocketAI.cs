@@ -106,9 +106,13 @@ public class SpawnRocketAI : NetworkBehaviour
             rocketGO.transform.GetChild(0).gameObject.SetActive(false);
             rocketGO.GetComponent<SpriteRenderer>().enabled = false;
             rocketGO.GetComponent<Collider>().enabled = false;
-            
+            transform.position = rocketGO.transform.position;
             StartCoroutine("destroy");
             done = true;
+        }
+        if (spaceDepressed && rocketGO)
+        {
+            transform.position = rocketGO.transform.position;
         }
     }
 
@@ -126,6 +130,7 @@ public class SpawnRocketAI : NetworkBehaviour
         if (boxHold && rocketGO)
         {
             rocketGO.transform.position = boxHold.transform.position;
+            transform.position = boxHold.transform.position;
         }
         if (ready)
         {
@@ -158,19 +163,18 @@ public class SpawnRocketAI : NetworkBehaviour
     [ClientRpc]
     void RpcDepress()
     {
-        spaceDepressed = fall;
+        spaceDepressed = true;
     }
 
     [Command]
     void CmdDepress()
     {
-        spaceDepressed = false;
+        spaceDepressed = true;
         RpcDepress();
     }
 
     IEnumerator destroy()
     {
-        transform.position = rocketGO.transform.position;
         if (camActive)
         {
             float size = 100;

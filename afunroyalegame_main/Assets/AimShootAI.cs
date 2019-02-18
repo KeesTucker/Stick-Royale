@@ -104,7 +104,11 @@ public class AimShootAI : MonoBehaviour {
         Vector3 mouseWorldPosition = aim.position; //Make this follow a gameobject that the AI can control therefore it can aim etc.
 
         float angle = AngleBetweenPoints(location.position, mouseWorldPosition);
-        angleGun = AngleBetweenPoints(rotationGunManager.transform.position, mouseWorldPosition);
+        if (rotationGunManager)
+        {
+            angleGun = AngleBetweenPoints(rotationGunManager.transform.position, mouseWorldPosition);
+        }
+        
         //Ta daa
         target.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle) - new Vector3(0f, 0f, body.rotation.eulerAngles.z + 90)); //This is for arm rotation, trying something new with weapon rotation
         grappleLauncher.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angleGun + 180f));

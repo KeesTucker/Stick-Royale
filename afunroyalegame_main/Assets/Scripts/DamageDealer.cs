@@ -138,7 +138,7 @@ public class DamageDealer : MonoBehaviour {
                     }
                     if (onServer)
                     {
-                        if (collisionInfo.gameObject.GetComponent<HealthAI>().health - damage <= 0 && localFired)
+                        if (collisionInfo.gameObject.GetComponent<HealthAI>().health - damage <= 0 && localFired && collisionInfo.gameObject.GetComponent<HealthAI>().health > 0)
                         {
                             if (!hasKilled)
                             {
@@ -164,7 +164,7 @@ public class DamageDealer : MonoBehaviour {
                     }
                     if (onServer)
                     {
-                        if (collisionInfo.transform.parent.gameObject.GetComponent<HealthAI>().health - damage <= 0 && localFired)
+                        if (collisionInfo.transform.parent.gameObject.GetComponent<HealthAI>().health - damage <= 0 && localFired && collisionInfo.transform.parent.gameObject.GetComponent<HealthAI>().health > 0)
                         {
                             if (!hasKilled)
                             {
@@ -189,7 +189,7 @@ public class DamageDealer : MonoBehaviour {
                     }
                     if (onServer)
                     {
-                        if (collisionInfo.transform.parent.parent.gameObject.GetComponent<HealthAI>().health - damage <= 0 && localFired)
+                        if (collisionInfo.transform.parent.parent.gameObject.GetComponent<HealthAI>().health - damage <= 0 && localFired && collisionInfo.transform.parent.parent.gameObject.GetComponent<HealthAI>().health > 0)
                         {
                             if (!hasKilled)
                             {
@@ -214,7 +214,7 @@ public class DamageDealer : MonoBehaviour {
                     }
                     if (onServer)
                     {
-                        if (collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<HealthAI>().health - damage <= 0 && localFired)
+                        if (collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<HealthAI>().health - damage <= 0 && localFired && collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<HealthAI>().health > 0)
                         {
                             if (!hasKilled)
                             {
@@ -246,7 +246,7 @@ public class DamageDealer : MonoBehaviour {
                     }
                     if (onServer)
                     {
-                        if (collisionInfo.gameObject.GetComponent<HealthAI>().health - damage <= 0 && localFired)
+                        if (collisionInfo.gameObject.GetComponent<HealthAI>().health - damage <= 0 && localFired && collisionInfo.gameObject.GetComponent<HealthAI>().health > 0)
                         {
                             if (!hasKilled)
                             {
@@ -271,7 +271,7 @@ public class DamageDealer : MonoBehaviour {
                     }
                     if (onServer)
                     {
-                        if (collisionInfo.transform.parent.gameObject.GetComponent<HealthAI>().health - damage <= 0 && localFired)
+                        if (collisionInfo.transform.parent.gameObject.GetComponent<HealthAI>().health - damage <= 0 && localFired && collisionInfo.transform.parent.gameObject.GetComponent<HealthAI>().health > 0)
                         {
                             if (!hasKilled)
                             {
@@ -296,7 +296,7 @@ public class DamageDealer : MonoBehaviour {
                     }
                     if (onServer)
                     {
-                        if (collisionInfo.transform.parent.parent.gameObject.GetComponent<HealthAI>().health - damage <= 0 && localFired)
+                        if (collisionInfo.transform.parent.parent.gameObject.GetComponent<HealthAI>().health - damage <= 0 && localFired && collisionInfo.transform.parent.parent.gameObject.GetComponent<HealthAI>().health > 0)
                         {
                             if (!hasKilled)
                             {
@@ -321,7 +321,7 @@ public class DamageDealer : MonoBehaviour {
                     }
                     if (onServer)
                     {
-                        if (collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<HealthAI>().health - damage <= 0 && localFired)
+                        if (collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<HealthAI>().health - damage <= 0 && localFired && collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<HealthAI>().health > 0)
                         {
                             if (!hasKilled)
                             {
@@ -371,7 +371,10 @@ public class DamageDealer : MonoBehaviour {
             }
             else
             {
-                system.startColor = info.transform.GetChild(0).GetComponent<SpriteRenderer>().color;
+                if (info.transform.GetChild(0).GetComponent<SpriteRenderer>())
+                {
+                    system.startColor = info.transform.GetChild(0).GetComponent<SpriteRenderer>().color;
+                }
                 GameObject ouchParticle = Instantiate(particle, new Vector3(info.contacts[0].point.x, info.contacts[0].point.y, 1), Quaternion.identity);
                 ouchParticle.transform.forward = new Vector3(-info.contacts[0].normal.x, -info.contacts[info.contacts.Length - 1].normal.y, info.contacts[info.contacts.Length - 1].normal.z);
                 if (punching)

@@ -26,10 +26,13 @@ public class PlayersLeft : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (players != playerManagement.totalPlayers)
+        if (playerManagement)
         {
-            players = playerManagement.totalPlayers;
-            text.text = players.ToString();
+            if (players != playerManagement.totalPlayers)
+            {
+                players = playerManagement.totalPlayers;
+                text.text = players.ToString();
+            }
         }
 	}
 }

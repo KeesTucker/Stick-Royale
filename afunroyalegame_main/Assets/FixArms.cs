@@ -22,8 +22,12 @@ public class FixArms : MonoBehaviour {
         {
             //if (Mathf.Abs(limbs[0].localPosition.x - initialPos[]) > )
             //{
-            limbs[i].localPosition = initialPos[i];
-            limbs[i].eulerAngles = new Vector3(0, 0, limbs[i].rotation.eulerAngles.z);
+            if (limbs[i])
+            {
+                limbs[i].localPosition = initialPos[i];
+                limbs[i].eulerAngles = new Vector3(0, 0, limbs[i].rotation.eulerAngles.z);
+            }
+            
             //}
         }
 

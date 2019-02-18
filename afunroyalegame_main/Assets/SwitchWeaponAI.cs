@@ -57,7 +57,7 @@ public class SwitchWeaponAI : MonoBehaviour {
                 HandHeldWeapon.transform.SetParent(WeaponHand.transform);
             }
 
-            if (spawnWeapons.Weapons[WeaponIndex].WeaponItem.name != "Fists" && HandHeldWeapon != null)
+            if ((spawnWeapons.Weapons[WeaponIndex].WeaponItem.name != "Fists") && HandHeldWeapon != null)
             {
                 aimShoot.Weapon = HandHeldWeapon.transform;
                 shoot.fireRate = spawnWeapons.Weapons[WeaponIndex].WeaponItem.fireRate;

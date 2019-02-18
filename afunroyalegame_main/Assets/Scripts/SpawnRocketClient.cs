@@ -60,7 +60,7 @@ public class SpawnRocketClient : NetworkBehaviour
             rocketGO.transform.GetChild(1).gameObject.SetActive(true);
             rocketGO.transform.GetChild(0).gameObject.SetActive(false);
             rocketGO.GetComponent<SpriteRenderer>().enabled = false;
-            rocketGO.GetComponent<Rigidbody>().isKinematic = false;
+            rocketGO.GetComponent<Rigidbody>().isKinematic = true;
             rocketGO.GetComponent<Collider>().enabled = false;
             StartCoroutine("destroy");
             exploded = true;

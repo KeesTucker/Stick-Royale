@@ -72,7 +72,6 @@ public class HealthAI : NetworkBehaviour {
             healthHUDR.fillAmount = (health / SyncData.health);
             healthHUDL.fillAmount = (health / SyncData.health);
             oldHealth = health;
-            Debug.Log(health / SyncData.health);
         }
     }
 
@@ -123,7 +122,6 @@ public class HealthAI : NetworkBehaviour {
             }
         }
         refrenceKeeper.weaponInventory.Clear();
-        refrenceKeeper.itemInventory.Clear();
         refrenceKeeper.inventoryCount = 0;
         refrenceKeeper.itemCount = 0;
         for (int i = 0; i < weapon.transform.childCount; i++)
@@ -193,7 +191,6 @@ public class HealthAI : NetworkBehaviour {
                 }
             }
             refrenceKeeper.weaponInventory.Clear();
-            refrenceKeeper.itemInventory.Clear();
             refrenceKeeper.inventoryCount = 0;
             refrenceKeeper.itemCount = 0;
             for (int i = 0; i < weapon.transform.childCount; i++)
@@ -251,7 +248,6 @@ public class HealthAI : NetworkBehaviour {
                 }
             }
             refrenceKeeper.weaponInventory.Clear();
-            refrenceKeeper.itemInventory.Clear();
             refrenceKeeper.inventoryCount = 0;
             refrenceKeeper.itemCount = 0;
             for (int i = 0; i < weapon.transform.childCount; i++)

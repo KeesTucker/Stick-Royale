@@ -11669,6 +11669,7 @@ MonoBehaviour:
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
   count: 0
+  isPlatform: 1
 --- !u!114 &114109183421870814
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12313,6 +12314,7 @@ MonoBehaviour:
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
   count: 0
+  isPlatform: 1
 --- !u!114 &114468182713601538
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12328,6 +12330,7 @@ MonoBehaviour:
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
   count: 0
+  isPlatform: 1
 --- !u!114 &114480857609501606
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12473,6 +12476,7 @@ MonoBehaviour:
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
   count: 0
+  isPlatform: 1
 --- !u!114 &114663670760210102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12517,6 +12521,7 @@ MonoBehaviour:
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
   count: 0
+  isPlatform: 1
 --- !u!114 &114696717187057126
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12833,6 +12838,7 @@ MonoBehaviour:
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
   count: 0
+  isPlatform: 1
 --- !u!114 &114952570993288672
 MonoBehaviour:
   m_ObjectHideFlags: 1

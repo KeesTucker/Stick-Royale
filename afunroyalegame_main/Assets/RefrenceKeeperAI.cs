@@ -13,8 +13,6 @@ public class RefrenceKeeperAI : NetworkBehaviour
 
     public List<Item> weaponInventory = new List<Item>();
 
-    public List<Item> itemInventory = new List<Item>();
-
     public int itemCount;
 
     public int inventoryCount;
@@ -84,7 +82,11 @@ public class RefrenceKeeperAI : NetworkBehaviour
             {
                 activeSlot = 0;
                 activeSlot = Mathf.Clamp(activeSlot, 0, 4);
-                if (weaponInventory[activeSlot].name != "Fists")
+                if (weaponInventory[activeSlot].id == 15)
+                {
+                    switchWeapon.Switch(15);
+                }
+                else if (weaponInventory[activeSlot].name != "Fists")
                 {
                     switchWeapon.Switch(weaponInventory[activeSlot].id);
                 }

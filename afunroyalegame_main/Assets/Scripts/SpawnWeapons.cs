@@ -62,7 +62,7 @@ public class SpawnWeapons : NetworkBehaviour {
         yield return new WaitForSeconds(0.3f);
         for (int i = 0; i < spawns.Count; i++)
         {
-            WeaponIndex = Random.Range(0, Weapons.Count - 2);
+            WeaponIndex = Random.Range(0, Weapons.Count - 1);
             GameObject WeaponItem = Instantiate(
                 WeaponItemPrefab,
                 spawns[i].transform.position,

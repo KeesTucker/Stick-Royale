@@ -25,9 +25,12 @@ public class AISetup : NetworkBehaviour
 
     public bool stop;
 
+    public SpawnRocketAI spawnRocket;
+
     // Use this for initialization
     void Start()
     {
+        spawnRocket = GetComponent<SpawnRocketAI>();
         manager = GameObject.Find("_NetworkManager").GetComponent<NetworkManager>();
         for (int i = 0; i < colliders.Length; i++)
         {
@@ -117,7 +120,7 @@ public class AISetup : NetworkBehaviour
             }
         }
         
-        if (health.health <= 0)
+        if (health.health <= 0 && spawnRocket.ready)
         {
             if (!dead)
             {

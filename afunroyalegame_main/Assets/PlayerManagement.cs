@@ -40,7 +40,7 @@ public class PlayerManagement : NetworkBehaviour {
     {
         if (playerManagement)
         {
-            pos = new Vector3(Random.Range(-((float)SyncData.worldSize / 2f) * 300f, ((float)SyncData.worldSize / 2f) * 300f), 0, 0);
+            pos = new Vector3((Random.Range(-SyncData.worldSize / 2, SyncData.worldSize / 2) * 250) - 125, 0, 0);
         }
         pos = new Vector3(Random.Range(-((float)SyncData.worldSize / 2f) * 300f, ((float)SyncData.worldSize / 2f) * 300f), 0, 0);
         playerSpawned = Instantiate(AIPlayer, pos, transform.rotation);

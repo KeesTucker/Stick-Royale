@@ -59,7 +59,7 @@ public class UpdateUI : MonoBehaviour {
         if(refrenceKeeper.weaponInventory.Count > 0)
         {
             activeSlot = Mathf.Clamp(activeSlot, 0, refrenceKeeper.weaponInventory.Count - 1);
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 4; i++)
             {
                 gameObject.transform.GetChild(0).GetChild(i).GetChild(1).gameObject.SetActive(false);
             }
@@ -74,7 +74,7 @@ public class UpdateUI : MonoBehaviour {
     public void HighlightSlotOnPickup(int activeSlot)
     {
         activeSlot = Mathf.Clamp(activeSlot, 0, refrenceKeeper.weaponInventory.Count);
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 4; i++)
         {
             gameObject.transform.GetChild(0).GetChild(i).GetChild(1).gameObject.SetActive(false);
         }

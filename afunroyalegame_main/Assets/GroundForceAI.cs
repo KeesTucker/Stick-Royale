@@ -132,39 +132,41 @@ public class GroundForceAI : MonoBehaviour
         {
             
         }*/
-
-        if (Physics.Raycast(body.transform.position, Vector3.down, out hitC, Mathf.Infinity, layerMask) && !dead)
+        if (body)
         {
-            if (hitC.distance < 10 && !grappled)
+            if (Physics.Raycast(body.transform.position, Vector3.down, out hitC, Mathf.Infinity, layerMask) && !dead)
             {
-                touchingGround = true;
-                touchingObject = true;
-                if (hasHit == false)
+                if (hitC.distance < 10 && !grappled)
                 {
-                    appliedForce = counter * 500;
-                    if (counter > 99)
+                    touchingGround = true;
+                    touchingObject = true;
+                    if (hasHit == false)
                     {
-                        hasHit = true;
-                        counter = 0;
+                        appliedForce = counter * 500;
+                        if (counter > 99)
+                        {
+                            hasHit = true;
+                            counter = 0;
+                        }
+                        counter = counter + 2.0f;
                     }
-                    counter = counter + 2.0f;
-                }
-                body.AddForce(0, 2 * -appliedForce * Time.deltaTime, 0);
-                head.AddForce(0, 2 * appliedForce * Time.deltaTime, 0);
+                    body.AddForce(0, 2 * -appliedForce * Time.deltaTime, 0);
+                    head.AddForce(0, 2 * appliedForce * Time.deltaTime, 0);
 
-                if (hitC.distance > 5.5)
-                {
-                    body.GetComponent<Rigidbody>().AddForce(Vector3.down * Time.deltaTime * 5000);
+                    if (hitC.distance > 5.5)
+                    {
+                        body.GetComponent<Rigidbody>().AddForce(Vector3.down * Time.deltaTime * 5000);
+                    }
+                    else
+                    {
+                        head.GetComponent<Rigidbody>().AddForce(Vector3.up * Time.deltaTime * 10000);
+                    }
                 }
                 else
                 {
-                    head.GetComponent<Rigidbody>().AddForce(Vector3.up * Time.deltaTime * 10000);
+                    hasHit = false;
+                    touchingGround = false;
                 }
-            }
-            else
-            {
-                hasHit = false;
-                touchingGround = false;
             }
         }
 
@@ -188,7 +190,10 @@ public class GroundForceAI : MonoBehaviour
         {
             foreach (GameObject playerPart in playerParts)
             {
-                Destroy(playerPart.GetComponent<HingeJoint>());
+                if (playerPart)
+                {
+                    Destroy(playerPart.GetComponent<HingeJoint>());
+                }
             }
         }
 

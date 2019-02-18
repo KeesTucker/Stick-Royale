@@ -314,7 +314,7 @@ public class PlayerMovementAI : MonoBehaviour {
         {
             inAir = true;
         }
-        else if (groundforce.touchingWall || groundforce.touchingObject && inAir)
+        else if ((groundforce.touchingWall || groundforce.touchingObject) && inAir)
         {
             inAir = false;
         }

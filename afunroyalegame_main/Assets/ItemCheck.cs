@@ -189,6 +189,17 @@ public class ItemCheck : NetworkBehaviour {
         }
     }
 
+    public void DestroyHealth()
+    {
+        refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot] = fists;
+        switchWeapon.Switch(100);
+        if (hasAuthority && isPlayer)
+        {
+            updateUI.UpdateSlotsUI();
+            updateUI.HighlightSlotOnPickup(refrenceKeeper.activeSlot);
+        }
+    }
+
     [ClientRpc]
     public void RpcPickupWeapon(int wI, int bulletsLeft)
     {

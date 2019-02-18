@@ -9,6 +9,7 @@ public class IsFiniteBackup : MonoBehaviour {
     public float y = 99999999f;
     public Vector3 pos;
     public int count;
+    public bool isPlatform;
 
     IEnumerator Start()
     {
@@ -18,23 +19,48 @@ public class IsFiniteBackup : MonoBehaviour {
     }
 
 	void LateUpdate () {
-        if (/*transform.position.x > x || transform.position.x < -x || transform.position.y > y || transform.position.y < -y || transform.position.z > 200 || transform.position.z < -200 || */transform.position.x == float.NaN || transform.position.y == float.NaN || transform.position.z == float.NaN)
+        if (isPlatform)
         {
-            if (count > 10)
+            if (transform.position.x == float.NaN || transform.position.y == float.NaN || transform.position.z == float.NaN)
             {
                 Destroy(gameObject);
             }
-            else
-            {
-                transform.position = pos;
-            }
-            
-            count++;
         }
         else
         {
-            count = 0;
-            pos = transform.position;
+            if (transform.position.x > x || transform.position.x < -x || transform.position.y > y || transform.position.y < -y || transform.position.z > 200 || transform.position.z < -200 || transform.position.x == float.NaN || transform.position.y == float.NaN || transform.position.z == float.NaN)
+            {
+                if (count > 5)
+                {
+                    FindParent(transform);
+                }
+                transform.position = pos;
+                count++;
+            }
+            else
+            {
+                count = 0;
+                pos = transform.position;
+            }
         }
 	}
+
+    void FindParent(Transform t)
+    {
+        if (t.gameObject.layer == 24)
+        {
+            if (t.parent)
+            {
+                FindParent(t.parent);
+            }
+            else
+            {
+                Destroy(t.gameObject);
+            }
+        }
+        else
+        {
+            Destroy(t.gameObject);
+        }
+    }
 }

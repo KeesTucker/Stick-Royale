@@ -67,4 +67,6 @@ public class Item : ScriptableObject {
 
     public AudioClip shot;
     public AudioClip reload;
+
+    public bool heal;
 }

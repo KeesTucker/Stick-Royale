@@ -110,6 +110,7 @@ public class ShootAI : MonoBehaviour {
     public AudioClip gunShot;
     public AudioClip reload;
     public AudioClip punch;
+    public AudioClip healSFX;
     AudioSource audioSource;
 
     public Transform local;
@@ -127,6 +128,8 @@ public class ShootAI : MonoBehaviour {
     public bool notAI;
 
     public bool firing;
+
+    public bool healing;
 
     IEnumerator Start()
     {
@@ -226,48 +229,56 @@ public class ShootAI : MonoBehaviour {
             firstClick = true;
             fireButtonDown = false;
         }
-        if (fireButtonDown == true && loopDown == true && refrenceKeeper.weaponHeld)
+        if (refrenceKeeper.weaponInventory.Count > 0)
         {
-            if (bulletsLeft[refrenceKeeper.activeSlot] < 1 && !reloading)
+            if (fireButtonDown == true && loopDown == true && refrenceKeeper.weaponHeld)
             {
-                StartCoroutine("Reload");
-            }
-            if (refrenceKeeper.inventoryCount > 0 && !reloading && !burstOff)
-            {
-                StartCoroutine(FireBullet());
-                if (burstSize != 0)
+                if (bulletsLeft[refrenceKeeper.activeSlot] < 1 && !reloading)
                 {
-                    burstCount++;
-                    if (burstCount >= burstSize)
+                    StartCoroutine("Reload");
+                }
+                if (refrenceKeeper.inventoryCount > 0 && !reloading && !burstOff)
+                {
+                    StartCoroutine(FireBullet());
+                    if (burstSize != 0)
                     {
-                        StartCoroutine("BurstTracker");
-                        burstCount = 0;
+                        burstCount++;
+                        if (burstCount >= burstSize)
+                        {
+                            StartCoroutine("BurstTracker");
+                            burstCount = 0;
+                        }
+                    }
+
+                }
+                if (magSize > 1)
+                {
+                    if (bulletsLeft[refrenceKeeper.activeSlot] > magSize)
+                    {
+                        bulletsLeft[refrenceKeeper.activeSlot] = magSize;
+                    }
+                    if (bulletsLeft[refrenceKeeper.activeSlot] <= 0 && !reloading)
+                    {
+                        reloading = true;
+                        StartCoroutine("Reload");
+
                     }
                 }
-
-            }
-            if (magSize > 1)
-            {
-                if (bulletsLeft[refrenceKeeper.activeSlot] > magSize)
+                if (!reloading)
                 {
-                    bulletsLeft[refrenceKeeper.activeSlot] = magSize;
-                }
-                if (bulletsLeft[refrenceKeeper.activeSlot] <= 0 && !reloading)
-                {
-                    reloading = true;
-                    StartCoroutine("Reload");
-
+                    loopDown = false;
                 }
             }
-            if (!reloading)
+            else if (fireButtonDown == true && loopDown == true && !refrenceKeeper.weaponHeld && firstClick && !refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].heal)
             {
-                loopDown = false;
+                StartCoroutine("Punch");
+                firstClick = false;
             }
-        }
-        else if (fireButtonDown == true && loopDown == true && !refrenceKeeper.weaponHeld && firstClick)
-        {
-            StartCoroutine("Punch");
-            firstClick = false;
+            else if (fireButtonDown == true && loopDown == true && !refrenceKeeper.weaponHeld && firstClick && refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].heal)
+            {
+                StartCoroutine("Heal");
+                firstClick = false;
+            }
         }
     }
 
@@ -282,6 +293,16 @@ public class ShootAI : MonoBehaviour {
         {
             fireTime += Time.deltaTime;
             fireHUD.fillAmount = fireTime / timerFire;
+        }
+        if (healing)
+        {
+            if (!lClick)
+            {
+                loopDown = true;
+                firing = false;
+                healing = false;
+                fireTime = 0;
+            }
         }
     }
 
@@ -352,6 +373,25 @@ public class ShootAI : MonoBehaviour {
         yield return new WaitForSeconds(0.15f);
         LimbDamagers[damager].hitable = false;
         LimbDamagers[damager].punching = false;
+    }
+
+    IEnumerator Heal()
+    {
+        audioSource.PlayOneShot(healSFX, SyncData.sfx * 0.2f * (Mathf.Clamp((200 - Vector3.Distance(transform.position, local.position)), 0, 200) / 200));
+        fireTime = 0;
+        timerFire = 1f / fireRate;
+        firing = true;
+        healing = true;
+        loopDown = false;
+        yield return new WaitForSeconds(1f / fireRate);
+        if (healing)
+        {
+            ragdoll.GetComponent<HealthAI>().health += Mathf.Clamp(SyncData.health / refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].damage, 0, SyncData.health);
+            ragdoll.GetComponent<ItemCheck>().DestroyHealth();
+            loopDown = true;
+            firing = false;
+            healing = false;
+        }
     }
 
     IEnumerator BurstTracker()

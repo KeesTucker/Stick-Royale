@@ -67,19 +67,10 @@ public class RocketMove : MonoBehaviour {
         {
             audioSource.volume = 0;
         }
-    }
-
-    void FixedUpdate()
-    {
         if (spawnRocket)
         {
-            if (!done && spawnRocket.spaceDepressed)
+            if (ragdoll && spawnRocket.spaceDepressed && spawnRocket.ready)
             {
-                ragdoll.GetComponent<AudioSource>().PlayOneShot(explosion, SyncData.sfx * 0.6f * (Mathf.Clamp((600f - Vector3.Distance(transform.position, local.position)), 0, 600) / 600f));
-                done = true;
-            }
-            if (ragdoll && !spawnRocket.spaceDepressed)
-            {                
                 if (ragdoll.GetComponent<SpawnRocketAI>().hasAuthority)
                 {
                     ragdoll.position = transform.position;
@@ -89,6 +80,38 @@ public class RocketMove : MonoBehaviour {
                     transform.position = ragdoll.position;
                 }
             }
+        }
+    }
+
+    void LateUpdate()
+    {
+        if (spawnRocket)
+        {
+            if (ragdoll && !spawnRocket.spaceDepressed && spawnRocket.ready)
+            {
+                if (ragdoll.GetComponent<SpawnRocketAI>().hasAuthority)
+                {
+                    ragdoll.position = transform.position;
+                }
+                else
+                {
+                    transform.position = ragdoll.position;
+                }
+            }
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (spawnRocket && rb)
+        {
+            if (!done && spawnRocket.spaceDepressed)
+            {
+                ragdoll.GetComponent<AudioSource>().PlayOneShot(explosion, SyncData.sfx * 0.6f * (Mathf.Clamp((600f - Vector3.Distance(transform.position, local.position)), 0, 600) / 600f));
+                done = true;
+                Destroy(rb);
+            }
+            
             if (rb.velocity.magnitude < 120f && !spawnRocket.spaceDepressed) //Move toward cursor
             {
                 if (MouseFollower.position.x > transform.position.x)
@@ -109,7 +132,7 @@ public class RocketMove : MonoBehaviour {
                     rb.AddForce(new Vector3(0, -force * Time.deltaTime * (transform.position.y - MouseFollower.position.y), 0));
                 }
             }
-
+            
             if (rb.velocity.y < 0)
             {
                 if (rb.velocity.x != 0 && rb.velocity.y != 0)
