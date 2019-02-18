@@ -29,6 +29,7 @@ GameObject:
   - component: {fileID: 33467632919080928}
   - component: {fileID: 23685724333337660}
   - component: {fileID: 82835923351520694}
+  - component: {fileID: 114289981599406294}
   m_Layer: 13
   m_Name: Grapple
   m_TagString: Untagged
@@ -201,6 +202,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &114289981599406294
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1454285558614156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c768a852faf77a4fb0c0a903f240c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x: 100000000
+  y: 100000000
+  pos: {x: 0, y: 0, z: 0}
 --- !u!114 &114670519868802392
 MonoBehaviour:
   m_ObjectHideFlags: 1

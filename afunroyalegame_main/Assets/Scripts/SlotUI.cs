@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SlotUI : MonoBehaviour {
 
     public Image icon;
+    public Image HUDicon;
 
     Item item;
 
@@ -18,13 +19,17 @@ public class SlotUI : MonoBehaviour {
     {
         item = newItem;
         icon.sprite = item.icon;
+        HUDicon.sprite = item.icon;
         icon.enabled = true;
     }
 
     public void ClearSlot()
     {
         item = null;
-
+        if (HUDicon)
+        {
+            HUDicon.sprite = null;
+        }
         icon.sprite = null;
         icon.enabled = false;
     }

@@ -145,6 +145,27 @@ public class SpawnRocketAI : NetworkBehaviour
     {
         yield return new WaitForSeconds(timeDeath);
         spaceDepressed = true;
+        if (isServer)
+        {
+            RpcDepress();
+        }
+        else
+        {
+            CmdDepress();
+        }
+    }
+
+    [ClientRpc]
+    void RpcDepress()
+    {
+        spaceDepressed = fall;
+    }
+
+    [Command]
+    void CmdDepress()
+    {
+        spaceDepressed = false;
+        RpcDepress();
     }
 
     IEnumerator destroy()

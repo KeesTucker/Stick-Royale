@@ -44,6 +44,8 @@ public class ItemCheck : NetworkBehaviour {
 
     public Item fists;
 
+    public bool isPlayer;
+
     // Use this for initialization
     IEnumerator Start () {
         spawnWeapons = GameObject.Find("Items").GetComponent<SpawnWeapons>();
@@ -56,6 +58,7 @@ public class ItemCheck : NetworkBehaviour {
 	void Update () {
         if (e)
         {
+            e = false;
             if (isServer)
             {
                 checkDistances();
@@ -69,7 +72,6 @@ public class ItemCheck : NetworkBehaviour {
                 }
                 
             }
-            e = false;
         }
         if (!closestItem)
         {
@@ -149,8 +151,11 @@ public class ItemCheck : NetworkBehaviour {
 
         //updateUI.UpdateSlotsUI();
         //updateUI.HighlightSlotOnPickup(refrenceKeeper.activeSlot);
-        updateUI.UpdateSlotsUI();
-        updateUI.HighlightSlotOnPickup(refrenceKeeper.activeSlot);
+        if (hasAuthority && isPlayer)
+        {
+            updateUI.UpdateSlotsUI();
+            updateUI.HighlightSlotOnPickup(refrenceKeeper.activeSlot);
+        }
         RpcPickupWeapon(weaponIndex, closestItem.GetComponent<BulletsLeft>().bullets);
 
         Destroy(closestItem);
@@ -176,8 +181,11 @@ public class ItemCheck : NetworkBehaviour {
             }
             refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot] = fists;
             switchWeapon.Switch(100);
-            updateUI.UpdateSlotsUI();
-            updateUI.HighlightSlotOnPickup(refrenceKeeper.activeSlot);
+            if (hasAuthority && isPlayer)
+            {
+                updateUI.UpdateSlotsUI();
+                updateUI.HighlightSlotOnPickup(refrenceKeeper.activeSlot);
+            }
         }
     }
 
@@ -212,7 +220,7 @@ public class ItemCheck : NetworkBehaviour {
             shoot.bulletsLeft[refrenceKeeper.activeSlot] = bulletsLeft;
             //Update Stats
 
-            if (hasAuthority)
+            if (hasAuthority && isPlayer)
             {
                 updateUI.UpdateSlotsUI();
                 updateUI.HighlightSlotOnPickup(refrenceKeeper.activeSlot);

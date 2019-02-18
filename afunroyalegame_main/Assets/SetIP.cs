@@ -15,12 +15,12 @@ public class SetIP : MonoBehaviour {
 
     void Start()
     {
+        manager = GameObject.Find("_NetworkManager").GetComponent<NetworkManager>();
         if (mainInputField.text == "5 Bots")
         {
             if (PlayerPrefs.HasKey("playerNum"))
             {
                 SyncData.numPlayers = PlayerPrefs.GetInt("playerNum");
-                Debug.Log(PlayerPrefs.GetInt("playerNum"));
                 mainInputField.text = PlayerPrefs.GetInt("playerNum").ToString() + " Bots";
             }
         }

@@ -6,6 +6,8 @@ public class FallTerrain : MonoBehaviour {
 
     public bool started;
 
+    public float time;
+
 	// Use this for initialization
     public void StartWrapper()
     {
@@ -13,13 +15,15 @@ public class FallTerrain : MonoBehaviour {
     }
 
 	IEnumerator ReplaceRigidbody() {
-        yield return new WaitForSeconds(Mathf.Clamp((SyncData.worldSize * 25) - Mathf.Abs(transform.position.x / 7), 0, 36000));
+        time = Mathf.Clamp((SyncData.worldSize * 35) - Mathf.Abs(transform.position.x / 7), 0, 36000);
+        yield return new WaitForSeconds(time);
         StartCoroutine("DestroySlow");
         if (GetComponent<Rigidbody>())
         {
             GetComponent<Rigidbody>().isKinematic = false;
             GetComponent<Rigidbody>().useGravity = true;
             GetComponent<Rigidbody>().freezeRotation = false;
+            GetComponent<Rigidbody>().mass = 1000;
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationX;
         }
@@ -31,6 +35,7 @@ public class FallTerrain : MonoBehaviour {
             GetComponent<Rigidbody>().isKinematic = false;
             GetComponent<Rigidbody>().useGravity = true;
             GetComponent<Rigidbody>().freezeRotation = false;
+            GetComponent<Rigidbody>().mass = 1000;
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationX;
         }

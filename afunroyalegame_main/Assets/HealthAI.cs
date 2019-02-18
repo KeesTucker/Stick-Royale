@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Mirror;
 
 public class HealthAI : NetworkBehaviour {
@@ -24,6 +25,11 @@ public class HealthAI : NetworkBehaviour {
     public AudioSource audioSource;
     public AudioClip explosion;
     public Transform local;
+
+    public Image healthHUDR;
+    public Image healthHUDL;
+
+    public float oldHealth;
 	
 	IEnumerator Start()
     {
@@ -31,10 +37,12 @@ public class HealthAI : NetworkBehaviour {
         if (GetComponent<AISetup>().isServer)
         {
             health = SyncData.health;
+            oldHealth = health;
         }
         else
         {
             health = GameObject.Find("Player(Clone)").GetComponent<HealthAI>().health;
+            oldHealth = health;
         }
         while (!GameObject.Find("LocalPlayer") && !GameObject.Find("LoadingPlayer"))
         {
@@ -48,6 +56,8 @@ public class HealthAI : NetworkBehaviour {
         {
             local = GameObject.Find("LoadingPlayer").transform;
         }
+        healthHUDR = GameObject.Find("PlayerUI/HUD/Panel/HealthR").GetComponent<Image>();
+        healthHUDL = GameObject.Find("PlayerUI/HUD/Panel/HealthL").GetComponent<Image>();
     }
 
     void Update()
@@ -56,6 +66,13 @@ public class HealthAI : NetworkBehaviour {
         {
             StartCoroutine("DestroyPlayer");
             deaded = true;
+        }
+        if (health != oldHealth && isPlayer)
+        {
+            healthHUDR.fillAmount = (health / SyncData.health);
+            healthHUDL.fillAmount = (health / SyncData.health);
+            oldHealth = health;
+            Debug.Log(health / SyncData.health);
         }
     }
 

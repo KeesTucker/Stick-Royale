@@ -55,10 +55,7 @@ public class SetOptions : MonoBehaviour {
 
         QualitySettings.antiAliasing = aA;
 
-        if (true)
-        {
-
-        }
+        manager = GameObject.Find("_NetworkManager").GetComponent<NetworkManager>();
     }
 
     public void SetName()

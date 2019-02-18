@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(AudioSource))]
 public class ShootAI : MonoBehaviour {
@@ -113,6 +114,20 @@ public class ShootAI : MonoBehaviour {
 
     public Transform local;
 
+    public Image reloadHUD;
+    public Image fireHUD;
+
+    public float fireTime;
+    public float reloadTime;
+
+    public float timerReload;
+    public float timerFire;
+
+    public bool isPlayer;
+    public bool notAI;
+
+    public bool firing;
+
     IEnumerator Start()
     {
         while (!GameObject.Find("LocalPlayer") && !GameObject.Find("LoadingPlayer"))
@@ -122,10 +137,22 @@ public class ShootAI : MonoBehaviour {
         if (GameObject.Find("LocalPlayer"))
         {
             local = GameObject.Find("LocalPlayer").transform;
+            if (local.gameObject.GetComponent<AISetup>().hasAuthority && notAI)
+            {
+                isPlayer = true;
+            }
         }
         else if (GameObject.Find("LoadingPlayer"))
         {
             local = GameObject.Find("LoadingPlayer").transform;
+        }
+        if (GameObject.Find("PlayerUI/HUD/Panel/Reloading"))
+        {
+            reloadHUD = GameObject.Find("PlayerUI/HUD/Panel/Reloading").GetComponent<Image>();
+        }
+        if (GameObject.Find("PlayerUI/HUD/Panel/Fire"))
+        {
+            fireHUD = GameObject.Find("PlayerUI/HUD/Panel/Fire").GetComponent<Image>();
         }
         audioSource = GetComponent<AudioSource>();
         for (int i = 0; i < LimbEnds.Length; i++)
@@ -244,6 +271,20 @@ public class ShootAI : MonoBehaviour {
         }
     }
 
+    void Update()
+    {
+        if (reloading && hasMag && isPlayer)
+        {
+            reloadTime += Time.deltaTime;
+            reloadHUD.fillAmount = reloadTime / timerReload;
+        }
+        if (firing && isPlayer)
+        {
+            fireTime += Time.deltaTime;
+            fireHUD.fillAmount = fireTime / timerFire;
+        }
+    }
+
     IEnumerator Punch()
     {
         audioSource.PlayOneShot(punch, SyncData.sfx * 0.2f * (Mathf.Clamp((200 - Vector3.Distance(transform.position, local.position)), 0, 200) / 200));
@@ -262,6 +303,12 @@ public class ShootAI : MonoBehaviour {
             LimbDamagers[nextFist].punching = true;
             LimbDamagers[nextFist].particleDone = false;
             LimbDamagers[nextFist].hitable = true;
+            LimbDamagers[nextFist].hasKilled = false;
+            if (isPlayer && refrenceKeeper.hasAuthority)
+            {
+                LimbDamagers[nextFist].localFired = true;
+            }
+            
             damager = nextFist;
             if (nextFist == 0)
             {
@@ -285,6 +332,11 @@ public class ShootAI : MonoBehaviour {
             LimbDamagers[nextFist + 2].punching = true;
             LimbDamagers[nextFist + 2].particleDone = false;
             LimbDamagers[nextFist + 2].hitable = true;
+            LimbDamagers[nextFist + 2].hasKilled = false;
+            if (isPlayer && refrenceKeeper.hasAuthority)
+            {
+                LimbDamagers[nextFist + 2].localFired = true;
+            }
             damager = nextFist + 2;
             if (nextFist == 0)
             {
@@ -322,6 +374,7 @@ public class ShootAI : MonoBehaviour {
         {
             audioSource.PlayOneShot(reload, SyncData.sfx * 0.8f * (Mathf.Clamp((200 - Vector3.Distance(transform.position, local.position)), 0, 200) / 200));
             reloading = true;
+            reloadTime = 0;
             yield return new WaitForSeconds(0.3f);
             if (reloading)
             {
@@ -349,7 +402,7 @@ public class ShootAI : MonoBehaviour {
                     magazine.transform.localScale = refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].spawnScale;
                     magrb.mass = 0.5f;
                     StartCoroutine(DestroyMag(magazine));*/
-
+                    timerReload = refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].reloadTime;
                     yield return new WaitForSeconds(refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].reloadTime);
                     if (reloading)
                     {
@@ -381,6 +434,9 @@ public class ShootAI : MonoBehaviour {
 
     IEnumerator FireBullet()
     {
+        fireTime = 0;
+        timerFire = 1f / fireRate;
+        firing = true;
         audioSource.PlayOneShot(gunShot, SyncData.sfx * 0.6f * (Mathf.Clamp((200 - Vector3.Distance(transform.position, local.position)), 0, 200) / 200));
         for (int x = 0; x < Mathf.Clamp(Random.Range(refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].bulletSplit / 2, refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].bulletSplit), 1, 9999); x++)
         {
@@ -403,6 +459,11 @@ public class ShootAI : MonoBehaviour {
             }
             bullet.GetComponent<DamageDealer>().damage = refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].damage;
             bullet.GetComponent<DamageDealer>().hitable = true;
+            if (refrenceKeeper.hasAuthority && isPlayer)
+            {
+                bullet.GetComponent<DamageDealer>().localFired = true;
+            }
+            
             Destroy(bullet, 5.0f);
         }
         shell = Instantiate(
@@ -438,7 +499,7 @@ public class ShootAI : MonoBehaviour {
 
         yield return new WaitForSeconds((1 / fireRate));
         loopDown = true;
-
+        firing = false;
     }
 
     IEnumerator MuzzleOff()

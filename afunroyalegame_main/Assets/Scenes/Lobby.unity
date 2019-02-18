@@ -4929,11 +4929,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114329973218860268, guid: b1f695b770db60742bc94d14a542410e,
-        type: 2}
-      propertyPath: showGUI
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1f695b770db60742bc94d14a542410e, type: 2}
   m_IsPrefabAsset: 0
@@ -9488,7 +9483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.24359204, g: 0.36340895, b: 0.4339623, a: 0.43529412}
+  m_Color: {r: 0.24359204, g: 0.36340895, b: 0.4339623, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

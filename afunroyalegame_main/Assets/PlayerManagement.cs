@@ -40,15 +40,9 @@ public class PlayerManagement : NetworkBehaviour {
     {
         if (playerManagement)
         {
-            if (playerManagement.currentNum % 2 == 0)
-            {
-                pos = new Vector3((playerManagement.currentNum / 2) * 500, 0, 0);
-            }
-            else
-            {
-                pos = new Vector3((int)(-playerManagement.currentNum / 2) * 500, 0, 0);
-            }
+            pos = new Vector3(Random.Range(-((float)SyncData.worldSize / 2f) * 300f, ((float)SyncData.worldSize / 2f) * 300f), 0, 0);
         }
+        pos = new Vector3(Random.Range(-((float)SyncData.worldSize / 2f) * 300f, ((float)SyncData.worldSize / 2f) * 300f), 0, 0);
         playerSpawned = Instantiate(AIPlayer, pos, transform.rotation);
         playerSpawned.GetComponent<AISetup>().parent = gameObject;
         NetworkServer.SpawnWithClientAuthority(playerSpawned, connectionToClient);
@@ -67,11 +61,11 @@ public class PlayerManagement : NetworkBehaviour {
     {
         if (currentNum % 2 == 0)
         {
-            pos = new Vector3((currentNum / 2) * 500, 0, 0);
+            pos = new Vector3((currentNum / 2) * 250, 0, 0);
         }
         else
         {
-            pos = new Vector3((int)(-currentNum / 2) * 500, 0, 0);
+            pos = new Vector3((int)(-currentNum / 2) * 250, 0, 0);
         }
         playerSpawned = Instantiate(bot, pos, transform.rotation);
         playerSpawned.GetComponent<AISetup>().parent = gameObject;

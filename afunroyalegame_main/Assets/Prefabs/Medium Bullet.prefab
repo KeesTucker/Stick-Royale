@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 114602488107335364}
   - component: {fileID: 114337396593051444}
   - component: {fileID: 82539742499192102}
+  - component: {fileID: 114585658800810298}
   m_Layer: 9
   m_Name: Medium Bullet
   m_TagString: Untagged
@@ -312,6 +313,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78af27a5f49af9f40a5312e12a3e01ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114585658800810298
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1301045824902992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c768a852faf77a4fb0c0a903f240c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x: 100000000
+  y: 100000000
+  pos: {x: 0, y: 0, z: 0}
 --- !u!114 &114602488107335364
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -341,6 +356,7 @@ MonoBehaviour:
   ouchie: {r: 0.8, g: 0.05, b: 0.05, a: 1}
   hitMarker: {fileID: 1515018597900156, guid: a1a66d51af9473045834472520dcc367, type: 2}
   hitable: 0
+  local: {fileID: 0}
   splat: {fileID: 8300000, guid: 4da03d73ebf7c2c43ba8d7bad8f57d4e, type: 3}
   ping: {fileID: 8300000, guid: cdc0921fbb1ad0549aeafc797a29b97d, type: 3}
   audioSource: {fileID: 82631197377766896, guid: ff97ee52b8bc425479a64c5d916c105d,

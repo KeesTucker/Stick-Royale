@@ -13,7 +13,7 @@ public class SwitchWeaponAI : MonoBehaviour {
     public GameObject WeaponHand;
     public GameObject muzzleFlash;
     public GameObject localRelay;
-
+    public GameObject HandHeldWeapon;
     public SyncWeaponAI localWeaponSync;
 
     // Use this for initialization
@@ -48,12 +48,16 @@ public class SwitchWeaponAI : MonoBehaviour {
                 model = spawnWeapons.Weapons[WeaponIndex].WeaponItem.itemModel;
             }
             shoot.StopReload();
-            GameObject HandHeldWeapon = Instantiate(
-                model,
-                WeaponHand.transform.position,
-                WeaponHand.transform.rotation);
-            HandHeldWeapon.transform.SetParent(WeaponHand.transform);
-            if (spawnWeapons.Weapons[WeaponIndex].WeaponItem.name != "Fists")
+            if (model != null)
+            {
+                HandHeldWeapon = Instantiate(
+                    model,
+                    WeaponHand.transform.position,
+                    WeaponHand.transform.rotation);
+                HandHeldWeapon.transform.SetParent(WeaponHand.transform);
+            }
+
+            if (spawnWeapons.Weapons[WeaponIndex].WeaponItem.name != "Fists" && HandHeldWeapon != null)
             {
                 aimShoot.Weapon = HandHeldWeapon.transform;
                 shoot.fireRate = spawnWeapons.Weapons[WeaponIndex].WeaponItem.fireRate;

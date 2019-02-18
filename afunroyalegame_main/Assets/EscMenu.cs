@@ -161,7 +161,6 @@ public class EscMenu : MonoBehaviour {
             }
             else
             {
-
                 transform.GetChild(0).gameObject.SetActive(!state);
                 GameObject.Find("LocalPlayer").GetComponent<PlayerControl>().enabled = state;
             }

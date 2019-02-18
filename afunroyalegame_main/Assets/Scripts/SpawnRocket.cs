@@ -19,7 +19,7 @@ public class SpawnRocket : NetworkBehaviour {
 
     public ParticleSystem.EmissionModule emission;
 
-    public float timeDeath = 20f;
+    public float timeDeath = 10f;
 
     public GameObject localRelay;
 
@@ -73,7 +73,7 @@ public class SpawnRocket : NetworkBehaviour {
     IEnumerator timerToKill()
     {
         yield return new WaitForSeconds(timeDeath);
-        spaceDepressed = true;
+        DepressSpace();
     }
 
     IEnumerator destroy()

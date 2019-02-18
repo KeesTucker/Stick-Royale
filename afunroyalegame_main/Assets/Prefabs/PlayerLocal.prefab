@@ -668,6 +668,7 @@ GameObject:
   - component: {fileID: 114397435739944924}
   - component: {fileID: 82166130458323914}
   - component: {fileID: 114815923090410630}
+  - component: {fileID: 114712726320990698}
   m_Layer: 24
   m_Name: PlayerLocal
   m_TagString: PosRelay
@@ -3458,6 +3459,7 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
 --- !u!114 &114093409402203346
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3472,6 +3474,7 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
 --- !u!114 &114117492192565804
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3486,6 +3489,7 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
 --- !u!114 &114119483114747766
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3526,6 +3530,7 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
 --- !u!114 &114169648274511698
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3580,6 +3585,7 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
 --- !u!114 &114192915635642836
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3594,6 +3600,7 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
 --- !u!114 &114193098051282052
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3641,6 +3648,7 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
 --- !u!114 &114235458896485258
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3655,6 +3663,7 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
 --- !u!114 &114248129533816724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3742,6 +3751,7 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
 --- !u!114 &114295215033964028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3770,6 +3780,7 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
 --- !u!114 &114319897853511756
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3795,6 +3806,7 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
 --- !u!114 &114339696921955500
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3817,6 +3829,9 @@ MonoBehaviour:
   audioSource: {fileID: 82166130458323914}
   explosion: {fileID: 8300000, guid: 8693162eaf60efe4d8aefb9f628dd444, type: 3}
   local: {fileID: 0}
+  healthHUDR: {fileID: 0}
+  healthHUDL: {fileID: 0}
+  oldHealth: 0
 --- !u!114 &114347183182424706
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3929,6 +3944,7 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
 --- !u!114 &114378320368493060
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3943,6 +3959,7 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
 --- !u!114 &114381873286667676
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3957,6 +3974,7 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
 --- !u!114 &114396266886115200
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3971,6 +3989,7 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
 --- !u!114 &114397435739944924
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4010,6 +4029,7 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
 --- !u!114 &114406196234290654
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4066,6 +4086,7 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
 --- !u!114 &114427151881843098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4235,6 +4256,14 @@ MonoBehaviour:
   reload: {fileID: 0}
   punch: {fileID: 8300000, guid: b8bebe7802cbf9743b4c4fddd60519eb, type: 3}
   local: {fileID: 0}
+  reloadHUD: {fileID: 0}
+  fireHUD: {fileID: 0}
+  fireTime: 0
+  reloadTime: 0
+  timerReload: 0
+  timerFire: 0
+  isPlayer: 0
+  notAI: 1
 --- !u!114 &114443363523932222
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4296,6 +4325,7 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
 --- !u!114 &114459296555572284
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4327,6 +4357,7 @@ MonoBehaviour:
   direction: 0
   destroyGun: {fileID: 114319897853511756}
   fists: {fileID: 11400000, guid: 7e9171c269320124091cafbdb2760680, type: 2}
+  isPlayer: 1
 --- !u!114 &114470329865115248
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4341,6 +4372,7 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
 --- !u!114 &114542593495766166
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4355,6 +4387,7 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
 --- !u!114 &114558690124470602
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4431,6 +4464,7 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
 --- !u!114 &114576114535093198
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4459,6 +4493,7 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
 --- !u!114 &114601345466329936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4516,6 +4551,7 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
 --- !u!114 &114607978142549058
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4543,6 +4579,7 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
 --- !u!114 &114615851248298666
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4630,6 +4667,7 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
 --- !u!114 &114675272296962356
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4714,6 +4752,24 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
+--- !u!114 &114712726320990698
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1617520046985736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06efc0623d7f4d44ebf34c2549ae7ce1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  terrain: {fileID: 0}
+  playerMarker: {fileID: 0}
+  world: {fileID: 0}
+  time: 0
+  timeMultiplier: 0
+  spawnRocket: {fileID: 0}
 --- !u!114 &114764028860671540
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4728,6 +4784,7 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
 --- !u!114 &114766943715799110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4816,6 +4873,7 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
 --- !u!114 &114790645300688230
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4872,6 +4930,7 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
 --- !u!114 &114826089693111842
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4913,6 +4972,7 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
 --- !u!114 &114847915261636182
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4978,6 +5038,7 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
 --- !u!114 &114897177810682294
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5018,6 +5079,7 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
 --- !u!114 &114918668769552472
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5055,6 +5117,7 @@ MonoBehaviour:
   WeaponHand: {fileID: 1198879070589158}
   muzzleFlash: {fileID: 1959343117674386}
   localRelay: {fileID: 0}
+  HandHeldWeapon: {fileID: 0}
   localWeaponSync: {fileID: 0}
 --- !u!114 &114944121802638596
 MonoBehaviour:
@@ -5070,6 +5133,7 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
 --- !u!114 &114959897075054726
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5115,6 +5179,7 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
 --- !u!114 &114997698817635954
 MonoBehaviour:
   m_ObjectHideFlags: 1

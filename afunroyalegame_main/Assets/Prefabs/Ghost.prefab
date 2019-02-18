@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114475978900242824}
   - component: {fileID: 212662241278926964}
   - component: {fileID: 135588118300124994}
+  - component: {fileID: 114782268216372888}
   m_Layer: 18
   m_Name: Ghost
   m_TagString: Ragdoll
@@ -201,6 +202,20 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
+--- !u!114 &114782268216372888
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1881230412041522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c768a852faf77a4fb0c0a903f240c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x: 100000000
+  y: 100000000
+  pos: {x: 0, y: 0, z: 0}
 --- !u!114 &114856915583492782
 MonoBehaviour:
   m_ObjectHideFlags: 1
