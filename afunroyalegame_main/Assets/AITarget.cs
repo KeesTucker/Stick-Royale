@@ -182,48 +182,51 @@ public class AITarget : MonoBehaviour {
                     }
                     if (refrenceKeeper.inventoryCount < 3 && closestWeapon)
                     {
-                        if (minWeaponDistance < minPlayerDistance && (!bulletTypes.Contains(spawnWeapons.Weapons[closestWeapon.parent.parent.GetComponent<WeaponIndexHolder>().WeaponIndex].WeaponItem.bullet) || spawnWeapons.Weapons[closestWeapon.parent.parent.GetComponent<WeaponIndexHolder>().WeaponIndex].WeaponItem.special)) //Make sure not picking up same weapontype
+                        if (closestWeapon.parent.parent.GetComponent<WeaponIndexHolder>())
                         {
-                            if (Random.Range(0, 10) == 1)
+                            if (minWeaponDistance < minPlayerDistance && (!bulletTypes.Contains(spawnWeapons.Weapons[closestWeapon.parent.parent.GetComponent<WeaponIndexHolder>().WeaponIndex].WeaponItem.bullet) || spawnWeapons.Weapons[closestWeapon.parent.parent.GetComponent<WeaponIndexHolder>().WeaponIndex].WeaponItem.special)) //Make sure not picking up same weapontype
                             {
-                                if (closestGrapple.name.Contains("Tree"))
+                                if (Random.Range(0, 10) == 1)
                                 {
-                                    transform.position = closestGrapple.transform.position + new Vector3(0, 30f, 0);
+                                    if (closestGrapple.name.Contains("Tree"))
+                                    {
+                                        transform.position = closestGrapple.transform.position + new Vector3(0, 30f, 0);
+                                    }
+                                    else
+                                    {
+                                        transform.position = closestGrapple.transform.position;
+                                    }
+                                    baseControl.rClick = true;
+                                    StartCoroutine("StopGrapple");
                                 }
                                 else
                                 {
-                                    transform.position = closestGrapple.transform.position;
+                                    transform.position = closestWeapon.transform.position;
                                 }
-                                baseControl.rClick = true;
-                                StartCoroutine("StopGrapple");
+                                targetType = 0;
                             }
-                            else
+                            else if (closestPlayer)
                             {
-                                transform.position = closestWeapon.transform.position;
-                            }
-                            targetType = 0;
-                        }
-                        else if (closestPlayer)
-                        {
-                            if (Random.Range(0, 8) == 1 && closestGrapple)
-                            {
-                                if (closestGrapple.name.Contains("Tree"))
+                                if (Random.Range(0, 8) == 1 && closestGrapple)
                                 {
-                                    transform.position = closestGrapple.transform.position + new Vector3(0, 30f, 0);
+                                    if (closestGrapple.name.Contains("Tree"))
+                                    {
+                                        transform.position = closestGrapple.transform.position + new Vector3(0, 30f, 0);
+                                    }
+                                    else
+                                    {
+                                        transform.position = closestGrapple.transform.position;
+                                    }
+                                    baseControl.rClick = true;
+                                    transform.position = closestPlayer.transform.position;
+                                    StartCoroutine("StopGrapple");
                                 }
                                 else
                                 {
-                                    transform.position = closestGrapple.transform.position;
+                                    transform.position = closestPlayer.transform.position;
                                 }
-                                baseControl.rClick = true;
-                                transform.position = closestPlayer.transform.position;
-                                StartCoroutine("StopGrapple");
+                                targetType = 1;
                             }
-                            else
-                            {
-                                transform.position = closestPlayer.transform.position;
-                            }
-                            targetType = 1;
                         }
                     }
                     else if (closestPlayer)

@@ -45,10 +45,18 @@ public class FallTerrain : MonoBehaviour {
     {
         if (GetComponent<Collider>() && info.gameObject.GetComponent<Collider>())
         {
-            if (info.gameObject.tag == "Kill" && transform.GetChild(0).gameObject.name != "Top" && transform.GetChild(0).gameObject.name != "Base")
+            if (info.gameObject.tag == "Kill" && transform.childCount > 0)
+            {
+                if (info.gameObject.tag == "Kill" && transform.GetChild(0).gameObject.name != "Top" && transform.GetChild(0).gameObject.name != "Base")
+                {
+                    Destroy(gameObject);
+                }
+            }
+            else if (info.gameObject.tag == "Kill")
             {
                 Destroy(gameObject);
             }
+            
             if (info.gameObject.layer == 12 || info.gameObject.layer == 16)
             {
                 Physics.IgnoreCollision(GetComponent<Collider>(), info.collider);
