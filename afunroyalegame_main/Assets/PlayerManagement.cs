@@ -9,11 +9,13 @@ public class PlayerManagement : NetworkBehaviour {
     public GameObject bot;
     public GameObject playerSpawned;
     public GameObject playerSpawnedReal;
-    public int numPlayers = 1;
+    public int numPlayers = 5;
     public int currentNum = 1;
     public int totalPlayers;
     private Vector3 pos;
     public PlayerManagement playerManagement;
+    [SyncVar]
+    public bool server;
 
 	// Use this for initialization
 	void Start () {
@@ -21,6 +23,14 @@ public class PlayerManagement : NetworkBehaviour {
         if (!isLocalPlayer && isServer)
         {
             playerManagement = GameObject.Find("LocalConnection").GetComponent<PlayerManagement>();
+        }
+        if (isServer && isLocalPlayer)
+        {
+            server = true;
+        }
+        if (server)
+        {
+            GameObject.Find("PlayersLeft").transform.GetChild(0).gameObject.GetComponent<PlayersLeft>().playerManagement = this;
         }
         if (isLocalPlayer)
         {

@@ -63,6 +63,10 @@ public class SpawnWeapons : NetworkBehaviour {
         for (int i = 0; i < spawns.Count; i++)
         {
             WeaponIndex = Random.Range(0, Weapons.Count - 1);
+            if (Random.Range(0, 5) == 2)
+            {
+                WeaponIndex = 15;
+            }
             GameObject WeaponItem = Instantiate(
                 WeaponItemPrefab,
                 spawns[i].transform.position,

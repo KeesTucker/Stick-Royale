@@ -40,13 +40,17 @@ public class DamageDealer : MonoBehaviour {
         {
             yield return null;
         }
-        if (GameObject.Find("LocalPlayer"))
+        while (local == null)
         {
-            local = GameObject.Find("LocalPlayer").transform;
-        }
-        else if (GameObject.Find("LoadingPlayer"))
-        {
-            local = GameObject.Find("LoadingPlayer").transform;
+            if (GameObject.Find("LocalPlayer"))
+            {
+                local = GameObject.Find("LocalPlayer").transform;
+            }
+            else if (GameObject.Find("LoadingPlayer"))
+            {
+                local = GameObject.Find("LoadingPlayer").transform;
+            }
+            yield return null;
         }
         rb = GetComponent<Rigidbody>();
         yield return new WaitForSeconds(0.1f);
@@ -73,6 +77,11 @@ public class DamageDealer : MonoBehaviour {
 
     void OnCollisionEnter(Collision collisionInfo)
     {
+        if (collisionInfo.gameObject.layer == 24 && punching && !particleDone && gameObject.tag != "WeaponItem")
+        {
+            StartCoroutine(SpawnParticle(collisionInfo));
+            particleDone = true;
+        }
         if (collisionInfo.gameObject.tag == "Breakable")
         {
             if (local)
@@ -103,6 +112,7 @@ public class DamageDealer : MonoBehaviour {
         }
         else if (collisionInfo.gameObject.layer == 24 && !particleDone && gameObject.tag != "WeaponItem" && punching)
         {
+            Debug.Log("WTF");
             if (local)
             {
                 audioSource.PlayOneShot(splat, SyncData.sfx * 1.3f * (Mathf.Clamp((200 - Vector3.Distance(transform.position, local.position)), 0, 200) / 200));
@@ -121,7 +131,6 @@ public class DamageDealer : MonoBehaviour {
             }
             StartCoroutine(SpawnParticle(collisionInfo));
         }
-
         if (weapon)
         {
             if (collisionInfo.gameObject.layer == 24)
@@ -136,15 +145,16 @@ public class DamageDealer : MonoBehaviour {
                     {
                         onServer = false;
                     }
+                    if (collisionInfo.gameObject.GetComponent<HealthAI>().health - damage <= 0 && localFired && collisionInfo.gameObject.GetComponent<HealthAI>().health > 0)
+                    {
+                        if (!hasKilled)
+                        {
+                            SyncData.kills++;
+                        }
+                    }
                     if (onServer)
                     {
-                        if (collisionInfo.gameObject.GetComponent<HealthAI>().health - damage <= 0 && localFired && collisionInfo.gameObject.GetComponent<HealthAI>().health > 0)
-                        {
-                            if (!hasKilled)
-                            {
-                                SyncData.kills++;
-                            }
-                        }
+                        
                         hasKilled = true;
 
                         collisionInfo.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
@@ -162,15 +172,16 @@ public class DamageDealer : MonoBehaviour {
                     {
                         onServer = false;
                     }
+                    if (collisionInfo.transform.parent.gameObject.GetComponent<HealthAI>().health - damage <= 0 && localFired && collisionInfo.transform.parent.gameObject.GetComponent<HealthAI>().health > 0)
+                    {
+                        if (!hasKilled)
+                        {
+                            SyncData.kills++;
+                        }
+                    }
                     if (onServer)
                     {
-                        if (collisionInfo.transform.parent.gameObject.GetComponent<HealthAI>().health - damage <= 0 && localFired && collisionInfo.transform.parent.gameObject.GetComponent<HealthAI>().health > 0)
-                        {
-                            if (!hasKilled)
-                            {
-                                SyncData.kills++;
-                            }
-                        }
+                        
                         hasKilled = true;
                         collisionInfo.transform.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
                     }
@@ -187,15 +198,16 @@ public class DamageDealer : MonoBehaviour {
                     {
                         onServer = false;
                     }
+                    if (collisionInfo.transform.parent.parent.gameObject.GetComponent<HealthAI>().health - damage <= 0 && localFired && collisionInfo.transform.parent.parent.gameObject.GetComponent<HealthAI>().health > 0)
+                    {
+                        if (!hasKilled)
+                        {
+                            SyncData.kills++;
+                        }
+                    }
                     if (onServer)
                     {
-                        if (collisionInfo.transform.parent.parent.gameObject.GetComponent<HealthAI>().health - damage <= 0 && localFired && collisionInfo.transform.parent.parent.gameObject.GetComponent<HealthAI>().health > 0)
-                        {
-                            if (!hasKilled)
-                            {
-                                SyncData.kills++;
-                            }
-                        }
+                        
                         hasKilled = true;
                         collisionInfo.transform.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
                     }
@@ -212,15 +224,16 @@ public class DamageDealer : MonoBehaviour {
                     {
                         onServer = false;
                     }
+                    if (collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<HealthAI>().health - damage <= 0 && localFired && collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<HealthAI>().health > 0)
+                    {
+                        if (!hasKilled)
+                        {
+                            SyncData.kills++;
+                        }
+                    }
                     if (onServer)
                     {
-                        if (collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<HealthAI>().health - damage <= 0 && localFired && collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<HealthAI>().health > 0)
-                        {
-                            if (!hasKilled)
-                            {
-                                SyncData.kills++;
-                            }
-                        }
+                        
                         hasKilled = true;
                         collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
                     }
@@ -244,15 +257,16 @@ public class DamageDealer : MonoBehaviour {
                     {
                         onServer = false;
                     }
+                    if (collisionInfo.gameObject.GetComponent<HealthAI>().health - damage <= 0 && localFired && collisionInfo.gameObject.GetComponent<HealthAI>().health > 0)
+                    {
+                        if (!hasKilled)
+                        {
+                            SyncData.kills++;
+                        }
+                    }
                     if (onServer)
                     {
-                        if (collisionInfo.gameObject.GetComponent<HealthAI>().health - damage <= 0 && localFired && collisionInfo.gameObject.GetComponent<HealthAI>().health > 0)
-                        {
-                            if (!hasKilled)
-                            {
-                                SyncData.kills++;
-                            }
-                        }
+                        
                         hasKilled = true;
                         collisionInfo.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
                     }
@@ -269,15 +283,16 @@ public class DamageDealer : MonoBehaviour {
                     {
                         onServer = false;
                     }
+                    if (collisionInfo.transform.parent.gameObject.GetComponent<HealthAI>().health - damage <= 0 && localFired && collisionInfo.transform.parent.gameObject.GetComponent<HealthAI>().health > 0)
+                    {
+                        if (!hasKilled)
+                        {
+                            SyncData.kills++;
+                        }
+                    }
                     if (onServer)
                     {
-                        if (collisionInfo.transform.parent.gameObject.GetComponent<HealthAI>().health - damage <= 0 && localFired && collisionInfo.transform.parent.gameObject.GetComponent<HealthAI>().health > 0)
-                        {
-                            if (!hasKilled)
-                            {
-                                SyncData.kills++;
-                            }
-                        }
+                        
                         hasKilled = true;
                         collisionInfo.transform.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
                     }
@@ -294,15 +309,16 @@ public class DamageDealer : MonoBehaviour {
                     {
                         onServer = false;
                     }
+                    if (collisionInfo.transform.parent.parent.gameObject.GetComponent<HealthAI>().health - damage <= 0 && localFired && collisionInfo.transform.parent.parent.gameObject.GetComponent<HealthAI>().health > 0)
+                    {
+                        if (!hasKilled)
+                        {
+                            SyncData.kills++;
+                        }
+                    }
                     if (onServer)
                     {
-                        if (collisionInfo.transform.parent.parent.gameObject.GetComponent<HealthAI>().health - damage <= 0 && localFired && collisionInfo.transform.parent.parent.gameObject.GetComponent<HealthAI>().health > 0)
-                        {
-                            if (!hasKilled)
-                            {
-                                SyncData.kills++;
-                            }
-                        }
+                        
                         hasKilled = true;
                         collisionInfo.transform.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
                     }
@@ -319,15 +335,16 @@ public class DamageDealer : MonoBehaviour {
                     {
                         onServer = false;
                     }
+                    if (collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<HealthAI>().health - damage <= 0 && localFired && collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<HealthAI>().health > 0)
+                    {
+                        if (!hasKilled)
+                        {
+                            SyncData.kills++;
+                        }
+                    }
                     if (onServer)
                     {
-                        if (collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<HealthAI>().health - damage <= 0 && localFired && collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<HealthAI>().health > 0)
-                        {
-                            if (!hasKilled)
-                            {
-                                SyncData.kills++;
-                            }
-                        }
+                        
                         hasKilled = true;
                         collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
                     }

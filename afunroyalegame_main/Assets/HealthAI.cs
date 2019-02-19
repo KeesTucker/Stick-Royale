@@ -67,7 +67,7 @@ public class HealthAI : NetworkBehaviour {
             StartCoroutine("DestroyPlayer");
             deaded = true;
         }
-        if (health != oldHealth && isPlayer)
+        if (health != oldHealth && isPlayer && hasAuthority)
         {
             healthHUDR.fillAmount = (health / SyncData.health);
             healthHUDL.fillAmount = (health / SyncData.health);

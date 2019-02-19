@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayersLeft : MonoBehaviour {
 
-    PlayerManagement playerManagement;
+    public PlayerManagement playerManagement;
 
     public int players;
 
@@ -14,10 +14,6 @@ public class PlayersLeft : MonoBehaviour {
 	IEnumerator Start () {
         while (playerManagement == null)
         {
-            if (GameObject.Find("LocalConnection"))
-            {
-                playerManagement = GameObject.Find("LocalConnection").GetComponent<PlayerManagement>();
-            }
             yield return null;
         }
         players = playerManagement.totalPlayers;

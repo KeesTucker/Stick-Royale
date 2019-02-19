@@ -377,7 +377,7 @@ public class ShootAI : MonoBehaviour {
 
     IEnumerator Heal()
     {
-        audioSource.PlayOneShot(healSFX, SyncData.sfx * 0.2f * (Mathf.Clamp((200 - Vector3.Distance(transform.position, local.position)), 0, 200) / 200));
+        //audioSource.PlayOneShot(healSFX, SyncData.sfx * 0.2f * (Mathf.Clamp((200 - Vector3.Distance(transform.position, local.position)), 0, 200) / 200));
         fireTime = 0;
         timerFire = 1f / fireRate;
         firing = true;
@@ -410,11 +410,11 @@ public class ShootAI : MonoBehaviour {
 
     IEnumerator Reload()
     {
+        audioSource.PlayOneShot(reload, SyncData.sfx * 0.8f * (Mathf.Clamp((200 - Vector3.Distance(transform.position, local.position)), 0, 200) / 200));
+        reloading = true;
+        reloadTime = 0;
         if (refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].magazineSize > 1)
         {
-            audioSource.PlayOneShot(reload, SyncData.sfx * 0.8f * (Mathf.Clamp((200 - Vector3.Distance(transform.position, local.position)), 0, 200) / 200));
-            reloading = true;
-            reloadTime = 0;
             yield return new WaitForSeconds(0.3f);
             if (reloading)
             {

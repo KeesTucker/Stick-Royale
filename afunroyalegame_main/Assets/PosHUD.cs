@@ -22,18 +22,21 @@ public class PosHUD : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        playerMarker.localPosition = new Vector3(((transform.position.x / Mathf.Abs(terrain.startPos)) * 320f), playerMarker.localPosition.y, 0);
-        if (spawnRocket)
+        if (spawnRocket.hasAuthority)
         {
-            if (spawnRocket.ready)
+            playerMarker.localPosition = new Vector3(((transform.position.x / Mathf.Abs(terrain.startPos)) * 320f), playerMarker.localPosition.y, 0);
+            if (spawnRocket)
             {
-                time += Time.deltaTime;
-                if (time > 60)
+                if (spawnRocket.ready)
                 {
-                    timeMultiplier++;
-                    time = 0;
+                    time += Time.deltaTime;
+                    if (time > 60)
+                    {
+                        timeMultiplier++;
+                        time = 0;
+                    }
+                    world.localScale = new Vector3(Mathf.Clamp(((((float)SyncData.worldSize * 245f) - ((time + (timeMultiplier * 60f)) * 7f)) / (Mathf.Abs(terrain.startPos / 2))) * 0.6f, 0, 0.6f), 1, 1);
                 }
-                world.localScale = new Vector3(Mathf.Clamp(((((float)SyncData.worldSize * 245f) - ((time + (timeMultiplier * 60f)) * 7f)) / (Mathf.Abs(terrain.startPos / 2))) * 0.6f, 0, 0.6f), 1, 1);
             }
         }
     }
