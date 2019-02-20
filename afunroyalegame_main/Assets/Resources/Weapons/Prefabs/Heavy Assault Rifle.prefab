@@ -37,6 +37,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4823496211449398}
+  - component: {fileID: 114663740202062522}
   m_Layer: 0
   m_Name: Heavy Assault Rifle
   m_TagString: Untagged
@@ -641,3 +642,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.017926998, y: 0.07009292, z: 0.025578}
   m_Center: {x: -0.0475875, y: 2.0508776, z: 0}
+--- !u!114 &114663740202062522
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1448881644258168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c768a852faf77a4fb0c0a903f240c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x: 100000000
+  y: 100000000
+  pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0

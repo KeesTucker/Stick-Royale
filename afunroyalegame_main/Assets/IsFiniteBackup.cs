@@ -15,7 +15,7 @@ public class IsFiniteBackup : MonoBehaviour {
     {
         yield return new WaitForSeconds(0.5f);
         x = SyncData.worldSize * 1000;
-        y = 500;
+        y = 2000;
     }
 
 	void LateUpdate () {
@@ -30,9 +30,14 @@ public class IsFiniteBackup : MonoBehaviour {
         {
             if (transform.position.x > x || transform.position.x < -x || transform.position.y > y || transform.position.y < -y || transform.position.z > 200 || transform.position.z < -200 || transform.position.x == float.NaN || transform.position.y == float.NaN || transform.position.z == float.NaN)
             {
-                if (count > 5)
+                if (count > 10)
                 {
-                    FindParent(transform);
+                    if (gameObject.tag == "PosRelay")
+                    {
+                        GetComponent<HealthAI>().health = -100;
+                    }
+                    // FindParent(transform);
+                    Destroy(gameObject);
                 }
                 transform.position = pos;
                 count++;

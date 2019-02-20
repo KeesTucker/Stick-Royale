@@ -3341,6 +3341,8 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0
 --- !u!114 &114009929022017442
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3355,6 +3357,8 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0
 --- !u!114 &114018859891299594
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3383,6 +3387,8 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0
 --- !u!114 &114045590835030946
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3397,6 +3403,8 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0
 --- !u!114 &114047209833803012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3425,6 +3433,8 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0
 --- !u!114 &114083058223637362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3452,6 +3462,8 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0
 --- !u!114 &114094093216691222
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3483,6 +3495,8 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0
 --- !u!114 &114102828712800750
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3545,6 +3559,8 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0
 --- !u!114 &114130606213031244
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3580,7 +3596,7 @@ MonoBehaviour:
   unCrouch: 0
   Ragdoll: {fileID: 54286267349051440}
   walkForce: 8000
-  jumpForce: 100000
+  jumpForce: 130000
   grappleSince: 0
   anim: {fileID: 95437191914235670}
   shoot: {fileID: 114787745658144268}
@@ -3626,6 +3642,8 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0
 --- !u!114 &114161993438714406
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3657,6 +3675,7 @@ MonoBehaviour:
   direction: 0
   destroyGun: {fileID: 114710934122791386}
   fists: {fileID: 11400000, guid: 7e9171c269320124091cafbdb2760680, type: 2}
+  isPlayer: 0
 --- !u!114 &114174388180629244
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3684,6 +3703,8 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0
 --- !u!114 &114214364847313432
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3698,6 +3719,8 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0
 --- !u!114 &114243365481680708
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3751,6 +3774,8 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0
 --- !u!114 &114247839326958466
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3793,6 +3818,8 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0
 --- !u!114 &114268201341980868
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3862,6 +3889,8 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0
 --- !u!114 &114330604367532948
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3876,6 +3905,8 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0
 --- !u!114 &114344186223639498
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3938,6 +3969,7 @@ MonoBehaviour:
   WeaponHand: {fileID: 1388032956555704}
   muzzleFlash: {fileID: 1875479273869528}
   localRelay: {fileID: 0}
+  HandHeldWeapon: {fileID: 0}
   localWeaponSync: {fileID: 0}
 --- !u!114 &114402472759074726
 MonoBehaviour:
@@ -3977,6 +4009,8 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0
 --- !u!114 &114418638814728506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4072,6 +4106,8 @@ MonoBehaviour:
   splat: {fileID: 0}
   ping: {fileID: 0}
   audioSource: {fileID: 0}
+  hasKilled: 0
+  localFired: 0
 --- !u!114 &114469010814628966
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4094,6 +4130,9 @@ MonoBehaviour:
   audioSource: {fileID: 82925121610010522}
   explosion: {fileID: 8300000, guid: 8693162eaf60efe4d8aefb9f628dd444, type: 3}
   local: {fileID: 0}
+  healthHUDR: {fileID: 0}
+  healthHUDL: {fileID: 0}
+  oldHealth: 0
 --- !u!114 &114479969145604606
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4133,6 +4172,8 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0
 --- !u!114 &114495206771380848
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4187,6 +4228,8 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0
 --- !u!114 &114553017839774720
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4213,6 +4256,8 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0
 --- !u!114 &114558491117288398
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4263,6 +4308,8 @@ MonoBehaviour:
   splat: {fileID: 0}
   ping: {fileID: 0}
   audioSource: {fileID: 0}
+  hasKilled: 0
+  localFired: 0
 --- !u!114 &114576126887253418
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4330,6 +4377,7 @@ MonoBehaviour:
   dead: 0
   nameTag: {fileID: 0}
   stop: 0
+  spawnRocket: {fileID: 0}
 --- !u!114 &114594791522038414
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4381,6 +4429,8 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0
 --- !u!114 &114630650417437354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4439,7 +4489,6 @@ MonoBehaviour:
   WeaponRefrences: []
   itemDistanceRefrences: []
   weaponInventory: []
-  itemInventory: []
   itemCount: 0
   inventoryCount: 0
   activeSlot: 0
@@ -4480,6 +4529,8 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0
 --- !u!114 &114678788103292672
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4508,6 +4559,8 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0
 --- !u!114 &114694410229562418
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4522,6 +4575,8 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0
 --- !u!114 &114710475155280098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4536,6 +4591,8 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0
 --- !u!114 &114710934122791386
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4561,6 +4618,8 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0
 --- !u!114 &114732219430228734
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4646,6 +4705,8 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0
 --- !u!114 &114755927540569240
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4673,6 +4734,8 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0
 --- !u!114 &114773468823830560
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4687,6 +4750,8 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0
 --- !u!114 &114773539722049770
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4788,7 +4853,18 @@ MonoBehaviour:
   gunShot: {fileID: 8300000, guid: 1e0ede1f8425429459d557b7b0b9dff3, type: 3}
   reload: {fileID: 0}
   punch: {fileID: 8300000, guid: b8bebe7802cbf9743b4c4fddd60519eb, type: 3}
+  healSFX: {fileID: 0}
   local: {fileID: 0}
+  reloadHUD: {fileID: 0}
+  fireHUD: {fileID: 0}
+  fireTime: 0
+  reloadTime: 0
+  timerReload: 0
+  timerFire: 0
+  isPlayer: 0
+  notAI: 0
+  firing: 0
+  healing: 0
 --- !u!114 &114796556993098774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4803,6 +4879,8 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0
 --- !u!114 &114809370400880816
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4830,6 +4908,8 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0
 --- !u!114 &114838431979093128
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4862,6 +4942,8 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0
 --- !u!114 &114860505570930872
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4895,6 +4977,8 @@ MonoBehaviour:
   splat: {fileID: 0}
   ping: {fileID: 0}
   audioSource: {fileID: 0}
+  hasKilled: 0
+  localFired: 0
 --- !u!114 &114863589302779694
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5007,6 +5091,8 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0
 --- !u!114 &114937490860501088
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5094,6 +5180,8 @@ MonoBehaviour:
   splat: {fileID: 0}
   ping: {fileID: 0}
   audioSource: {fileID: 0}
+  hasKilled: 0
+  localFired: 0
 --- !u!114 &114976049613640130
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5108,6 +5196,8 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0
 --- !u!114 &114991323130510830
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5122,6 +5212,8 @@ MonoBehaviour:
   x: 100000000
   y: 100000000
   pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0
 --- !u!114 &114994922156866616
 MonoBehaviour:
   m_ObjectHideFlags: 1

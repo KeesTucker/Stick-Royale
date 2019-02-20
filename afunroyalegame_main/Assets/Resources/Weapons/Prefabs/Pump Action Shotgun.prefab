@@ -91,6 +91,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4048410348587700}
+  - component: {fileID: 114472524228993170}
   m_Layer: 0
   m_Name: Pump Action Shotgun
   m_TagString: Untagged
@@ -383,3 +384,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.022276998, y: 0.07619901, z: 0.028031997}
   m_Center: {x: -1.2788806, y: -0.23617351, z: -0.063554004}
+--- !u!114 &114472524228993170
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1665537433231940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c768a852faf77a4fb0c0a903f240c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x: 100000000
+  y: 100000000
+  pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0

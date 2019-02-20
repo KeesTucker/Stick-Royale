@@ -73,6 +73,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4338104646944158}
+  - component: {fileID: 114185640636661470}
   m_Layer: 0
   m_Name: Big Arse Shotgun
   m_TagString: Untagged
@@ -469,3 +470,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.44486502, y: 0.116612, z: 0.0126950145}
   m_Center: {x: -0.7127205, y: 0.035897, z: -0.1427055}
+--- !u!114 &114185640636661470
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1858911305427834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c768a852faf77a4fb0c0a903f240c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x: 100000000
+  y: 100000000
+  pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0

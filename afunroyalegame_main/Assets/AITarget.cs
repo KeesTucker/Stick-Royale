@@ -121,13 +121,7 @@ public class AITarget : MonoBehaviour {
                     {
                         if (objectCol.gameObject.GetComponent<AISetup>() && objectCol.gameObject != parent)
                         {
-                            if (objectCol.gameObject.GetComponent<PlayerControl>() && !objectCol.gameObject.GetComponent<HealthAI>().deaded)
-                            {
-                                minPlayerDistance = 0;
-                                closestPlayer = objectCol.transform;
-                                startCheckP = false;
-                            }
-                            else if (startCheckP && !objectCol.gameObject.GetComponent<HealthAI>().deaded)
+                            if (startCheckP && !objectCol.gameObject.GetComponent<HealthAI>().deaded)
                             {
                                 minPlayerDistance = Vector3.Distance(objectCol.transform.position, parent.transform.position);
                                 closestPlayer = objectCol.transform;

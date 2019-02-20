@@ -145,6 +145,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4436098254685578}
+  - component: {fileID: 114954015926714012}
   m_Layer: 0
   m_Name: Semi-Auto Sniper Rifle
   m_TagString: Untagged
@@ -641,3 +642,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.035643, y: 0.95359594, z: 0.271364}
   m_Center: {x: -1.0551965, y: 0.714661, z: 0}
+--- !u!114 &114954015926714012
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1976710871244644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c768a852faf77a4fb0c0a903f240c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x: 100000000
+  y: 100000000
+  pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0

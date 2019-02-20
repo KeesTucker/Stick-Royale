@@ -45,21 +45,23 @@ public class FallTerrain : MonoBehaviour {
     {
         if (GetComponent<Collider>() && info.gameObject.GetComponent<Collider>())
         {
-            if (info.gameObject.tag == "Kill" && transform.childCount > 0)
+            if (info.gameObject.tag == "Killer" && transform.childCount > 0)
             {
-                if (info.gameObject.tag == "Kill" && transform.GetChild(0).gameObject.name != "Top" && transform.GetChild(0).gameObject.name != "Base")
+                if (info.gameObject.tag == "Killer" && transform.GetChild(0).gameObject.name != "Top" && transform.GetChild(0).gameObject.name != "Base")
                 {
                     Destroy(gameObject);
                 }
             }
-            else if (info.gameObject.tag == "Kill")
+            else if (info.gameObject.tag == "Killer")
             {
                 Destroy(gameObject);
             }
-            
-            if (info.gameObject.layer == 12 || info.gameObject.layer == 16)
+            if (transform.GetChild(0).gameObject.name == "Top" && transform.GetChild(0).gameObject.name == "Base")
             {
-                Physics.IgnoreCollision(GetComponent<Collider>(), info.collider);
+                if (info.gameObject.layer == 12 || info.gameObject.layer == 16)
+                {
+                    Physics.IgnoreCollision(GetComponent<Collider>(), info.collider);
+                }
             }
         }
     }

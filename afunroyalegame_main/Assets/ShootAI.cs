@@ -460,7 +460,21 @@ public class ShootAI : MonoBehaviour {
                 }
                 else
                 {
-                    yield return new WaitForSeconds(refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].reloadTime);
+                    if (refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].bullet.name == "Slugs")
+                    {
+                        timerReload = refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].reloadTime / (magSize - bulletsLeft[refrenceKeeper.activeSlot]);
+                        if (magSize - bulletsLeft[refrenceKeeper.activeSlot] != 0)
+                        {
+                            yield return new WaitForSeconds(refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].reloadTime / (magSize - bulletsLeft[refrenceKeeper.activeSlot]));
+                        }
+                        audioSource.Stop();
+
+                    }
+                    else
+                    {
+                        timerReload = refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].reloadTime;
+                        yield return new WaitForSeconds(refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].reloadTime);
+                    }
                     if (reloading)
                     {
                         reloading = false;

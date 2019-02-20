@@ -17,7 +17,7 @@ MonoBehaviour:
   muzzlePosition: {x: 0, y: 0, z: 0}
   position: {x: 0, y: 0, z: 0}
   positionFlipped: {x: 0, y: 0, z: 0}
-  scale: {x: 0, y: 0, z: 0}
+  scale: {x: 1, y: 1, z: 1}
   rotation: {x: 0, y: 0, z: 0}
   rotationFlipped: {x: 0, y: 0, z: 0}
   spawnPosition: {x: 0, y: 0, z: 0}

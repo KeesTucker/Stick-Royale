@@ -37,6 +37,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4730450366555258}
+  - component: {fileID: 114562353892212634}
   m_Layer: 0
   m_Name: Revolver
   m_TagString: Untagged
@@ -383,3 +384,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3196481, y: 0.319649, z: 0.3440441}
   m_Center: {x: 0, y: 0.31863552, z: -0.051503014}
+--- !u!114 &114562353892212634
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1107380556221144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c768a852faf77a4fb0c0a903f240c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x: 100000000
+  y: 100000000
+  pos: {x: 0, y: 0, z: 0}
+  count: 0
+  isPlatform: 0

@@ -3699,6 +3699,8 @@ MonoBehaviour:
   splat: {fileID: 0}
   ping: {fileID: 0}
   audioSource: {fileID: 0}
+  hasKilled: 0
+  localFired: 0
 --- !u!114 &114581592623972364
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3785,6 +3787,7 @@ MonoBehaviour:
   rightBeenClicked: 0
   colliders: []
   health: {fileID: 0}
+  groundForceAI: {fileID: 0}
 --- !u!114 &114621602434835954
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3830,6 +3833,8 @@ MonoBehaviour:
   splat: {fileID: 0}
   ping: {fileID: 0}
   audioSource: {fileID: 0}
+  hasKilled: 0
+  localFired: 0
 --- !u!114 &114641427190874974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3890,6 +3895,8 @@ MonoBehaviour:
   splat: {fileID: 0}
   ping: {fileID: 0}
   audioSource: {fileID: 0}
+  hasKilled: 0
+  localFired: 0
 --- !u!114 &114760122986350236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4008,7 +4015,18 @@ MonoBehaviour:
   gunShot: {fileID: 0}
   reload: {fileID: 0}
   punch: {fileID: 8300000, guid: b8bebe7802cbf9743b4c4fddd60519eb, type: 3}
+  healSFX: {fileID: 0}
   local: {fileID: 0}
+  reloadHUD: {fileID: 0}
+  fireHUD: {fileID: 0}
+  fireTime: 0
+  reloadTime: 0
+  timerReload: 0
+  timerFire: 0
+  isPlayer: 0
+  notAI: 0
+  firing: 0
+  healing: 0
 --- !u!114 &114796806847213116
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4184,7 +4202,7 @@ MonoBehaviour:
   unCrouch: 0
   Ragdoll: {fileID: 54207606674199236}
   walkForce: 8000
-  jumpForce: 100000
+  jumpForce: 130000
   grappleSince: 0
   anim: {fileID: 95028367076147190}
   shoot: {fileID: 114778857527797606}
@@ -4298,9 +4316,12 @@ MonoBehaviour:
   - {fileID: 1238847960573222}
   - {fileID: 1676179598508134}
   - {fileID: 1121464654627070}
+  dead: 0
   grapple: {fileID: 1030156325517882, guid: ae655a10819c70b459b21cde916ce01c, type: 2}
   grappled: 0
   syncMoveState: {fileID: 0}
+  playerControl: {fileID: 0}
+  baseControl: {fileID: 0}
 --- !u!114 &114985779909984402
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4334,6 +4355,8 @@ MonoBehaviour:
   splat: {fileID: 0}
   ping: {fileID: 0}
   audioSource: {fileID: 0}
+  hasKilled: 0
+  localFired: 0
 --- !u!114 &114988043912561790
 MonoBehaviour:
   m_ObjectHideFlags: 1

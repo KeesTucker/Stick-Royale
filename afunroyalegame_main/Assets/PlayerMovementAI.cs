@@ -318,7 +318,7 @@ public class PlayerMovementAI : MonoBehaviour {
         {
             inAir = false;
         }
-        if (inAir && jumping)
+        if (inAir/* && jumping*/)
         {
             StartCoroutine("applyDownForce");
             inAir = false;

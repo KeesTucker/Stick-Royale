@@ -5,7 +5,11 @@ using UnityEngine;
 public class AddToSpawnList : MonoBehaviour {
 
 	// Use this for initialization
-	void Start () {
+	IEnumerator Start () {
+        while (!GameObject.Find("Items"))
+        {
+            yield return null;
+        }
         GameObject.Find("Items").GetComponent<SpawnWeapons>().spawns.Add(gameObject);
 	}
 }
