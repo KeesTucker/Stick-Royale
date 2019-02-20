@@ -35,9 +35,13 @@ public class IsFiniteBackup : MonoBehaviour {
                     if (gameObject.tag == "PosRelay")
                     {
                         GetComponent<HealthAI>().health = -100;
+                        StartCoroutine("Destroy");
+                    }
+                    else
+                    {
+                        Destroy(gameObject);
                     }
                     // FindParent(transform);
-                    Destroy(gameObject);
                 }
                 transform.position = pos;
                 count++;
@@ -67,5 +71,11 @@ public class IsFiniteBackup : MonoBehaviour {
         {
             Destroy(t.gameObject);
         }
+    }
+
+    IEnumerator Destroy()
+    {
+        yield return new WaitForSeconds(0.3f);
+        Destroy(gameObject);
     }
 }
