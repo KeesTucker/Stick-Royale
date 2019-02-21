@@ -1902,9 +1902,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b13e24d3948b6ad42bcf9fb51d898ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 500000
+  amount: 0
   rb: {fileID: 0}
-  targetSpeed: 1
+  targetSpeed: 0
 --- !u!114 &114155537882276434
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1951,9 +1951,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b13e24d3948b6ad42bcf9fb51d898ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 500000
+  amount: 0
   rb: {fileID: 0}
-  targetSpeed: 1
+  targetSpeed: 0
 --- !u!114 &114237050516119342
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2000,9 +2000,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b13e24d3948b6ad42bcf9fb51d898ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 500000
+  amount: 0
   rb: {fileID: 0}
-  targetSpeed: 1
+  targetSpeed: 0
 --- !u!114 &114267206409220570
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2153,9 +2153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b13e24d3948b6ad42bcf9fb51d898ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 500000
+  amount: 0
   rb: {fileID: 0}
-  targetSpeed: 1
+  targetSpeed: 0
 --- !u!114 &114485373596983124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2189,9 +2189,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b13e24d3948b6ad42bcf9fb51d898ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 500000
+  amount: 0
   rb: {fileID: 0}
-  targetSpeed: 1
+  targetSpeed: 0
 --- !u!114 &114510812153844106
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2346,9 +2346,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b13e24d3948b6ad42bcf9fb51d898ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 500000
+  amount: 0
   rb: {fileID: 0}
-  targetSpeed: 1
+  targetSpeed: 0
 --- !u!114 &114841520176016992
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2395,9 +2395,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b13e24d3948b6ad42bcf9fb51d898ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 500000
+  amount: 0
   rb: {fileID: 0}
-  targetSpeed: 1
+  targetSpeed: 0
 --- !u!114 &114905739054825036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2442,9 +2442,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b13e24d3948b6ad42bcf9fb51d898ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 500000
+  amount: 0
   rb: {fileID: 0}
-  targetSpeed: 1
+  targetSpeed: 0
 --- !u!135 &135149173722189406
 SphereCollider:
   m_ObjectHideFlags: 1

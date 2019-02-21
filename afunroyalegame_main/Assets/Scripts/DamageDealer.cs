@@ -361,7 +361,11 @@ public class DamageDealer : MonoBehaviour {
     {
         if (info.gameObject.layer == 24)
         {
-            audioSource.PlayOneShot(splat, SyncData.sfx * 1.3f * (Mathf.Clamp((200 - Vector3.Distance(transform.position, local.position)), 0, 200) / 200));
+            if (splat && local)
+            {
+                audioSource.PlayOneShot(splat, SyncData.sfx * 1.3f * (Mathf.Clamp((200 - Vector3.Distance(transform.position, local.position)), 0, 200) / 200));
+            }
+            
             ParticleSystem.MainModule system = particle.GetComponent<ParticleSystem>().main;
             if (info.gameObject.tag == "PosRelay" || info.gameObject.name == "LimbEnd")
             {

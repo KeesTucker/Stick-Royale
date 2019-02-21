@@ -507,9 +507,13 @@ public class ShootAI : MonoBehaviour {
             {
                 bullet.GetComponent<Rigidbody>().AddForce(new Vector3(startAngle.x + (Random.Range(-bloom, bloom) / 360), startAngle.y + Random.Range(-bloom, bloom), startAngle.z) * (impact / 3) * Time.deltaTime * 100);
             }
-            if (missLinks)
+            if (missLinks && hit.collider.gameObject.GetComponent<BulletAvoidPlat>() && bullet.GetComponent<MissLinks>())
             {
-                bullet.GetComponent<MissLinks>().Miss(hit.collider.gameObject.GetComponent<BulletAvoidPlat>().chainLinks);
+                if (hit.collider.gameObject.GetComponent<BulletAvoidPlat>().chainLinks != null)
+                {
+                    bullet.GetComponent<MissLinks>().Miss(hit.collider.gameObject.GetComponent<BulletAvoidPlat>().chainLinks);
+                }
+                
             }
             bullet.GetComponent<DamageDealer>().damage = refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].damage;
             bullet.GetComponent<DamageDealer>().hitable = true;

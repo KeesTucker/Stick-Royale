@@ -4234,6 +4234,7 @@ MonoBehaviour:
   audioSource: {fileID: 82966276855229744}
   jump: {fileID: 8300000, guid: 770857a015f10234b9fbd5b94cf5a8c8, type: 3}
   local: {fileID: 0}
+  applying: 0
 --- !u!114 &114934219449708712
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4377,7 +4378,7 @@ SphereCollider:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1437928632438196}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: eab852e4f7bc5aa4cb95ca4447da2cf3, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -4401,7 +4402,7 @@ SphereCollider:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1410679608000826}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: ed15f70008a31bb45b35b68d2386345d, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -4413,7 +4414,7 @@ SphereCollider:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1244492805961976}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: ed15f70008a31bb45b35b68d2386345d, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -4425,7 +4426,7 @@ SphereCollider:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1595628681198836}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: eab852e4f7bc5aa4cb95ca4447da2cf3, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
