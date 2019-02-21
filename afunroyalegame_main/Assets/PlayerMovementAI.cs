@@ -310,7 +310,7 @@ public class PlayerMovementAI : MonoBehaviour {
                 jumpable = false;
                 for (int i = 0; i < 15; i++)
                 {
-                    body.AddForce(0, (jumpForce * 0.8f - (i * 20)) * Time.deltaTime, 0);
+                    body.AddForce(0, (jumpForce * 0.55f - (i * 20)) * Time.deltaTime, 0);
 
                     //body.velocity = new Vector3(body.velocity.x, body.velocity.y + 20f, 0);
 

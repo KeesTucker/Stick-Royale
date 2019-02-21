@@ -5380,9 +5380,13 @@ MonoBehaviour:
   - {fileID: 1384572599709050, guid: 315485d8843a72f4f9ffe36c8f1f9892, type: 2}
   BiomesCompare:
   - {fileID: 11400000, guid: c1b012d5981390a44b37cdedf0c3e7ac, type: 2}
+  - {fileID: 11400000, guid: c1b012d5981390a44b37cdedf0c3e7ac, type: 2}
   - {fileID: 11400000, guid: fda52e281e7dc0748bfedb9ecde91b84, type: 2}
-  - {fileID: 11400000, guid: b2696d069f031a74a8c83d8fd49d0bea, type: 2}
-  - {fileID: 11400000, guid: b2696d069f031a74a8c83d8fd49d0bea, type: 2}
+  - {fileID: 11400000, guid: fda52e281e7dc0748bfedb9ecde91b84, type: 2}
+  - {fileID: 11400000, guid: b74378f0b9e26f640b7d02688ccfd099, type: 2}
+  - {fileID: 11400000, guid: b74378f0b9e26f640b7d02688ccfd099, type: 2}
+  - {fileID: 11400000, guid: 8c2398c33ed2af3499cebbaaedd61303, type: 2}
+  - {fileID: 11400000, guid: 8c2398c33ed2af3499cebbaaedd61303, type: 2}
   - {fileID: 11400000, guid: b2696d069f031a74a8c83d8fd49d0bea, type: 2}
   - {fileID: 11400000, guid: b2696d069f031a74a8c83d8fd49d0bea, type: 2}
   loaderP: {fileID: 1640340324769478, guid: 626f44b844a4e3f45916835f91ab3c21, type: 2}
