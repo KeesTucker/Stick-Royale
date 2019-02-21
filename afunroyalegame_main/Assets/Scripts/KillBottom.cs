@@ -8,7 +8,7 @@ public class KillBottom : MonoBehaviour {
 
     void OnCollisionEnter(Collision collsionInfo)
     {
-        if ((collsionInfo.gameObject.name == "Killer" || collsionInfo.gameObject.name == "KillerPart") && kill)
+        if ((collsionInfo.gameObject.name == "Killer" || collsionInfo.gameObject.name == "KillerPart" || collsionInfo.gameObject.name == "KillPlayers") && kill)
         {
             Destroy(gameObject);
         }

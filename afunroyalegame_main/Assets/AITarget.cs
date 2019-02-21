@@ -437,8 +437,11 @@ public class AITarget : MonoBehaviour {
 
             if (minWeaponDistance < 15f && closestWeapon)
             {
-                bulletTypes.Add(spawnWeapons.Weapons[closestWeapon.parent.parent.GetComponent<WeaponIndexHolder>().WeaponIndex].WeaponItem.bullet);
-                baseControl.e = true;
+                if (spawnWeapons.Weapons[closestWeapon.parent.parent.GetComponent<WeaponIndexHolder>().WeaponIndex].WeaponItem.bullet)
+                {
+                    bulletTypes.Add(spawnWeapons.Weapons[closestWeapon.parent.parent.GetComponent<WeaponIndexHolder>().WeaponIndex].WeaponItem.bullet);
+                    baseControl.e = true;
+                }
             }
 
             if (Random.Range(0, 15) == 1)

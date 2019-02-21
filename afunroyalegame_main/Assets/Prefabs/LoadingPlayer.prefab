@@ -4322,6 +4322,7 @@ MonoBehaviour:
   syncMoveState: {fileID: 0}
   playerControl: {fileID: 0}
   baseControl: {fileID: 0}
+  playerMovement: {fileID: 114932894694478322}
 --- !u!114 &114985779909984402
 MonoBehaviour:
   m_ObjectHideFlags: 1

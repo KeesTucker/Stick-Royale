@@ -362,7 +362,7 @@ Transform:
   - {fileID: 1034965141}
   - {fileID: 516665258}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 44.840004}
 --- !u!54 &9527180
 Rigidbody:
@@ -7389,7 +7389,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4414701525317308, guid: c2954a45956026b4ea4fee807ea7ae3b, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2954a45956026b4ea4fee807ea7ae3b, type: 2}

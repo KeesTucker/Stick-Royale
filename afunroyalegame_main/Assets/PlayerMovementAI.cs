@@ -87,6 +87,8 @@ public class PlayerMovementAI : MonoBehaviour {
 
     public Transform local;
 
+    public bool applying;
+
     IEnumerator Start()
     {
         while (!GameObject.Find("LocalPlayer") && !GameObject.Find("LoadingPlayer"))
@@ -196,6 +198,15 @@ public class PlayerMovementAI : MonoBehaviour {
             anim.ResetTrigger("stand");
             anim.ResetTrigger("WalkingR");
         }
+        else if (aDepressed == true && Physics.Raycast(body.transform.position, -Vector3.right, out hit, 15f, layerMask))
+        {
+            body.AddForce(-walkForce * Time.deltaTime * 1.2f, 0, 0);
+            anim.SetTrigger(walkingL);
+            state = 1;
+            //syncMoveState.CmdSetState(state);
+            anim.ResetTrigger("stand");
+            anim.ResetTrigger("WalkingR");
+        }
         else if (aDepressed == true)
         {
             body.AddForce(-walkForce * Time.deltaTime * 0.6f, 0, 0);
@@ -212,6 +223,15 @@ public class PlayerMovementAI : MonoBehaviour {
             body.AddForce(walkForce * Time.deltaTime * 1f, 0, 0);
             anim.SetTrigger(walkingR);
             state = 0;
+            //syncMoveState.CmdSetState(state);
+            anim.ResetTrigger("stand");
+            anim.ResetTrigger("WalkingL");
+        }
+        else if (aDepressed == true && Physics.Raycast(body.transform.position, Vector3.right, out hit, 15f, layerMask))
+        {
+            body.AddForce(walkForce * Time.deltaTime * 1.2f, 0, 0);
+            anim.SetTrigger(walkingR);
+            state = 1;
             //syncMoveState.CmdSetState(state);
             anim.ResetTrigger("stand");
             anim.ResetTrigger("WalkingL");
@@ -248,7 +268,7 @@ public class PlayerMovementAI : MonoBehaviour {
                 jumpable = false;
                 for (int i = 0; i < 15; i++)
                 {
-                    body.AddForce(0, (jumpForce * 0.5f - (i * 20)) * Time.deltaTime, 0);
+                    body.AddForce(0, (jumpForce * 0.7f - (i * 20)) * Time.deltaTime, 0);
 
                     lFoot.AddForce(-lFoot.transform.right * 0.025f * (jumpForce - (i * 20)) * Time.deltaTime);
                     rFoot.AddForce(rFoot.transform.right * 0.025f * (jumpForce - (i * 20)) * Time.deltaTime);
@@ -310,19 +330,24 @@ public class PlayerMovementAI : MonoBehaviour {
         {
             jumping = true;
         }
-        if (!groundforce.touchingWall && !groundforce.touchingObject && !inAir) //Add raycast so it doesnt apply imediatley!!!!!!!!!!!
+        if (!groundforce.touchingWall && !groundforce.touchingObject) //Add raycast so it doesnt apply imediatley!!!!!!!!!!!
         {
             inAir = true;
         }
-        else if ((groundforce.touchingWall || groundforce.touchingObject) && inAir)
+        else if (groundforce.touchingWall || groundforce.touchingObject)
         {
             inAir = false;
         }
-        if (inAir/* && jumping*/)
+        if (inAir)
         {
-            StartCoroutine("applyDownForce");
-            inAir = false;
             jumping = false;
+            if (body.velocity.y > -25f)
+            {
+                foreach (Rigidbody rb in downForceLimbs)
+                {
+                    rb.AddForce(0, -35f * Time.deltaTime * 100f, 0);
+                }
+            }
         }
     }
 
@@ -349,44 +374,5 @@ public class PlayerMovementAI : MonoBehaviour {
         {
             fire = false;
         }
-    }
-
-    IEnumerator applyDownForce()
-    {
-        float i = 25f;
-        if (spawnRocket)
-        {
-            while (inAir && spawnRocket.destroyed)
-            {
-                if (body.velocity.y > -15f)
-                {
-                    foreach (Rigidbody rb in downForceLimbs)
-                    {
-                        rb.AddForce(0, -i * Time.deltaTime * 100f, 0);
-                    }
-                }
-                yield return new WaitForSeconds(Time.deltaTime * 1);
-            }
-        }
-        else
-        {
-            while (inAir)
-            {
-                if (body.velocity.y > -15f)
-                {
-                    foreach (Rigidbody rb in downForceLimbs)
-                    {
-                        rb.AddForce(0, -i * Time.deltaTime * 100f, 0);
-                    }
-                }
-                yield return new WaitForSeconds(Time.deltaTime * 1);
-            }
-        }
-        inAir = false;
-        /*yield return new WaitForSeconds(0.3f);
-        for (int i = 0; i < 30; i++)
-        {
-            body.velocity = new Vector3(body.velocity.x, -30f, 0);
-        }*/
     }
 }

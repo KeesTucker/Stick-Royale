@@ -45,23 +45,26 @@ public class FallTerrain : MonoBehaviour {
     {
         if (GetComponent<Collider>() && info.gameObject.GetComponent<Collider>())
         {
-            if (info.gameObject.tag == "Killer" && transform.childCount > 0)
+            if (transform.childCount > 0)
             {
-                if (info.gameObject.tag == "Killer" && transform.GetChild(0).gameObject.name != "Top" && transform.GetChild(0).gameObject.name != "Base")
+                if (transform.GetChild(0).gameObject.name == "Top" && transform.GetChild(0).gameObject.name == "Base")
+                {
+                    if (info.gameObject.layer == 12 || info.gameObject.layer == 16)
+                    {
+                        Physics.IgnoreCollision(GetComponent<Collider>(), info.collider);
+                    }
+                }
+            }
+            else if ((info.gameObject.tag == "Killer" || info.gameObject.tag == "KillPlayer") && transform.childCount > 0)
+            {
+                if ((info.gameObject.tag == "Killer" || info.gameObject.tag == "KillPlayer") && transform.GetChild(0).gameObject.name != "Top" && transform.GetChild(0).gameObject.name != "Base")
                 {
                     Destroy(gameObject);
                 }
             }
-            else if (info.gameObject.tag == "Killer")
+            else if ((info.gameObject.tag == "Killer" || info.gameObject.tag == "KillPlayer"))
             {
                 Destroy(gameObject);
-            }
-            if (transform.GetChild(0).gameObject.name == "Top" && transform.GetChild(0).gameObject.name == "Base")
-            {
-                if (info.gameObject.layer == 12 || info.gameObject.layer == 16)
-                {
-                    Physics.IgnoreCollision(GetComponent<Collider>(), info.collider);
-                }
             }
         }
     }

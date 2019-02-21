@@ -142,9 +142,9 @@ public class GrappleActivatorAI : MonoBehaviour {
         if (Collided)
         {
             //transform.position = hitTarg.transform.position + hitCoords;
-            if (Vector3.Distance(handSingle.transform.position, hitTarg.transform.position) > 3)
+            if (Vector2.Distance(new Vector2(handSingle.transform.position.x, handSingle.transform.position.y), new Vector2(transform.position.x, transform.position.y)) > 5)
             {
-                handSingle.GetComponent<Rigidbody>().AddForce(direction * 40000 * Time.deltaTime/* * Mathf.Pow(Vector3.Distance(handSingle.transform.position, hitTarg.transform.position), 2f)*/);
+                handSingle.GetComponent<Rigidbody>().AddForce( new Vector3(direction.x * 40000 * Time.deltaTime, direction.y * 80000 * Time.deltaTime)/* * Mathf.Pow(Vector3.Distance(handSingle.transform.position, hitTarg.transform.position), 2f)*/);
 
                 if (hitTarg.GetComponent<Rigidbody>() != null && attractable)
                 {

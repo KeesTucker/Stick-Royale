@@ -63,6 +63,7 @@ public class GroundForceAI : MonoBehaviour
 
     public PlayerControl playerControl;
     public BaseControl baseControl;
+    public PlayerMovementAI playerMovement;
 
     IEnumerator Start()
     {

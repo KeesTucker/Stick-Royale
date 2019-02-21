@@ -18,6 +18,16 @@ public class KillPlayer : MonoBehaviour {
                     collisionInfo.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
                     return;
                 }
+                else
+                {
+                    Rigidbody rb;
+                    rb = collisionInfo.gameObject.GetComponent<Rigidbody>();
+                    
+                    for (int i = 0; i < 20; i++)
+                    {
+                        rb.AddForce(0, 100000f * Time.deltaTime, 0);
+                    }
+                }
             }
             else if (collisionInfo.transform.parent.gameObject.tag == "PosRelay")
             {
@@ -25,6 +35,16 @@ public class KillPlayer : MonoBehaviour {
                 {
                     collisionInfo.transform.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
                     return;
+                }
+                else
+                {
+                    Rigidbody rb;
+                    rb = collisionInfo.transform.parent.gameObject.GetComponent<Rigidbody>();
+
+                    for (int i = 0; i < 20; i++)
+                    {
+                        rb.AddForce(0, 100000f * Time.deltaTime, 0);
+                    }
                 }
             }
             else if (collisionInfo.transform.parent.parent.gameObject.tag == "PosRelay")
@@ -34,6 +54,16 @@ public class KillPlayer : MonoBehaviour {
                     collisionInfo.transform.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
                     return;
                 }
+                else
+                {
+                    Rigidbody rb;
+                    rb = collisionInfo.transform.parent.parent.gameObject.GetComponent<Rigidbody>();
+
+                    for (int i = 0; i < 20; i++)
+                    {
+                        rb.AddForce(0, 100000f * Time.deltaTime, 0);
+                    }
+                }
             }
             else if (collisionInfo.transform.parent.parent.parent.gameObject.tag == "PosRelay" && collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<PlayerControl>())
             {
@@ -41,6 +71,16 @@ public class KillPlayer : MonoBehaviour {
                 {
                     collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
                     return;
+                }
+                else
+                {
+                    Rigidbody rb;
+                    rb = collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<Rigidbody>();
+
+                    for (int i = 0; i < 20; i++)
+                    {
+                        rb.AddForce(0, 100000f * Time.deltaTime, 0);
+                    }
                 }
             }
         }
