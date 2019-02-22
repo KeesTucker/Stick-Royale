@@ -28,7 +28,7 @@ public class KillPlayer : MonoBehaviour {
                     float rand = Random.Range(-5000, 5000);
                     for (int i = 0; i < 20; i++)
                     {
-                        rb.AddForce(rand, 35000f * Time.deltaTime, 0);
+                        rb.AddForce(rand, 50000f * Time.deltaTime, 0);
                     }
                 }
             }
@@ -48,7 +48,7 @@ public class KillPlayer : MonoBehaviour {
                     float rand = Random.Range(-5000, 5000);
                     for (int i = 0; i < 20; i++)
                     {
-                        rb.AddForce(0, 35000f * Time.deltaTime, 0);
+                        rb.AddForce(0, 50000f * Time.deltaTime, 0);
                     }
                 }
             }
@@ -68,7 +68,7 @@ public class KillPlayer : MonoBehaviour {
                     float rand = Random.Range(-5000, 5000);
                     for (int i = 0; i < 20; i++)
                     {
-                        rb.AddForce(0, 35000f * Time.deltaTime, 0);
+                        rb.AddForce(0, 50000f * Time.deltaTime, 0);
                     }
                 }
             }
@@ -88,7 +88,7 @@ public class KillPlayer : MonoBehaviour {
                     float rand = Random.Range(-5000, 5000);
                     for (int i = 0; i < 20; i++)
                     {
-                        rb.AddForce(0, 35000f * Time.deltaTime, 0);
+                        rb.AddForce(0, 50000f * Time.deltaTime, 0);
                     }
                 }
             }

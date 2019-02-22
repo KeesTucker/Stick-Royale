@@ -386,8 +386,12 @@ public class ShootAI : MonoBehaviour {
         yield return new WaitForSeconds(1f / fireRate);
         if (healing)
         {
-            ragdoll.GetComponent<HealthAI>().health += Mathf.Clamp(SyncData.health / refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].damage, 0, SyncData.health);
-            ragdoll.GetComponent<ItemCheck>().DestroyHealth();
+            ragdoll.GetComponent<HealthAI>().health += Mathf.Clamp(SyncData.health / 3f, 0, SyncData.health);
+            if (ragdoll.GetComponent<ItemCheck>())
+            {
+                ragdoll.GetComponent<ItemCheck>().DestroyHealth();
+            }
+            
             loopDown = true;
             firing = false;
             healing = false;

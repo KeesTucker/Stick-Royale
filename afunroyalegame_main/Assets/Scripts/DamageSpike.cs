@@ -31,17 +31,13 @@ public class DamageSpike : MonoBehaviour {
     IEnumerator Start()
     {
         audioSource = gameObject.AddComponent<AudioSource>();
-        while (!GameObject.Find("LocalPlayer") && !GameObject.Find("LoadingPlayer"))
+        while (!GameObject.Find("LocalPlayer"))
         {
             yield return null;
         }
         if (GameObject.Find("LocalPlayer"))
         {
             local = GameObject.Find("LocalPlayer").transform;
-        }
-        else if (GameObject.Find("LoadingPlayer"))
-        {
-            local = GameObject.Find("LoadingPlayer").transform;
         }
     }
 
@@ -139,21 +135,24 @@ public class DamageSpike : MonoBehaviour {
     {
         if (info.gameObject.layer == 24)
         {
-            ParticleSystem.MainModule system = particle.GetComponent<ParticleSystem>().main;
-            if (info.gameObject.tag == "PosRelay" || info.gameObject.name == "LimbEnd")
+            if (particle)
             {
-                system.startColor = info.gameObject.GetComponent<SpriteRenderer>().color;
-                GameObject ouchParticle = Instantiate(particle, info.contacts[0].point, Quaternion.identity);
-                ouchParticle.transform.forward = new Vector3(-info.contacts[0].normal.x, -info.contacts[info.contacts.Length - 1].normal.y, info.contacts[info.contacts.Length - 1].normal.z);
+                ParticleSystem.MainModule system = particle.GetComponent<ParticleSystem>().main;
+                if (info.gameObject.tag == "PosRelay" || info.gameObject.name == "LimbEnd")
+                {
+                    system.startColor = info.gameObject.GetComponent<SpriteRenderer>().color;
+                    GameObject ouchParticle = Instantiate(particle, info.contacts[0].point, Quaternion.identity);
+                    ouchParticle.transform.forward = new Vector3(-info.contacts[0].normal.x, -info.contacts[info.contacts.Length - 1].normal.y, info.contacts[info.contacts.Length - 1].normal.z);
 
-                oldColor = info.gameObject.GetComponent<ColouriserAI>().m_NewColor;
+                    oldColor = info.gameObject.GetComponent<ColouriserAI>().m_NewColor;
 
-                info.gameObject.GetComponent<SpriteRenderer>().color = ouchie;
+                    info.gameObject.GetComponent<SpriteRenderer>().color = ouchie;
 
-                yield return new WaitForSeconds(0.2f);
-                info.gameObject.GetComponent<SpriteRenderer>().color = oldColor;
-                yield return new WaitForEndOfFrame();
-                info.gameObject.GetComponent<SpriteRenderer>().color = oldColor;
+                    yield return new WaitForSeconds(0.2f);
+                    info.gameObject.GetComponent<SpriteRenderer>().color = oldColor;
+                    yield return new WaitForEndOfFrame();
+                    info.gameObject.GetComponent<SpriteRenderer>().color = oldColor;
+                }
             }
         }
     }

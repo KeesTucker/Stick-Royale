@@ -180,7 +180,7 @@ public class AITarget : MonoBehaviour {
                         {
                             if (minWeaponDistance < minPlayerDistance && (!bulletTypes.Contains(spawnWeapons.Weapons[closestWeapon.parent.parent.GetComponent<WeaponIndexHolder>().WeaponIndex].WeaponItem.bullet) || spawnWeapons.Weapons[closestWeapon.parent.parent.GetComponent<WeaponIndexHolder>().WeaponIndex].WeaponItem.special)) //Make sure not picking up same weapontype
                             {
-                                if (Random.Range(0, 10) == 1)
+                                if (Random.Range(0, 10) == 1 && closestGrapple)
                                 {
                                     if (closestGrapple.name.Contains("Tree"))
                                     {
@@ -437,7 +437,17 @@ public class AITarget : MonoBehaviour {
 
             if (minWeaponDistance < 15f && closestWeapon)
             {
-                if (spawnWeapons.Weapons[closestWeapon.parent.parent.GetComponent<WeaponIndexHolder>().WeaponIndex].WeaponItem.bullet)
+                if (closestWeapon.GetComponent<WeaponIndexHolder>())
+                {
+                    bulletTypes.Add(spawnWeapons.Weapons[closestWeapon.GetComponent<WeaponIndexHolder>().WeaponIndex].WeaponItem.bullet);
+                    baseControl.e = true;
+                }
+                else if (closestWeapon.parent.GetComponent<WeaponIndexHolder>())
+                {
+                    bulletTypes.Add(spawnWeapons.Weapons[closestWeapon.parent.GetComponent<WeaponIndexHolder>().WeaponIndex].WeaponItem.bullet);
+                    baseControl.e = true;
+                }
+                else if (closestWeapon.parent.parent.GetComponent<WeaponIndexHolder>())
                 {
                     bulletTypes.Add(spawnWeapons.Weapons[closestWeapon.parent.parent.GetComponent<WeaponIndexHolder>().WeaponIndex].WeaponItem.bullet);
                     baseControl.e = true;

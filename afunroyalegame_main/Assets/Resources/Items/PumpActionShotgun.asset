@@ -31,7 +31,7 @@ MonoBehaviour:
   mass: 1.2
   axisToFlip: 1
   bloom: 1.2
-  recoil: 300
+  recoil: 600
   impact: 1200
   fireRate: 0.75
   muzzleFlashScale: {x: 5, y: 12, z: 0}
@@ -46,3 +46,4 @@ MonoBehaviour:
   special: 0
   shot: {fileID: 8300000, guid: 393dc8b6c4ad5c747ab44adb9456a408, type: 3}
   reload: {fileID: 8300000, guid: 06fedb91cc006d642b709749cb4d731b, type: 3}
+  heal: 0

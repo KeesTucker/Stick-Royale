@@ -89,7 +89,15 @@ public class EscMenu : MonoBehaviour {
 
         if (PlayerPrefs.HasKey("a"))
         {
-            SyncData.a = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("a"));
+            if (PlayerPrefs.GetString("a") != "")
+            {
+                SyncData.a = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("a"));
+            }
+            else
+            {
+                PlayerPrefs.SetString("a", KeyCode.A.ToString());
+                PlayerPrefs.Save();
+            }
         }
         else
         {
@@ -98,7 +106,15 @@ public class EscMenu : MonoBehaviour {
         }
         if (PlayerPrefs.HasKey("d"))
         {
-            SyncData.d = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("d"));
+            if (PlayerPrefs.GetString("d") != "")
+            {
+                SyncData.d = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("d"));
+            }
+            else
+            {
+                PlayerPrefs.SetString("d", KeyCode.D.ToString());
+                PlayerPrefs.Save();
+            }
         }
         else
         {
@@ -107,7 +123,15 @@ public class EscMenu : MonoBehaviour {
         }
         if (PlayerPrefs.HasKey("space"))
         {
-            SyncData.space = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("space"));
+            if (PlayerPrefs.GetString("space") != "")
+            {
+                SyncData.space = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("space"));
+            }
+            else
+            {
+                PlayerPrefs.SetString("space", KeyCode.Space.ToString());
+                PlayerPrefs.Save();
+            }
         }
         else
         {
@@ -116,7 +140,15 @@ public class EscMenu : MonoBehaviour {
         }
         if (PlayerPrefs.HasKey("f"))
         {
-            SyncData.f = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("f"));
+            if (PlayerPrefs.GetString("f") != "")
+            {
+                SyncData.f = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("f"));
+            }
+            else
+            {
+                PlayerPrefs.SetString("f", KeyCode.F.ToString());
+                PlayerPrefs.Save();
+            }
         }
         else
         {
@@ -125,7 +157,15 @@ public class EscMenu : MonoBehaviour {
         }
         if (PlayerPrefs.HasKey("r"))
         {
-            SyncData.r = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("r"));
+            if (PlayerPrefs.GetString("r") != "")
+            {
+                SyncData.r = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("r"));
+            }
+            else
+            {
+                PlayerPrefs.SetString("r", KeyCode.R.ToString());
+                PlayerPrefs.Save();
+            }
         }
         else
         {
@@ -134,7 +174,15 @@ public class EscMenu : MonoBehaviour {
         }
         if (PlayerPrefs.HasKey("i"))
         {
-            SyncData.i = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("i"));
+            if (PlayerPrefs.GetString("i") != "")
+            {
+                SyncData.i = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("i"));
+            }
+            else
+            {
+                PlayerPrefs.SetString("i", KeyCode.I.ToString());
+                PlayerPrefs.Save();
+            }
         }
         else
         {

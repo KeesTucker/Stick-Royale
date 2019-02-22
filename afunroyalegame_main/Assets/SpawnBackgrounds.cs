@@ -53,8 +53,10 @@ public class SpawnBackgrounds : MonoBehaviour {
         {
             frames = 0;
             Physics.Raycast(new Vector3(transform.position.x, transform.position.y, 0), -Vector3.up, out hit, Mathf.Infinity, layerMaskGround);
-
-            StartCoroutine(FindTerrain(hit.collider.transform));
+            if (hit.collider.transform)
+            {
+                StartCoroutine(FindTerrain(hit.collider.transform));
+            }
         }
     }
 

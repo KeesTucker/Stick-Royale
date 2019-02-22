@@ -5,7 +5,6 @@ using Mirror;
 
 public class SpawnRocketAI : NetworkBehaviour
 {
-
     public GameObject rocket;
 
     public GameObject rocketGO;
