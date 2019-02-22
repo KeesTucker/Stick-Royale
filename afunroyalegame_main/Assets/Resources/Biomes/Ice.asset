@@ -18,17 +18,17 @@ MonoBehaviour:
   trunkColor: {r: 0.52064794, g: 0.56359154, b: 0.5660378, a: 1}
   rockColor: {r: 0.5234959, g: 0.6312409, b: 0.6415094, a: 1}
   detail:
-  - {fileID: 1372892261651362, guid: 6cad0f151008de74fbb5543dad34f471, type: 2}
-  - {fileID: 1367568753336642, guid: 184e4bf50e67d1940a090a5d4fa97232, type: 2}
-  - {fileID: 1354618937250432, guid: 61900831358f096458f41255b81c6677, type: 2}
-  - {fileID: 1937989537922988, guid: 8e2497431accb5849afa22fbee83cd24, type: 2}
-  - {fileID: 1710892377670858, guid: 816807bf6b0843a43b5b36f35f573460, type: 2}
-  - {fileID: 1703801907561228, guid: 03d708e2870fc294b86171439fdb2287, type: 2}
-  - {fileID: 1790065302771026, guid: e57e78fb4ef650c4f98859524e019c23, type: 2}
+  - {fileID: 1372892261651362, guid: 5ec851884438c4547b2a5ff630cc74b6, type: 2}
+  - {fileID: 1367568753336642, guid: 95c0e7fa54650ae4b936fb588d38e0da, type: 2}
+  - {fileID: 1354618937250432, guid: 1fec4184b5491e649b7f6acff3c8ea0e, type: 2}
+  - {fileID: 1937989537922988, guid: 9710fde1a3b8638448c4eac68d69c0ad, type: 2}
+  - {fileID: 1710892377670858, guid: 04b32d6cf25a0b64192783344fc00caf, type: 2}
+  - {fileID: 1703801907561228, guid: 631078e01c14fad43b76c2b3717a0774, type: 2}
+  - {fileID: 1790065302771026, guid: 4601640de537c2549b7120efcc007bcd, type: 2}
   trees:
-  - {fileID: 1355971969950606, guid: 5e190933568368a4d857ef00399bc40d, type: 2}
-  - {fileID: 1642208386534222, guid: 7f539f8e02fef4441b8d88cc1431e541, type: 2}
-  - {fileID: 1321231702334520, guid: bdbdedf6aafb6c0469d340c4f07ea1cb, type: 2}
-  - {fileID: 1520874021680574, guid: 3f85bac461dc60f438dfe9136e2561c8, type: 2}
+  - {fileID: 1355971969950606, guid: e0115baa1a2ad9b40a3e9faf3b92a22f, type: 2}
+  - {fileID: 1642208386534222, guid: 9ed162ccd24ad7942ac7da10b6b6c80a, type: 2}
+  - {fileID: 1321231702334520, guid: 55016927690f3c643ac872efcd368f23, type: 2}
+  - {fileID: 1520874021680574, guid: b4116e8a937823942b2571c595a12c59, type: 2}
   background: {fileID: 21300000, guid: d1154db79bb407e4abdbc6bc3f176545, type: 3}
   backColor: {r: 0.7028302, g: 1, b: 0.9808366, a: 1}

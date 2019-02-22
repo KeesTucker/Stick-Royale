@@ -6,6 +6,7 @@ public class KillPlayer : MonoBehaviour {
 
     public float damage = 100000;
     public bool endKill = false;
+    public bool canDamage = true;
 
     void OnCollisionEnter(Collision collisionInfo)
     {
@@ -13,27 +14,30 @@ public class KillPlayer : MonoBehaviour {
         {
             if (collisionInfo.gameObject.tag == "PosRelay")
             {
-                if (collisionInfo.gameObject.GetComponent<PlayerControl>())
+                if (collisionInfo.gameObject.GetComponent<PlayerControl>() && canDamage)
                 {
-                    collisionInfo.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
+                    collisionInfo.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(SyncData.health / 3f);
+                    StartCoroutine("DamageDelay");
                     return;
                 }
                 else
                 {
                     Rigidbody rb;
                     rb = collisionInfo.gameObject.GetComponent<Rigidbody>();
-                    
+
+                    float rand = Random.Range(-5000, 5000);
                     for (int i = 0; i < 20; i++)
                     {
-                        rb.AddForce(0, 100000f * Time.deltaTime, 0);
+                        rb.AddForce(rand, 35000f * Time.deltaTime, 0);
                     }
                 }
             }
             else if (collisionInfo.transform.parent.gameObject.tag == "PosRelay")
             {
-                if (collisionInfo.transform.parent.gameObject.GetComponent<PlayerControl>())
+                if (collisionInfo.transform.parent.gameObject.GetComponent<PlayerControl>() && canDamage)
                 {
-                    collisionInfo.transform.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
+                    collisionInfo.transform.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(SyncData.health / 3f);
+                    StartCoroutine("DamageDelay");
                     return;
                 }
                 else
@@ -41,17 +45,19 @@ public class KillPlayer : MonoBehaviour {
                     Rigidbody rb;
                     rb = collisionInfo.transform.parent.gameObject.GetComponent<Rigidbody>();
 
+                    float rand = Random.Range(-5000, 5000);
                     for (int i = 0; i < 20; i++)
                     {
-                        rb.AddForce(0, 100000f * Time.deltaTime, 0);
+                        rb.AddForce(0, 35000f * Time.deltaTime, 0);
                     }
                 }
             }
             else if (collisionInfo.transform.parent.parent.gameObject.tag == "PosRelay")
             {
-                if (collisionInfo.transform.parent.parent.gameObject.GetComponent<PlayerControl>())
+                if (collisionInfo.transform.parent.parent.gameObject.GetComponent<PlayerControl>() && canDamage)
                 {
-                    collisionInfo.transform.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
+                    collisionInfo.transform.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(SyncData.health / 3f);
+                    StartCoroutine("DamageDelay");
                     return;
                 }
                 else
@@ -59,17 +65,19 @@ public class KillPlayer : MonoBehaviour {
                     Rigidbody rb;
                     rb = collisionInfo.transform.parent.parent.gameObject.GetComponent<Rigidbody>();
 
+                    float rand = Random.Range(-5000, 5000);
                     for (int i = 0; i < 20; i++)
                     {
-                        rb.AddForce(0, 100000f * Time.deltaTime, 0);
+                        rb.AddForce(0, 35000f * Time.deltaTime, 0);
                     }
                 }
             }
             else if (collisionInfo.transform.parent.parent.parent.gameObject.tag == "PosRelay" && collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<PlayerControl>())
             {
-                if (collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<PlayerControl>())
+                if (collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<PlayerControl>() && canDamage)
                 {
-                    collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
+                    collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(SyncData.health / 3f);
+                    StartCoroutine("DamageDelay");
                     return;
                 }
                 else
@@ -77,9 +85,10 @@ public class KillPlayer : MonoBehaviour {
                     Rigidbody rb;
                     rb = collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<Rigidbody>();
 
+                    float rand = Random.Range(-5000, 5000);
                     for (int i = 0; i < 20; i++)
                     {
-                        rb.AddForce(0, 100000f * Time.deltaTime, 0);
+                        rb.AddForce(0, 35000f * Time.deltaTime, 0);
                     }
                 }
             }
@@ -88,24 +97,35 @@ public class KillPlayer : MonoBehaviour {
         {
             if (collisionInfo.gameObject.tag == "PosRelay")
             {
-                collisionInfo.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
+                collisionInfo.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(SyncData.health / 3f);
+                StartCoroutine("DamageDelay");
                 return;
             }
             else if (collisionInfo.transform.parent.gameObject.tag == "PosRelay")
             {
-                collisionInfo.transform.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
+                collisionInfo.transform.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(SyncData.health / 3f);
+                StartCoroutine("DamageDelay");
                 return;
             }
             else if (collisionInfo.transform.parent.parent.gameObject.tag == "PosRelay")
             {
-                collisionInfo.transform.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
+                collisionInfo.transform.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(SyncData.health / 3f);
+                StartCoroutine("DamageDelay");
                 return;
             }
             else if (collisionInfo.transform.parent.parent.parent.gameObject.tag == "PosRelay")
             {
-                collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
+                collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(SyncData.health / 3f);
+                StartCoroutine("DamageDelay");
                 return;
             }
         }
+    }
+
+    IEnumerator DamageDelay()
+    {
+        canDamage = false;
+        yield return new WaitForSeconds(1f);
+        canDamage = true;
     }
 }

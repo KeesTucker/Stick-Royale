@@ -17,21 +17,44 @@ public class CamFollowAI : MonoBehaviour {
     public Rigidbody rb;
 
     public float force;
+
+    public Transform rocket;
 	
 	// Update is called once per frame
-    void Start()
+    IEnumerator Start()
     {
         transform.position = new Vector3(transform.position.x, transform.position.y, offset.z);
+        yield return new WaitForSeconds(0.1f);
+        if (parent.GetComponent<PlayerControl>())
+        {
+            while (!gameObject.GetComponent<SpawnRocketAI>())
+            {
+                yield return null;
+            }
+            while (!gameObject.GetComponent<SpawnRocketAI>().rocketGO)
+            {
+                yield return null;
+            }
+            rocket = gameObject.GetComponent<SpawnRocketAI>().rocketGO.transform;
+        }
     }
 
 	void FixedUpdate () {
+        if (rocket && !pos)
+        {
+            pos = rocket;
+        }
+        else
+        {
+            pos = null;
+        }
         if (parent && !pos)
         {
             pos = parent;
         }
         if (pos && aim)
         {
-            target = (((pos.position * 5) + aim.position) / 6) + offset;
+            target = (((pos.position * 3) + aim.position) / 4) + offset;
         }
         else if (pos)
         {

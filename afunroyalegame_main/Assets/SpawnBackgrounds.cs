@@ -89,10 +89,11 @@ public class SpawnBackgrounds : MonoBehaviour {
                     back.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
                     back.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = parent.GetChild(0).gameObject.GetComponent<BiomeHolder>().biome.background;
                     last = back.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite;
+                    back.GetComponent<MoveBackground>().offset = transform.position.x;
                     for (int i = 0; i < 100; i++)
                     {
                         back.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, (float)i / 99f);
-                        back.GetComponent<MoveBackground>().offset = Mathf.Lerp(back.GetComponent<MoveBackground>().offset, transform.position.x, (float)i / 99f);
+                        
                         Color c = parent.GetChild(0).gameObject.GetComponent<BiomeHolder>().biome.backColor;
                         cam.biomeCol = Color.Lerp(lastColor, c, i / 99f);
                         cam.Color();

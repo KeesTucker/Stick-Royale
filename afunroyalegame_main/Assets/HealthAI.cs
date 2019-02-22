@@ -113,6 +113,10 @@ public class HealthAI : NetworkBehaviour {
             refrenceKeeper.updateUI.deadPanel.SetActive(false);
         }
         transform.Find("Physics AnimatorAI").GetComponent<PlayerMovementAI>().enabled = false;
+        if (hasAuthority)
+        {
+            GetComponent<SpawnItem>().CmdSpawnKilled(weaponItem, transform.position, 15, 0, 1);
+        }
         for (int i = 0; i < refrenceKeeper.weaponInventory.Count; i++)
         {
             int id = refrenceKeeper.weaponInventory[i].id;
@@ -239,6 +243,11 @@ public class HealthAI : NetworkBehaviour {
                 GetComponent<BaseControl>().s = false;
                 GetComponent<BaseControl>().d = false;
             }
+            if (hasAuthority)
+            {
+                GetComponent<SpawnItem>().CmdSpawnKilled(weaponItem, transform.position, 15, 0, 1);
+            }
+            
             for (int i = 0; i < refrenceKeeper.weaponInventory.Count; i++)
             {
                 int id = refrenceKeeper.weaponInventory[i].id;

@@ -53,8 +53,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4723601433178524}
-  - component: {fileID: 114233398115862890}
-  - component: {fileID: 114012065761925254}
+  - component: {fileID: 212656709536630528}
   m_Layer: 0
   m_Name: Armature
   m_TagString: Untagged
@@ -139,7 +138,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4604918614283772}
   m_Layer: 0
-  m_Name: DesertTreeHolder
+  m_Name: HellTreeHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -560,8 +559,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1101652214488300}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 26.9, z: 0}
-  m_LocalScale: {x: 1.9505, y: 1.9505, z: 1.9505}
+  m_LocalPosition: {x: -1.6, y: 33.3, z: -0.2}
+  m_LocalScale: {x: 1.53, y: 1.53, z: 1.9505}
   m_Children:
   - {fileID: 4851682857457012}
   - {fileID: 4984294262145774}
@@ -1530,62 +1529,49 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1831672334540950}
   m_Mesh: {fileID: 0}
---- !u!114 &114012065761925254
-MonoBehaviour:
+--- !u!212 &212656709536630528
+SpriteRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1101652214488300}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38a84600be67e964f84b3c75ba6c174d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slotNames:
-  - Layer_1_copy
-  - Layer_2
-  - Layer_5
-  - Layer_6_copy
-  - Layer_14
-  - Layer_13
-  - Layer_12_copy
-  - Layer_12
-  - Layer_11
-  - Layer_10
-  - Layer_9
-  - Layer_16
-  - Layer_15
-  - Layer_8
-  - Layer_1
-  - Layer_6
-  - Layer_4
-  - Layer_7
-  - Layer_3
-  - Layer_0
-  dirty: 0
---- !u!114 &114233398115862890
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1101652214488300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b497e9eb4bcec3d418c5afd59218d224, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unityData: {fileID: 11400000, guid: 95abf2531bf286843a415b10e740767b, type: 2}
-  armatureName: Armature
-  armatureBaseName: 
-  isUGUI: 0
-  debugDraw: 0
-  animationName: Sway
-  _playTimes: 0
-  _timeScale: 0.25
-  _sortingMode: 0
-  _sortingLayerName: Default
-  _sortingOrder: 0
-  _zSpace: 0
-  _flipX: 0
-  _flipY: 0
-  _closeCombineMeshs: 0
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: aeddd9f76de2e7741a1801132e8745d3, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 24.72, y: 50.42}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0

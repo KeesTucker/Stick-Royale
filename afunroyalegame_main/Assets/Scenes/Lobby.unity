@@ -1607,6 +1607,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startGame: {fileID: 131434145}
+--- !u!82 &135153444 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 82966276855229744, guid: c2954a45956026b4ea4fee807ea7ae3b,
+    type: 2}
+  m_PrefabInternal: {fileID: 581661076}
 --- !u!1 &151576655
 GameObject:
   m_ObjectHideFlags: 0
@@ -7391,6 +7396,66 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114629253895397098, guid: c2954a45956026b4ea4fee807ea7ae3b,
+        type: 2}
+      propertyPath: splat
+      value: 
+      objectReference: {fileID: 8300000, guid: 4da03d73ebf7c2c43ba8d7bad8f57d4e, type: 3}
+    - target: {fileID: 114985779909984402, guid: c2954a45956026b4ea4fee807ea7ae3b,
+        type: 2}
+      propertyPath: splat
+      value: 
+      objectReference: {fileID: 8300000, guid: 4da03d73ebf7c2c43ba8d7bad8f57d4e, type: 3}
+    - target: {fileID: 114728424448477982, guid: c2954a45956026b4ea4fee807ea7ae3b,
+        type: 2}
+      propertyPath: splat
+      value: 
+      objectReference: {fileID: 8300000, guid: 4da03d73ebf7c2c43ba8d7bad8f57d4e, type: 3}
+    - target: {fileID: 114541105572347030, guid: c2954a45956026b4ea4fee807ea7ae3b,
+        type: 2}
+      propertyPath: splat
+      value: 
+      objectReference: {fileID: 8300000, guid: 4da03d73ebf7c2c43ba8d7bad8f57d4e, type: 3}
+    - target: {fileID: 114629253895397098, guid: c2954a45956026b4ea4fee807ea7ae3b,
+        type: 2}
+      propertyPath: ping
+      value: 
+      objectReference: {fileID: 8300000, guid: cdc0921fbb1ad0549aeafc797a29b97d, type: 3}
+    - target: {fileID: 114985779909984402, guid: c2954a45956026b4ea4fee807ea7ae3b,
+        type: 2}
+      propertyPath: ping
+      value: 
+      objectReference: {fileID: 8300000, guid: cdc0921fbb1ad0549aeafc797a29b97d, type: 3}
+    - target: {fileID: 114541105572347030, guid: c2954a45956026b4ea4fee807ea7ae3b,
+        type: 2}
+      propertyPath: ping
+      value: 
+      objectReference: {fileID: 8300000, guid: cdc0921fbb1ad0549aeafc797a29b97d, type: 3}
+    - target: {fileID: 114728424448477982, guid: c2954a45956026b4ea4fee807ea7ae3b,
+        type: 2}
+      propertyPath: ping
+      value: 
+      objectReference: {fileID: 8300000, guid: cdc0921fbb1ad0549aeafc797a29b97d, type: 3}
+    - target: {fileID: 114629253895397098, guid: c2954a45956026b4ea4fee807ea7ae3b,
+        type: 2}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 135153444}
+    - target: {fileID: 114985779909984402, guid: c2954a45956026b4ea4fee807ea7ae3b,
+        type: 2}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 135153444}
+    - target: {fileID: 114728424448477982, guid: c2954a45956026b4ea4fee807ea7ae3b,
+        type: 2}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 135153444}
+    - target: {fileID: 114541105572347030, guid: c2954a45956026b4ea4fee807ea7ae3b,
+        type: 2}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 135153444}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2954a45956026b4ea4fee807ea7ae3b, type: 2}
   m_IsPrefabAsset: 0
