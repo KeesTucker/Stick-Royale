@@ -55,15 +55,19 @@ public class AISetup : NetworkBehaviour
         if (hasAuthority)
         {
             manager = GameObject.Find("_NetworkManager").GetComponent<NetworkManager>();
-            if (GameObject.Find("Player(Clone)").GetComponent<SpawnRocketAI>().ready)
+            if (SyncData.gameMode == 1)
             {
-                SyncData.failed = true;
-                manager.StopClient();
+                if (GameObject.Find("Player(Clone)").GetComponent<SpawnRocketAI>().ready)
+                {
+                    SyncData.failed = true;
+                    manager.StopClient();
+                }
+                else
+                {
+                    SyncData.failed = false;
+                }
             }
-            else
-            {
-                SyncData.failed = false;
-            }
+            
             local = true;
             if (GetComponent<PlayerControl>())
             {
@@ -91,7 +95,7 @@ public class AISetup : NetworkBehaviour
     {
         if (playerManagement)
         {
-            if (playerManagement.totalPlayers <= 1 && !health.deaded && gameObject.name != "Player(Clone)" && hasAuthority)
+            if (playerManagement.totalPlayers <= 1 && !health.deaded && gameObject.name != "Player(Clone)" && hasAuthority && SyncData.gameMode == 1 && spawnRocket.ready)
             {
                 GetComponent<RefrenceKeeperAI>().updateUI.won.SetActive(true);
                 if (PlayerPrefs.HasKey("wins") && !stop)

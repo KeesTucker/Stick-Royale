@@ -35,7 +35,10 @@ public class PosHUD : MonoBehaviour {
                         timeMultiplier++;
                         time = 0;
                     }
-                    world.localScale = new Vector3(Mathf.Clamp(((((float)SyncData.worldSize * 245f) - ((time + (timeMultiplier * 60f)) * 7f)) / (Mathf.Abs(terrain.startPos / 2))) * 0.6f, 0, 0.6f), 1, 1);
+                    if (SyncData.gameMode == 1)
+                    {
+                        world.localScale = new Vector3(Mathf.Clamp(((((float)SyncData.worldSize * 245f) - ((time + (timeMultiplier * 60f)) * 7f)) / (Mathf.Abs(terrain.startPos / 2))) * 0.6f, 0, 0.6f), 1, 1);
+                    }
                 }
             }
         }

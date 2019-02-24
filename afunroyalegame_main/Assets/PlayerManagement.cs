@@ -37,9 +37,16 @@ public class PlayerManagement : NetworkBehaviour {
             CmdSpawn(); //Spawn code here
             if (isServer)
             {
-                for (int i = 0; i < numPlayers; i++)
+                if (SyncData.gameMode == 1)
                 {
-                    CmdBotSpawn();
+                    for (int i = 0; i < numPlayers; i++)
+                    {
+                        CmdBotSpawn();
+                    }
+                }
+                else if (SyncData.gameMode == 2)
+                {
+                    StartCoroutine(Onslaught());
                 }
             }
         }
@@ -54,6 +61,7 @@ public class PlayerManagement : NetworkBehaviour {
         }
         pos = new Vector3((Random.Range(-SyncData.worldSize / 2, SyncData.worldSize / 2) * 250) + 125, 100, 0);
         playerSpawned = Instantiate(AIPlayer, pos, transform.rotation);
+        playerSpawnedReal = playerSpawned;
         playerSpawned.GetComponent<AISetup>().parent = gameObject;
         NetworkServer.SpawnWithClientAuthority(playerSpawned, connectionToClient);
         if (playerManagement)
@@ -81,5 +89,25 @@ public class PlayerManagement : NetworkBehaviour {
         playerSpawned.GetComponent<AISetup>().parent = gameObject;
         NetworkServer.SpawnWithClientAuthority(playerSpawned, connectionToClient);
         currentNum++;
+    }
+
+    IEnumerator Onslaught()
+    {
+        while (!playerSpawnedReal.GetComponent<SpawnRocketAI>().ready)
+        {
+            yield return null;
+        }
+        while (playerSpawnedReal.GetComponent<HealthAI>().health >= 0)
+        {
+            currentNum = 0;
+            for (int i = 0; i < numPlayers / 4; i++)
+            {
+                if (totalPlayers < numPlayers + 5)
+                {
+                    CmdBotSpawn();
+                }
+            }
+            yield return new WaitForSeconds(15f);
+        }
     }
 }

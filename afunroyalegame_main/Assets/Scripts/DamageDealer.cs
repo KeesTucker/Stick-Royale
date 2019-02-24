@@ -30,7 +30,7 @@ public class DamageDealer : MonoBehaviour {
     public AudioClip ping;
     public AudioSource audioSource;
     public bool hasKilled;
-
+    public bool playerFire;
     public bool localFired;
 
     IEnumerator Start()
@@ -266,9 +266,11 @@ public class DamageDealer : MonoBehaviour {
                     }
                     if (onServer)
                     {
-                        
                         hasKilled = true;
-                        collisionInfo.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
+                        if (!(SyncData.gameMode == 2 && playerFire && collisionInfo.gameObject.GetComponent<PlayerControl>()))
+                        {
+                            collisionInfo.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
+                        }
                     }
                     hitable = false;
                     return;
@@ -294,7 +296,10 @@ public class DamageDealer : MonoBehaviour {
                     {
                         
                         hasKilled = true;
-                        collisionInfo.transform.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
+                        if (!(SyncData.gameMode == 2 && playerFire && collisionInfo.transform.parent.gameObject.GetComponent<PlayerControl>()))
+                        {
+                            collisionInfo.transform.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
+                        }
                     }
                     hitable = false;
                     return;
@@ -320,7 +325,10 @@ public class DamageDealer : MonoBehaviour {
                     {
                         
                         hasKilled = true;
-                        collisionInfo.transform.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
+                        if (!(SyncData.gameMode == 2 && playerFire && collisionInfo.transform.parent.parent.gameObject.GetComponent<PlayerControl>()))
+                        {
+                            collisionInfo.transform.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
+                        }
                     }
                     hitable = false;
                     return;
@@ -346,7 +354,10 @@ public class DamageDealer : MonoBehaviour {
                     {
                         
                         hasKilled = true;
-                        collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
+                        if (!(SyncData.gameMode == 2 && playerFire && collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<PlayerControl>()))
+                        {
+                            collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(damage);
+                        }
                     }
                     hitable = false;
                     return;

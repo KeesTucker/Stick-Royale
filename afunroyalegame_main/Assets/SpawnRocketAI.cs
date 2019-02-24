@@ -48,7 +48,10 @@ public class SpawnRocketAI : NetworkBehaviour
         rocketGO = Instantiate(rocket, transform.position, transform.rotation); //Spawn Rocket
         rocketGO.transform.GetChild(1).gameObject.SetActive(false);
         rocketGO.GetComponent<RocketMove>().ragdoll = transform;
+
         boxHold = Instantiate(box, transform.position, Quaternion.identity);
+
+        
         ragdollColliders = GetComponentsInChildren<Collider>();
         ragdollSpriteRenderers = GetComponentsInChildren<SpriteRenderer>();
         foreach (Collider col in ragdollColliders)
@@ -73,6 +76,11 @@ public class SpawnRocketAI : NetworkBehaviour
             {
                 refrenceKeeper.updateUI.fNote.SetActive(false);
             }
+        }
+        if (SyncData.gameMode == 2)
+        {
+            yield return new WaitForSeconds(10f);
+            ready = true;
         }
     }
 
@@ -137,9 +145,12 @@ public class SpawnRocketAI : NetworkBehaviour
             if (hasAuthority && !fall && GetComponent<PlayerControl>())
             {
                 fall = true;
-                foreach (FallTerrain ft in GameObject.Find("Terrain").transform.GetComponentsInChildren<FallTerrain>())
+                if (SyncData.gameMode == 1)
                 {
-                    ft.StartWrapper();
+                    foreach (FallTerrain ft in GameObject.Find("Terrain").transform.GetComponentsInChildren<FallTerrain>())
+                    {
+                        ft.StartWrapper();
+                    }
                 }
             }
         }

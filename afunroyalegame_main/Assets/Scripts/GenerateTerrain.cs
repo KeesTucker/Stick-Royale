@@ -32,6 +32,10 @@ public class GenerateTerrain : NetworkBehaviour {
 	void Start () {
         if (isServer)
         {
+            if (SyncData.gameMode == 2)
+            {
+                SyncData.worldSize = Mathf.Clamp(SyncData.worldSize / 3, 4, 6);
+            }
             size = SyncData.worldSize;
         }
         info = Resources.LoadAll("Biomes", typeof(Biome));

@@ -31,7 +31,7 @@ public class SpawnWeapons : NetworkBehaviour {
 
     public bool done = false;
 
-    void Start()
+    IEnumerator Start()
     {
         info = Resources.LoadAll("Items", typeof(Item));
         foreach (Object fileInfo in info)
@@ -45,6 +45,15 @@ public class SpawnWeapons : NetworkBehaviour {
         if (isServer)
         {
             StartCoroutine("Wait");
+        }
+
+        if (SyncData.gameMode == 2)
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(30f);
+                StartCoroutine("Wait");
+            }
         }
     }
 

@@ -127,13 +127,18 @@ public class AITarget : MonoBehaviour {
                                 closestPlayer = objectCol.transform;
                                 startCheckP = false;
                             }
+                            else if (SyncData.gameMode == 2 && !objectCol.gameObject.GetComponent<HealthAI>().deaded && objectCol.gameObject.GetComponent<PlayerControl>())
+                            {
+                                minPlayerDistance = 0;
+                                closestPlayer = objectCol.transform;
+                            }
                             else if (Vector3.Distance(objectCol.transform.position, parent.transform.position) < minPlayerDistance && !objectCol.gameObject.GetComponent<HealthAI>().deaded)
                             {
                                 minPlayerDistance = Vector3.Distance(objectCol.transform.position, parent.transform.position);
                                 closestPlayer = objectCol.transform;
                             }
                         }
-                        else if (objectCol.gameObject.layer == 11)
+                        else if (objectCol.gameObject.layer == 11 && objectCol.transform.name != "Heal")
                         {
                             if (startCheckW)
                             {
@@ -435,7 +440,7 @@ public class AITarget : MonoBehaviour {
                 }
             }
 
-            if (minWeaponDistance < 15f && closestWeapon)
+            if (minWeaponDistance < 15f && closestWeapon && closestWeapon.name != "Heal")
             {
                 if (closestWeapon.GetComponent<WeaponIndexHolder>())
                 {

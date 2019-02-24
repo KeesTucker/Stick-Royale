@@ -66,7 +66,28 @@ public class SpawnItem : NetworkBehaviour {
     [Command]
     public void CmdSpawnKilled(GameObject ItemPrefab, Vector3 position, int id, float direction, int bulletsLeft)
     {
-        if (id != 100)
+        if (id != 100 && SyncData.gameMode == 1)
+        {
+            switchedWeapon = Instantiate(WeaponItem, position, Quaternion.identity);
+            switchedWeapon.GetComponent<WeaponIndexHolder>().WeaponIndex = id;
+            /*GameObject WeaponModel = Instantiate(
+                spawnWeapons.Weapons[id].WeaponItem.itemModel,
+                switchedWeapon.transform.position,
+                switchedWeapon.transform.rotation);
+            WeaponModel.transform.SetParent(switchedWeapon.transform);
+            WeaponModel.transform.localPosition = new Vector3(0, 0, 0);*/
+            switchedWeapon.transform.position = switchedWeapon.transform.position + new Vector3(direction, 1, 0);
+            //WeaponModel.gameObject.layer = 11;
+            switchedWeapon.GetComponent<BulletsLeft>().bullets = bulletsLeft;
+            //for (int z = 0; z < WeaponModel.transform.childCount; z++)
+            //{
+            //    WeaponModel.transform.GetChild(z).gameObject.layer = 11;
+            //}
+            switchedWeapon.transform.SetParent(items.transform);
+            //localiseTransform.setTransformItem(WeaponModel, id);
+            NetworkServer.Spawn(switchedWeapon);
+        }
+        else if (id != 100 && SyncData.gameMode == 2 && Random.Range(0, 5) == 1)
         {
             switchedWeapon = Instantiate(WeaponItem, position, Quaternion.identity);
             switchedWeapon.GetComponent<WeaponIndexHolder>().WeaponIndex = id;

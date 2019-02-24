@@ -108,9 +108,13 @@ public class HealthAI : NetworkBehaviour {
         if (hasAuthority && GetComponent<PlayerControl>() && !refrenceKeeper.updateUI.won.activeInHierarchy)
         {
             refrenceKeeper.updateUI.deadMessage.SetActive(true);
-            refrenceKeeper.updateUI.deadPanel.SetActive(true);
-            yield return new WaitForSeconds(3f);
-            refrenceKeeper.updateUI.deadPanel.SetActive(false);
+            if (SyncData.gameMode == 1)
+            {
+                refrenceKeeper.updateUI.deadPanel.SetActive(true);
+                yield return new WaitForSeconds(3f);
+                refrenceKeeper.updateUI.deadPanel.SetActive(false);
+            }
+            
         }
         transform.Find("Physics AnimatorAI").GetComponent<PlayerMovementAI>().enabled = false;
         if (hasAuthority)
@@ -141,6 +145,7 @@ public class HealthAI : NetworkBehaviour {
         {
             CmdSpawnGhost();
         }
+        yield return new WaitForSeconds(60f);
     }
 
     [Command]

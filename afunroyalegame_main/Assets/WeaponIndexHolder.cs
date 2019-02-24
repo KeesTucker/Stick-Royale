@@ -22,6 +22,11 @@ public class WeaponIndexHolder : NetworkBehaviour {
             yield return null;
         }
         GetModel();
+        if (SyncData.gameMode == 2)
+        {
+            yield return new WaitForSeconds(30f);
+            Destroy(gameObject);
+        }
     }
 
     public void GetModel()

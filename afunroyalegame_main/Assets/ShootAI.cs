@@ -324,6 +324,10 @@ public class ShootAI : MonoBehaviour {
             LimbDamagers[nextFist].punching = true;
             LimbDamagers[nextFist].particleDone = false;
             LimbDamagers[nextFist].hitable = true;
+            if (isPlayer)
+            {
+                LimbDamagers[nextFist].playerFire = true;
+            }
             LimbDamagers[nextFist].hasKilled = false;
             if (isPlayer && refrenceKeeper.hasAuthority)
             {
@@ -353,6 +357,10 @@ public class ShootAI : MonoBehaviour {
             LimbDamagers[nextFist + 2].punching = true;
             LimbDamagers[nextFist + 2].particleDone = false;
             LimbDamagers[nextFist + 2].hitable = true;
+            if (isPlayer)
+            {
+                LimbDamagers[nextFist + 2].playerFire = true;
+            }
             LimbDamagers[nextFist + 2].hasKilled = false;
             if (isPlayer && refrenceKeeper.hasAuthority)
             {
@@ -521,6 +529,10 @@ public class ShootAI : MonoBehaviour {
             }
             bullet.GetComponent<DamageDealer>().damage = refrenceKeeper.weaponInventory[refrenceKeeper.activeSlot].damage;
             bullet.GetComponent<DamageDealer>().hitable = true;
+            if (isPlayer)
+            {
+                bullet.GetComponent<DamageDealer>().playerFire = true;
+            }
             if (refrenceKeeper.hasAuthority && isPlayer)
             {
                 bullet.GetComponent<DamageDealer>().localFired = true;
