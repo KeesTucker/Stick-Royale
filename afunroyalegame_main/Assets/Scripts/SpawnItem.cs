@@ -87,7 +87,7 @@ public class SpawnItem : NetworkBehaviour {
             //localiseTransform.setTransformItem(WeaponModel, id);
             NetworkServer.Spawn(switchedWeapon);
         }
-        else if (id != 100 && SyncData.gameMode == 2 && Random.Range(0, 5) == 1)
+        else if (id != 100 && SyncData.gameMode == 2 && Random.Range(0, 2) == 1)
         {
             switchedWeapon = Instantiate(WeaponItem, position, Quaternion.identity);
             switchedWeapon.GetComponent<WeaponIndexHolder>().WeaponIndex = id;
