@@ -145,7 +145,11 @@ public class HealthAI : NetworkBehaviour {
         {
             CmdSpawnGhost();
         }
-        yield return new WaitForSeconds(60f);
+        if (GetComponent<PlayerControl>())
+        {
+            yield return new WaitForSeconds(15f);
+            Destroy(gameObject);
+        }
     }
 
     [Command]
