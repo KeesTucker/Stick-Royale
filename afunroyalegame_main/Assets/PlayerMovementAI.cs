@@ -255,7 +255,7 @@ public class PlayerMovementAI : MonoBehaviour {
 
         }
 
-        if (spaceDepressed && aDepressed && Physics.Raycast(body.transform.position, Vector3.right, out hit, 30f, layerMask))
+        if (spaceDepressed && aDepressed && Physics.Raycast(body.transform.position, Vector3.right, out hit, 20f, layerMask) && !Physics.Raycast(body.transform.position, -Vector3.right, out hit, 20f, layerMask))
         {
             if (dDepressed)
             {
@@ -272,7 +272,7 @@ public class PlayerMovementAI : MonoBehaviour {
                 }
             }
         }
-        else if (spaceDepressed && dDepressed && Physics.Raycast(body.transform.position, -Vector3.right, out hit, 30f, layerMask))
+        else if (spaceDepressed && dDepressed && Physics.Raycast(body.transform.position, -Vector3.right, out hit, 20f, layerMask) && !Physics.Raycast(body.transform.position, Vector3.right, out hit, 20f, layerMask))
         {
             if (aDepressed)
             {
@@ -358,7 +358,7 @@ public class PlayerMovementAI : MonoBehaviour {
                     }
                     else
                     {
-                        body.AddForce(0, (jumpForce * 0.25f - (i * 20)) * Time.deltaTime, 0);
+                        body.AddForce(0, (jumpForce * 0.35f - (i * 20)) * Time.deltaTime, 0);
                     }
 
                     //body.velocity = new Vector3(body.velocity.x, body.velocity.y + 20f, 0);
