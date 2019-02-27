@@ -272,6 +272,10 @@ public class PlayerMovementAI : MonoBehaviour {
                 }
             }
         }
+        else if (spaceDepressed && aDepressed && !dDepressed && Physics.Raycast(body.transform.position, Vector3.right, out hit, 20f, layerMask) && !Physics.Raycast(body.transform.position, Vector3.right, out hit, 20f, layerMask))
+        {
+            body.AddForce(-walkForce * Time.deltaTime * 3f, 0, 0);
+        }
         else if (spaceDepressed && dDepressed && Physics.Raycast(body.transform.position, -Vector3.right, out hit, 20f, layerMask) && !Physics.Raycast(body.transform.position, Vector3.right, out hit, 20f, layerMask))
         {
             if (aDepressed)
@@ -288,6 +292,10 @@ public class PlayerMovementAI : MonoBehaviour {
                     body.AddForce(walkForce * Time.deltaTime * 4f, 0, 0);
                 }
             }
+        }
+        else if (spaceDepressed && dDepressed && !aDepressed && Physics.Raycast(body.transform.position, -Vector3.right, out hit, 20f, layerMask) && !Physics.Raycast(body.transform.position, Vector3.right, out hit, 20f, layerMask))
+        {
+            body.AddForce(walkForce * Time.deltaTime * 3f, 0, 0);
         }
 
         if (groundforce.touchingGround)
