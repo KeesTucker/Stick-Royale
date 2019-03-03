@@ -44,7 +44,8 @@ public class SyncName : NetworkBehaviour {
                 healthAI = parent.GetComponent<HealthAI>();
                 text.text = name;
             }
-            text.color = parent.GetComponent<ColourSetterAI>().m_NewColor;
+            text.color = Color.clear; //Just for the trailer
+            //text.color = parent.GetComponent<ColourSetterAI>().m_NewColor;
         }
     }
 

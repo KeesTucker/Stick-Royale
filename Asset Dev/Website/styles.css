@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,300,700');
+body,html{margin:0;padding:0;}
+
+body, html{
+    overflow: hidden;
+}
+
+.wrapper {
+  /* The height needs to be set to a fixed value for the effect to work.
+   * 100vh is the full height of the viewport. */
+  height: 939px;
+  width: 3840px;
+  margin-left: calc((3840px - 100%) / -2);
+  position: relative;
+  /* The scaling of the images would add a horizontal scrollbar, so disable x overflow. */
+  overflow-x: hidden;
+  /* Enable scrolling on the page. */
+  overflow-y: auto;
+  /* Set the perspective to 2px. This is essentailly the simulated distance from the viewport to transformed objects.*/
+  perspective: 2px;
+}
+
+.section {
+  /* Needed for children to be absolutely positioned relative to the parent. */
+
+  /* The height of the container. Must be set, but it doesn't really matter what the value is. */
+  height: auto;
+  width: 43%;
+  /* For text formatting. */
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.parallax {
+  /* Display and position the pseudo-element */
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  
+  /* Force the background image to fill the whole element. */
+  /* Keep the image from overlapping sibling elements. */ 
+  z-index: -1;
+}
+
+img{
+    width: 100%;
+    height: auto;
+}
+
+#logo {
+    transform: translateZ(-20px) scale(3.5);
+    margin-top: -4750px;
+    margin-left: 1250px;
+}
+#sticks {
+    transform: translateZ(0.5px) scale(0.7);
+    margin-top: 760px;
+    margin-left: 1130px;
+}
+#main {
+    transform: translateZ(-30px) scale(16);
+    margin-top: 1700px;
+    margin-left: 1800px;
+}
+#blocks{
+    transform: translateZ(-5px) scale(6);
+    margin-top: -1075px;
+    margin-left: 1300px;
+}
+#blur{
+    transform: translateZ(-5px) scale(9);
+    margin-top: 900px;
+}
+#back1{
+    transform: translateZ(-3.5px) scale(5);
+    margin-top: -500px;
+    margin-left: 1200px;
+}
+#back1 img{
+    width: 250%;
+    margin-left: -75%;
+    overflow-x: hidden;
+}
+#back2{
+    transform: translateZ(-4px) scale(3);
+    margin-top: -3000px;
+    margin-left: 1200px;
+}
+#back2 img{
+    width: 250%;
+    margin-left: -70%;
+    overflow-x: hidden;
+}
+#back3{
+    transform: translateZ(-4.5px) scale(3);
+    margin-top: -2200px;
+    margin-left: 1100px;
+}
+#back3 img{
+    width: 250%;
+    margin-left: -70%;
+    overflow-x: hidden;
+}
+#back4{
+    transform: translateZ(-5px) scale(3);
+    margin-top: -2400px;
+    margin-left: 1200px;
+}
+#back4 img{
+    width: 250%;
+    margin-left: -70%;
+    overflow-x: hidden;
+}
+#text1{
+    transform: translateZ(-5px) scale(2);
+    margin-top: -100px;
+    margin-left: 0px;
+}
+#text1 h1{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 100;
+    font-size: 6em;
+    width: 100%;
+    text-align: center;
+    margin-left: 570px
+}
+.static {
+  background: white;
+}
+#fixedWrapper{
+    display: block;
+    position: fixed;
+}
+#logoFixed{
+    left: 45%;
+    top: 0px;
+    width: 10%;
+    position: fixed;
+}

@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Stick Royale</title>
+        <meta charset="utf-8"/>
+        <meta name="description" content="Drunk Stickmen, Overpowered weapons, Rainbows"/>
+        <link rel="canonical" href="www.stickroyalegame.com/index.html"/>
+        <meta name="keywords" content="indie game stickmen stick fight landfall battle royale video game"/>
+        <meta name="author" content="Kees Tucker"/>
+        <link rel="stylesheet" type="text/css" href="styles.css"/>
+        <link rel="icon" href="logo.ico" type="image/x-icon" /> <link rel="shortcut icon" href="logo.ico" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width"/>
+        <meta charset="UTF-8"/>
+        <script type="application/ld+json">
+            {
+                "@context": "http://schema.org",
+                "@type": "VideoGame",
+                "name" : "Stick Royale",
+                "url": "www.stickroyalegame.com",
+                "sameAs" : [
+                "https://www.facebook.com/triplefingames/",
+                "https://www.instagram.com/triplefingames/?hl=en",
+                "https://plus.google.com/u/1/b/106616429470574173365/discover?pli=1"
+                ]
+            }
+        </script>
+        <script type="application/ld+json">
+            {
+                "@context": "http://schema.org",
+                "@type": "VideoGame",
+                "name" : "StickRoyale",
+                "priceRange": "$5",
+                "url": "www.stickroyalegame.com",
+                "logo": "www.stickroyalegame.com/home.png",
+                "image": "www.stickroyalegame.com/main.png",
+                "description": "Drunk Stickmen, Overpowered weapons, Rainbows",
+                "telephone": "+64204335337",
+                "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Tauranga",
+                "addressRegion": "BOP",
+                "streetAddress": "8 Dell Way",
+                "postalCode": "3110"
+            },
+                "openingHours": [
+                "Mo-Su 7:30-16:00"
+                ]
+            }
+        </script>
+        <script>
+            var bullet;
+            var interval;
+            var done = true;
+            var wrapper;
+            var main;
+            var scrollYnum;
+            var logo;
+            var smallLogo;
+            function resize(){
+                wrapper.style.transform = "scale(" + (window.innerHeight / 939).toString() + ")";
+                wrapper.style.marginTop = ((window.innerHeight - 939) / 2).toString() + "px";
+            }
+            function shoot(){
+                if(done) {
+                    done = false;
+                    bullet = document.createElement("IMG");
+                    bullet.setAttribute('src', 'images/bullet.svg');
+                    bullet.style.position = 'fixed';
+                    bullet.style.top = '355px';
+                    bullet.style.left = '960px';
+                    bullet.style.width = '100px';
+                    bullet.style.zIndex = -2;
+                    bullet.style.height = 'auto';
+                    main.appendChild(bullet);
+                    interval = setInterval(function() { bullet.style.left = (parseInt(bullet.style.left) + 12).toString() + "px"; }, 5);
+                    setTimeout(function() { if(!done){clearInterval(interval); bullet.parentElement.removeChild(bullet); done = true; }}, 700);
+               }
+                else {
+                    done = true;
+                    bullet.parentElement.removeChild(bullet); 
+                    bullet = null;
+                    clearInterval(interval); 
+                }
+            }
+            function load(){
+                main = document.getElementById('main');
+                wrapper = document.getElementById('wrapper');
+                logo = document.getElementById('logo');
+                smallLogo = document.getElementById('logoFixed');
+                smallLogo.style.top = "-200px";
+            }
+            function scrollYEvent(){
+                scrollYnum = wrapper.scrollTop;
+                if(scrollYnum < 800){
+                   main.style.marginTop = "1700px"
+                    logo.style.marginTop = "-4750px"
+                    smallLogo.style.top = "-200px";
+                }
+                else if(scrollYnum >= 800 && scrollYnum <= 1300){
+                   logo.style.marginTop = ((scrollYnum - 800) - 4750).toString() + "px";
+                    main.style.marginTop = "1700px"
+                    smallLogo.style.top = "-200px";
+                }
+                else if(scrollYnum > 1300 && scrollYnum < 2300){
+                    logo.style.marginTop = (-(scrollYnum - 1300) * 5 - 4250).toString() + "px";
+                    main.style.marginTop = ((scrollYnum - 1300) * 3 + 1700).toString() + "px";
+                    smallLogo.style.top = ((scrollYnum - 1300) / 5 - 200).toString() + "px";
+                }
+            }
+            function home(){
+                scrollYEvent();
+                interval = setInterval(function() { scrollYnum = scrollYnum - 50; wrapper.scrollTop = scrollYnum; scrollYEvent(); if(scrollYnum < 50){scrollYnum = 0; wrapper.scrollTop = scrollYnum; scrollYEvent(); clearInterval(interval);} }, 5);
+                
+            }
+        </script>
+    </head>
+    <body onresize="resize()" id="body" onload="load()">
+        <div class="wrapper" id="wrapper" onscroll="scrollYEvent()" onclick="shoot()">
+            <section class="section" class="parallax" id="back1">
+                <img src="images/back1.svg"/>
+            </section>
+            <section class="section" class="parallax" id="back2">
+                <img src="images/back2.svg"/>
+            </section>
+            <section class="section" class="parallax" id="back3">
+                <img src="images/back3.svg"/>
+            </section>
+            <section class="section" class="parallax" id="back4">
+                <img src="images/back4.svg"/>
+            </section>
+            <section class="section" class="parallax" id="blocks">
+                <img src="images/blocks.svg"/>
+            </section>
+            <section class="section" class="parallax" id="blur">
+                <img src="images/blur.svg"/>
+            </section>
+            <section class="section" class="parallax" id="text1">
+                <h1>a game by <b>.triplefin</b></h1>
+            </section>
+            <section class="section" class="parallax" id="logo">
+                <img src="images/logo.svg"/>
+            </section>
+            <section class="section" class="parallax" id="sticks">
+                <img src="images/sticks.svg"/>
+            </section>
+            <section class="section" class="parallax" id="main">
+                <img src="images/main.svg"/>
+            </section>
+        </div>
+        <div id="fixedWrapper">
+            <section id="logoFixed" onclick="home()">
+                <img src="images/logo.svg"/>
+            </section>
+        </div>
+    </body>
+</html>
