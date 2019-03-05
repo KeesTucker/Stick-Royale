@@ -75,12 +75,13 @@
                     interval = setInterval(function() { bullet.style.left = (parseInt(bullet.style.left) + 12).toString() + "px"; }, 5);
                     setTimeout(function() { if(!done){clearInterval(interval); bullet.parentElement.removeChild(bullet); done = true; }}, 700);
                }
-                else {
+                /*else {
                     done = true;
                     bullet.parentElement.removeChild(bullet); 
                     bullet = null;
                     clearInterval(interval); 
-                }
+                    shoot();
+                }*/
             }
             function load(){
                 main = document.getElementById('main');
@@ -88,23 +89,28 @@
                 logo = document.getElementById('logo');
                 smallLogo = document.getElementById('logoFixed');
                 smallLogo.style.top = "-200px";
+                scrollYEvent();
             }
             function scrollYEvent(){
                 scrollYnum = wrapper.scrollTop;
+                
                 if(scrollYnum < 800){
-                   main.style.marginTop = "1700px"
-                    logo.style.marginTop = "-4750px"
                     smallLogo.style.top = "-200px";
+                    logo.style.marginTop = ((scrollYnum / 1.05) + 20).toString() + 'px';
+                    main.style.marginTop = (scrollYnum / 1.05).toString() + 'px';
                 }
                 else if(scrollYnum >= 800 && scrollYnum <= 1300){
-                   logo.style.marginTop = ((scrollYnum - 800) - 4750).toString() + "px";
-                    main.style.marginTop = "1700px"
                     smallLogo.style.top = "-200px";
+                    logo.style.marginTop = (((scrollYnum - 800) / 1.2) + 762 + 20).toString() + 'px';
+                    main.style.marginTop = (scrollYnum - 762).toString() + 'px';
                 }
                 else if(scrollYnum > 1300 && scrollYnum < 2300){
-                    logo.style.marginTop = (-(scrollYnum - 1300) * 5 - 4250).toString() + "px";
-                    main.style.marginTop = ((scrollYnum - 1300) * 3 + 1700).toString() + "px";
                     smallLogo.style.top = ((scrollYnum - 1300) / 5 - 200).toString() + "px";
+                    main.style.marginTop = (scrollYnum - 762).toString() + 'px';
+                }
+                else if(scrollYnum >= 2300){
+                    smallLogo.style.top = '5px';
+                    main.style.marginTop = (scrollYnum - 762).toString() + 'px';
                 }
             }
             function home(){
@@ -114,42 +120,55 @@
             }
         </script>
     </head>
-    <body onresize="resize()" id="body" onload="load()">
+    <body id="body" onload="load()">
         <div class="wrapper" id="wrapper" onscroll="scrollYEvent()" onclick="shoot()">
-            <section class="section" class="parallax" id="back1">
+            <section class="section" id="back1">
                 <img src="images/back1.svg"/>
             </section>
-            <section class="section" class="parallax" id="back2">
+            <section class="section" id="back2">
                 <img src="images/back2.svg"/>
             </section>
-            <section class="section" class="parallax" id="back3">
+            <section class="section" id="back3">
                 <img src="images/back3.svg"/>
             </section>
-            <section class="section" class="parallax" id="back4">
+            <section class="section" id="back4">
                 <img src="images/back4.svg"/>
             </section>
-            <section class="section" class="parallax" id="blocks">
+            <section class="section" id="blocks">
                 <img src="images/blocks.svg"/>
             </section>
-            <section class="section" class="parallax" id="blur">
+            <section class="section" id="blur">
                 <img src="images/blur.svg"/>
             </section>
-            <section class="section" class="parallax" id="text1">
+            <section class="section" id="text1">
                 <h1>a game by <b>.triplefin</b></h1>
             </section>
-            <section class="section" class="parallax" id="logo">
+            <section class="section" id="logo">
                 <img src="images/logo.svg"/>
             </section>
-            <section class="section" class="parallax" id="sticks">
+            <section class="section" id="sticks">
                 <img src="images/sticks.svg"/>
             </section>
-            <section class="section" class="parallax" id="main">
+            <section class="section" id="main">
                 <img src="images/main.svg"/>
             </section>
+            <section class="section" id="twitter">
+                <a class="twitter-timeline" data-width="300" data-height="900" href="https://twitter.com/afunroyalegame?ref_src=twsrc%5Etfw">Tweets by afunroyalegame</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </section>
+            <section class="section button" id="button1">
+                <h1>Press Kit</h1>
+            </section>
+            <section class="section button" id="button2">
+                <h1>Mailing List</h1>
+            </section>
+            <section class="section button" id="button3">
+                <h1>About</h1>
+            </section>
+            
         </div>
         <div id="fixedWrapper">
             <section id="logoFixed" onclick="home()">
-                <img src="images/logo.svg"/>
+                <img src="images/logosmall.svg"/>
             </section>
         </div>
     </body>

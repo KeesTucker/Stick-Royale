@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 612 792" style="enable-background:new 0 0 612 792;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#A87543;}
+	.st1{fill:#C49A6C;}
+	.st2{clip-path:url(#XMLID_4_);fill:#A87543;}
+	.st3{fill:#BCBEC0;}
+</style>
+<path id="XMLID_2_" class="st0" d="M318,346.8"/>
+<g id="XMLID_46_">
+	<g id="XMLID_28_">
+		<polygon id="XMLID_43_" class="st1" points="317.9,345 293.9,345 293.9,149.5 317.9,149.5 317.9,152.3 		"/>
+		<path id="XMLID_42_" class="st0" d="M305.9,327.9c-3.7,5.3-12,8.5-12,8.5v3.1c0,0,9.3-3.4,12-8.4s12-8.9,12-8.9v-2.5
+			C317.9,319.7,308.8,323.7,305.9,327.9z"/>
+		<path id="XMLID_40_" class="st0" d="M305.9,173.5c-3.7,5.3-12,8.5-12,8.5v3.1c0,0,9.3-3.4,12-8.4s12-8.9,12-8.9v-2.5
+			C317.9,165.4,308.8,169.4,305.9,173.5z"/>
+		<path id="XMLID_38_" class="st0" d="M305.9,198.7c-3.7,5.3-12,8.5-12,8.5v3.1c0,0,9.3-3.4,12-8.4s12-8.9,12-8.9v-2.5
+			C317.9,190.6,308.8,194.6,305.9,198.7z"/>
+		<path id="XMLID_36_" class="st0" d="M305.9,224.9c-3.7,5.3-12,8.5-12,8.5v3.1c0,0,9.3-3.4,12-8.4s12-8.9,12-8.9v-2.5
+			C317.9,216.8,308.8,220.8,305.9,224.9z"/>
+		<path id="XMLID_34_" class="st0" d="M305.9,250.1c-3.7,5.3-12,8.5-12,8.5v3.1c0,0,9.3-3.4,12-8.4c2.8-5,12-8.9,12-8.9V242
+			C317.9,242,308.8,246,305.9,250.1z"/>
+		<path id="XMLID_32_" class="st0" d="M305.9,277.4c-3.7,5.3-12,8.5-12,8.5v3.1c0,0,9.3-3.4,12-8.4s12-8.9,12-8.9v-2.5
+			C317.9,269.3,308.8,273.3,305.9,277.4z"/>
+		<path id="XMLID_30_" class="st0" d="M305.9,306.1c-3.7,5.3-12,8.5-12,8.5v3.1c0,0,9.3-3.4,12-8.4s12-8.9,12-8.9V298
+			C317.9,298,308.8,302,305.9,306.1z"/>
+		<g id="XMLID_25_">
+			<defs>
+				<polyline id="XMLID_1_" points="293.9,149.5 317.9,149.5 317.9,152.7 				"/>
+			</defs>
+			<clipPath id="XMLID_4_">
+				<use xlink:href="#XMLID_1_"  style="overflow:visible;"/>
+			</clipPath>
+			<path id="XMLID_27_" class="st2" d="M305.9,147.4c-3.7,5.3-12,8.5-12,8.5v3.1c0,0,9.3-3.4,12-8.4s12-8.9,12-8.9v-2.5
+				C317.9,139.3,308.8,143.3,305.9,147.4z"/>
+		</g>
+	</g>
+</g>
+<circle id="XMLID_47_" class="st3" cx="306" cy="134.6" r="26.5"/>
+</svg>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 612 792" style="enable-background:new 0 0 612 792;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#C49A6C;}
+	.st1{fill:#A87543;}
+	.st2{fill:#BCBEC0;}
+	.st3{clip-path:url(#XMLID_12_);fill:#8B8B8C;}
+</style>
+<polygon id="XMLID_2_" class="st0" points="318,569 294,569 294,345 318,345 318,348.3 "/>
+<path id="XMLID_18_" class="st1" d="M306,532.4c-3.7,5.3-12,8.5-12,8.5v3.1c0,0,9.3-3.4,12-8.4s12-8.9,12-8.9v-2.5
+	C318,524.3,308.9,528.3,306,532.4z"/>
+<circle id="XMLID_1_" class="st2" cx="306" cy="650.9" r="120.5"/>
+<g id="XMLID_5_">
+	<defs>
+		<path id="XMLID_4_" d="M155.3,763c0,0,163.1,61.3,216.8-50.4s39-168.6,39-168.6S558,602.3,559,602.7c1,0.3-20.3,74-19,75.7
+			c1.3,1.7-95.7,104-95.7,104l-258.8-4L155.3,763z"/>
+	</defs>
+	<clipPath id="XMLID_12_">
+		<use xlink:href="#XMLID_4_"  style="overflow:visible;"/>
+	</clipPath>
+	<circle id="XMLID_3_" class="st3" cx="306" cy="650.9" r="120.5"/>
+</g>
+<path id="XMLID_6_" class="st1" d="M306,354.9c-3.7,5.3-12,8.5-12,8.5v3.1c0,0,9.3-3.4,12-8.4s12-8.9,12-8.9v-2.5
+	C318,346.8,308.9,350.8,306,354.9z"/>
+<path id="XMLID_8_" class="st1" d="M306,382.9c-3.7,5.3-12,8.5-12,8.5v3.1c0,0,9.3-3.4,12-8.4s12-8.9,12-8.9v-2.5
+	C318,374.8,308.9,378.8,306,382.9z"/>
+<path id="XMLID_13_" class="st1" d="M306,406.3c-3.7,5.3-12,8.5-12,8.5v3.1c0,0,9.3-3.4,12-8.4s12-8.9,12-8.9v-2.5
+	C318,398.1,308.9,402.1,306,406.3z"/>
+<path id="XMLID_11_" class="st1" d="M306,434.3c-3.7,5.3-12,8.5-12,8.5v3.1c0,0,9.3-3.4,12-8.4s12-8.9,12-8.9v-2.5
+	C318,426.1,308.9,430.1,306,434.3z"/>
+<path id="XMLID_17_" class="st1" d="M306,458.8c-3.7,5.3-12,8.5-12,8.5v3.1c0,0,9.3-3.4,12-8.4s12-8.9,12-8.9v-2.5
+	C318,450.6,308.9,454.6,306,458.8z"/>
+<path id="XMLID_15_" class="st1" d="M306,486.8c-3.7,5.3-12,8.5-12,8.5v3.1c0,0,9.3-3.4,12-8.4s12-8.9,12-8.9v-2.5
+	C318,478.6,308.9,482.6,306,486.8z"/>
+<path id="XMLID_14_" class="st1" d="M306,512.6c-3.7,5.3-12,8.5-12,8.5v3.1c0,0,9.3-3.4,12-8.4s12-8.9,12-8.9v-2.5
+	C318,504.5,308.9,508.5,306,512.6z"/>
+<g id="XMLID_46_">
+	<g id="XMLID_28_">
+		<line id="XMLID_9_" class="st0" x1="317.9" y1="345" x2="293.9" y2="345"/>
+		<g id="XMLID_25_">
+			<defs>
+				<line id="XMLID_7_" x1="317.9" y1="373.5" x2="293.9" y2="373.5"/>
+			</defs>
+			<clipPath id="XMLID_16_">
+				<use xlink:href="#XMLID_7_"  style="overflow:visible;"/>
+			</clipPath>
+		</g>
+	</g>
+</g>
+</svg>

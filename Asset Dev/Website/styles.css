@@ -3,21 +3,22 @@ body,html{margin:0;padding:0;}
 
 body, html{
     overflow: hidden;
+    background-color: #373645ff;
+    width: 100%;
 }
 
 .wrapper {
   /* The height needs to be set to a fixed value for the effect to work.
    * 100vh is the full height of the viewport. */
-  height: 939px;
-  width: 3840px;
-  margin-left: calc((3840px - 100%) / -2);
+  height: 100vh;
+  width: 100%;
+  /*margin-left: calc((3840px - 100%) / -2);*/
   position: relative;
   /* The scaling of the images would add a horizontal scrollbar, so disable x overflow. */
   overflow-x: hidden;
   /* Enable scrolling on the page. */
   overflow-y: auto;
   /* Set the perspective to 2px. This is essentailly the simulated distance from the viewport to transformed objects.*/
-  perspective: 2px;
 }
 
 .section {
@@ -25,24 +26,12 @@ body, html{
 
   /* The height of the container. Must be set, but it doesn't really matter what the value is. */
   height: auto;
-  width: 43%;
+  width: 100%;
   /* For text formatting. */
   align-items: center;
   justify-content: center;
+    position:absolute;
   color: white;
-}
-
-.parallax {
-  /* Display and position the pseudo-element */
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  
-  /* Force the background image to fill the whole element. */
-  /* Keep the image from overlapping sibling elements. */ 
-  z-index: -1;
 }
 
 img{
@@ -51,73 +40,103 @@ img{
 }
 
 #logo {
-    transform: translateZ(-20px) scale(3.5);
-    margin-top: -4750px;
-    margin-left: 1250px;
+    width: 100%;
+    top: 0%;
+    left: 0%;
 }
 #sticks {
-    transform: translateZ(0.5px) scale(0.7);
-    margin-top: 760px;
-    margin-left: 1130px;
+    width: 100%;
+    top: 0%;
+    left: 0%;
 }
 #main {
-    transform: translateZ(-30px) scale(16);
-    margin-top: 1700px;
-    margin-left: 1800px;
+    width: 100%;
+    top: 0%;
+    left: 0%;
 }
 #blocks{
-    transform: translateZ(-5px) scale(6);
-    margin-top: -1075px;
-    margin-left: 1300px;
+    width: 100%;
+    top: 0%;
+    left: 0%;
 }
 #blur{
-    transform: translateZ(-5px) scale(9);
-    margin-top: 900px;
+    width: 250%;
+    top: 0%;
+    left: 0%;
 }
 #back1{
-    transform: translateZ(-3.5px) scale(5);
-    margin-top: -500px;
-    margin-left: 1200px;
+    width: 100%;
+    top: 0%;
+    left: 0%;
 }
 #back1 img{
-    width: 250%;
-    margin-left: -75%;
-    overflow-x: hidden;
+    width: 100%;
+    top: 0%;
+    left: 0%;
 }
 #back2{
-    transform: translateZ(-4px) scale(3);
-    margin-top: -3000px;
-    margin-left: 1200px;
+    width: 100%;
+    top: 0%;
+    left: 0%;
 }
 #back2 img{
-    width: 250%;
-    margin-left: -70%;
-    overflow-x: hidden;
+    width: 100%;
+    top: 0%;
+    left: 0%;
 }
 #back3{
-    transform: translateZ(-4.5px) scale(3);
-    margin-top: -2200px;
-    margin-left: 1100px;
+    width: 100%;
+    top: 0%;
+    left: 0%;
 }
 #back3 img{
-    width: 250%;
-    margin-left: -70%;
-    overflow-x: hidden;
+    width: 100%;
+    top: 0%;
+    left: 0%;
 }
 #back4{
-    transform: translateZ(-5px) scale(3);
-    margin-top: -2400px;
-    margin-left: 1200px;
+    width: 100%;
+    top: 0%;
+    left: 0%;
 }
 #back4 img{
-    width: 250%;
-    margin-left: -70%;
-    overflow-x: hidden;
+    width: 100%;
+    top: 0%;
+    left: 0%;
+}
+#twitter{
+    left: 1250px;
+    top: 6000px;
+}
+.button{
+    left: 6200px;
+}
+.button h1{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 100;
+    font-size: 4em;
+    width: 100%;
+    text-align: left;
+    position: absolute;
+    color: #373645ff;
+    font-weight: 800;
+    background-color: white;
+    padding: 20px;
+    z-index: 4;
+    border-radius: 10px;
+}
+#button1{
+    top: 6150px;
+}
+#button2{
+    top: 5150px;
+}
+#button3{
+    top: 4150px;
 }
 #text1{
-    transform: translateZ(-5px) scale(2);
-    margin-top: -100px;
-    margin-left: 0px;
+    top: 2500px;
+    left: 0px;
 }
 #text1 h1{
     font-family: 'Montserrat', sans-serif;
@@ -139,4 +158,7 @@ img{
     top: 0px;
     width: 10%;
     position: fixed;
+}
+#logoFixed img{
+    margin-top: 10px;
 }
