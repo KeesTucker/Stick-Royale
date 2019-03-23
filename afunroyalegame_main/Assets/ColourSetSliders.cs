@@ -30,8 +30,7 @@ public class ColourSetSliders : MonoBehaviour {
         Color color = new Color(1 + r.localPosition.x, 1 + g.localPosition.x, 1 + b.localPosition.x);
         colourSetter.SetColor(color);
         SyncData.color = color;
-        nameTag.color = Color.clear; //Just for the trailer
-        //nameTag.color = color;
+        nameTag.color = color;
         PlayerPrefs.SetFloat("r", color.r);
         PlayerPrefs.SetFloat("g", color.g);
         PlayerPrefs.SetFloat("b", color.b);
