@@ -16,7 +16,7 @@ public class KillPlayer : MonoBehaviour {
             {
                 if (collisionInfo.gameObject.GetComponent<PlayerControl>() && canDamage)
                 {
-                    collisionInfo.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(SyncData.health / 3f);
+                    collisionInfo.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(/*SyncData.health / 3f*/0);
                     StartCoroutine("DamageDelay");
                     return;
                 }
@@ -36,7 +36,7 @@ public class KillPlayer : MonoBehaviour {
             {
                 if (collisionInfo.transform.parent.gameObject.GetComponent<PlayerControl>() && canDamage)
                 {
-                    collisionInfo.transform.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(SyncData.health / 3f);
+                    collisionInfo.transform.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(/*SyncData.health / 3f*/0);
                     StartCoroutine("DamageDelay");
                     return;
                 }
@@ -56,7 +56,7 @@ public class KillPlayer : MonoBehaviour {
             {
                 if (collisionInfo.transform.parent.parent.gameObject.GetComponent<PlayerControl>() && canDamage)
                 {
-                    collisionInfo.transform.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(SyncData.health / 3f);
+                    collisionInfo.transform.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(/*SyncData.health / 3f*/0);
                     StartCoroutine("DamageDelay");
                     return;
                 }
@@ -76,7 +76,7 @@ public class KillPlayer : MonoBehaviour {
             {
                 if (collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<PlayerControl>() && canDamage)
                 {
-                    collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(SyncData.health / 3f);
+                    collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(/*SyncData.health / 3f*/0);
                     StartCoroutine("DamageDelay");
                     return;
                 }
@@ -97,25 +97,25 @@ public class KillPlayer : MonoBehaviour {
         {
             if (collisionInfo.gameObject.tag == "PosRelay")
             {
-                collisionInfo.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(SyncData.health / 3f);
+                collisionInfo.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(/*SyncData.health / 3f*/0);
                 StartCoroutine("DamageDelay");
                 return;
             }
             else if (collisionInfo.transform.parent.gameObject.tag == "PosRelay")
             {
-                collisionInfo.transform.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(SyncData.health / 3f);
+                collisionInfo.transform.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(/*SyncData.health / 3f*/0);
                 StartCoroutine("DamageDelay");
                 return;
             }
             else if (collisionInfo.transform.parent.parent.gameObject.tag == "PosRelay")
             {
-                collisionInfo.transform.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(SyncData.health / 3f);
+                collisionInfo.transform.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(/*SyncData.health / 3f*/0);
                 StartCoroutine("DamageDelay");
                 return;
             }
             else if (collisionInfo.transform.parent.parent.parent.gameObject.tag == "PosRelay")
             {
-                collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(SyncData.health / 3f);
+                collisionInfo.transform.parent.parent.parent.gameObject.GetComponent<HealthAI>().CmdUpdateHealth(/*SyncData.health / 3f*/0);
                 StartCoroutine("DamageDelay");
                 return;
             }
