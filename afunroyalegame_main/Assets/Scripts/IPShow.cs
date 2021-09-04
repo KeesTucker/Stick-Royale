@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Mirror;
+﻿using UnityEngine;
 using System.Net;
+using System.Linq;
 
 public class IPShow : MonoBehaviour {
 
@@ -11,6 +9,14 @@ public class IPShow : MonoBehaviour {
     // Update is called once per frame
     void Start() {
         string externalip = new WebClient().DownloadString("http://icanhazip.com");
-        inputField.text = "Your IP: " + externalip;
+        inputField.text = "Your Local IP: " + GetLocalIPv4() + " Your Public IP: " + externalip;
+    }
+
+    public string GetLocalIPv4()
+    {
+        return Dns.GetHostEntry(Dns.GetHostName())
+            .AddressList.First(
+                f => f.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+            .ToString();
     }
 }
