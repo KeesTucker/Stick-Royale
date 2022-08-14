@@ -48,6 +48,11 @@ public class SetIP : MonoBehaviour {
             result = 5;
             mainInputField.text = "Thats not a number -_-";
         }
+
+        if (result < 1)
+        {
+            result = 1;
+        }
         SyncData.numPlayers = result;
         PlayerPrefs.SetInt("playerNum", result);
         PlayerPrefs.Save();
